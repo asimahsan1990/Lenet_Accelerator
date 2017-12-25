@@ -4,10 +4,13 @@
 2. Folder Description:
 
 #### SIM
-> testtop.v
-> testconv.v
-> testfc.v
+> > 1. testtop.v
+> > 2. testconv.v
+> > 3. testfc.v
 #### HDL
 > CONV_HDL
+> > conv_top.v
 > FC_HDL
+> > fc_top.v
 #### SYN
+> > .tcl's
