@@ -8,9 +8,9 @@
 > > 2. testconv.v
 > > 3. testfc.v
 #### HDL
-> CONV_HDL
-> > conv_top.v
-> FC_HDL
-> > fc_top.v
+> 1. CONV_HDL
+> > 1. conv_top.v
+> 1. FC_HDL
+> > 1. fc_top.v
 #### SYN
 > > .tcl's
