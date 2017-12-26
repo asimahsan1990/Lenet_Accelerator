@@ -16,8 +16,10 @@ reg srstn;
 
 reg conv_start;
 
-wire conv1_finish; // conv1_finish for testing if conv1 
-wire conv_finish;
+wire conv1_done; // conv1_finish for testing if conv1 is correct
+wire conv_done;	 // conv_finish for testing if conv2(remember to set mem_sel)
+				 // mem_sel(1:c0~c4| 0:d0~d4)
+
 
 wire [WEIGHT_NUM*WEIGHT_WIDTH-1:0] sram_rdata_weight;
 wire [16:0] conv1_sram_raddr_weight;       //read address to weight SRAM
@@ -105,7 +107,7 @@ wire [9:0] sram_waddr_c;
 wire [7:0] sram_wdata_a;
 wire [7:0] sram_wdata_b;
 wire [7:0] sram_wdata_c;
-
+wire mem_sel;
 wire signed [7:0] out;
 
 reg [7:0] mem[0:32*32-1];
@@ -172,13 +174,15 @@ conv_top (
 .sram_waddr_d(sram_waddr_d),
 .sram_wdata_d(sram_wdata_d),
 
+.mem_sel(mem_sel),
+
 .conv1_finish(conv1_finish),
 .conv_finish(conv_finish)
 );
 
-/*============================*/
-/*		 		sram connection 	  */
-/*============================*/
+/*=====================================*/
+/*		 	sram connection		 	   */
+/*=====================================*/
 //weight_sram connection
 sram_20000x100b sram_weight_0(
 .clk(clk),
@@ -512,13 +516,13 @@ initial begin
     clk = 1'b1;
     #(`cycle_period/2);
     while(1) begin
-      #(`cycle_period/2) clk = ~clk; 
+    	#(`cycle_period/2) clk = ~clk; 
     end
 end
 
-/*==============================*/
+/*================================*/
 /*		main Simulation block 	  */
-/*==============================*/
+/*================================*/
 integer pat_no, pat_length, hw_length, cycle_cnt;
 
 integer col_cnt;
@@ -539,32 +543,201 @@ reg [7:0] pool2_1d [0:800-1];
 
 initial begin
 	$readmemb("weight_data/conv1_w.dat",conv1_w);
-  $readmemb("weight_data/conv1_b.dat",conv1_b);
-  $readmemb("weight_data/conv2_w.dat",conv2_w);
-  $readmemb("weight_data/conv2_b.dat",conv2_b);
-  $readmemb("weight_data/fc1_w.dat",fc1_w);
-  $readmemb("weight_data/score_w.dat",fc2_w);
-	
+	$readmemb("weight_data/conv1_b.dat",conv1_b);
+	$readmemb("weight_data/conv2_w.dat",conv2_w);
+	$readmemb("weight_data/conv2_b.dat",conv2_b);
+	$readmemb("weight_data/fc1_w.dat",fc1_w);
+	$readmemb("weight_data/score_w.dat",fc2_w);
+
 	//====== load conv1_w =====
-  for(i = 0; i < 20; i= i + 1)begin
-      sram_weight_0.load_w(i,conv1_w[i]);
-  end
+	for(i = 0; i < 20; i= i + 1)begin
+		sram_weight_0.load_w(i,conv1_w[i]);
+	end
 
-  //====== load conv1_b =====
-  sram_weight_0.load_w(20,conv1_b[0]);
+	//====== load conv1_b =====
+	sram_weight_0.load_w(20,conv1_b[0]);
 
-  //====== load conv2_w =====
-  for(i = 21; i < 1021; i= i + 1)begin
-      sram_weight_0.load_w(i,conv2_w[i-21]);
-  end
+	//====== load conv2_w =====
+	for(i = 21; i < 1021; i= i + 1)begin
+		sram_weight_0.load_w(i,conv2_w[i-21]);
+	end
 
-  //====== load conv2_b =====
-  for(i = 1021; i < 1023; i = i + 1) begin
-      sram_weight_0.load_w(i,conv2_b[i-1021]);
-  end
+	//====== load conv2_b =====
+	for(i = 1021; i < 1023; i = i + 1) begin
+		sram_weight_0.load_w(i,conv2_b[i-1021]);
+	end
 
-  #(`cycle_period);
-  for(pat_no=`PAT_START_NO;pat_no<=`PAT_END_NO;pat_no=pat_no+1) begin
-  	
-  end
+	#(`cycle_period);
+	for(pat_no=`PAT_START_NO;pat_no<=`PAT_END_NO;pat_no=pat_no+1) begin
+		bmp2sram(pat_no); //load mnist (.bmp) into SRAM
+		$write("|\n");
+        $write("The input pattern is No.%d:\n",pat_no);
+        $write("|\n");
+        display_sram;
+
+        conv_start = 1'b0;
+       	
+       	//Do CONV1 and POOL1 and write result to SRAM B
+		@(negedge clk);
+        srstn = 1'b0;
+        conv_start = 1'b1;
+        @(negedge clk);
+        conv_start = 1'b0;
+
+	end
 end
+
+task bmp2sram(
+input [31:0] pat_no
+);
+
+    reg [17*8-1:0] bmp_filename;
+    integer this_i, this_j,i,j;
+    integer index_a,index_b,index_c;
+    integer index_d,index_e,index_f;
+    integer index_g,index_h,index_i;
+    integer file_in;
+    reg [7:0] char_in;
+    reg [31:0] tmp;
+    begin
+        bmp_filename = "bmp/test_0001.bmp";
+        bmp_filename[8*8-1:7*8] = (pat_no/1000)+48;
+        bmp_filename[7*8-1:6*8] = (pat_no%1000)/100+48;
+        bmp_filename[6*8-1:5*8] = (pat_no%100)/10+48;
+        bmp_filename[5*8-1:4*8] = pat_no%10+48;
+        $display("filename : %s\n", bmp_filename);
+        file_in = $fopen(bmp_filename,"rb");
+
+        for(this_i=0;this_i<1078;this_i=this_i+1)
+           char_in = $fgetc(file_in);
+
+        for(this_i=27;this_i>=0;this_i=this_i-1) begin
+            for(this_j=0;this_j<28;this_j=this_j+1) begin //four-byte alignment
+               char_in = $fgetc(file_in);
+               if(char_in <= 127)  mem[this_i*32 + this_j] = char_in;
+               else mem[this_i*32 + this_j] = 127;
+            end
+        end
+
+        $fclose(file_in);
+        index_a = 0;
+        index_b = 0;
+        index_c = 0;
+        index_d = 0;
+        index_e = 0;
+        index_f = 0;
+        index_g = 0;
+        index_h = 0;
+        index_i = 0;
+
+        for(i = 0; i < 28; i = i + 2) begin
+            for(j = 0; j < 28; j = j + 2) begin
+                case (i % 6)
+                    0 : begin
+                        case (j % 6)
+                            0 : begin
+                                tmp[31:24] = mem[i*32+j];
+                                tmp[23:16] = mem[i*32+j+1];
+                                tmp[15:8] = mem[(i+1)*32+j];
+                                tmp[7:0] = mem[(i+1)*32+j+1];
+                                sram_128x32b_a0.char2sram(index_a,tmp);
+                                index_a = index_a + 1;
+                            end
+                            2 : begin
+                                tmp[31:24] = mem[i*32+j];
+                                tmp[23:16] = mem[i*32+j+1];
+                                tmp[15:8] = mem[(i+1)*32+j];
+                                tmp[7:0] = mem[(i+1)*32+j+1];
+                                sram_128x32b_a1.char2sram(index_b,tmp);
+                                index_b = index_b + 1;
+                            end
+                            4 : begin
+                                tmp[31:24] = mem[i*32+j];
+                                tmp[23:16] = mem[i*32+j+1];
+                                tmp[15:8] = mem[(i+1)*32+j];
+                                tmp[7:0] = mem[(i+1)*32+j+1];
+                                sram_128x32b_a2.char2sram(index_c,tmp);
+                                index_c = index_c + 1;
+                            end 
+                            default: tmp = 0;
+                        endcase
+                    end
+
+                    2 : begin
+                        case (j % 6)
+                            0 : begin
+                                tmp[31:24] = mem[i*32+j];
+                                tmp[23:16] = mem[i*32+j+1];
+                                tmp[15:8] = mem[(i+1)*32+j];
+                                tmp[7:0] = mem[(i+1)*32+j+1];
+                                sram_128x32b_a3.char2sram(index_d,tmp);
+                                index_d = index_d + 1;              
+                            end
+                            2 : begin
+                                tmp[31:24] = mem[i*32+j];
+                                tmp[23:16] = mem[i*32+j+1];
+                                tmp[15:8] = mem[(i+1)*32+j];
+                                tmp[7:0] = mem[(i+1)*32+j+1];
+                                sram_128x32b_a4.char2sram(index_e,tmp);
+                                index_e = index_e + 1;
+                            end
+                            4 : begin
+                                tmp[31:24] = mem[i*32+j];
+                                tmp[23:16] = mem[i*32+j+1];
+                                tmp[15:8] = mem[(i+1)*32+j];
+                                tmp[7:0] = mem[(i+1)*32+j+1];
+                                sram_128x32b_a5.char2sram(index_f,tmp);
+                                index_f = index_f + 1;
+                            end 
+                            default: tmp = 0;
+                        endcase
+                    end
+
+                    4 : begin
+                        case (j % 6)
+                            0 : begin
+                                tmp[31:24] = mem[i*32+j];
+                                tmp[23:16] = mem[i*32+j+1];
+                                tmp[15:8] = mem[(i+1)*32+j];
+                                tmp[7:0] = mem[(i+1)*32+j+1];
+                                sram_128x32b_a6.char2sram(index_g,tmp);
+                                index_g = index_g + 1;
+                            end
+                            2 : begin
+                                tmp[31:24] = mem[i*32+j];
+                                tmp[23:16] = mem[i*32+j+1];
+                                tmp[15:8] = mem[(i+1)*32+j];
+                                tmp[7:0] = mem[(i+1)*32+j+1];
+                                sram_128x32b_a7.char2sram(index_h,tmp);
+                                index_h = index_h + 1;
+                            end
+                            4 : begin
+                                tmp[31:24] = mem[i*32+j];
+                                tmp[23:16] = mem[i*32+j+1];
+                                tmp[15:8] = mem[(i+1)*32+j];
+                                tmp[7:0] = mem[(i+1)*32+j+1];
+                                sram_128x32b_a8.char2sram(index_i,tmp);
+                                index_i = index_i + 1;
+                            end 
+                            default: tmp = 0;
+                        endcase
+                    end 
+                    default:  tmp = 0;
+                endcase
+            end
+        end
+    end
+endtask
+
+//display the mnist image in 28x28 SRAM
+task display_sram;
+integer this_i, this_j;
+    begin
+        for(this_i=0;this_i<28;this_i=this_i+1) begin
+            for(this_j=0;this_j<28;this_j=this_j+1) begin
+               $write("%d",mem[this_i*32+this_j]);
+            end
+            $write("\n");
+        end
+    end
+endtask
