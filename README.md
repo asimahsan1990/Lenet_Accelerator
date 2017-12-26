@@ -6,7 +6,7 @@
 #### SIM
 > 1. testtop.v
 > 2. testconv.v
-![alt text](https://i.imgur.com/3SxPaYy.png)
+![alt text](https://i.imgur.com/bRPcg3C.png)
 > 3. testfc.v
 #### HDL
 ###### CONV_HDL
