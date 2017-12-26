@@ -5,7 +5,7 @@
 
 `define cycle_period 10
 
-module test_conv;
+module test_fc;
 
 localparam SRAM_DATA_WIDTH = 32;
 localparam WEIGHT_NUM = 25, WEIGHT_WIDTH = 4;

@@ -177,7 +177,7 @@ conv_top (
 );
 
 /*============================*/
-/*		 sram connection 	  */
+/*		 		sram connection 	  */
 /*============================*/
 //weight_sram connection
 sram_20000x100b sram_weight_0(
@@ -502,7 +502,7 @@ sram_128x32b sram_128x32b_d4(
 
 //dump wave file
 initial begin
-  $fsdbDumpfile("conv_testbench.fsdb");        // "gray.fsdb" can be replaced into any name you want
+  $fsdbDumpfile("conv_test.fsdb");  	       // "gray.fsdb" can be replaced into any name you want
   $fsdbDumpvars("+mda");              		   // but make sure in .fsdb format
 end
 
@@ -514,4 +514,57 @@ initial begin
     while(1) begin
       #(`cycle_period/2) clk = ~clk; 
     end
+end
+
+/*==============================*/
+/*		main Simulation block 	  */
+/*==============================*/
+integer pat_no, pat_length, hw_length, cycle_cnt;
+
+integer col_cnt;
+reg [7:0] weight_cnt,weight_cnt_2,weight_cnt_3;
+integer i,j;
+reg [99:0] conv1_w[0:19];
+reg [99:0] conv1_b[0:1];  //second row not use
+reg [99:0] conv2_w[0:1000];
+reg [99:0] conv2_b[0:1];
+reg [4*800-1:0] fc1_w[0:500-1];
+reg [4*500-1:0] fc2_w[0:10-1];
+
+reg [7:0] golden_ans [0:9999];
+reg [31:0] conv1_golden_sram[0:720-1];
+reg [31:0] pool2_golden_sram[0:200-1];
+
+reg [7:0] pool2_1d [0:800-1];
+
+initial begin
+	$readmemb("weight_data/conv1_w.dat",conv1_w);
+  $readmemb("weight_data/conv1_b.dat",conv1_b);
+  $readmemb("weight_data/conv2_w.dat",conv2_w);
+  $readmemb("weight_data/conv2_b.dat",conv2_b);
+  $readmemb("weight_data/fc1_w.dat",fc1_w);
+  $readmemb("weight_data/score_w.dat",fc2_w);
+	
+	//====== load conv1_w =====
+  for(i = 0; i < 20; i= i + 1)begin
+      sram_weight_0.load_w(i,conv1_w[i]);
+  end
+
+  //====== load conv1_b =====
+  sram_weight_0.load_w(20,conv1_b[0]);
+
+  //====== load conv2_w =====
+  for(i = 21; i < 1021; i= i + 1)begin
+      sram_weight_0.load_w(i,conv2_w[i-21]);
+  end
+
+  //====== load conv2_b =====
+  for(i = 1021; i < 1023; i = i + 1) begin
+      sram_weight_0.load_w(i,conv2_b[i-1021]);
+  end
+
+  #(`cycle_period);
+  for(pat_no=`PAT_START_NO;pat_no<=`PAT_END_NO;pat_no=pat_no+1) begin
+  	
+  end
 end
