@@ -22,9 +22,8 @@ wire conv_done;	 // conv_finish for testing if conv2(remember to set mem_sel)
 
 
 wire [WEIGHT_NUM*WEIGHT_WIDTH-1:0] sram_rdata_weight;
-wire [16:0] conv1_sram_raddr_weight;       //read address to weight SRAM
-wire [9:0] conv2_sram_raddr_weight;        //read address to weight SRAM
-reg [16:0] sram_raddr_weight;              //read address to weight SRAM
+wire [16:0] conv_sram_raddr_weight;       //read address to weight SRAM
+reg [16:0] sram_raddr_weight;             //read address to weight SRAM
 
 wire sram_write_enable_a0;
 wire sram_write_enable_a1;
@@ -138,7 +137,7 @@ conv_top (
 .sram_raddr_a6(sram_raddr_a6),
 .sram_raddr_a7(sram_raddr_a7),
 .sram_raddr_a8(sram_raddr_a8),
-.sram_raddr_weight(conv1_sram_raddr_weight),
+.sram_raddr_weight(conv_sram_raddr_weight),
 
 .sram_write_enable_b0(sram_write_enable_b0),
 .sram_write_enable_b1(sram_write_enable_b1),
@@ -523,7 +522,7 @@ end
 /*================================*/
 /*		main Simulation block 	  */
 /*================================*/
-integer pat_no, pat_length, hw_length, cycle_cnt;
+integer pat_no, pat_length, hw_length, cycle_cnt_conv1, cycle_cnt_conv2, cycle_cnt_total;
 
 integer col_cnt;
 reg [7:0] weight_cnt,weight_cnt_2,weight_cnt_3;
@@ -539,6 +538,7 @@ reg [7:0] golden_ans [0:9999];
 reg [31:0] conv1_golden_sram[0:720-1];
 reg [31:0] pool2_golden_sram[0:200-1];
 
+reg [7:0] pool1_1d [0:800-1];
 reg [7:0] pool2_1d [0:800-1];
 
 initial begin
@@ -548,6 +548,10 @@ initial begin
 	$readmemb("weight_data/conv2_b.dat",conv2_b);
 	$readmemb("weight_data/fc1_w.dat",fc1_w);
 	$readmemb("weight_data/score_w.dat",fc2_w);
+
+	$readmemh("golden/golden_ans.dat",golden_ans);
+	$readmemh("golden/conv1_golden.dat",conv1_golden_sram);
+	$readmemb("golden/conv2_golden.dat",pool2_golden_sram);
 
 	//====== load conv1_w =====
 	for(i = 0; i < 20; i= i + 1)begin
@@ -568,23 +572,118 @@ initial begin
 	end
 
 	#(`cycle_period);
-	for(pat_no=`PAT_START_NO;pat_no<=`PAT_END_NO;pat_no=pat_no+1) begin
-		bmp2sram(pat_no); //load mnist (.bmp) into SRAM
-		$write("|\n");
-        $write("The input pattern is No.%d:\n",pat_no);
-        $write("|\n");
-        display_sram;
+	
+	cycle_cnt_total = 0;
+	cycle_cnt_conv1 = 0;
+	cycle_cnt_conv2 = 0;
+	bmp2sram(0); //load mnist (.bmp) into SRAM
+	$write("|\n");
+    $write("The input pattern is No.%d:\n",pat_no);
+    $write("|\n");
+    display_sram;
 
-        conv_start = 1'b0;
-       	
-       	//Do CONV1 and POOL1 and write result to SRAM B
-		@(negedge clk);
-        srstn = 1'b0;
-        conv_start = 1'b1;
+    conv_start = 1'b0;
+   	
+   	//Do CONV1 and POOL1 and write result to SRAM B
+	@(negedge clk);
+    srstn = 1'b0;
+    @(negedge clk);
+    srstn = 1'b1;
+    conv_start = 1'b1;
+    @(negedge clk);
+    conv_start = 1'b0;
+    sram_raddr_weight = conv_sram_raddr_weight;
+
+    while(~conv1_done)begin    //when break from this while, it means sram a0 can be tested
         @(negedge clk);
-        conv_start = 1'b0;
+        cycle_cnt_conv1 = cycle_cnt_conv1 + 1;
+        sram_raddr_weight = conv_sram_raddr_weight;
+    end
 
-	end
+    for(i = 0; i < 80; i = i+1) begin
+    	pool1_1d[i*4] = sram_128x32b_b0.mem[i][31:24];
+        pool1_1d[i*4 + 1] = sram_128x32b_b0.mem[i][23:16];
+        pool1_1d[i*4 + 2] = sram_128x32b_b0.mem[i][15:8];  
+        pool1_1d[i*4 + 3] = sram_128x32b_b0.mem[i][7:0]; 
+    end
+    for(i = 0; i < 80; i = i+1)begin
+    	pool1_1d[80 + i*4] = sram_128x32b_b1.mem[i][31:24];
+        pool1_1d[80 + i*4 + 1] = sram_128x32b_b1.mem[i][23:16];
+        pool1_1d[80 + i*4 + 2] = sram_128x32b_b1.mem[i][15:8];  
+        pool1_1d[80 + i*4 + 3] = sram_128x32b_b1.mem[i][7:0]; 
+    end
+    for(i = 0; i < 80; i = i+1)begin
+    	pool1_1d[160 + i*4] = sram_128x32b_b2.mem[i][31:24];
+        pool1_1d[160 + i*4 + 1] = sram_128x32b_b2.mem[i][23:16];
+        pool1_1d[160 + i*4 + 2] = sram_128x32b_b2.mem[i][15:8];  
+        pool1_1d[160 + i*4 + 3] = sram_128x32b_b2.mem[i][7:0]; 
+    end
+    for(i = 0; i < 80; i = i+1)begin
+    	pool1_1d[240 + i*4] = sram_128x32b_b3.mem[i][31:24];
+        pool1_1d[240 + i*4 + 1] = sram_128x32b_b3.mem[i][23:16];
+        pool1_1d[240 + i*4 + 2] = sram_128x32b_b3.mem[i][15:8];  
+        pool1_1d[240 + i*4 + 3] = sram_128x32b_b3.mem[i][7:0]; 
+    end
+    for(i = 0; i < 80; i = i+1)begin
+    	pool1_1d[320 + i*4] = sram_128x32b_b4.mem[i][31:24];
+        pool1_1d[320 + i*4 + 1] = sram_128x32b_b4.mem[i][23:16];
+        pool1_1d[320 + i*4 + 2] = sram_128x32b_b4.mem[i][15:8];  
+        pool1_1d[320 + i*4 + 3] = sram_128x32b_b4.mem[i][7:0]; 
+    end
+    for(i = 0; i < 80; i = i+1)begin
+    	pool1_1d[400 + i*4] = sram_128x32b_b5.mem[i][31:24];
+        pool1_1d[400 + i*4 + 1] = sram_128x32b_b5.mem[i][23:16];
+        pool1_1d[400 + i*4 + 2] = sram_128x32b_b5.mem[i][15:8];  
+        pool1_1d[400 + i*4 + 3] = sram_128x32b_b5.mem[i][7:0]; 
+    end
+    for(i = 0; i < 80; i = i+1)begin
+    	pool1_1d[480 + i*4] = sram_128x32b_b6.mem[i][31:24];
+        pool1_1d[480 + i*4 + 1] = sram_128x32b_b6.mem[i][23:16];
+        pool1_1d[480 + i*4 + 2] = sram_128x32b_b6.mem[i][15:8];  
+        pool1_1d[480 + i*4 + 3] = sram_128x32b_b6.mem[i][7:0]; 
+    end
+    for(i = 0; i < 80; i = i+1)begin
+    	pool1_1d[560 + i*4] = sram_128x32b_b7.mem[i][31:24];
+        pool1_1d[560 + i*4 + 1] = sram_128x32b_b7.mem[i][23:16];
+        pool1_1d[560 + i*4 + 2] = sram_128x32b_b7.mem[i][15:8];  
+        pool1_1d[560 + i*4 + 3] = sram_128x32b_b7.mem[i][7:0]; 
+    end
+    for(i = 0; i < 80; i = i+1)begin
+    	pool1_1d[640 + i*4] = sram_128x32b_b8.mem[i][31:24];
+        pool1_1d[640 + i*4 + 1] = sram_128x32b_b8.mem[i][23:16];
+        pool1_1d[640 + i*4 + 2] = sram_128x32b_b8.mem[i][15:8];  
+        pool1_1d[640 + i*4 + 3] = sram_128x32b_b8.mem[i][7:0]; 
+    end
+    //show the conv1_ouptut 9 feature map(4*20) to check the answer
+    for(i = 0; i < 9; i = i +1)begin
+    	$write("------POOL1's output feature map from SRAM %d------\n",i[7:0]);
+    	for(j = 0; j < 80; j = j +1)begin
+    		$write("%d ",$signed(pool1_1d[i * 80 + j]));
+    		if((j+1) % 4 == 0) $write("\n");
+    	end
+    end
+    // test CONV1 answer!!!
+    for(i = 0; i < 720; i = i + 1)begin
+    	if(pool1_1d[i] == conv1_golden_sram[i])
+    		$write("sram a[%d] address: %d PASS!!\n", i/80,i%9);
+    	else begin
+    		$write("You have wrong answer in the sram a[%d] address !!!\n\n", i/80);
+    		$write("Your answer at  a[%d] is \n%d %d %d %d  \n" ,i/80 \
+    														    ,$signed(pool1_1d[i][31:24])\
+    															,$signed(pool1_1d[i][23:16])\
+    															,$signed(pool1_1d[i][15:8])\
+    															,$signed(pool1_1d[i][7:0]));
+    		$write("But the golden answer is  \n%d %d %d %d \n" ,$signed(conv1_golden_sram[i][31:24])\
+    														    ,$signed(conv1_golden_sram[i][23:16])\
+    														    ,$signed(conv1_golden_sram[i][15:8])\
+    														    ,$signed(conv1_golden_sram[i][7:0]));
+            $finish;
+    	end
+    end
+    $write("|\n");
+    $display("Congratulations! YOU PASS CONV1!!!!!");
+    $display("Start Testing CONV2");
+    $write("\n");
 end
 
 task bmp2sram(
