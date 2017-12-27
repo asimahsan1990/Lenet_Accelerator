@@ -67,8 +67,25 @@ output [WEIGHT_ADDR_WIDTH-1:0] sram_raddr_weight,       //read address from SRAM
 
 //FC done signal
 output fc_done
-
 );
 
+//Wire announcement
+
+wire [20*8-1:0] src_window,
+wire [20*4-1:0] sram_rdata_weight,
+wire accumulate_reset,
+wire signed [31:0] data_out		//bit number > 8+4+10=22 is enough
+
+
+
+
+multiplier_accumulator multiplier_accumulator(
+.clk(clk),
+.srstn(srstn),
+.src_window(src_window),
+.sram_rdata_weight(sram_rdata_weight),
+.accumulate_reset(accumulate_reset),
+.data_out(data_out)		//bit number > 8+4+10=22 is enough
+);
 
 endmodule
