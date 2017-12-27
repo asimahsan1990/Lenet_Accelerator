@@ -549,6 +549,7 @@ initial begin
 	$readmemb("weight_data/fc1_w.dat",fc1_w);
 	$readmemb("weight_data/score_w.dat",fc2_w);
 
+    // can specify which file ot use
 	$readmemh("golden/golden_ans.dat",golden_ans);
 	$readmemh("golden/conv1_golden.dat",conv1_golden_sram);
 	$readmemb("golden/conv2_golden.dat",pool2_golden_sram);
@@ -659,7 +660,7 @@ initial begin
         $write("------POOL1's output feature map from SRAM %d------\n",i[7:0]);
         for(j = 0; j < 80; j = j +1)begin
             $write("[%g]: ",i * 80 + j);
-            $write("%2d %2d %2d %2d\n",$signed(pool1_1d[i * 80 + j][31:24]),$signed(pool1_1d[i*80+j][23:16]),$signed(pool1_1d[i*80+j][15:8]),$signed(pool1_1d[i*80+j][7:0]));
+            $write("%2d %2d %2d %2d\n",$signed(pool1_1d[i * 80 + j][31:24]), $signed(pool1_1d[i*80+j][23:16]),$signed(pool1_1d[i*80+j][15:8]),$signed(pool1_1d[i*80+j][7:0]));
         end
     end
     // test CONV1 answer!!!
@@ -668,8 +669,14 @@ initial begin
             $write("sram a[%01d] address: %d PASS!!\n", i/80, i%9);
         else begin
             $write("You have wrong answer in the sram a[%01d] address !!!\n\n", i/80);
-            $write("Your answer at  a[%01d] i:%d is \n%d %d %d %d  \n" ,i/80, i, $signed(pool1_1d[i][31:24]) ,$signed(pool1_1d[i][23:16]) ,$signed(pool1_1d[i][15:8]) ,$signed(pool1_1d[i][7:0]));
-            $write("But the golden answer is  \n%d %d %d %d \n" ,$signed(conv1_golden_sram[i][31:24]) ,$signed(conv1_golden_sram[i][23:16]) ,$signed(conv1_golden_sram[i][15:8]) ,$signed(conv1_golden_sram[i][7:0]));
+            $write("Your answer at  a[%01d] i:%d is \n%d %d %d %d  \n" ,i/80, i, $signed(pool1_1d[i][31:24])
+                                                                       ,$signed(pool1_1d[i][23:16])
+                                                                       ,$signed(pool1_1d[i][15:8]) 
+                                                                       ,$signed(pool1_1d[i][7:0]));
+            $write("But the golden answer is  \n%d %d %d %d \n" ,$signed(conv1_golden_sram[i][31:24]) 
+                                                                ,$signed(conv1_golden_sram[i][23:16]) 
+                                                                ,$signed(conv1_golden_sram[i][15:8]) 
+                                                                ,$signed(conv1_golden_sram[i][7:0]));
             $finish;
         end
     end
@@ -685,6 +692,7 @@ initial begin
 	    end
 	end
 	if(mem_sel == 1) begin
+        $display("Test sram c0~c4\n");
 		for(i = 0; i < 40;i = i + 1) begin
             pool2_1d[i*20] = sram_128x32b_c0.mem[i][31:24];
             pool2_1d[i*20 + 1] = sram_128x32b_c0.mem[i][23:16];
@@ -713,6 +721,7 @@ initial begin
         end
 	end
 	else begin
+        $display("Test sram d0~d4\n");
 		for(i = 0; i < 40;i = i + 1) begin
             pool2_1d[i*20] = sram_128x32b_d0.mem[i][31:24];
             pool2_1d[i*20 + 1] = sram_128x32b_d0.mem[i][23:16];
