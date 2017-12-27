@@ -12,7 +12,7 @@ module fc_top#(
 (
 input clk,
 input srstn,
-input fc_start,		//connect conv_done wire from CONV module
+input conv_done,		//connect conv_done wire from CONV module
 
 input mem_sel,		//CONV selects SRAM c or SRAM d as the output SRAM
 					//mem_sel = 1: c, mem_sel = 0: d
@@ -75,19 +75,75 @@ input [WEIGHT_NUM*WEIGHT_WIDTH-1:0] sram_rdata_weight,		//load fc weight
 output [WEIGHT_ADDR_WIDTH-1:0] sram_raddr_weight,       //read address from SRAM weight
 
 //FC done signal
-output fc_done
+output fc1_done,
+output fc2_done
 );
 
 //wire announcement
 wire [20*8-1:0] src_window;
 wire [20*4-1:0] sram_rdata_weight;
 wire accumulate_reset;
-wire signed [31:0] data_out;		//bit number > 8+4+10=22 is enough
-wire signed [7:0] quantized_data
+wire fc_state;
 wire [1:0] sram_sel;
 
+wire signed [31:0] data_out;		//bit number > 8+4+10=22 is enough
+wire signed [7:0] quantized_data
+
+wire [3:0] sram_bytemask;
+wire [9:0] sram_waddr;
+
+
+//the sram_wdata of sram e and sram f are quantized data
+//control writing behavior by enable line
+assign sram_wdata_e = quantized_data;
+assign sram_wdata_f = quantized_data;
+
+//sram_bytemask 
+assign sram_bytemask_e = sram_bytemask;
+assign sram_bytemask_f = sram_bytemask;
+
+//sram_waddr
+assign sram_waddr_e = sram_waddr;
+assign sram_waddr_f = sram_waddr;
 
 //module
+fc_controller fc_controller(
+.clk(clk),
+.srstn(srstn),
+.conv_done(conv_done),					//connect to conv_done
+.accumulate_reset(accumulate_reset),	//connect to multiplier_accumulator
+.fc_state(fc_state),
+.sram_sel(sram_sel),			//select to read sram c, sram d or sram e
+//Read c/d sram addr
+.sram_raddr_c0(sram_raddr_c0),
+.sram_raddr_c1(sram_raddr_c1),
+.sram_raddr_c2(sram_raddr_c2),
+.sram_raddr_c3(sram_raddr_c3),
+.sram_raddr_c4(sram_raddr_c4),
+.sram_raddr_d0(sram_raddr_d0),
+.sram_raddr_d0(sram_raddr_d1),
+.sram_raddr_d0(sram_raddr_d2),
+.sram_raddr_d0(sram_raddr_d3),
+.sram_raddr_d0(sram_raddr_d4),
+//write_enable of sram e series 
+.sram_write_enable_e0(sram_write_enable_e0),
+.sram_write_enable_e1(sram_write_enable_e1),
+.sram_write_enable_e2(sram_write_enable_e2),
+.sram_write_enable_e3(sram_write_enable_e3),
+.sram_write_enable_e4(sram_write_enable_e4),
+//write_enable of sram f 
+.sram_write_enable_f(sram_write_enable_f),
+//write addr and mask
+.sram_waddr(sram_waddr),		//addr for writing to sram e and f
+.sram_bytemask(sram_bytemask),		//mask for writing to sram e and f
+//sram weight addr
+.sram_raddr_weight(sram_raddr_weight),
+//fc_done signal
+.fc1_done(fc1_done),
+.fc2_done(fc2_done)
+);
+
+
 data_reg data_reg(
 .clk(clk),
 .srstn(srstn),
