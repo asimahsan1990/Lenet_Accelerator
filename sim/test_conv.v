@@ -538,7 +538,7 @@ reg [7:0] golden_ans [0:9999];
 reg [31:0] conv1_golden_sram[0:720-1];
 reg [31:0] pool2_golden_sram[0:200-1];
 
-reg [7:0] pool1_1d [0:800-1];
+reg [31:0] pool1_1d [0:720-1];
 reg [7:0] pool2_1d [0:800-1];
 
 initial begin
@@ -601,84 +601,77 @@ initial begin
     end
 
     for(i = 0; i < 80; i = i+1) begin
-    	pool1_1d[i*4] = sram_128x32b_b0.mem[i][31:24];
-        pool1_1d[i*4 + 1] = sram_128x32b_b0.mem[i][23:16];
-        pool1_1d[i*4 + 2] = sram_128x32b_b0.mem[i][15:8];  
-        pool1_1d[i*4 + 3] = sram_128x32b_b0.mem[i][7:0]; 
+        pool1_1d[i][31:24] = sram_128x32b_b0.mem[i][31:24];
+        pool1_1d[i][23:16] = sram_128x32b_b0.mem[i][23:16];
+        pool1_1d[i][15:8] = sram_128x32b_b0.mem[i][15:8];  
+        pool1_1d[i][7:0] = sram_128x32b_b0.mem[i][7:0]; 
     end
     for(i = 0; i < 80; i = i+1)begin
-    	pool1_1d[80 + i*4] = sram_128x32b_b1.mem[i][31:24];
-        pool1_1d[80 + i*4 + 1] = sram_128x32b_b1.mem[i][23:16];
-        pool1_1d[80 + i*4 + 2] = sram_128x32b_b1.mem[i][15:8];  
-        pool1_1d[80 + i*4 + 3] = sram_128x32b_b1.mem[i][7:0]; 
+        pool1_1d[80 + i][31:24] = sram_128x32b_b1.mem[i][31:24];
+        pool1_1d[80 + i][23:16] = sram_128x32b_b1.mem[i][23:16];
+        pool1_1d[80 + i][15:8] = sram_128x32b_b1.mem[i][15:8];  
+        pool1_1d[80 + i][7:0] = sram_128x32b_b1.mem[i][7:0]; 
     end
     for(i = 0; i < 80; i = i+1)begin
-    	pool1_1d[160 + i*4] = sram_128x32b_b2.mem[i][31:24];
-        pool1_1d[160 + i*4 + 1] = sram_128x32b_b2.mem[i][23:16];
-        pool1_1d[160 + i*4 + 2] = sram_128x32b_b2.mem[i][15:8];  
-        pool1_1d[160 + i*4 + 3] = sram_128x32b_b2.mem[i][7:0]; 
+        pool1_1d[160 + i][31:24] = sram_128x32b_b2.mem[i][31:24];
+        pool1_1d[160 + i][23:16] = sram_128x32b_b2.mem[i][23:16];
+        pool1_1d[160 + i][15:8] = sram_128x32b_b2.mem[i][15:8];  
+        pool1_1d[160 + i][7:0] = sram_128x32b_b2.mem[i][7:0]; 
     end
     for(i = 0; i < 80; i = i+1)begin
-    	pool1_1d[240 + i*4] = sram_128x32b_b3.mem[i][31:24];
-        pool1_1d[240 + i*4 + 1] = sram_128x32b_b3.mem[i][23:16];
-        pool1_1d[240 + i*4 + 2] = sram_128x32b_b3.mem[i][15:8];  
-        pool1_1d[240 + i*4 + 3] = sram_128x32b_b3.mem[i][7:0]; 
+        pool1_1d[240 + i][31:24] = sram_128x32b_b3.mem[i][31:24];
+        pool1_1d[240 + i][23:16] = sram_128x32b_b3.mem[i][23:16];
+        pool1_1d[240 + i][15:8] = sram_128x32b_b3.mem[i][15:8];  
+        pool1_1d[240 + i][7:0] = sram_128x32b_b3.mem[i][7:0]; 
     end
     for(i = 0; i < 80; i = i+1)begin
-    	pool1_1d[320 + i*4] = sram_128x32b_b4.mem[i][31:24];
-        pool1_1d[320 + i*4 + 1] = sram_128x32b_b4.mem[i][23:16];
-        pool1_1d[320 + i*4 + 2] = sram_128x32b_b4.mem[i][15:8];  
-        pool1_1d[320 + i*4 + 3] = sram_128x32b_b4.mem[i][7:0]; 
+        pool1_1d[320 + i][31:24] = sram_128x32b_b4.mem[i][31:24];
+        pool1_1d[320 + i][23:16] = sram_128x32b_b4.mem[i][23:16];
+        pool1_1d[320 + i][15:8] = sram_128x32b_b4.mem[i][15:8];  
+        pool1_1d[320 + i][7:0] = sram_128x32b_b4.mem[i][7:0]; 
     end
     for(i = 0; i < 80; i = i+1)begin
-    	pool1_1d[400 + i*4] = sram_128x32b_b5.mem[i][31:24];
-        pool1_1d[400 + i*4 + 1] = sram_128x32b_b5.mem[i][23:16];
-        pool1_1d[400 + i*4 + 2] = sram_128x32b_b5.mem[i][15:8];  
-        pool1_1d[400 + i*4 + 3] = sram_128x32b_b5.mem[i][7:0]; 
+        pool1_1d[400 + i][31:24] = sram_128x32b_b5.mem[i][31:24];
+        pool1_1d[400 + i][23:16] = sram_128x32b_b5.mem[i][23:16];
+        pool1_1d[400 + i][15:8] = sram_128x32b_b5.mem[i][15:8];  
+        pool1_1d[400 + i][7:0] = sram_128x32b_b5.mem[i][7:0]; 
     end
     for(i = 0; i < 80; i = i+1)begin
-    	pool1_1d[480 + i*4] = sram_128x32b_b6.mem[i][31:24];
-        pool1_1d[480 + i*4 + 1] = sram_128x32b_b6.mem[i][23:16];
-        pool1_1d[480 + i*4 + 2] = sram_128x32b_b6.mem[i][15:8];  
-        pool1_1d[480 + i*4 + 3] = sram_128x32b_b6.mem[i][7:0]; 
+        pool1_1d[480 + i][31:24] = sram_128x32b_b6.mem[i][31:24];
+        pool1_1d[480 + i][23:16] = sram_128x32b_b6.mem[i][23:16];
+        pool1_1d[480 + i][15:8] = sram_128x32b_b6.mem[i][15:8];  
+        pool1_1d[480 + i][7:0] = sram_128x32b_b6.mem[i][7:0]; 
     end
     for(i = 0; i < 80; i = i+1)begin
-    	pool1_1d[560 + i*4] = sram_128x32b_b7.mem[i][31:24];
-        pool1_1d[560 + i*4 + 1] = sram_128x32b_b7.mem[i][23:16];
-        pool1_1d[560 + i*4 + 2] = sram_128x32b_b7.mem[i][15:8];  
-        pool1_1d[560 + i*4 + 3] = sram_128x32b_b7.mem[i][7:0]; 
+        pool1_1d[560 + i][31:24] = sram_128x32b_b7.mem[i][31:24];
+        pool1_1d[560 + i][23:16] = sram_128x32b_b7.mem[i][23:16];
+        pool1_1d[560 + i][15:8] = sram_128x32b_b7.mem[i][15:8];  
+        pool1_1d[560 + i][7:0] = sram_128x32b_b7.mem[i][7:0]; 
     end
     for(i = 0; i < 80; i = i+1)begin
-    	pool1_1d[640 + i*4] = sram_128x32b_b8.mem[i][31:24];
-        pool1_1d[640 + i*4 + 1] = sram_128x32b_b8.mem[i][23:16];
-        pool1_1d[640 + i*4 + 2] = sram_128x32b_b8.mem[i][15:8];  
-        pool1_1d[640 + i*4 + 3] = sram_128x32b_b8.mem[i][7:0]; 
+        pool1_1d[640 + i][31:24] = sram_128x32b_b8.mem[i][31:24];
+        pool1_1d[640 + i][23:16] = sram_128x32b_b8.mem[i][23:16];
+        pool1_1d[640 + i][15:8] = sram_128x32b_b8.mem[i][15:8];  
+        pool1_1d[640 + i][7:0] = sram_128x32b_b8.mem[i][7:0]; 
     end
     //show the conv1_ouptut 9 feature map(4*20) to check the answer
     for(i = 0; i < 9; i = i +1)begin
-    	$write("------POOL1's output feature map from SRAM %d------\n",i[7:0]);
-    	for(j = 0; j < 80; j = j +1)begin
-    		$write("%d ",$signed(pool1_1d[i * 80 + j]));
-    		if((j+1) % 4 == 0) $write("\n");
-    	end
+        $write("------POOL1's output feature map from SRAM %d------\n",i[7:0]);
+        for(j = 0; j < 80; j = j +1)begin
+            $write("[%g]: ",i * 80 + j);
+            $write("%2d %2d %2d %2d\n",$signed(pool1_1d[i * 80 + j][31:24]),$signed(pool1_1d[i*80+j][23:16]),$signed(pool1_1d[i*80+j][15:8]),$signed(pool1_1d[i*80+j][7:0]));
+        end
     end
     // test CONV1 answer!!!
     for(i = 0; i < 720; i = i + 1)begin
-    	if(pool1_1d[i] == conv1_golden_sram[i])
-    		$write("sram a[%d] address: %d PASS!!\n", i/80,i%9);
-    	else begin
-    		$write("You have wrong answer in the sram a[%d] address !!!\n\n", i/80);
-    		$write("Your answer at  a[%d] is \n%d %d %d %d  \n" ,i/80 \
-    														    ,$signed(pool1_1d[i][31:24])\
-    															,$signed(pool1_1d[i][23:16])\
-    															,$signed(pool1_1d[i][15:8])\
-    															,$signed(pool1_1d[i][7:0]));
-    		$write("But the golden answer is  \n%d %d %d %d \n" ,$signed(conv1_golden_sram[i][31:24])\
-    														    ,$signed(conv1_golden_sram[i][23:16])\
-    														    ,$signed(conv1_golden_sram[i][15:8])\
-    														    ,$signed(conv1_golden_sram[i][7:0]));
+        if(pool1_1d[i] == conv1_golden_sram[i])
+            $write("sram a[%01d] address: %d PASS!!\n", i/80, i%9);
+        else begin
+            $write("You have wrong answer in the sram a[%01d] address !!!\n\n", i/80);
+            $write("Your answer at  a[%01d] i:%d is \n%d %d %d %d  \n" ,i/80, i, $signed(pool1_1d[i][31:24]) ,$signed(pool1_1d[i][23:16]) ,$signed(pool1_1d[i][15:8]) ,$signed(pool1_1d[i][7:0]));
+            $write("But the golden answer is  \n%d %d %d %d \n" ,$signed(conv1_golden_sram[i][31:24]) ,$signed(conv1_golden_sram[i][23:16]) ,$signed(conv1_golden_sram[i][15:8]) ,$signed(conv1_golden_sram[i][7:0]));
             $finish;
-    	end
+        end
     end
     $write("|\n");
     $display("Congratulations! YOU PASS CONV1!!!!!");
@@ -758,15 +751,8 @@ initial begin
         if(pool2_golden_sram[i] == pool2_1d[i]) $write("sram #a[%d] address: %d PASS!!\n", i%5, i/5); 
         else begin
             $write("You have wrong answer in the sram #a[%d] !!!\n\n", i%5);
-            $write("Your answer at address %d is \n%d %d %d %d  \n" ,i/5\
-                                                                    ,$signed(pool2_1d[i][31:24])\
-                                                                    ,$signed(pool2_1d[i][23:16])\
-                                                                    ,$signed(pool2_1d[i][15:8])\
-                                                                    ,$signed(pool2_1d[i][7:0]));
-            $write("But the golden answer is  \n%d %d %d %d \n" ,$signed(pool2_golden_sram[i][31:24])\
-                                                                ,$signed(pool2_golden_sram[i][23:16])\
-                                                                ,$signed(pool2_golden_sram[i][15:8])\
-                                                                ,$signed(pool2_golden_sram[i][7:0]));
+            $write("Your answer at address %d is \n%d %d %d %d  \n" ,i/5, $signed(pool2_1d[i][31:24]), $signed(pool2_1d[i][23:16]), $signed(pool2_1d[i][15:8]), $signed(pool2_1d[i][7:0]));
+            $write("But the golden answer is  \n%d %d %d %d \n" ,$signed(pool2_golden_sram[i][31:24]), $signed(pool2_golden_sram[i][23:16]), $signed(pool2_golden_sram[i][15:8]), $signed(pool2_golden_sram[i][7:0]));
             $finish;
         end
     end
