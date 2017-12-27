@@ -3,12 +3,12 @@
  * File : multiplier_accumulator.v
  */
 module multiplier_accumulator(
-	input clk,
-	input srstn,
-	input [20*8-1:0] src_window,
-	input [20*4-1:0] sram_rdata_weight,
-	input accumulate_reset,
-	output signed [31:0] data_out		//bit number > 8+4+10=22 is enough
+input clk,
+input srstn,
+input [20*8-1:0] src_window,
+input [20*4-1:0] sram_rdata_weight,
+input accumulate_reset,
+output signed [31:0] data_out		//bit number > 8+4+10=22 is enough
 );
 
 localparam WEIGHT_WIDTH = 4;
