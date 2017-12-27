@@ -6,6 +6,7 @@
 #### SIM
 > 1. testtop.v
 > 2. testconv.v
+> > Remember to set mem_sel 1 for testing c0-c4| mem_sel 0 for testing d0-d4
 ![alt text](https://i.imgur.com/I88TYeA.png)
 > 3. testfc.v
 #### HDL
