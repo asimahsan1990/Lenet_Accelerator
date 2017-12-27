@@ -1,5 +1,5 @@
 /**
- * Editor : 
+ * Editor : Steven
  * File : multiplier_accumulator.v
  */
 module multiplier_accumulator(
@@ -22,17 +22,17 @@ localparam MAC_NUM = 20;
 reg signed [16:0] accumulator;
 reg signed [WEIGHT_WIDTH+DATA_WIDTH-1:0] multiplier [0:MAC_NUM-1];
 
-reg signed [WEIGHT_WIDTH-1:0] n_fc_weight_box [0:MAC_NUM-1];
-reg signed [WEIGHT_WIDTH-1:0] fc_weight_box [0:MAC_NUM-1];
+reg signed [WEIGHT_WIDTH-1:0] n_fc_weight_box [0:DATA_NUM-1];
+reg signed [WEIGHT_WIDTH-1:0] fc_weight_box [0:DATA_NUM-1];
 
-reg signed [DATA_WIDTH-1:0] fc_input_box [0:MAC_NUM-1];
+reg signed [DATA_WIDTH-1:0] fc_input_box [0:DATA_NUM-1];
 
 reg signed [22:0] accumulator_sum, n_accumulator_sum;
 integer i;
 
 //arrange weight data w/ FF
 always@* begin
-	for(i = 0; i<MAC_NUM; i = i+1)begin
+	for(i = 0; i<WEIGHT_NUM; i = i+1)begin
 		n_fc_weight_box[i] = sram_rdata_weight[WEIGHT_WIDTH*(WEIGHT_NUM-1-i)+:WEIGHT_WIDTH];
 	end
 end
@@ -45,7 +45,7 @@ end
 
 //arrange input data w/o FF
 always@*begin
-	for(i = 0; i<MAC_NUM; i = i+1)begin
+	for(i = 0; i<DATA_NUM; i = i+1)begin
 		fc_input_box[i] = src_window[DATA_WIDTH*(DATA_NUM-1-i)+:DATA_WIDTH];
 	end
 end
