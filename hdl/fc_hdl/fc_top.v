@@ -14,9 +14,9 @@ input clk,
 input srstn,
 input conv_done,		//connect conv_done wire from CONV module
 
-input mem_sel,		//CONV selects SRAM c or SRAM d as the output SRAM
-					//mem_sel = 1: c, mem_sel = 0: d
-					//so fc_top must catch input data from the one which is not being written by CONV
+input mem_sel,			//CONV selects SRAM c or SRAM d as the output SRAM
+						//mem_sel = 1: FC reads c, mem_sel = 0: FC reads d
+						//so fc_top must catch input data from the one which is not being written by CONV
 
 //Read SRAM c0~c4
 input [DATA_NUM_PER_SRAM_ADDR*DATA_WIDTH-1:0] sram_rdata_c0,
@@ -81,13 +81,12 @@ output fc2_done
 
 //wire announcement
 wire [20*8-1:0] src_window;
-wire [20*4-1:0] sram_rdata_weight;
 wire accumulate_reset;
 wire fc_state;
 wire [1:0] sram_sel;
 
 wire signed [31:0] data_out;		//bit number > 8+4+10=22 is enough
-wire signed [7:0] quantized_data
+wire signed [7:0] quantized_data;
 
 wire [3:0] sram_bytemask;
 wire [9:0] sram_waddr;
@@ -111,20 +110,26 @@ fc_controller fc_controller(
 .clk(clk),
 .srstn(srstn),
 .conv_done(conv_done),					//connect to conv_done
+.mem_sel(mem_sel),						//from CONV
 .accumulate_reset(accumulate_reset),	//connect to multiplier_accumulator
 .fc_state(fc_state),
 .sram_sel(sram_sel),			//select to read sram c, sram d or sram e
-//Read c/d sram addr
+//Read c,d and e sram addr
 .sram_raddr_c0(sram_raddr_c0),
 .sram_raddr_c1(sram_raddr_c1),
 .sram_raddr_c2(sram_raddr_c2),
 .sram_raddr_c3(sram_raddr_c3),
 .sram_raddr_c4(sram_raddr_c4),
 .sram_raddr_d0(sram_raddr_d0),
-.sram_raddr_d0(sram_raddr_d1),
-.sram_raddr_d0(sram_raddr_d2),
-.sram_raddr_d0(sram_raddr_d3),
-.sram_raddr_d0(sram_raddr_d4),
+.sram_raddr_d1(sram_raddr_d1),
+.sram_raddr_d2(sram_raddr_d2),
+.sram_raddr_d3(sram_raddr_d3),
+.sram_raddr_d4(sram_raddr_d4),
+.sram_raddr_e0(sram_raddr_e0),
+.sram_raddr_e1(sram_raddr_e1),
+.sram_raddr_e2(sram_raddr_e2),
+.sram_raddr_e3(sram_raddr_e3),
+.sram_raddr_e4(sram_raddr_e4),
 //write_enable of sram e series 
 .sram_write_enable_e0(sram_write_enable_e0),
 .sram_write_enable_e1(sram_write_enable_e1),

@@ -37,10 +37,14 @@ always@* begin
 	end
 end
 always@(posedge clk)begin
-	if(~srstn)
-		fc_weight_box <= 0;
-	else
-		fc_weight_box <= n_fc_weight_box;
+	if(~srstn) begin
+		for(i=0; i<DATA_NUM; i=i+1)
+			fc_weight_box[i] <= 0;
+	end
+	else begin
+		for(i=0; i<DATA_NUM; i=i+1)
+			fc_weight_box[i] <= n_fc_weight_box[i];
+	end
 end
 
 //arrange input data w/o FF
@@ -52,8 +56,9 @@ end
 
 //multiply and add
 always@* begin
+	accumulator = 0;
 	for(i = 0; i<MAC_NUM; i=i+1) begin
-		multiplier[i] = src_window[(MAC_NUM-1-i)*8 +: 8]*fc_weight_box[i];
+		multiplier[i] = fc_input_box[i]*fc_weight_box[i];
 		accumulator = accumulator + {{5{multiplier[i][WEIGHT_WIDTH+DATA_WIDTH-1]}},multiplier[i]};
 	end
 end
@@ -64,7 +69,7 @@ always@*begin
 		n_accumulator_sum = accumulator;
 	end
 	else begin
-		n_accumulator_sum = accumulator_sum + accumulator;
+		n_accumulator_sum = accumulator_sum + {{6{accumulator[16]}}, accumulator};
 	end
 end
 

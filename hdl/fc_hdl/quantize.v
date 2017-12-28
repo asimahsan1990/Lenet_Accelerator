@@ -26,7 +26,7 @@ always@*begin
 			else if(unquautized_shifted_data < 0)
 				n_quantized_data = 0;
 			else
-				n_quantized_data = unquautized_round_data;
+				n_quantized_data = unquautized_round_data[7:0];
 		end
 		FC2_STATE: begin
 			unquautized_round_data = unquautized_data + 16;
@@ -34,9 +34,9 @@ always@*begin
 			if(unquautized_shifted_data > 127)
 				n_quantized_data = 127;
 			else if(unquautized_shifted_data < -128)
-				n_quantized_data = -128;
+				n_quantized_data = -8'd128;
 			else
-				n_quantized_data = unquautized_round_data;
+				n_quantized_data = unquautized_round_data[7:0];
 		end
 		default: begin	//same as FC1_STATE
 			unquautized_round_data = unquautized_data + 32;	
@@ -46,7 +46,7 @@ always@*begin
 			else if(unquautized_shifted_data < 0)
 				n_quantized_data = 0;
 			else
-				n_quantized_data = unquautized_round_data;
+				n_quantized_data = unquautized_round_data[7:0];
 		end
 	endcase
 end

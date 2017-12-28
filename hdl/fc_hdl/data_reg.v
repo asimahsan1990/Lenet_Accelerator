@@ -31,9 +31,9 @@ input [DATA_NUM_PER_SRAM_ADDR*DATA_WIDTH-1:0] sram_rdata_e2,
 input [DATA_NUM_PER_SRAM_ADDR*DATA_WIDTH-1:0] sram_rdata_e3,
 input [DATA_NUM_PER_SRAM_ADDR*DATA_WIDTH-1:0] sram_rdata_e4,
 
-input [1:0] sram_sel,			//select c, d or e SRAM
+input [1:0] sram_sel,			//select to read c, d or e SRAM
 
-output reg [DATA_NUM*DATA_WIDTH-1:0] src_window,
+output  [DATA_NUM*DATA_WIDTH-1:0] src_window
  );
 
 localparam SRAM_C = 0, SRAM_D = 1, SRAM_E = 2;
