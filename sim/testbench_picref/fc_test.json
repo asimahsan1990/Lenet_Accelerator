@@ -1,0 +1,11 @@
+{signal: [
+  {name: 'clk', wave: 'p......................'},
+  {name: 'conv_done', wave: '010.......10.......10..'},
+  {name: 'fc1_done', wave: '0...10.......10........'},
+  {name: 'fc_done', wave: '0.......10.......10....'},
+  {name: 'testbench', wave: '20..30..40...30..40....', data: ['load', 'fc1', 'fc2', 'fc1', 'fc2']},
+  {name: 'check sram', wave: '0...30..40...30..40....', data:['e', 'f', 'e', 'f']},
+  {name: 'read_sram(c or d)', wave:'04........3........4...', data:['sram_c0~c4', 'sram_d0~d4', 'sram_c0~c4']},
+  {name: 'mem_sel', wave:'1.........0........1...'}
+  ],
+  config: { hscale: 1 }}
