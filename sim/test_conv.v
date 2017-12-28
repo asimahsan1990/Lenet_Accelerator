@@ -175,8 +175,8 @@ conv_top (
 
 .mem_sel(mem_sel),
 
-.conv1_finish(conv1_finish),
-.conv_finish(conv_finish)
+.conv1_done(conv1_done),
+.conv_done(conv_done)
 );
 
 /*=====================================*/
@@ -584,7 +584,7 @@ initial begin
     display_sram;
 
     conv_start = 1'b0;
-   	
+   	srstn = 1'b1;
    	//Do CONV1 and POOL1 and write result to SRAM B
 	@(negedge clk);
     srstn = 1'b0;
@@ -681,8 +681,8 @@ initial begin
         end
     end
     $write("|\n");
-    $display("Congratulations! YOU PASS CONV1!!!!!");
-    $display("Start Testing CONV2");
+    $display("Congratulations! YOU PASS CONV1!!!!!\n");
+    $display("Start Testing CONV2\n");
     $write("\n");
     while(~conv_done)begin    //it means sram a0 can be tested
 	    @(negedge clk);     
@@ -926,3 +926,5 @@ integer this_i, this_j;
         end
     end
 endtask
+
+endmodule
