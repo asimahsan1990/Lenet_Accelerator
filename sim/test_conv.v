@@ -139,6 +139,27 @@ conv_top (
 .sram_raddr_a8(sram_raddr_a8),
 .sram_raddr_weight(conv_sram_raddr_weight),
 
+.sram_rdata_b0(sram_rdata_b0),
+.sram_rdata_b1(sram_rdata_b1),
+.sram_rdata_b2(sram_rdata_b2),
+.sram_rdata_b3(sram_rdata_b3),
+.sram_rdata_b4(sram_rdata_b4),
+.sram_rdata_b5(sram_rdata_b5),
+.sram_rdata_b6(sram_rdata_b6),
+.sram_rdata_b7(sram_rdata_b7),
+.sram_rdata_b8(sram_rdata_b8),
+
+.sram_raddr_b0(sram_raddr_b0),
+.sram_raddr_b1(sram_raddr_b1),
+.sram_raddr_b2(sram_raddr_b2),
+.sram_raddr_b3(sram_raddr_b3),
+.sram_raddr_b4(sram_raddr_b4),
+.sram_raddr_b5(sram_raddr_b5),
+.sram_raddr_b6(sram_raddr_b6),
+.sram_raddr_b7(sram_raddr_b7),
+.sram_raddr_b8(sram_raddr_b8),
+
+
 .sram_write_enable_b0(sram_write_enable_b0),
 .sram_write_enable_b1(sram_write_enable_b1),
 .sram_write_enable_b2(sram_write_enable_b2),
@@ -148,6 +169,7 @@ conv_top (
 .sram_write_enable_b6(sram_write_enable_b6),
 .sram_write_enable_b7(sram_write_enable_b7),
 .sram_write_enable_b8(sram_write_enable_b8),
+
 
 .sram_bytemask_b(sram_bytemask_b),
 .sram_waddr_b(sram_waddr_b),
