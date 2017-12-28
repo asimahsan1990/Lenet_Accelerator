@@ -368,6 +368,16 @@ initial begin
 	$readmemh("golden/00/fc1_00.dat",fc1_golden);
 	$readmemh("golden/00/fc2_00.dat",fc2_golden);
 	$readmemb("golden/00/pool2_00.dat",pool2_golden);
+	for(i = 0; i < 500; i= i + 1)begin
+		for(j = 0; j < 40; j = j + 1)begin
+        	sram_weight_0.load_w(i*40+j,fc1_w[i][(j+1)*80:j*80]);
+    	end
+    end
+    for(i = 0; i < 10; i = i + 1)begin
+    	for(j = 0; j < 25; j = j + 1)begin
+    		sram_weight_0.load_w(i*25+j + 20000,fc1_w[i][(j+1)*80:j*80]);
+    	end
+    end
 	mem_sel = 1; // load in c0-c4
 	for(i = 0; i < 40;i = i + 1) begin
         sram_128x32b_c0.mem[i][31:24] = pool2_golden[5*i][31:24];
