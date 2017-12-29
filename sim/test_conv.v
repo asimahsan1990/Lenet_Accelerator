@@ -814,6 +814,9 @@ initial begin
     $write("|\n");
     display_sram;
     @(negedge clk);
+    @(negedge clk);
+    @(negedge clk);
+    @(negedge clk);
     conv_start = 1'b1;
     @(negedge clk);
     conv_start = 1'b0;
