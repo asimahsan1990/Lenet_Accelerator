@@ -99,6 +99,7 @@ wire sram_write_enable_d4;
 wire [3:0] sram_bytemask_a;
 wire [3:0] sram_bytemask_b;
 wire [3:0] sram_bytemask_c;
+wire [3:0] sram_bytemask_d;
 wire [9:0] sram_waddr_a;
 wire [9:0] sram_waddr_b;
 wire [9:0] sram_waddr_c;
@@ -1002,6 +1003,7 @@ initial begin
     $display("PAUL you are so cool!!!!!");
     $display("Total cycle count in CONV2 = %d.\n", cycle_cnt_conv2);
     $display("Total cycle count = %g\n", cycle_cnt_conv1+cycle_cnt_conv2);
+
     $finish;
 end
 
