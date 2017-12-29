@@ -352,20 +352,20 @@ always@(posedge clk) begin
 end
 assign sram_raddr_weight = weight_cnt;
 assign sram_raddr_c0 = {{4{1'b0}},row_cnt};
-assign sram_raddr_c1 = {{4{1'b0}},row_cnt};;
-assign sram_raddr_c2 = {{4{1'b0}},row_cnt};;
-assign sram_raddr_c3 = {{4{1'b0}},row_cnt};;
-assign sram_raddr_c4 = {{4{1'b0}},row_cnt};;
-assign sram_raddr_d0 = {{4{1'b0}},row_cnt};;
-assign sram_raddr_d1 = {{4{1'b0}},row_cnt};;
-assign sram_raddr_d2 = {{4{1'b0}},row_cnt};;
-assign sram_raddr_d3 = {{4{1'b0}},row_cnt};;
-assign sram_raddr_d4 = {{4{1'b0}},row_cnt};;
-assign sram_raddr_e0 = {{4{1'b0}},row_cnt};;
-assign sram_raddr_e1 = {{4{1'b0}},row_cnt};;
-assign sram_raddr_e2 = {{4{1'b0}},row_cnt};;
-assign sram_raddr_e3 = {{4{1'b0}},row_cnt};;
-assign sram_raddr_e4 = {{4{1'b0}},row_cnt};;
+assign sram_raddr_c1 = {{4{1'b0}},row_cnt};
+assign sram_raddr_c2 = {{4{1'b0}},row_cnt};
+assign sram_raddr_c3 = {{4{1'b0}},row_cnt};
+assign sram_raddr_c4 = {{4{1'b0}},row_cnt};
+assign sram_raddr_d0 = {{4{1'b0}},row_cnt};
+assign sram_raddr_d1 = {{4{1'b0}},row_cnt};
+assign sram_raddr_d2 = {{4{1'b0}},row_cnt};
+assign sram_raddr_d3 = {{4{1'b0}},row_cnt};
+assign sram_raddr_d4 = {{4{1'b0}},row_cnt};
+assign sram_raddr_e0 = {{4{1'b0}},row_cnt};
+assign sram_raddr_e1 = {{4{1'b0}},row_cnt};
+assign sram_raddr_e2 = {{4{1'b0}},row_cnt};
+assign sram_raddr_e3 = {{4{1'b0}},row_cnt};
+assign sram_raddr_e4 = {{4{1'b0}},row_cnt};
 
 //record conv_done
 always@* begin
