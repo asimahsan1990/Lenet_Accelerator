@@ -370,12 +370,12 @@ initial begin
 	$readmemb("golden/00/pool2_00.dat",pool2_golden);
 	for(i = 0; i < 500; i= i + 1)begin
 		for(j = 0; j < 40; j = j + 1)begin
-        	sram_weight_0.load_w(i*40+j,fc1_w[i][(j+1)*80:j*80]);
+        	sram_weight_0.load_w(i*40+j,fc1_w[i][j*80 +: 80]);
     	end
     end
     for(i = 0; i < 10; i = i + 1)begin
     	for(j = 0; j < 25; j = j + 1)begin
-    		sram_weight_0.load_w(i*25+j + 20000,fc2_w[i][(j+1)*80:j*80]);
+    		sram_weight_0.load_w(i*25+j + 20000,fc2_w[i][j*80 +: 80]);
     	end
     end
 	mem_sel = 1; // load in c0-c4
