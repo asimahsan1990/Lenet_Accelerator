@@ -205,7 +205,7 @@ conv_top (
 /*		 	sram connection		 	   */
 /*=====================================*/
 //weight_sram connection
-sram_20000x100b sram_weight_0(
+sram_20250x100b sram_weight_0(
 .clk(clk),
 .csb(1'b0),
 .wsb(1'b1),

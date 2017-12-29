@@ -1,6 +1,6 @@
 ///////////////////////////
 
-module sram_20000x80b(
+module sram_20250x80b(
 input clk,
 input csb,  //chip enable
 input wsb,  //write enable
@@ -12,7 +12,7 @@ output reg [79:0]rdata //read data
 );
 
 localparam WEIGHT_WIDTH = 4;
-localparam WEIGHT_PIXEL_NUM = 25;
+localparam WEIGHT_PIXEL_NUM = 20;
 
 /*
 /////////////////////
@@ -21,7 +21,7 @@ localparam WEIGHT_PIXEL_NUM = 25;
 
 /////////////////////
 */
-reg [WEIGHT_PIXEL_NUM*WEIGHT_WIDTH-1:0] mem[0:20000];
+reg [WEIGHT_PIXEL_NUM*WEIGHT_WIDTH-1:0] mem[0:20250];
 reg [79:0] _rdata;
 
 always@(posedge clk)
