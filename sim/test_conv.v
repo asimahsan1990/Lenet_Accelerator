@@ -715,7 +715,7 @@ initial begin
 	        sram_raddr_weight = conv_sram_raddr_weight;
 	    end
 	end
-	if(mem_sel == 1) begin
+	if(mem_sel == 0) begin
         $display("Test sram c0~c4\n");
 		for(i = 0; i < 40;i = i + 1) begin
             pool2_1d[i*20] = sram_128x32b_c0.mem[i][31:24];
