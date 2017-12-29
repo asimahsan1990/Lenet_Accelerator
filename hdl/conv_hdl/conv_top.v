@@ -11,7 +11,7 @@ module conv_top#(
 (
 input clk,							//clock input
 input srstn,						//synchronous reset (active low)
-input start,						//1: start (one-cycle pulse)
+input conv_start,						//1: start (one-cycle pulse)
 
 // Derive data from SRAM_a
 input [DATA_NUM_PER_SRAM_ADDR*DATA_WIDTH-1:0] sram_rdata_a0,
@@ -100,9 +100,161 @@ output [9:0] sram_waddr_d,
 output [7:0] sram_wdata_d,
 
 output conv1_done,
-output conv2_done,
-output mem_sel
+output conv_done,
+output mem_sel								// 1: c0 ~ c4, 0: d0 ~ d4
 );
 
+localparam  IDLE = 0, CONV1 = 1, CONV2 = 2, DONE = 3;
+
+wire [1:0] mode;
+wire [3:0] box_sel;
+wire [36*8-1:0] src_window;
+wire [WEIGHT_NUM*WEIGHT_WIDTH-1:0] conv1_weight, weight;
+wire load_conv1_bias_enable;
+wire load_conv2_bias0_enable, load_conv2_bias1_enable;
+wire [16:0] conv1_bias_set;
+wire [7:0] set;
+wire signed [3:0] bias_data;
+wire [4:0] channel;
+wire signed [31:0] data_out;
+wire signed [7:0] out;
+
+assign sram_wdata_b = out;
+assign sram_wdata_c = out;
+assign sram_wdata_d = out;
+
+fsm fsm(
+.clk(clk),
+.srstn(srstn),
+.conv_start(conv_start),
+.conv1_done(conv1_done),
+.conv_done(conv_done),
+.mode(mode),
+.mem_sel(mem_sel)
+);
+
+conv_control conv_control(
+.clk(clk),
+.srstn(srstn),
+.mode(mode),
+.mem_sel(mem_sel),
+.conv1_done(conv1_done),
+.sram_raddr_weight(sram_raddr_weight),
+.box_sel(box_sel),
+.load_conv1_bias_enable(load_conv1_bias_enable),
+.conv1_bias_set(conv1_bias_set),
+.sram_raddr_a0(sram_raddr_a0),
+.sram_raddr_a1(sram_raddr_a1),
+.sram_raddr_a2(sram_raddr_a2),
+.sram_raddr_a3(sram_raddr_a3),
+.sram_raddr_a4(sram_raddr_a4),
+.sram_raddr_a5(sram_raddr_a5),
+.sram_raddr_a6(sram_raddr_a6),
+.sram_raddr_a7(sram_raddr_a7),
+.sram_raddr_a8(sram_raddr_a8),
+.sram_write_enable_b0(sram_write_enable_b0),
+.sram_write_enable_b1(sram_write_enable_b1),
+.sram_write_enable_b2(sram_write_enable_b2),
+.sram_write_enable_b3(sram_write_enable_b3),
+.sram_write_enable_b4(sram_write_enable_b4),
+.sram_write_enable_b5(sram_write_enable_b5),
+.sram_write_enable_b6(sram_write_enable_b6),
+.sram_write_enable_b7(sram_write_enable_b7),
+.sram_write_enable_b8(sram_write_enable_b8),
+.sram_bytemask_b(sram_bytemask_b),
+.sram_waddr_b(sram_waddr_b),
+.conv_done(conv_done),
+.channel(channel),
+.set(set),
+.load_conv2_bias0_enable(load_conv2_bias0_enable),
+.load_conv2_bias1_enable(load_conv2_bias1_enable),
+.sram_raddr_b0(sram_raddr_b0),
+.sram_raddr_b1(sram_raddr_b1),
+.sram_raddr_b2(sram_raddr_b2),
+.sram_raddr_b3(sram_raddr_b3),
+.sram_raddr_b4(sram_raddr_b4),
+.sram_raddr_b5(sram_raddr_b5),
+.sram_raddr_b6(sram_raddr_b6),
+.sram_raddr_b7(sram_raddr_b7),
+.sram_raddr_b8(sram_raddr_b8),
+.sram_write_enable_c0(sram_write_enable_c0),
+.sram_write_enable_c1(sram_write_enable_c1),
+.sram_write_enable_c2(sram_write_enable_c2),
+.sram_write_enable_c3(sram_write_enable_c3),
+.sram_write_enable_c4(sram_write_enable_c4),
+.sram_bytemask_c(sram_bytemask_c),
+.sram_waddr_c(sram_waddr_c),
+.sram_write_enable_d0(sram_write_enable_d0),
+.sram_write_enable_d1(sram_write_enable_d1),
+.sram_write_enable_d2(sram_write_enable_d2),
+.sram_write_enable_d3(sram_write_enable_d3),
+.sram_write_enable_d4(sram_write_enable_d4),
+.sram_bytemask_d(sram_bytemask_d),
+.sram_waddr_d(sram_waddr_d)
+);
+
+data_reg data_reg(
+.clk(clk),
+.srstn(srstn),
+.mode(mode),
+.box_sel(box_sel),
+.sram_rdata_a0(sram_rdata_a0),
+.sram_rdata_a1(sram_rdata_a1),
+.sram_rdata_a2(sram_rdata_a2),
+.sram_rdata_a3(sram_rdata_a3),
+.sram_rdata_a4(sram_rdata_a4),
+.sram_rdata_a5(sram_rdata_a5),
+.sram_rdata_a6(sram_rdata_a6),
+.sram_rdata_a7(sram_rdata_a7),
+.sram_rdata_a8(sram_rdata_a8),
+.sram_rdata_b0(sram_rdata_b0),
+.sram_rdata_b1(sram_rdata_b1),
+.sram_rdata_b2(sram_rdata_b2),
+.sram_rdata_b3(sram_rdata_b3),
+.sram_rdata_b4(sram_rdata_b4),
+.sram_rdata_b5(sram_rdata_b5),
+.sram_rdata_b6(sram_rdata_b6),
+.sram_rdata_b7(sram_rdata_b7),
+.sram_rdata_b8(sram_rdata_b8),
+.sram_rdata_weight(sram_rdata_weight),
+.conv1_weight(conv1_weight),
+.weight(weight),
+.src_window(src_window)
+);
+
+bias_sel bias_sel(
+.clk(clk),
+.srstn(srstn),
+.mode(mode),
+.load_conv1_bias_enable(load_conv1_bias_enable),
+.load_conv2_bias0_enable(load_conv2_bias0_enable),
+.load_conv2_bias1_enable(load_conv2_bias1_enable),
+.conv1_bias_set(conv1_bias_set),
+.set(set),
+.sram_raddr_weight(sram_raddr_weight),
+.sram_rdata_weight(sram_rdata_weight),
+.bias_data(bias_data)
+);
+
+multiply_compare multiply_compare(
+.clk(clk),
+.srstn(srstn),
+.mode(mode),
+.channel(channel),
+//.conv1_sram_rdata_weight(sram_rdata_weight),
+.conv1_sram_rdata_weight(conv1_weight),
+.conv2_sram_rdata_weight(weight),
+.src_window(src_window),
+.data_out(data_out)
+);
+
+quantize quantize(
+.clk(clk),
+.srstn(srstn),
+.mode(mode),
+.bias_data(bias_data),
+.ori_data(data_out),
+.quantized_data(out)
+);
 
 endmodule
