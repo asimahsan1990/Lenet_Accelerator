@@ -416,7 +416,6 @@ initial begin
 	@(negedge clk);
 	conv_done = 1'b0;
 	//Do CONV2 and POOL2 and write result to SRAM c
-	sram_raddr_weight = fc_sram_raddr_weight;
 
 	while(~fc1_done)begin    //when break from this while, it means sram e0~e4 can be tested
         @(negedge clk);
