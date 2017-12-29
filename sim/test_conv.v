@@ -102,10 +102,12 @@ wire [3:0] sram_bytemask_c;
 wire [9:0] sram_waddr_a;
 wire [9:0] sram_waddr_b;
 wire [9:0] sram_waddr_c;
+wire [9:0] sram_waddr_d;
 
 wire [7:0] sram_wdata_a;
 wire [7:0] sram_wdata_b;
 wire [7:0] sram_wdata_c;
+wire [7:0] sram_wdata_d;
 wire mem_sel;
 wire signed [7:0] out;
 
