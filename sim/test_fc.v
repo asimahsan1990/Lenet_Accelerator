@@ -454,7 +454,7 @@ initial begin
     end
     for(i = 0; i < 3; i = i + 1)
     	fc2_output[i] = sram_128x32b_f.mem[i];
-    for(i = 0; i < 3; i= i + 1)begin
+    for(i = 0; i < 2; i= i + 1)begin
     	if(fc2_output[i] == fc2_golden[i]) $write("sram #f address: %d PASS!!\n", i);
     	else begin
     		$write("You have wrong answer in the sram #f !!!\n\n");
@@ -469,10 +469,20 @@ initial begin
             $finish;
     	end 
     end
+    if(fc2_output[i][31:16] == fc2_golden[i][31:16])$write("sram #f address: 2 PASS!!\n",);
+    else begin
+        $write("You have wrong answer in the sram #f !!!\n\n");
+        $write("Your answer at address 3 is \n%d %d  \n"    , $signed(fc2_output[i][31:24])
+                                                            , $signed(fc2_output[i][23:16]));
+        $write("But the golden answer is  \n%d %d  \n"  , $signed(fc2_golden[i][31:24])
+                                                        , $signed(fc2_golden[i][23:16]));
+        $finish;
+    end
     $write("|\n");
     $display("Congratulations! YOU PASS FC2!!!!!");
     $display("Steven you are so cool!!!!!");
     $display("Total cycle count in FC2 = %d.", cycle_cnt_fc2);
+    $display("Total cycle count  = %d.", cycle_cnt_fc2+cycle_cnt_fc1);
     $finish;
 end
 
