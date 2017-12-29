@@ -273,8 +273,8 @@ sram_128x32b sram_128x32b_e0(
 .wsb(sram_write_enable_e0),
 .wdata(sram_wdata_e), 
 .waddr(sram_waddr_e), 
-.raddr(sram_raddr_e4), 
-.rdata(sram_rdata_e4)
+.raddr(sram_raddr_e0), 
+.rdata(sram_rdata_e0)
 );
 
 sram_128x32b sram_128x32b_e1(
@@ -284,15 +284,15 @@ sram_128x32b sram_128x32b_e1(
 .wsb(sram_write_enable_e1),
 .wdata(sram_wdata_e), 
 .waddr(sram_waddr_e), 
-.raddr(sram_raddr_e4), 
-.rdata(sram_rdata_e4)
+.raddr(sram_raddr_e1), 
+.rdata(sram_rdata_e1)
 );
 
 sram_128x32b sram_128x32b_e2(
 .clk(clk),
 .bytemask(sram_bytemask_e),
 .csb(1'b0),
-.wsb(sram_write_enable_e1),
+.wsb(sram_write_enable_e2),
 .wdata(sram_wdata_e), 
 .waddr(sram_waddr_e), 
 .raddr(sram_raddr_e2), 
@@ -370,12 +370,12 @@ initial begin
 	$readmemb("golden/00/pool2_00.dat",pool2_golden);
 	for(i = 0; i < 500; i= i + 1)begin
 		for(j = 0; j < 40; j = j + 1)begin
-        	sram_weight_0.load_w(i*40+j,fc1_w[i][j*80 +: 80]);
+        	sram_weight_0.load_w(i*40+j,fc1_w[i][(40-j-1)*80 +: 80]);
     	end
     end
     for(i = 0; i < 10; i = i + 1)begin
     	for(j = 0; j < 25; j = j + 1)begin
-    		sram_weight_0.load_w(i*25+j + 20000,fc2_w[i][j*80 +: 80]);
+    		sram_weight_0.load_w(i*25+j + 20000,fc2_w[i][(25-j-1)*80 +: 80]);
     	end
     end
 	mem_sel = 1; // load in c0-c4
@@ -416,7 +416,9 @@ initial begin
 	@(negedge clk);
 	conv_done = 1'b0;
 	//Do CONV2 and POOL2 and write result to SRAM c
-
+    //Reset cycle_cnt_fc1 and cycle_cnt_fc2
+    cycle_cnt_fc1 = 0;
+    cycle_cnt_fc2 = 0;
 	while(~fc1_done)begin    //when break from this while, it means sram e0~e4 can be tested
         @(negedge clk);
         cycle_cnt_fc1 = cycle_cnt_fc1 + 1;
@@ -455,19 +457,19 @@ initial begin
     for(i = 0; i < 3; i = i + 1)
     	fc2_output[i] = sram_128x32b_f.mem[i];
     for(i = 0; i < 2; i= i + 1)begin
-    	if(fc2_output[i] == fc2_golden[i]) $write("sram #f address: %d PASS!!\n", i);
-    	else begin
-    		$write("You have wrong answer in the sram #f !!!\n\n");
+        if(fc2_output[i] == fc2_golden[i]) $write("sram #f address: %d PASS!!\n", i);
+        else begin
+            $write("You have wrong answer in the sram #f !!!\n\n");
             $write("Your answer at address %d is \n%d %d %d %d  \n" ,i/5, $signed(fc2_output[i][31:24])
-															, $signed(fc2_output[i][23:16])
-															, $signed(fc2_output[i][15:8])
-															, $signed(fc2_output[i][7:0]));
+                                                            , $signed(fc2_output[i][23:16])
+                                                            , $signed(fc2_output[i][15:8])
+                                                            , $signed(fc2_output[i][7:0]));
             $write("But the golden answer is  \n%d %d %d %d \n" , $signed(fc2_golden[i][31:24])
-            													, $signed(fc2_golden[i][23:16])
-            													, $signed(fc2_golden[i][15:8])
-            													, $signed(fc2_golden[i][7:0]));
+                                                                , $signed(fc2_golden[i][23:16])
+                                                                , $signed(fc2_golden[i][15:8])
+                                                                , $signed(fc2_golden[i][7:0]));
             $finish;
-    	end 
+        end 
     end
     if(fc2_output[i][31:16] == fc2_golden[i][31:16])$write("sram #f address: 2 PASS!!\n",);
     else begin
@@ -481,6 +483,7 @@ initial begin
     $write("|\n");
     $display("Congratulations! YOU PASS FC2!!!!!");
     $display("Steven you are so cool!!!!!");
+    $display("Total cycle count in FC1 = %d.", cycle_cnt_fc1);
     $display("Total cycle count in FC2 = %d.", cycle_cnt_fc2);
     $display("Total cycle count  = %d.", cycle_cnt_fc2+cycle_cnt_fc1);
     $finish;

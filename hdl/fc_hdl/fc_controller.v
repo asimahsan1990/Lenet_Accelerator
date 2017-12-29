@@ -105,9 +105,9 @@ assign bytemask_sel = col_cnt_output[1:0];
 //sram_sel setting: select to read sram c, sram d or sram e
 always@* begin
 	if(weight_cnt==0)
-		n_sram_sel = ~mem_sel;
-	else if(weight_cnt==19999)
-		n_sram_sel = 3;
+		n_sram_sel = (mem_sel)? 0 : 1;
+	else if(weight_cnt==20000)
+		n_sram_sel = 2;
 	else
 		n_sram_sel = sram_sel;
 end
@@ -123,7 +123,7 @@ always@* begin
 end
 //accumulate_reset
 always@* begin
-	accumulate_reset = n_write_enable;
+	accumulate_reset = n_write_enable||(state==PRE_FETCH&&row_cnt==2);
 end
 //bytemask
 always@ *begin
@@ -141,7 +141,7 @@ always@* begin
 		IDLE: n_sram_waddr = 0;
 		PRE_FETCH: n_sram_waddr = 0;
 		FC_1: n_sram_waddr = (write_enable&&write_e_sram_cnt==4&&bytemask_sel==2'b11)? ((sram_waddr==24)? 0 : sram_waddr+1) : sram_waddr;
-		FC_2: n_sram_waddr = (write_enable)? sram_waddr+1 : sram_waddr;
+		FC_2: n_sram_waddr = (write_enable&&bytemask_sel==2'b11)? sram_waddr+1 : sram_waddr;
 		DONE: n_sram_waddr = 0;
 		default: n_sram_waddr = 0;
 	endcase
@@ -290,7 +290,7 @@ always@* begin
 		end
 		PRE_FETCH: begin
 			n_row_cnt = row_cnt + 1;
-			n_col_cnt = col_cnt + 1;
+			n_col_cnt = col_cnt;
 			n_weight_cnt = weight_cnt + 1;
 		end
 		FC_1: begin
