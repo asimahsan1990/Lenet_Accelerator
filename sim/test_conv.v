@@ -779,12 +779,20 @@ initial begin
         end 
     end
     for(i = 0; i < 200; i = i + 1) begin
-        if(pool2_golden_sram[i] == pool2_1d[i]) $write("sram #a[%d] address: %d PASS!!\n", i%5, i/5); 
-        else begin
-            $write("You have wrong answer in the sram #a[%d] !!!\n\n", i%5);
-            $write("Your answer at address %d is \n%d %d %d %d  \n" ,i/5, $signed(pool2_1d[i][31:24]), $signed(pool2_1d[i][23:16]), $signed(pool2_1d[i][15:8]), $signed(pool2_1d[i][7:0]));
-            $write("But the golden answer is  \n%d %d %d %d \n" ,$signed(pool2_golden_sram[i][31:24]), $signed(pool2_golden_sram[i][23:16]), $signed(pool2_golden_sram[i][15:8]), $signed(pool2_golden_sram[i][7:0]));
-            $finish;
+        for(j = 0; j < 4; j = j + 1)begin
+            if(pool2_golden_sram[i][j*8 +: 8] == pool2_1d[i*4 + j]) $write("sram #a[%d] address: %d PASS!!\n", i%5, i/5); 
+            else begin
+                $write("You have wrong answer in the sram #a[%d] !!!\n\n", i%5);
+                $write("Your answer at address %d is \n%d %d %d %d  \n" ,i/5, $signed(pool2_1d[i])
+                                                                            , $signed(pool2_1d[i+1])
+                                                                            , $signed(pool2_1d[i+2])
+                                                                            , $signed(pool2_1d[i+3]));
+                $write("But the golden answer is  \n%d %d %d %d \n" , $signed(pool2_golden_sram[i][31:24])
+                                                                    , $signed(pool2_golden_sram[i][23:16])
+                                                                    , $signed(pool2_golden_sram[i][15:8])
+                                                                    , $signed(pool2_golden_sram[i][7:0]));
+                $finish;
+            end
         end
     end
     $write("|\n");
