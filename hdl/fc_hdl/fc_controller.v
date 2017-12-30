@@ -21,21 +21,21 @@ output reg fc_state,
 output reg [1:0] sram_sel,			//select to read sram c, sram d or sram e
 
 //Read c/d/e sram addr
-output [9:0] sram_raddr_c0,
-output [9:0] sram_raddr_c1,
-output [9:0] sram_raddr_c2,
-output [9:0] sram_raddr_c3,
-output [9:0] sram_raddr_c4,
-output [9:0] sram_raddr_d0,
-output [9:0] sram_raddr_d1,
-output [9:0] sram_raddr_d2,
-output [9:0] sram_raddr_d3,
-output [9:0] sram_raddr_d4,
-output [9:0] sram_raddr_e0,
-output [9:0] sram_raddr_e1,
-output [9:0] sram_raddr_e2,
-output [9:0] sram_raddr_e3,
-output [9:0] sram_raddr_e4,
+output [5:0] sram_raddr_c0,
+output [5:0] sram_raddr_c1,
+output [5:0] sram_raddr_c2,
+output [5:0] sram_raddr_c3,
+output [5:0] sram_raddr_c4,
+output [5:0] sram_raddr_d0,
+output [5:0] sram_raddr_d1,
+output [5:0] sram_raddr_d2,
+output [5:0] sram_raddr_d3,
+output [5:0] sram_raddr_d4,
+output [4:0] sram_raddr_e0,
+output [4:0] sram_raddr_e1,
+output [4:0] sram_raddr_e2,
+output [4:0] sram_raddr_e3,
+output [4:0] sram_raddr_e4,
 
 //write_enable of sram e series 
 output reg sram_write_enable_e0,
@@ -48,7 +48,7 @@ output reg sram_write_enable_e4,
 output reg sram_write_enable_f,
 
 //write addr and mask
-output reg [9:0] sram_waddr,		//addr for writing to sram e and f
+output reg [5:0] sram_waddr,		//addr for writing to sram e and f
 output reg [3:0] sram_bytemask,		//mask for writing to sram e and f
 
 //sram weight addr
@@ -94,7 +94,7 @@ reg data_addr_complete, n_data_addr_complete;	//All addresses have been sent out
 reg write_enable, n_write_enable, n_write_enable_delay1, n_write_enable_delay2, n_write_enable_delay3;
 reg [2:0] write_e_sram_cnt, n_write_e_sram_cnt;
 
-reg [9:0] n_sram_waddr;
+reg [5:0] n_sram_waddr;
 
 reg [1:0] bytemask_sel, n_bytemask_sel;
 reg [1:0] n_sram_sel;
@@ -348,21 +348,21 @@ always@(posedge clk) begin
 	end
 end
 assign sram_raddr_weight = weight_cnt;
-assign sram_raddr_c0 = {{4{1'b0}},row_cnt};
-assign sram_raddr_c1 = {{4{1'b0}},row_cnt};
-assign sram_raddr_c2 = {{4{1'b0}},row_cnt};
-assign sram_raddr_c3 = {{4{1'b0}},row_cnt};
-assign sram_raddr_c4 = {{4{1'b0}},row_cnt};
-assign sram_raddr_d0 = {{4{1'b0}},row_cnt};
-assign sram_raddr_d1 = {{4{1'b0}},row_cnt};
-assign sram_raddr_d2 = {{4{1'b0}},row_cnt};
-assign sram_raddr_d3 = {{4{1'b0}},row_cnt};
-assign sram_raddr_d4 = {{4{1'b0}},row_cnt};
-assign sram_raddr_e0 = {{4{1'b0}},row_cnt};
-assign sram_raddr_e1 = {{4{1'b0}},row_cnt};
-assign sram_raddr_e2 = {{4{1'b0}},row_cnt};
-assign sram_raddr_e3 = {{4{1'b0}},row_cnt};
-assign sram_raddr_e4 = {{4{1'b0}},row_cnt};
+assign sram_raddr_c0 = row_cnt;
+assign sram_raddr_c1 = row_cnt;
+assign sram_raddr_c2 = row_cnt;
+assign sram_raddr_c3 = row_cnt;
+assign sram_raddr_c4 = row_cnt;
+assign sram_raddr_d0 = row_cnt;
+assign sram_raddr_d1 = row_cnt;
+assign sram_raddr_d2 = row_cnt;
+assign sram_raddr_d3 = row_cnt;
+assign sram_raddr_d4 = row_cnt;
+assign sram_raddr_e0 = row_cnt[4:0];
+assign sram_raddr_e1 = row_cnt[4:0];
+assign sram_raddr_e2 = row_cnt[4:0];
+assign sram_raddr_e3 = row_cnt[4:0];
+assign sram_raddr_e4 = row_cnt[4:0];
 
 //record conv_done
 always@* begin
