@@ -20,7 +20,7 @@ output reg accumulate_reset,		//connect to multiplier_accumulator
 output reg fc_state,
 output reg [1:0] sram_sel,			//select to read sram c, sram d or sram e
 
-//Read c/d sram addr
+//Read c/d/e sram addr
 output [9:0] sram_raddr_c0,
 output [9:0] sram_raddr_c1,
 output [9:0] sram_raddr_c2,
@@ -86,21 +86,19 @@ weight_cnt(fc1: 0~19999; fc2: 20000~20249;)		*
 												*
 state (delay) cnt:								* 
 *************************************************/
-reg [5:0] row_cnt, n_row_cnt, row_cnt_getdata, row_cnt_multi, row_cnt_quantize;
-reg [8:0] col_cnt, n_col_cnt, col_cnt_getdata, col_cnt_multi, col_cnt_quantize, col_cnt_output;
+reg [5:0] row_cnt, n_row_cnt;
+reg [8:0] col_cnt, n_col_cnt;
 reg [WEIGHT_ADDR_WIDTH-1:0] weight_cnt, n_weight_cnt;
-reg [WEIGHT_ADDR_WIDTH-1:0] weight_cnt_getdata, weight_cnt_multi, weight_cnt_quantize, weight_cnt_output;
 
 reg data_addr_complete, n_data_addr_complete;	//All addresses have been sent out.
-reg write_enable, n_write_enable;
+reg write_enable, n_write_enable, n_write_enable_delay1, n_write_enable_delay2, n_write_enable_delay3;
 reg [2:0] write_e_sram_cnt, n_write_e_sram_cnt;
 
 reg [9:0] n_sram_waddr;
 
-wire [1:0] bytemask_sel;
+reg [1:0] bytemask_sel, n_bytemask_sel;
 reg [1:0] n_sram_sel;
 
-assign bytemask_sel = col_cnt_output[1:0];
 
 //sram_sel setting: select to read sram c, sram d or sram e
 always@* begin
@@ -125,6 +123,20 @@ end
 always@* begin
 	accumulate_reset = n_write_enable||(state==PRE_FETCH&&row_cnt==2);
 end
+//bytemask_Sel
+//assign bytemask_sel = col_cnt_output[1:0];
+always@ *begin
+	n_bytemask_sel = (write_enable)? bytemask_sel + 1 : bytemask_sel;
+end
+always@ (posedge clk) begin
+	if(~srstn)
+		bytemask_sel <= 0;
+	else if(conv_done)
+		bytemask_sel <= 0;
+	else
+		bytemask_sel <= n_bytemask_sel;
+end
+
 //bytemask
 always@ *begin
 	case (bytemask_sel)
@@ -152,18 +164,19 @@ always@(posedge clk) begin
 	else
 		sram_waddr <= n_sram_waddr;
 end
-
-//write_enable and write e sram counter
-always@* begin
+//write_enable delay
+always@ *begin
 	case(state)
-		IDLE: n_write_enable = 0; 
-		PRE_FETCH: n_write_enable = 0; 
-		FC_1: n_write_enable = (row_cnt_quantize==39); 
-		FC_2: n_write_enable = (row_cnt_quantize==24); 
-		DONE: n_write_enable = 0; 
-		default : n_write_enable = 0; 
+		IDLE: n_write_enable_delay3 = 0; 
+		PRE_FETCH: n_write_enable_delay3 = 0; 
+		FC_1: n_write_enable_delay3 = (row_cnt==39); 
+		FC_2: n_write_enable_delay3 = (row_cnt==24); 
+		DONE: n_write_enable_delay3 = 0; 
+		default : n_write_enable_delay3 = 0; 
 	endcase
 end
+
+//write_enable and write e sram counter
 always@* begin
 	case(state)
 		IDLE: n_write_e_sram_cnt = 0; 
@@ -177,10 +190,16 @@ end
 always@(posedge clk) begin
 	if(~srstn) begin 		
 		write_enable <= 0;
+		n_write_enable <= 0;
+		n_write_enable_delay1 <= 0;
+		n_write_enable_delay2 <= 0;
 		write_e_sram_cnt <= 0;
 	end
 	else begin
 		write_enable <= n_write_enable;
+		n_write_enable <= n_write_enable_delay1;
+		n_write_enable_delay1 <= n_write_enable_delay2;
+		n_write_enable_delay2 <= n_write_enable_delay3;
 		write_e_sram_cnt <= n_write_e_sram_cnt;
 	end
 end
@@ -249,8 +268,8 @@ always@(posedge clk) begin
 end
 //fc_done signal: fc1_done and fc2_done, when output is ready, n_done is raised.
 always@*begin
-	n_fc1_done = (weight_cnt_output==19999);
-	n_fc2_done = (weight_cnt_output==20249);
+	n_fc1_done = (write_enable&&weight_cnt==20003);
+	n_fc2_done = (write_enable&&weight_cnt==0);
 end
 always@(posedge clk)begin
 	if(~srstn) begin
@@ -319,35 +338,13 @@ always@(posedge clk) begin
 	if(~srstn) begin
 		row_cnt <= 0;
 		col_cnt <= 0;
-		row_cnt_getdata <= 0;
-		row_cnt_multi <= 0;
-		row_cnt_quantize <= 0;
-		col_cnt_getdata <= 0;
-		col_cnt_multi <= 0;
-		col_cnt_quantize <= 0;
-		col_cnt_output <= 0;
-
 		weight_cnt <= 0;
-		weight_cnt_getdata <= 0;
-		weight_cnt_multi <= 0;
-		weight_cnt_quantize <= 0;
-		weight_cnt_output <= 0;
+
 	end
 	else begin
 		row_cnt <= n_row_cnt;
 		col_cnt <= n_col_cnt;
-		row_cnt_getdata <= row_cnt;
-		row_cnt_multi <= row_cnt_getdata;
-		row_cnt_quantize <= row_cnt_multi;
-		col_cnt_getdata <= col_cnt;
-		col_cnt_multi <= col_cnt_getdata;
-		col_cnt_quantize <= col_cnt_multi;
-		col_cnt_output <= col_cnt_quantize;
 		weight_cnt <= n_weight_cnt;
-		weight_cnt_getdata <= weight_cnt;
-		weight_cnt_multi <= weight_cnt_getdata;
-		weight_cnt_quantize <= weight_cnt_multi;
-		weight_cnt_output <= weight_cnt_quantize;
 	end
 end
 assign sram_raddr_weight = weight_cnt;
