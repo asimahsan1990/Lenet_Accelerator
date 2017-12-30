@@ -24,11 +24,11 @@ wire [SRAM_DATA_WIDTH-1:0] sram_rdata_c1;
 wire [SRAM_DATA_WIDTH-1:0] sram_rdata_c2;
 wire [SRAM_DATA_WIDTH-1:0] sram_rdata_c3;
 wire [SRAM_DATA_WIDTH-1:0] sram_rdata_c4;
-wire [9:0] sram_raddr_c0;
-wire [9:0] sram_raddr_c1;
-wire [9:0] sram_raddr_c2;
-wire [9:0] sram_raddr_c3;
-wire [9:0] sram_raddr_c4;
+wire [5:0] sram_raddr_c0;
+wire [5:0] sram_raddr_c1;
+wire [5:0] sram_raddr_c2;
+wire [5:0] sram_raddr_c3;
+wire [5:0] sram_raddr_c4;
 
 //Read SRAM d0~d4
 wire [SRAM_DATA_WIDTH-1:0] sram_rdata_d0;
@@ -36,11 +36,11 @@ wire [SRAM_DATA_WIDTH-1:0] sram_rdata_d1;
 wire [SRAM_DATA_WIDTH-1:0] sram_rdata_d2;
 wire [SRAM_DATA_WIDTH-1:0] sram_rdata_d3;
 wire [SRAM_DATA_WIDTH-1:0] sram_rdata_d4;
-wire [9:0] sram_raddr_d0;
-wire [9:0] sram_raddr_d1;
-wire [9:0] sram_raddr_d2;
-wire [9:0] sram_raddr_d3;
-wire [9:0] sram_raddr_d4;
+wire [5:0] sram_raddr_d0;
+wire [5:0] sram_raddr_d1;
+wire [5:0] sram_raddr_d2;
+wire [5:0] sram_raddr_d3;
+wire [5:0] sram_raddr_d4;
 
 //Read SRAM e0~e4
 wire [SRAM_DATA_WIDTH-1:0] sram_rdata_e0;
@@ -48,11 +48,11 @@ wire [SRAM_DATA_WIDTH-1:0] sram_rdata_e1;
 wire [SRAM_DATA_WIDTH-1:0] sram_rdata_e2;
 wire [SRAM_DATA_WIDTH-1:0] sram_rdata_e3;
 wire [SRAM_DATA_WIDTH-1:0] sram_rdata_e4;
-wire [9:0] sram_raddr_e0;
-wire [9:0] sram_raddr_e1;
-wire [9:0] sram_raddr_e2;
-wire [9:0] sram_raddr_e3;
-wire [9:0] sram_raddr_e4;
+wire [4:0] sram_raddr_e0;
+wire [4:0] sram_raddr_e1;
+wire [4:0] sram_raddr_e2;
+wire [4:0] sram_raddr_e3;
+wire [4:0] sram_raddr_e4;
 
 //Write SRAM e0~e4
 wire sram_write_enable_e0;
@@ -61,13 +61,13 @@ wire sram_write_enable_e2;
 wire sram_write_enable_e3;
 wire sram_write_enable_e4;
 wire [3:0] sram_bytemask_e;
-wire [9:0] sram_waddr_e;
+wire [4:0] sram_waddr_e;
 wire [7:0] sram_wdata_e;
 
 //Write SRAM f
 wire sram_write_enable_f;
 wire [3:0] sram_bytemask_f;
-wire [9:0] sram_waddr_f;
+wire [1:0] sram_waddr_f;
 wire [7:0] sram_wdata_f;
 //FC weight
 wire [WEIGHT_NUM*WEIGHT_WIDTH-1:0] sram_rdata_weight;		//load fc weight
@@ -163,7 +163,7 @@ sram_128x32b sram_128x32b_c0(
 .wsb(1'b1),
 .wdata(8'b0), 
 .waddr(10'd0), 
-.raddr(sram_raddr_c0), 
+.raddr({4'd0,sram_raddr_c0}), 
 .rdata(sram_rdata_c0)
 );
 
@@ -174,7 +174,7 @@ sram_128x32b sram_128x32b_c1(
 .wsb(1'b1),
 .wdata(8'b0), 
 .waddr(10'd0), 
-.raddr(sram_raddr_c1), 
+.raddr({4'd0,sram_raddr_c1}), 
 .rdata(sram_rdata_c1)
 );
 
@@ -185,7 +185,7 @@ sram_128x32b sram_128x32b_c2(
 .wsb(1'b1),
 .wdata(8'b0), 
 .waddr(10'd0), 
-.raddr(sram_raddr_c2), 
+.raddr({4'd0, sram_raddr_c2}), 
 .rdata(sram_rdata_c2)
 );
 
@@ -196,7 +196,7 @@ sram_128x32b sram_128x32b_c3(
 .wsb(1'b1),
 .wdata(8'b0), 
 .waddr(10'd0), 
-.raddr(sram_raddr_c3), 
+.raddr({4'd0, sram_raddr_c3}), 
 .rdata(sram_rdata_c3)
 );
 
@@ -207,7 +207,7 @@ sram_128x32b sram_128x32b_c4(
 .wsb(1'b1),
 .wdata(8'b0), 
 .waddr(10'd0), 
-.raddr(sram_raddr_c4), 
+.raddr({4'd0, sram_raddr_c4}), 
 .rdata(sram_rdata_c4)
 );
 //sram connection(d0-d4)
@@ -218,7 +218,7 @@ sram_128x32b sram_128x32b_d0(
 .wsb(1'b1),
 .wdata(8'b0), 
 .waddr(10'd0), 
-.raddr(sram_raddr_d0), 
+.raddr({4'd0, sram_raddr_d0}), 
 .rdata(sram_rdata_d0)
 );
 
@@ -229,7 +229,7 @@ sram_128x32b sram_128x32b_d1(
 .wsb(1'b1),
 .wdata(8'b0), 
 .waddr(10'd0), 
-.raddr(sram_raddr_d1), 
+.raddr({4'd0, sram_raddr_d1}), 
 .rdata(sram_rdata_d1)
 );
 
@@ -240,7 +240,7 @@ sram_128x32b sram_128x32b_d2(
 .wsb(1'b1),
 .wdata(8'b0), 
 .waddr(10'd0), 
-.raddr(sram_raddr_d2), 
+.raddr({4'd0, sram_raddr_d2}), 
 .rdata(sram_rdata_d2)
 );
 
@@ -251,7 +251,7 @@ sram_128x32b sram_128x32b_d3(
 .wsb(1'b1),
 .wdata(8'b0), 
 .waddr(10'd0), 
-.raddr(sram_raddr_d3), 
+.raddr({4'd0, sram_raddr_d3}), 
 .rdata(sram_rdata_d3)
 );
 
@@ -262,7 +262,7 @@ sram_128x32b sram_128x32b_d4(
 .wsb(1'b1),
 .wdata(8'b0), 
 .waddr(10'd0), 
-.raddr(sram_raddr_d4), 
+.raddr({4'd0, sram_raddr_d4}), 
 .rdata(sram_rdata_d4)
 );
 //sram connection(e0-e4)
@@ -272,8 +272,8 @@ sram_128x32b sram_128x32b_e0(
 .csb(1'b0),
 .wsb(sram_write_enable_e0),
 .wdata(sram_wdata_e), 
-.waddr(sram_waddr_e), 
-.raddr(sram_raddr_e0), 
+.waddr({5'd0, sram_waddr_e}), 
+.raddr({5'd0, sram_raddr_e0}), 
 .rdata(sram_rdata_e0)
 );
 
@@ -283,8 +283,8 @@ sram_128x32b sram_128x32b_e1(
 .csb(1'b0),
 .wsb(sram_write_enable_e1),
 .wdata(sram_wdata_e), 
-.waddr(sram_waddr_e), 
-.raddr(sram_raddr_e1), 
+.waddr({5'd0, sram_waddr_e}), 
+.raddr({5'd0, sram_raddr_e1}), 
 .rdata(sram_rdata_e1)
 );
 
@@ -294,8 +294,8 @@ sram_128x32b sram_128x32b_e2(
 .csb(1'b0),
 .wsb(sram_write_enable_e2),
 .wdata(sram_wdata_e), 
-.waddr(sram_waddr_e), 
-.raddr(sram_raddr_e2), 
+.waddr({5'd0, sram_waddr_e}), 
+.raddr({5'd0, sram_raddr_e2}), 
 .rdata(sram_rdata_e2)
 );
 
@@ -305,8 +305,8 @@ sram_128x32b sram_128x32b_e3(
 .csb(1'b0),
 .wsb(sram_write_enable_e3),
 .wdata(sram_wdata_e), 
-.waddr(sram_waddr_e), 
-.raddr(sram_raddr_e3), 
+.waddr({5'd0, sram_waddr_e}), 
+.raddr({5'd0, sram_raddr_e3}), 
 .rdata(sram_rdata_e3)
 );
 
@@ -316,8 +316,8 @@ sram_128x32b sram_128x32b_e4(
 .csb(1'b0),
 .wsb(sram_write_enable_e4),
 .wdata(sram_wdata_e), 
-.waddr(sram_waddr_e), 
-.raddr(sram_raddr_e4), 
+.waddr({5'd0, sram_waddr_e}), 
+.raddr({5'd0, sram_raddr_e4}), 
 .rdata(sram_rdata_e4)
 );
 
@@ -328,7 +328,7 @@ sram_128x32b sram_128x32b_f(
 .csb(1'b0),
 .wsb(sram_write_enable_f),
 .wdata(sram_wdata_f), 
-.waddr(sram_waddr_f), 
+.waddr({8'd0,sram_waddr_f}), 
 .raddr(), 
 .rdata()
 );
