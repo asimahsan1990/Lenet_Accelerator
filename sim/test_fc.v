@@ -80,7 +80,7 @@ wire fc2_done;
 reg [7:0] mem[0:32*32-1];
 
 //====== top connection =====
-fc_top #(.WEIGHT_WIDTH(4),.WEIGHT_NUM(20),.DATA_WIDTH(8),.DATA_NUM_PER_SRAM_ADDR(4),.WEIGHT_ADDR_WIDTH(15))
+fc_top //#(.WEIGHT_WIDTH(4),.WEIGHT_NUM(20),.DATA_WIDTH(8),.DATA_NUM_PER_SRAM_ADDR(4),.WEIGHT_ADDR_WIDTH(15))
 fc_top (
 .clk(clk),
 .srstn(srstn),
@@ -334,10 +334,23 @@ sram_128x32b sram_128x32b_f(
 );
 
 //dump wave file
+//initial begin
+//  $fsdbDumpfile("fc_test.fsdb");  	       // "gray.fsdb" can be replaced into any name you want
+//  $fsdbDumpvars("+mda");              		   // but make sure in .fsdb format
+//end
+
+
 initial begin
-  $fsdbDumpfile("fc_test.fsdb");  	       // "gray.fsdb" can be replaced into any name you want
-  $fsdbDumpvars("+mda");              		   // but make sure in .fsdb format
+`ifdef GATESIM
+    $fsdbDumpfile("fc_test_syn.fsdb");
+    $fsdbDumpvars("+mda");  
+    $sdf_annotate("../syn/netlist/fc_top_syn.sdf",fc_top);
+`else
+    $fsdbDumpfile("fc_test.fsdb");
+    $fsdbDumpvars("+mda");  
+`endif
 end
+
 
 //====== clock generation =====
 initial begin
