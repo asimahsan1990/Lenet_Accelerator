@@ -1209,7 +1209,6 @@ end
 task bmp2sram(
 input [31:0] pat_no
 );
-
     reg [17*8-1:0] bmp_filename;
     integer this_i, this_j,i,j;
     integer index_a,index_b,index_c;
