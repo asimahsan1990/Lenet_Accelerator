@@ -85,7 +85,7 @@ wire accumulate_reset;
 wire fc_state;
 wire [1:0] sram_sel;
 
-wire signed [31:0] data_out;		//bit number > 8+4+10=22 is enough
+wire signed [22:0] data_out;		//bit number > 8+4+10=22 is enough
 wire signed [7:0] quantized_data;
 
 wire [3:0] sram_bytemask;

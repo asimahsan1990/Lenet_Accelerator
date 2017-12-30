@@ -8,7 +8,7 @@ input srstn,
 input [20*8-1:0] src_window,
 input [20*4-1:0] sram_rdata_weight,
 input accumulate_reset,
-output signed [31:0] data_out		//bit number > 8+4+10=22 is enough
+output signed [22:0] data_out		//bit number > 8+4+10=22 is enough
 );
 
 localparam WEIGHT_WIDTH = 4;
@@ -81,5 +81,5 @@ always@(posedge clk)begin
 end
 
 //assign accumulator_sum to data_out
-assign data_out = {{9{accumulator_sum[22]}},accumulator_sum};
+assign data_out = accumulator_sum;
 endmodule
