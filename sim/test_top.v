@@ -881,6 +881,7 @@ initial begin
     /*================================*/
 	/*			TEST FC 1  			  */
 	/*================================*/
+
     $readmemh("golden/00/fc1_00.dat",fc1_golden);
     $readmemh("golden/00/fc2_00.dat",fc2_golden);
     while(~fc1_done) begin    //when break from this while, it means sram e0~e4 can be tested
@@ -918,12 +919,15 @@ initial begin
     /*================================*/
 	/*			TEST FC 2  			  */
 	/*================================*/
+	
 	while(~fc2_done)begin    //when break from this while, it means sram f can be tested
         @(negedge clk);
         cycle_cnt_fc2 = cycle_cnt_fc2 + 1;
     end
+
     for(i = 0; i < 3; i = i + 1)
     	fc2_output[i] = sram_128x32b_f.mem[i];
+
     for(i = 0; i < 2; i= i + 1)begin
         if(fc2_output[i] == fc2_golden[i]) $write("sram #f address: %d PASS!!\n", i);
         else begin
@@ -939,6 +943,7 @@ initial begin
             $finish;
         end 
     end
+
     if(fc2_output[i][31:16] == fc2_golden[i][31:16])$write("sram #f address: 2 PASS!!\n",);
     else begin
         $write("You have wrong answer in the sram #f !!!\n\n");
@@ -948,12 +953,13 @@ initial begin
                                                         , $signed(fc2_golden[i][23:16]));
         $finish;
     end
+
     $write("|\n");
     $display("Congratulations! YOU PASS FC2!!!!!");
     $display("Steven you are so cool!!!!!");
     $display("Total cycle count in FC1 = %d.", cycle_cnt_fc1);
     $display("Total cycle count in FC2 = %d.", cycle_cnt_fc2);
-    $display("Total cycle count  = %d.", cycle_cnt_fc2+cycle_cnt_fc1 + cycle_cnt_conv1 + cycle_cnt_conv2);
+    $display("Total cycle count  = %d.", cycle_cnt_fc2 + cycle_cnt_fc1 + cycle_cnt_conv1 + cycle_cnt_conv2);
     $finish;
 end
 
