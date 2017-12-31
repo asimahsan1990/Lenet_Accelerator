@@ -1,0 +1,119 @@
+Command Line: /usr/cad/spring_soft/verdi/cur/nLint/platform/LINUXAMD64/bin/nLint conv_top.v fsm.v conv_control.v bias_sel.v data_reg.v multiply_compare.v quantize.v -out nlint.rep
+uname(Linux ws41 2.6.18-274.el5 #1 SMP Fri Jul 22 04:43:29 EDT 2011 x86_64)
+nLint Release K-2015.09-SP1 (RH Linux x86_64/64bit) 11/16/2015
+(C) 1996 - 2015 by Synopsys, Inc.
+All Rights Reserved.
+www.synopsys.com
+
+This program is proprietary and confidential information of Synopsys, Inc. and 
+may be used and disclosed only as authorized in a license agreement controlling 
+such use and disclosure.
+
+nLint initializing product... 
+-out nlint.rep
+udrCompiler:Begin Check prj.....
+
+udrCompiler:Prj Checker:Total 0 error(s) 0 warning(s)
+
+udrCompiler:End Check prj
+
+nLint loading rules ... 
+Loading RS files ...
+  Load RS file /usr/cad/spring_soft/verdi/cur/nLint/etc/nLint.rs
+Merging RS files ...
+nLint loading rules done!
+nLint initializing product done!
+Import design
+Import design
+nLint importing source code... 
+Analyzing...
+  source file "conv_top.v"
+  source file "fsm.v"
+  source file "conv_control.v"
+  source file "bias_sel.v"
+  source file "data_reg.v"
+  source file "multiply_compare.v"
+  source file "quantize.v"
+Linking... 0 error(s), 0 warning(s)
+Total	0 error(s),   0 warning(s)
+successfully
+End of importing design. Memory used 36922360. Time used 0.
+
+End of importing design. Memory used 36922360. Time used 0.
+
+Sun Dec 31 14:23:38 2017 Starting lint ...
+import design done. Time: 0; Memory: 39642104
+
+Linting...
+Loading nLint options from nLint.rc
+   -actualwidth
+Rule setting file = /usr/cad/spring_soft/verdi/cur/nLint/etc/nLint.rs.
+Report db file = /home/u103/u103061136/ICLAB/Final_Project/hdl/nLintDB.
+Build pragma information done. Memory: 39969784
+processing module "fsm"...
+traverse RTL
+RTL processing done. Time: 0; Memory: 41219064
+traverse statements
+statement processing done. Time: 0; Memory: 41219064
+hdbBRCheck() -> btiPoolCallNo=24
+hdbBRCheck() -> btiArenaCallNo=2
+processing module "conv_control"...
+traverse RTL
+RTL processing done. Time: 1; Memory: 56751096
+traverse statements
+statement processing done. Time: 0; Memory: 56751096
+hdbBRCheck() -> btiPoolCallNo=2724
+hdbBRCheck() -> btiArenaCallNo=4
+processing module "data_reg"...
+traverse RTL
+RTL processing done. Time: 0; Memory: 56751096
+traverse statements
+statement processing done. Time: 0; Memory: 56751096
+hdbBRCheck() -> btiPoolCallNo=1142
+hdbBRCheck() -> btiArenaCallNo=9
+processing module "bias_sel"...
+traverse RTL
+RTL processing done. Time: 0; Memory: 56751096
+traverse statements
+statement processing done. Time: 0; Memory: 56751096
+hdbBRCheck() -> btiPoolCallNo=692
+hdbBRCheck() -> btiArenaCallNo=2
+processing module "multiply_compare"...
+traverse RTL
+RTL processing done. Time: 2; Memory: 56751096
+traverse statements
+statement processing done. Time: 1; Memory: 56751096
+hdbBRCheck() -> btiPoolCallNo=892
+processing module "quantize"...
+traverse RTL
+RTL processing done. Time: 0; Memory: 56751096
+traverse statements
+statement processing done. Time: 0; Memory: 56751096
+hdbBRCheck() -> btiPoolCallNo=19
+processing module "conv_top(@1)"...
+traverse RTL
+RTL processing done. Time: 0; Memory: 56751096
+traverse statements
+statement processing done. Time: 0; Memory: 56751096
+hdbBRCheck() -> btiPoolCallNo=513
+hdbBRCheck() -> btiArenaCallNo=3
+Current memory used: 60421112, begin DFT rules checking ...
+begin to check multiple drivers rules. Memory used 60421112. 
+End of checking multiple drives rules. Memory used 60421112. Time used 0
+begin to check no driver rules. Memory used 60421112. 
+End of checking no driver rules. Memory used 60421112. Time used 0
+End of checking signal load rules. Memory used 60421112. Time used 0
+Collect port information and checking driver/load, load/load mis-match rules...
+End of checking driver/load, load/load mis-match rules. Memory used 60421112. Time used 0
+Checking loop, current memory used 60421112 ...
+End of checking loop, Memory used 60421112, Time used 0 
+End of checking clock domain rules.
+lint processing done. Successfully. Time: 4; Memory: 60421112
+
+Lint processing done.
+Sun Dec 31 14:23:42 2017 End of lint.
+
+Total 126 Warning(s)
+nLint totally successfully done: time used 4.
+
+
