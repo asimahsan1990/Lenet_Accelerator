@@ -35,8 +35,8 @@ input [DATA_NUM_PER_SRAM_ADDR*DATA_WIDTH-1:0] sram_rdata_b6,
 input [DATA_NUM_PER_SRAM_ADDR*DATA_WIDTH-1:0] sram_rdata_b7,
 input [DATA_NUM_PER_SRAM_ADDR*DATA_WIDTH-1:0] sram_rdata_b8,
 // Derive weight and bias
-input [WEIGHT_NUM*WEIGHT_WIDTH-1:0] sram_rdata_weight,
-output [16:0] sram_raddr_weight,
+input [WEIGHT_NUM*WEIGHT_WIDTH-1:0] conv_sram_rdata_weight,
+output [16:0] conv_sram_raddr_weight,
 // Read address for SRAM_a
 output [9:0] sram_raddr_a0,
 output [9:0] sram_raddr_a1,
@@ -147,8 +147,8 @@ output [3:0] sram_bytemask_f,
 output [1:0] sram_waddr_f,
 output [7:0] sram_wdata_f,
 
-input [79:0] sram_rdata_fcweight,
-output [14:0] sram_raddr_fcweight,
+input [79:0] fc_sram_rdata_weight,
+output [14:0] fc_sram_raddr_weight,
 output fc1_done,
 output fc2_done
 );
@@ -158,8 +158,8 @@ conv_top conv_top
 .clk(clk),
 .srstn(srstn),
 .conv_start(conv_start),
-.sram_raddr_weight(sram_raddr_weight),
-.sram_rdata_weight(sram_rdata_weight),
+.sram_raddr_weight(conv_sram_raddr_weight),
+.sram_rdata_weight(conv_sram_rdata_weight),
 .sram_raddr_a0(sram_raddr_a0),
 .sram_raddr_a1(sram_raddr_a1),
 .sram_raddr_a2(sram_raddr_a2),
@@ -291,8 +291,8 @@ fc_top fc_top
 .sram_wdata_f(sram_wdata_f),
 
 //FC weight
-.sram_rdata_weight(sram_rdata_fcweight),		//load fc weight
-.sram_raddr_weight(sram_raddr_fcweight),       //read address from SRAM weight
+.sram_rdata_weight(fc_sram_rdata_weight),		//load fc weight
+.sram_raddr_weight(fc_sram_raddr_weight),       //read address from SRAM weight
 
 //FC done signal
 .fc1_done(fc1_done),
