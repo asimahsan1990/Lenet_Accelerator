@@ -2,7 +2,7 @@
  * Editor : Steven
  * File : multiplier_accumulator.v
  */
-module multiplier_accumulator(
+module fc_multiplier_accumulator(
 input clk,
 input srstn,
 input [20*8-1:0] src_window,

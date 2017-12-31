@@ -149,7 +149,7 @@ fc_controller fc_controller(
 );
 
 
-data_reg data_reg(
+fc_data_reg fc_data_reg(
 .clk(clk),
 .srstn(srstn),
 .sram_rdata_c0(sram_rdata_c0),
@@ -171,7 +171,7 @@ data_reg data_reg(
 .src_window(src_window)
 );
 
-multiplier_accumulator multiplier_accumulator(
+fc_multiplier_accumulator fc_multiplier_accumulator(
 .clk(clk),
 .srstn(srstn),
 .src_window(src_window),
@@ -180,7 +180,7 @@ multiplier_accumulator multiplier_accumulator(
 .data_out(data_out)							//bit number > 8+4+10=22 is enough
 );
 
-quantize quantize(
+fc_quantize fc_quantize(
 .clk(clk),
 .srstn(srstn),
 .fc_state(fc_state),						//From controller, fc_state = 0: fc1, fc_state = 1: fc2

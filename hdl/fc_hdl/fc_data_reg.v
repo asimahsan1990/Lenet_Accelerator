@@ -3,7 +3,7 @@
  * File : data_reg.v
  */
 
- module data_reg#(
+ module fc_data_reg#(
     parameter DATA_NUM = 20,
     parameter DATA_WIDTH = 8,
     parameter DATA_NUM_PER_SRAM_ADDR = 4,

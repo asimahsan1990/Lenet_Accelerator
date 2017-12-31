@@ -2,7 +2,7 @@
  * Editor : Steven
  * File : quantize.v
  */
-module quantize(
+module fc_quantize(
 input clk,
 input srstn,
 input fc_state,					//fc_state = 0: fc1, fc_state = 1: fc2
