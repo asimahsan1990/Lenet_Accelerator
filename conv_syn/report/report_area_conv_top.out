@@ -1,0 +1,142 @@
+ 
+****************************************
+Report : area
+Design : conv_top
+Version: G-2012.06-SP5
+Date   : Sun Dec 31 15:37:30 2017
+****************************************
+
+Library(s) Used:
+
+    saed32hvt_ss0p95v125c (File: /usr/cadtool/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db)
+
+Number of ports:                          964
+Number of nets:                          1510
+Number of cells:                           23
+Number of combinational cells:             17
+Number of sequential cells:                 0
+Number of macros:                           0
+Number of buf/inv:                         17
+Number of references:                       8
+
+Combinational area:       38393.025405
+Buf/Inv area:             2275.605381
+Noncombinational area:    13244.968420
+Net Interconnect area:    14871.425401 
+
+Total cell area:          51637.993825
+Total area:               66509.419226
+
+Hierarchical area distribution
+------------------------------
+
+                                  Global cell area            Local cell area
+                                  -------------------  ------------------------------ 
+Hierarchical cell                 Absolute    Percent  Combi-      Noncombi-   Black
+                                  Total       Total    national    national    boxes   Design
+--------------------------------  ----------  -------  ----------  ----------  ------  ---------------------------------------------
+conv_top                          51637.9938    100.0     58.9614      0.0000  0.0000  conv_top
+bias_sel                           3790.8119      7.3   1374.1566   2240.5335  0.0000  bias_sel
+bias_sel/clk_gate_bias_data_reg       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_1
+bias_sel/clk_gate_conv_weight_box_reg_0_
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_0
+bias_sel/clk_gate_conv_weight_box_reg_10_
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_17
+bias_sel/clk_gate_conv_weight_box_reg_12_
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_16
+bias_sel/clk_gate_conv_weight_box_reg_15_
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_15
+bias_sel/clk_gate_conv_weight_box_reg_17_
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_14
+bias_sel/clk_gate_conv_weight_box_reg_20_
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_13
+bias_sel/clk_gate_conv_weight_box_reg_22_
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_12
+bias_sel/clk_gate_conv_weight_box_reg_25_
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_11
+bias_sel/clk_gate_conv_weight_box_reg_27_
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_10
+bias_sel/clk_gate_conv_weight_box_reg_2_
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_20
+bias_sel/clk_gate_conv_weight_box_reg_30_
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_9
+bias_sel/clk_gate_conv_weight_box_reg_32_
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_8
+bias_sel/clk_gate_conv_weight_box_reg_35_
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_7
+bias_sel/clk_gate_conv_weight_box_reg_37_
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_6
+bias_sel/clk_gate_conv_weight_box_reg_40_
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_5
+bias_sel/clk_gate_conv_weight_box_reg_42_
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_4
+bias_sel/clk_gate_conv_weight_box_reg_45_
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_3
+bias_sel/clk_gate_conv_weight_box_reg_47_
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_2
+bias_sel/clk_gate_conv_weight_box_reg_5_
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_19
+bias_sel/clk_gate_conv_weight_box_reg_7_
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_18
+conv_control                       8577.1058     16.6   4333.9176   4016.7458  0.0000  conv_control
+conv_control/clk_gate_addr_change_reg
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_19
+conv_control/clk_gate_channel_cnt_reg
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_20
+conv_control/clk_gate_col_reg         8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0
+conv_control/clk_gate_delay1_sram_waddr_b_reg
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_23
+conv_control/clk_gate_delay1_sram_waddr_c_reg
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_22
+conv_control/clk_gate_delay1_sram_waddr_d_reg
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_21
+conv_control/clk_gate_sram_raddr_a0_reg
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_12
+conv_control/clk_gate_sram_raddr_a1_reg
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_17
+conv_control/clk_gate_sram_raddr_a2_reg
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_14
+conv_control/clk_gate_sram_raddr_a3_reg
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_11
+conv_control/clk_gate_sram_raddr_a4_reg
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_16
+conv_control/clk_gate_sram_raddr_a5_reg
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_13
+conv_control/clk_gate_sram_raddr_a6_reg
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_10
+conv_control/clk_gate_sram_raddr_a7_reg
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_18
+conv_control/clk_gate_sram_raddr_a8_reg
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_15
+conv_control/clk_gate_sram_raddr_b0_reg
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_7
+conv_control/clk_gate_sram_raddr_b1_reg
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_6
+conv_control/clk_gate_sram_raddr_b2_reg
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_5
+conv_control/clk_gate_sram_raddr_b3_reg
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_4
+conv_control/clk_gate_sram_raddr_b4_reg
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_3
+conv_control/clk_gate_sram_raddr_b5_reg
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_2
+conv_control/clk_gate_sram_raddr_b6_reg
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1
+conv_control/clk_gate_sram_raddr_b7_reg
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_9
+conv_control/clk_gate_sram_raddr_b8_reg
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_8
+conv_control/clk_gate_sram_raddr_weight_reg
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_25
+conv_control/clk_gate_sram_raddr_weight_reg_0
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_24
+conv_control/clk_gate_weight_cnt_reg
+                                      8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_26
+data_reg                          10528.1692     20.4   4808.9128   5719.2565  0.0000  data_reg
+fsm                                  35.8343      0.1     13.7238     22.1105  0.0000  fsm
+multiply_compare                  27878.8339     54.0  26935.4514    943.3825  0.0000  multiply_compare
+quantize                            768.2773      1.5    709.3159     58.9614  0.0000  quantize
+--------------------------------  ----------  -------  ----------  ----------  ------  ---------------------------------------------
+Total                                                  38393.0254  13244.9684  0.0000
+
+1
