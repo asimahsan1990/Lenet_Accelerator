@@ -115,7 +115,7 @@ wire signed [7:0] out;
 reg [7:0] mem[0:32*32-1];
 
 //====== top connection =====
-conv_top #(.WEIGHT_WIDTH(4),.WEIGHT_NUM(25),.DATA_WIDTH(8),.DATA_NUM_PER_SRAM_ADDR(4))
+conv_top //#(.WEIGHT_WIDTH(4),.WEIGHT_NUM(25),.DATA_WIDTH(8),.DATA_NUM_PER_SRAM_ADDR(4))
 conv_top (
 .clk(clk),
 .srstn(srstn),
@@ -529,9 +529,20 @@ sram_128x32b sram_128x32b_d4(
 );
 
 //dump wave file
-initial begin
+/*initial begin
   $fsdbDumpfile("conv_test.fsdb");  	       // "gray.fsdb" can be replaced into any name you want
   $fsdbDumpvars("+mda");              		   // but make sure in .fsdb format
+end*/
+
+initial begin
+`ifdef GATESIM
+    $fsdbDumpfile("conv_test_syn.fsdb");
+    $fsdbDumpvars("+mda");  
+    $sdf_annotate("../conv_syn/netlist/conv_top_syn.sdf",conv_top);
+`else
+    $fsdbDumpfile("conv_test.fsdb");
+    $fsdbDumpvars("+mda");  
+`endif
 end
 
 //====== clock generation =====
