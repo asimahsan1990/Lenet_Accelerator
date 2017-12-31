@@ -11,6 +11,7 @@ localparam SRAM_DATA_WIDTH = 32,  WEIGHT_WIDTH = 4;
 localparam CONV_WEIGHT_NUM = 25, CONV_WEIGHT_ADDR_WIDTH = 17;
 localparam FC_WEIGHT_NUM = 20, FC_WEIGHT_ADDR_WIDTH = 15;
 
+reg [7:0] mem[0:32*32-1];
 //====== module I/O =====
 reg clk;
 reg srstn;
