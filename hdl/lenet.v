@@ -224,6 +224,7 @@ conv_top conv_top
 .sram_bytemask_d(sram_bytemask_d),
 .sram_waddr_d(sram_waddr_d),
 .sram_wdata_d(sram_wdata_d),
+.conv1_done(),
 .conv_done(conv_done),
 .mem_sel(mem_sel)
 );
@@ -276,10 +277,10 @@ fc_top fc_top
 
 //Write SRAM e0~e4
 .sram_write_enable_e0(sram_write_enable_e0),
-.sram_write_enable_e0(sram_write_enable_e1),
-.sram_write_enable_e0(sram_write_enable_e2),
-.sram_write_enable_e0(sram_write_enable_e3),
-.sram_write_enable_e0(sram_write_enable_e4),
+.sram_write_enable_e1(sram_write_enable_e1),
+.sram_write_enable_e2(sram_write_enable_e2),
+.sram_write_enable_e3(sram_write_enable_e3),
+.sram_write_enable_e4(sram_write_enable_e4),
 .sram_bytemask_e(sram_bytemask_e),
 .sram_waddr_e(sram_waddr_e),
 .sram_wdata_e(sram_wdata_e),
@@ -298,3 +299,5 @@ fc_top fc_top
 .fc1_done(fc1_done),
 .fc2_done(fc2_done)
 );
+
+endmodule

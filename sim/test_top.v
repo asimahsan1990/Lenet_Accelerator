@@ -422,8 +422,8 @@ sram_128x32b sram_128x32b_d0(
 .wsb(sram_write_enable_d0),
 .wdata(sram_wdata_d), 
 .waddr(sram_waddr_d), 
-.raddr(sram_raddr_d0), 
-.rdata({4'd0,sram_rdata_d0})
+.raddr({4'd0,sram_raddr_d0}), 
+.rdata(sram_rdata_d0)
 );
 
 sram_128x32b sram_128x32b_d1(
@@ -433,8 +433,8 @@ sram_128x32b sram_128x32b_d1(
 .wsb(sram_write_enable_d1),
 .wdata(sram_wdata_d), 
 .waddr(sram_waddr_d), 
-.raddr(sram_raddr_d1), 
-.rdata({4'd0,sram_rdata_d1})
+.raddr({4'd0,sram_raddr_d1}), 
+.rdata(sram_rdata_d1)
 );
 
 sram_128x32b sram_128x32b_d2(
@@ -444,8 +444,8 @@ sram_128x32b sram_128x32b_d2(
 .wsb(sram_write_enable_d2),
 .wdata(sram_wdata_d), 
 .waddr(sram_waddr_d), 
-.raddr(sram_raddr_d2), 
-.rdata({4'd0,sram_rdata_d2})
+.raddr({4'd0,sram_raddr_d2}), 
+.rdata(sram_rdata_d2)
 );
 
 sram_128x32b sram_128x32b_d3(
@@ -455,8 +455,8 @@ sram_128x32b sram_128x32b_d3(
 .wsb(sram_write_enable_d3),
 .wdata(sram_wdata_d), 
 .waddr(sram_waddr_d), 
-.raddr(sram_raddr_d3), 
-.rdata({4'd0,sram_rdata_d3})
+.raddr({4'd0,sram_raddr_d3}), 
+.rdata(sram_rdata_d3)
 );
 
 sram_128x32b sram_128x32b_d4(
@@ -466,8 +466,8 @@ sram_128x32b sram_128x32b_d4(
 .wsb(sram_write_enable_d4),
 .wdata(sram_wdata_d), 
 .waddr(sram_waddr_d), 
-.raddr(sram_raddr_d4), 
-.rdata({4'd0,sram_rdata_d4})
+.raddr({4'd0,sram_raddr_d4}), 
+.rdata(sram_rdata_d4)
 );
 
 /*=============================*/
@@ -608,8 +608,8 @@ sram_20250x80b sram_weight_fc(
 .rdata(fc_sram_rdata_weight)
 );
 
-lenet_top #(.WEIGHT_WIDTH(4),.WEIGHT_NUM(25),.DATA_WIDTH(8),.DATA_NUM_PER_SRAM_ADDR(4))
-lenet_top (
+lenet #(.WEIGHT_WIDTH(4),.WEIGHT_NUM(25),.DATA_WIDTH(8),.DATA_NUM_PER_SRAM_ADDR(4))
+lenet (
 	.clk(clk),
 	.srstn(srstn),
 /* CONTROL SIGNALS */
@@ -809,7 +809,7 @@ initial begin
 	for(i = 0; i < 20; i = i + 1)begin
 		sram_weight_conv.load_w(i,conv1_w[i]);
 	end
-	sram_weight_0.load_w(20,conv1_b[0]);
+	sram_weight_conv.load_w(20,conv1_b[0]);
 	for(i = 21; i < 1021; i = i + 1)begin
 		sram_weight_conv.load_w(i,conv2_w[i-21]);
 	end
@@ -843,6 +843,8 @@ initial begin
 	$write("|\n");
     $write("The input pattern is No.%d:\n", 0);
     $write("|\n");
+    $readmemh("golden/conv1_golden.dat",conv1_golden_sram);
+	$readmemb("golden/00/pool2_00.dat",pool2_golden_sram);
     display_sram;
     conv_start = 1'b0;
 	@(negedge clk);
@@ -1024,6 +1026,29 @@ initial begin
     $display("Total cycle count in CONV2 = %d.\n", cycle_cnt_conv2);
     $display("Total cycle count = %g\n", cycle_cnt_conv1+cycle_cnt_conv2);
 
+    /*================================*/
+	/*			FEED 2nd PHOTO  		  */
+	/*================================*/
+	bmp2sram(1);
+	$write("|\n");
+    $write("The input pattern is No.%d:\n", 1);
+    $write("|\n");
+    $readmemh("golden/01/pool1_01.dat",conv1_golden_sram);
+	$readmemb("golden/01/pool2_01.dat",pool2_golden_sram);
+    display_sram;
+    conv_start = 1'b0;
+	@(negedge clk);
+	conv_start = 1'b1;
+	@(negedge clk);
+	conv_start = 1'b0;
+	/*
+	while(~conv_done)begin    //it means sram a0 can be tested
+	    @(negedge clk);     
+	    begin
+	        cycle_cnt_conv2 = cycle_cnt_conv2 + 1;
+	    end
+	end
+	*/
     /*================================*/
 	/*			TEST FC 1  			  */
 	/*================================*/
