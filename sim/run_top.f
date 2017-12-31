@@ -1,5 +1,7 @@
 test_top.v
 
+../hdl/lenet.v
+
 ../hdl/conv_hdl/conv_top.v
 ../hdl/conv_hdl/fsm.v
 ../hdl/conv_hdl/conv_control.v

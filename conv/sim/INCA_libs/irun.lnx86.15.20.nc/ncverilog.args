@@ -1,9 +1,0 @@
-//
-// File created by:  ncverilog
-// Do not modify this file
-//
--f
-run_conv_gatesim.f
--w
--warnmax
-0
