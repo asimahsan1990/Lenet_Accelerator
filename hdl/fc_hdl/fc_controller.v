@@ -131,7 +131,7 @@ end
 always@ (posedge clk) begin
 	if(~srstn)
 		bytemask_sel <= 0;
-	else if(conv_done)
+	else if(fc2_done)
 		bytemask_sel <= 0;
 	else
 		bytemask_sel <= n_bytemask_sel;
