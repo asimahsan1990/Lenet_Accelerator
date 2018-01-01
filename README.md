@@ -4,7 +4,7 @@
 2. Folder Description:
 
 #### SIM
-###### All Parts have passed presim, gate_sim
+##### All Parts have passed nLint, presim, gate_sim
 > 1. testtop.v
 > 2. testconv.v
 > > Remember to set mem_sel 1 for testing c0-c4| mem_sel 0 for testing d0-d4
