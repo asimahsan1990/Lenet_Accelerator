@@ -614,6 +614,7 @@ lenet (
 	.srstn(srstn),
 /* CONTROL SIGNALS */
 	.conv_start(conv_start),
+	.fc_done(fc2_done),
 	.conv_done(conv_done),
 	.mem_sel(mem_sel),
 	.fc1_done(fc1_done),
@@ -1190,6 +1191,10 @@ initial begin
     /*================================*/
 	/*			TEST FC 2 (bmp01) 	  */
 	/*================================*/
+	while(~fc2_done)begin    //when break from this while, it means sram f can be tested
+        @(negedge clk);
+        cycle_cnt_fc2 = cycle_cnt_fc2 + 1;
+    end
 	$readmemh("golden/01/fc2_01.dat",fc2_golden);
 	while(~fc2_done)begin    //when break from this while, it means sram f can be tested
         @(negedge clk);

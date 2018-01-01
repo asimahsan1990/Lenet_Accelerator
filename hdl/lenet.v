@@ -14,6 +14,7 @@ input clk,
 input srstn,
 /***** conv_top *****/
 input conv_start,
+input fc_done,
 // Derive data from SRAM_a
 input [DATA_NUM_PER_SRAM_ADDR*DATA_WIDTH-1:0] sram_rdata_a0,
 input [DATA_NUM_PER_SRAM_ADDR*DATA_WIDTH-1:0] sram_rdata_a1,
@@ -158,6 +159,7 @@ conv_top conv_top
 .clk(clk),
 .srstn(srstn),
 .conv_start(conv_start),
+.fc_done(fc_done),
 .sram_raddr_weight(conv_sram_raddr_weight),
 .sram_rdata_weight(conv_sram_rdata_weight),
 .sram_raddr_a0(sram_raddr_a0),
