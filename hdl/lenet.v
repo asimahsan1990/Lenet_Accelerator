@@ -226,6 +226,7 @@ conv_top conv_top
 .sram_wdata_d(sram_wdata_d),
 .conv1_done(),
 .conv_done(conv_done),
+.fc_done(fc2_done),
 .mem_sel(mem_sel)
 );
 
