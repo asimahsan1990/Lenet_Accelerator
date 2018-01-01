@@ -12,6 +12,7 @@ module conv_top#(
 input clk,							//clock input
 input srstn,						//synchronous reset (active low)
 input conv_start,						//1: start (one-cycle pulse)
+input fc_done,
 
 // Derive data from SRAM_a
 input [DATA_NUM_PER_SRAM_ADDR*DATA_WIDTH-1:0] sram_rdata_a0,
@@ -126,6 +127,7 @@ assign sram_wdata_d = out;
 fsm fsm(
 .clk(clk),
 .srstn(srstn),
+.fc_done(fc_done),
 .conv_start(conv_start),
 .conv1_done(conv1_done),
 .conv_done(conv_done),
