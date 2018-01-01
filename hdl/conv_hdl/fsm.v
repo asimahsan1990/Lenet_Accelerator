@@ -36,7 +36,7 @@ always@* begin
 end
 
 always@* begin
-	if(conv_start) begin
+	if(conv_done) begin
 		n_mem_sel = ~mem_sel;
 	end
 	else begin
