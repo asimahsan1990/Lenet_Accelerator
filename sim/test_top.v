@@ -940,7 +940,7 @@ initial begin
             end
         end
     end
-    $display("Congratulations! YOU PASS 0 CONV2!!!!!");
+    $display("Congratulations! YOU PASS bmp00 CONV2!!!!!");
     $display("PAUL you are so cool!!!!!");
     $display("Total cycle count in CONV2 = %d.\n", cycle_cnt_conv2);
     $display("Total cycle count = %g\n", cycle_cnt_conv1+cycle_cnt_conv2);
@@ -986,7 +986,7 @@ initial begin
     end
 
     $write("|\n");
-    $display("Congratulations! YOU PASS 0 FC2!!!!!");
+    $display("Congratulations! YOU PASS bmp00 FC2!!!!!");
     $display("Steven you are so cool!!!!!");
     $display("Total cycle count in FC1 = %d.", cycle_cnt_fc1);
     $display("Total cycle count in FC2 = %d.", cycle_cnt_fc2);
@@ -1083,8 +1083,51 @@ initial begin
             end
         end
     end
-    $display("Congratulations! YOU PASS 2 CONV2!!!!!");
-    //$finish;
+    $display("Congratulations! YOU PASS bmp02 CONV2!!!!!");
+    while(~fc2_done)begin    //when break from this while, it means sram f can be tested
+        @(negedge clk);
+        cycle_cnt_fc2 = cycle_cnt_fc2 + 1;
+    end
+    @(negedge clk);
+    $readmemh("golden/02/fc2_02.dat",fc2_golden);
+	@(negedge clk);
+	while(~fc2_done)begin    //when break from this while, it means sram f can be tested
+        @(negedge clk);
+        cycle_cnt_fc2 = cycle_cnt_fc2 + 1;
+    end
+
+    for(i = 0; i < 3; i = i + 1)
+    	fc2_output[i] = sram_128x32b_f.mem[i];
+
+    for(i = 0; i < 2; i= i + 1)begin
+        if(fc2_output[i] == fc2_golden[i]) $write("sram #f address: %g PASS!!\n", i);
+        else begin
+            $write("You have wrong answer in the sram #f(bmp01) !!!\n\n");
+            $write("Your answer at address %d is \n%d %d %d %d  \n" ,i/5, $signed(fc2_output[i][31:24])
+                                                            , $signed(fc2_output[i][23:16])
+                                                            , $signed(fc2_output[i][15:8])
+                                                            , $signed(fc2_output[i][7:0]));
+            $write("But the golden answer is  \n%d %d %d %d \n" , $signed(fc2_golden[i][31:24])
+                                                                , $signed(fc2_golden[i][23:16])
+                                                                , $signed(fc2_golden[i][15:8])
+                                                                , $signed(fc2_golden[i][7:0]));
+            $finish;
+        end 
+    end
+
+    if(fc2_output[i][31:16] == fc2_golden[i][31:16])$write("sram #f address: 2 PASS!!\n",);
+    else begin
+        $write("You have wrong answer in the sram #f !!!\n\n");
+        $write("Your answer at address 3 is \n%d %d  \n"    , $signed(fc2_output[i][31:24])
+                                                            , $signed(fc2_output[i][23:16]));
+        $write("But the golden answer is  \n%d %d  \n"  , $signed(fc2_golden[i][31:24])
+                                                        , $signed(fc2_golden[i][23:16]));
+        $finish;
+    end
+
+    $write("|\n");
+    $display("Congratulations! YOU PASS bmp02 FC2!!!!!");
+    $finish;
 end
 
 /*================================*/
@@ -1138,7 +1181,7 @@ initial begin
             pool2_1d[i*20 + 16] = sram_128x32b_c4.mem[i][31:24];
             pool2_1d[i*20 + 17] = sram_128x32b_c4.mem[i][23:16];
             pool2_1d[i*20 + 18] = sram_128x32b_c4.mem[i][15:8];  
-            pool2_1d[i*20 + 19] = sram_128x32b_c4.mem[i][7:0];  
+            pool2_1d[i*20 + 19] = sram_128x32b_c4.mem[i][7:0];
         end
 	end
 	else begin
@@ -1187,15 +1230,17 @@ initial begin
             end
         end
     end
-    $display("Congratulations! YOU PASS 1 CONV2!!!!!");
+    $display("Congratulations! YOU PASS bmp01 CONV2!!!!!");
     /*================================*/
 	/*			TEST FC 2 (bmp01) 	  */
 	/*================================*/
+	
 	while(~fc2_done)begin    //when break from this while, it means sram f can be tested
         @(negedge clk);
         cycle_cnt_fc2 = cycle_cnt_fc2 + 1;
     end
 	$readmemh("golden/01/fc2_01.dat",fc2_golden);
+	@(negedge clk);
 	while(~fc2_done)begin    //when break from this while, it means sram f can be tested
         @(negedge clk);
         cycle_cnt_fc2 = cycle_cnt_fc2 + 1;
@@ -1231,9 +1276,9 @@ initial begin
     end
 
     $write("|\n");
-    $display("Congratulations! YOU PASS 1 FC2!!!!!");
+    $display("Congratulations! YOU PASS bmp01 FC2!!!!!");
 
-    $finish;
+    //$finish;
 end
 
 task bmp2sram(

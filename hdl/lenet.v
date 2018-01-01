@@ -159,7 +159,6 @@ conv_top conv_top
 .clk(clk),
 .srstn(srstn),
 .conv_start(conv_start),
-.fc_done(fc_done),
 .sram_raddr_weight(conv_sram_raddr_weight),
 .sram_rdata_weight(conv_sram_rdata_weight),
 .sram_raddr_a0(sram_raddr_a0),
