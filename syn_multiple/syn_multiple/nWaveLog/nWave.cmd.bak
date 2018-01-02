@@ -1,0 +1,1073 @@
+wvSetPosition -win $_nWave1 {("G1" 0)}
+wvOpenFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_syn.fsdb}
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple"
+wvGetSignalSetScope -win $wvExit
+ "/test_top_multiple/lenet_1"
+wvSetPosition -win $_nWave1 {("G1" 7)}
+wvSetPosition -win $_nWave1 {("G1" 7)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/test_top_multiple/lenet_1/conv_done} \
+{/test_top_multiple/lenet_1/conv_sram_raddr_weight\[16:0\]} \
+{/test_top_multiple/lenet_1/conv_sram_rdata_weight\[99:0\]} \
+{/test_top_multiple/lenet_1/conv_start} \
+{/test_top_multiple/lenet_1/fc1_done} \
+{/test_top_multiple/lenet_1/fc2_done} \
+{/test_top_multiple/lenet_1/fc_done} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvSelectSignal -win $_nWave1 {( "G1" 1 2 3 4 5 6 7 )} 
+wvSetPosition -win $_nWave1 {("G1" 7)}
+wvGetSignalClose -win $_nWave1
+wvZoomAll -win $_nWave1
+wvZoom -win $_nWave1 28619713.796477 31163688.356164
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple/lenet_1"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple/lenet_1/U1"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple/lenet_1/U2"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple/lenet_1/lenet_0"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple/lenet_1/lenet_1"
+wvSetPosition -win $_nWave1 {("G1" 12)}
+wvSetPosition -win $_nWave1 {("G1" 12)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/test_top_multiple/lenet_1/conv_done} \
+{/test_top_multiple/lenet_1/conv_sram_raddr_weight\[16:0\]} \
+{/test_top_multiple/lenet_1/conv_sram_rdata_weight\[99:0\]} \
+{/test_top_multiple/lenet_1/conv_start} \
+{/test_top_multiple/lenet_1/fc1_done} \
+{/test_top_multiple/lenet_1/fc2_done} \
+{/test_top_multiple/lenet_1/fc_done} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c0\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c1\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c2\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c3\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c4\[31:0\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvSelectSignal -win $_nWave1 {( "G1" 8 9 10 11 12 )} 
+wvSetPosition -win $_nWave1 {("G1" 12)}
+wvGetSignalClose -win $_nWave1
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple/lenet_1"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple/lenet_1/lenet_1"
+wvSetPosition -win $_nWave1 {("G1" 15)}
+wvSetPosition -win $_nWave1 {("G1" 15)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/test_top_multiple/lenet_1/conv_done} \
+{/test_top_multiple/lenet_1/conv_sram_raddr_weight\[16:0\]} \
+{/test_top_multiple/lenet_1/conv_sram_rdata_weight\[99:0\]} \
+{/test_top_multiple/lenet_1/conv_start} \
+{/test_top_multiple/lenet_1/fc1_done} \
+{/test_top_multiple/lenet_1/fc2_done} \
+{/test_top_multiple/lenet_1/fc_done} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c0\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c1\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c2\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c3\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c4\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_bytemask_c\[3:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_waddr_c\[9:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_wdata_c\[7:0\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvSelectSignal -win $_nWave1 {( "G1" 13 14 15 )} 
+wvSetPosition -win $_nWave1 {("G1" 15)}
+wvGetSignalClose -win $_nWave1
+wvZoomAll -win $_nWave1
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple/lenet_1"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple/lenet_1/lenet_1"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple/lenet_1/lenet_1"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple/lenet_1/lenet_0"
+wvSetPosition -win $_nWave1 {("G1" 16)}
+wvSetPosition -win $_nWave1 {("G1" 16)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/test_top_multiple/lenet_1/conv_done} \
+{/test_top_multiple/lenet_1/conv_sram_raddr_weight\[16:0\]} \
+{/test_top_multiple/lenet_1/conv_sram_rdata_weight\[99:0\]} \
+{/test_top_multiple/lenet_1/conv_start} \
+{/test_top_multiple/lenet_1/fc1_done} \
+{/test_top_multiple/lenet_1/fc2_done} \
+{/test_top_multiple/lenet_1/fc_done} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c0\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c1\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c2\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c3\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c4\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_bytemask_c\[3:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_waddr_c\[9:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_wdata_c\[7:0\]} \
+{/test_top_multiple/lenet_1/lenet_0/conv_done} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvSelectSignal -win $_nWave1 {( "G1" 16 )} 
+wvSetPosition -win $_nWave1 {("G1" 16)}
+wvGetSignalClose -win $_nWave1
+wvZoomAll -win $_nWave1
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple/lenet_1"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple/lenet_1/lenet_0"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple/lenet_1/lenet_1"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple/lenet_1/lenet_0"
+wvSetPosition -win $_nWave1 {("G1" 17)}
+wvSetPosition -win $_nWave1 {("G1" 17)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/test_top_multiple/lenet_1/conv_done} \
+{/test_top_multiple/lenet_1/conv_sram_raddr_weight\[16:0\]} \
+{/test_top_multiple/lenet_1/conv_sram_rdata_weight\[99:0\]} \
+{/test_top_multiple/lenet_1/conv_start} \
+{/test_top_multiple/lenet_1/fc1_done} \
+{/test_top_multiple/lenet_1/fc2_done} \
+{/test_top_multiple/lenet_1/fc_done} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c0\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c1\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c2\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c3\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c4\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_bytemask_c\[3:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_waddr_c\[9:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_wdata_c\[7:0\]} \
+{/test_top_multiple/lenet_1/lenet_0/conv_done} \
+{/test_top_multiple/lenet_1/lenet_0/sram_wdata_c\[7:0\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvSelectSignal -win $_nWave1 {( "G1" 17 )} 
+wvSetPosition -win $_nWave1 {("G1" 17)}
+wvGetSignalClose -win $_nWave1
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple/lenet_1"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple/lenet_1/lenet_0"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple/lenet_1/lenet_1"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple/lenet_1/lenet_0"
+wvZoom -win $_nWave1 0.000000 3052769.471624
+wvZoomOut -win $_nWave1
+wvSetCursor -win $_nWave1 1330234.838255 -snap {("G2" 0)}
+wvSetCursor -win $_nWave1 1728508.741924 -snap {("G2" 0)}
+wvDisplayGridCount -win $_nWave1 -off
+wvGetSignalClose -win $_nWave1
+wvReloadFile -win $_nWave1
+wvSelectSignal -win $_nWave1 {( "G1" 15 )} 
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple/sram_128x32b_c0"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple/sram_128x32b_c0_1"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple/sram_128x32b_c0"
+wvSetPosition -win $_nWave1 {("G1" 19)}
+wvSetPosition -win $_nWave1 {("G1" 19)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/test_top_multiple/lenet_1/conv_done} \
+{/test_top_multiple/lenet_1/conv_sram_raddr_weight\[16:0\]} \
+{/test_top_multiple/lenet_1/conv_sram_rdata_weight\[99:0\]} \
+{/test_top_multiple/lenet_1/conv_start} \
+{/test_top_multiple/lenet_1/fc1_done} \
+{/test_top_multiple/lenet_1/fc2_done} \
+{/test_top_multiple/lenet_1/fc_done} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c0\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c1\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c2\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c3\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c4\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_bytemask_c\[3:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_waddr_c\[9:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_wdata_c\[7:0\]} \
+{/test_top_multiple/lenet_1/lenet_0/conv_done} \
+{/test_top_multiple/lenet_1/lenet_0/sram_wdata_c\[7:0\]} \
+{/test_top_multiple/sram_128x32b_c0/waddr\[9:0\]} \
+{/test_top_multiple/sram_128x32b_c0/wdata\[7:0\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvSelectSignal -win $_nWave1 {( "G1" 18 19 )} 
+wvSetPosition -win $_nWave1 {("G1" 19)}
+wvGetSignalClose -win $_nWave1
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple/lenet_1"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple/lenet_1/lenet_0"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple/lenet_1/lenet_1"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple/sram_128x32b_c0"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple/sram_128x32b_c0_1"
+wvSetPosition -win $_nWave1 {("G1" 21)}
+wvSetPosition -win $_nWave1 {("G1" 21)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/test_top_multiple/lenet_1/conv_done} \
+{/test_top_multiple/lenet_1/conv_sram_raddr_weight\[16:0\]} \
+{/test_top_multiple/lenet_1/conv_sram_rdata_weight\[99:0\]} \
+{/test_top_multiple/lenet_1/conv_start} \
+{/test_top_multiple/lenet_1/fc1_done} \
+{/test_top_multiple/lenet_1/fc2_done} \
+{/test_top_multiple/lenet_1/fc_done} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c0\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c1\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c2\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c3\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c4\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_bytemask_c\[3:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_waddr_c\[9:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_wdata_c\[7:0\]} \
+{/test_top_multiple/lenet_1/lenet_0/conv_done} \
+{/test_top_multiple/lenet_1/lenet_0/sram_wdata_c\[7:0\]} \
+{/test_top_multiple/sram_128x32b_c0/waddr\[9:0\]} \
+{/test_top_multiple/sram_128x32b_c0/wdata\[7:0\]} \
+{/test_top_multiple/sram_128x32b_c0_1/waddr\[9:0\]} \
+{/test_top_multiple/sram_128x32b_c0_1/wdata\[7:0\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvSelectSignal -win $_nWave1 {( "G1" 20 21 )} 
+wvSetPosition -win $_nWave1 {("G1" 21)}
+wvGetSignalClose -win $_nWave1
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple/lenet_1"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple/lenet_1/lenet_0"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple/lenet_1/lenet_1"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple/sram_128x32b_c0"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple/sram_128x32b_c0_1"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple"
+wvSetPosition -win $_nWave1 {("G1" 22)}
+wvSetPosition -win $_nWave1 {("G1" 22)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/test_top_multiple/lenet_1/conv_done} \
+{/test_top_multiple/lenet_1/conv_sram_raddr_weight\[16:0\]} \
+{/test_top_multiple/lenet_1/conv_sram_rdata_weight\[99:0\]} \
+{/test_top_multiple/lenet_1/conv_start} \
+{/test_top_multiple/lenet_1/fc1_done} \
+{/test_top_multiple/lenet_1/fc2_done} \
+{/test_top_multiple/lenet_1/fc_done} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c0\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c1\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c2\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c3\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c4\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_bytemask_c\[3:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_waddr_c\[9:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_wdata_c\[7:0\]} \
+{/test_top_multiple/lenet_1/lenet_0/conv_done} \
+{/test_top_multiple/lenet_1/lenet_0/sram_wdata_c\[7:0\]} \
+{/test_top_multiple/sram_128x32b_c0/waddr\[9:0\]} \
+{/test_top_multiple/sram_128x32b_c0/wdata\[7:0\]} \
+{/test_top_multiple/sram_128x32b_c0_1/waddr\[9:0\]} \
+{/test_top_multiple/sram_128x32b_c0_1/wdata\[7:0\]} \
+{/test_top_multiple/mem_sel} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvSelectSignal -win $_nWave1 {( "G1" 22 )} 
+wvSetPosition -win $_nWave1 {("G1" 22)}
+wvGetSignalClose -win $_nWave1
+wvDisplayGridCount -win $_nWave1 -off
+wvGetSignalClose -win $_nWave1
+wvReloadFile -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomOut -win $_nWave1
+wvZoomIn -win $_nWave1
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple"
+wvSetPosition -win $_nWave1 {("G1" 23)}
+wvSetPosition -win $_nWave1 {("G1" 23)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/test_top_multiple/lenet_1/conv_done} \
+{/test_top_multiple/lenet_1/conv_sram_raddr_weight\[16:0\]} \
+{/test_top_multiple/lenet_1/conv_sram_rdata_weight\[99:0\]} \
+{/test_top_multiple/lenet_1/conv_start} \
+{/test_top_multiple/lenet_1/fc1_done} \
+{/test_top_multiple/lenet_1/fc2_done} \
+{/test_top_multiple/lenet_1/fc_done} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c0\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c1\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c2\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c3\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c4\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_bytemask_c\[3:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_waddr_c\[9:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_wdata_c\[7:0\]} \
+{/test_top_multiple/lenet_1/lenet_0/conv_done} \
+{/test_top_multiple/lenet_1/lenet_0/sram_wdata_c\[7:0\]} \
+{/test_top_multiple/sram_128x32b_c0/waddr\[9:0\]} \
+{/test_top_multiple/sram_128x32b_c0/wdata\[7:0\]} \
+{/test_top_multiple/sram_128x32b_c0_1/waddr\[9:0\]} \
+{/test_top_multiple/sram_128x32b_c0_1/wdata\[7:0\]} \
+{/test_top_multiple/mem_sel} \
+{/test_top_multiple/conv_done} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvSelectSignal -win $_nWave1 {( "G1" 23 )} 
+wvSetPosition -win $_nWave1 {("G1" 23)}
+wvGetSignalClose -win $_nWave1
+wvZoomAll -win $_nWave1
+wvSelectSignal -win $_nWave1 {( "G1" 15 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 16 )} 
+wvCut -win $_nWave1
+wvSetPosition -win $_nWave1 {("G2" 0)}
+wvSetPosition -win $_nWave1 {("G1" 22)}
+wvSelectSignal -win $_nWave1 {( "G1" 1 )} 
+wvCut -win $_nWave1
+wvSetPosition -win $_nWave1 {("G2" 0)}
+wvSetPosition -win $_nWave1 {("G1" 21)}
+wvSelectSignal -win $_nWave1 {( "G1" 6 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 4 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 4 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 5 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 4 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 5 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 6 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 3 )} 
+wvZoom -win $_nWave1 0.000000 1430602.739726
+wvZoomAll -win $_nWave1
+wvSelectSignal -win $_nWave1 {( "G1" 21 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 20 )} 
+wvDisplayGridCount -win $_nWave1 -off
+wvGetSignalClose -win $_nWave1
+wvReloadFile -win $_nWave1
+wvSelectSignal -win $_nWave1 {( "G1" 20 )} 
+wvZoomOut -win $_nWave1
+wvZoomIn -win $_nWave1
+wvZoomAll -win $_nWave1
+wvZoomAll -win $_nWave1
+wvSetCursor -win $_nWave1 438349.059035 -snap {("G2" 0)}
+wvSetCursor -win $_nWave1 843458.378995 -snap {("G2" 0)}
+wvSetCursor -win $_nWave1 602470.270711 -snap {("G2" 0)}
+wvSelectGroup -win $_nWave1 {G2}
+wvSelectGroup -win $_nWave1 {G2}
+wvOpenFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_gate.fsdb}
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim"
+wvSetPosition -win $_nWave1 {("G1" 22)}
+wvSetPosition -win $_nWave1 {("G1" 22)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_syn.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple/lenet_1/conv_sram_raddr_weight\[16:0\]} \
+{/test_top_multiple/lenet_1/conv_sram_rdata_weight\[99:0\]} \
+{/test_top_multiple/lenet_1/conv_start} \
+{/test_top_multiple/lenet_1/fc1_done} \
+{/test_top_multiple/lenet_1/fc2_done} \
+{/test_top_multiple/lenet_1/fc_done} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c0\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c1\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c2\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c3\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c4\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_bytemask_c\[3:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_waddr_c\[9:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_wdata_c\[7:0\]} \
+{/test_top_multiple/lenet_1/lenet_0/sram_wdata_c\[7:0\]} \
+{/test_top_multiple/sram_128x32b_c0/waddr\[9:0\]} \
+{/test_top_multiple/sram_128x32b_c0/wdata\[7:0\]} \
+{/test_top_multiple/sram_128x32b_c0_1/waddr\[9:0\]} \
+{/test_top_multiple/sram_128x32b_c0_1/wdata\[7:0\]} \
+{/test_top_multiple/mem_sel} \
+{/test_top_multiple/conv_done} \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_gate.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple_gatesim/mem_sel} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvCollapseGroup -win $_nWave1 "G2"
+wvSelectSignal -win $_nWave1 {( "G1" 22 )} 
+wvSetPosition -win $_nWave1 {("G1" 22)}
+wvGetSignalClose -win $_nWave1
+wvZoomAll -win $_nWave1
+wvSetActiveFile -win $_nWave1 -applyAnnotation off \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_syn.fsdb}
+wvSetActiveFile -win $_nWave1 -applyAnnotation off \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_gate.fsdb}
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim"
+wvSetPosition -win $_nWave1 {("G1" 23)}
+wvSetPosition -win $_nWave1 {("G1" 23)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_syn.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple/lenet_1/conv_sram_raddr_weight\[16:0\]} \
+{/test_top_multiple/lenet_1/conv_sram_rdata_weight\[99:0\]} \
+{/test_top_multiple/lenet_1/conv_start} \
+{/test_top_multiple/lenet_1/fc1_done} \
+{/test_top_multiple/lenet_1/fc2_done} \
+{/test_top_multiple/lenet_1/fc_done} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c0\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c1\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c2\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c3\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c4\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_bytemask_c\[3:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_waddr_c\[9:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_wdata_c\[7:0\]} \
+{/test_top_multiple/lenet_1/lenet_0/sram_wdata_c\[7:0\]} \
+{/test_top_multiple/sram_128x32b_c0/waddr\[9:0\]} \
+{/test_top_multiple/sram_128x32b_c0/wdata\[7:0\]} \
+{/test_top_multiple/sram_128x32b_c0_1/waddr\[9:0\]} \
+{/test_top_multiple/sram_128x32b_c0_1/wdata\[7:0\]} \
+{/test_top_multiple/mem_sel} \
+{/test_top_multiple/conv_done} \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_gate.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple_gatesim/mem_sel} \
+{/test_top_multiple_gatesim/conv_done} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvCollapseGroup -win $_nWave1 "G2"
+wvSelectSignal -win $_nWave1 {( "G1" 23 )} 
+wvSetPosition -win $_nWave1 {("G1" 23)}
+wvGetSignalClose -win $_nWave1
+wvZoomAll -win $_nWave1
+wvZoomAll -win $_nWave1
+wvZoomAll -win $_nWave1
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim/sram_128x32b_a2"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim/sram_128x32b_a4"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim/sram_128x32b_b0_1"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim/sram_128x32b_c0_1"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim/sram_128x32b_c0_1"
+wvSetPosition -win $_nWave1 {("G1" 24)}
+wvSetPosition -win $_nWave1 {("G1" 24)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_syn.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple/lenet_1/conv_sram_raddr_weight\[16:0\]} \
+{/test_top_multiple/lenet_1/conv_sram_rdata_weight\[99:0\]} \
+{/test_top_multiple/lenet_1/conv_start} \
+{/test_top_multiple/lenet_1/fc1_done} \
+{/test_top_multiple/lenet_1/fc2_done} \
+{/test_top_multiple/lenet_1/fc_done} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c0\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c1\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c2\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c3\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c4\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_bytemask_c\[3:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_waddr_c\[9:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_wdata_c\[7:0\]} \
+{/test_top_multiple/lenet_1/lenet_0/sram_wdata_c\[7:0\]} \
+{/test_top_multiple/sram_128x32b_c0/waddr\[9:0\]} \
+{/test_top_multiple/sram_128x32b_c0/wdata\[7:0\]} \
+{/test_top_multiple/sram_128x32b_c0_1/waddr\[9:0\]} \
+{/test_top_multiple/sram_128x32b_c0_1/wdata\[7:0\]} \
+{/test_top_multiple/mem_sel} \
+{/test_top_multiple/conv_done} \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_gate.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple_gatesim/mem_sel} \
+{/test_top_multiple_gatesim/conv_done} \
+{/test_top_multiple_gatesim/sram_128x32b_c0_1/mem\[0:255\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvCollapseGroup -win $_nWave1 "G2"
+wvSelectSignal -win $_nWave1 {( "G1" 24 )} 
+wvSetPosition -win $_nWave1 {("G1" 24)}
+wvGetSignalClose -win $_nWave1
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim/sram_128x32b_c0_1"
+wvGetSignalSetScope -win $_nWave1 \
+           "/test_top_multiple_gatesim/sram_128x32b_c0_1/display"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim/sram_128x32b_c0_1"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim"
+wvSetPosition -win $_nWave1 {("G1" 26)}
+wvSetPosition -win $_nWave1 {("G1" 26)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_syn.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple/lenet_1/conv_sram_raddr_weight\[16:0\]} \
+{/test_top_multiple/lenet_1/conv_sram_rdata_weight\[99:0\]} \
+{/test_top_multiple/lenet_1/conv_start} \
+{/test_top_multiple/lenet_1/fc1_done} \
+{/test_top_multiple/lenet_1/fc2_done} \
+{/test_top_multiple/lenet_1/fc_done} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c0\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c1\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c2\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c3\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c4\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_bytemask_c\[3:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_waddr_c\[9:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_wdata_c\[7:0\]} \
+{/test_top_multiple/lenet_1/lenet_0/sram_wdata_c\[7:0\]} \
+{/test_top_multiple/sram_128x32b_c0/waddr\[9:0\]} \
+{/test_top_multiple/sram_128x32b_c0/wdata\[7:0\]} \
+{/test_top_multiple/sram_128x32b_c0_1/waddr\[9:0\]} \
+{/test_top_multiple/sram_128x32b_c0_1/wdata\[7:0\]} \
+{/test_top_multiple/mem_sel} \
+{/test_top_multiple/conv_done} \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_gate.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple_gatesim/mem_sel} \
+{/test_top_multiple_gatesim/conv_done} \
+{/test_top_multiple_gatesim/sram_128x32b_c0_1/mem\[0:255\]} \
+{/test_top_multiple_gatesim/sram_waddr_c\[9:0\]} \
+{/test_top_multiple_gatesim/sram_write_enable_c0} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvCollapseGroup -win $_nWave1 "G2"
+wvSelectSignal -win $_nWave1 {( "G1" 25 26 )} 
+wvSetPosition -win $_nWave1 {("G1" 26)}
+wvGetSignalClose -win $_nWave1
+wvZoomAll -win $_nWave1
+wvSetActiveFile -win $_nWave1 -applyAnnotation off \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_syn.fsdb}
+wvSelectSignal -win $_nWave1 {( "G1" 13 )} 
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple"
+wvSetPosition -win $_nWave1 {("G1" 27)}
+wvSetPosition -win $_nWave1 {("G1" 27)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/test_top_multiple/lenet_1/conv_sram_raddr_weight\[16:0\]} \
+{/test_top_multiple/lenet_1/conv_sram_rdata_weight\[99:0\]} \
+{/test_top_multiple/lenet_1/conv_start} \
+{/test_top_multiple/lenet_1/fc1_done} \
+{/test_top_multiple/lenet_1/fc2_done} \
+{/test_top_multiple/lenet_1/fc_done} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c0\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c1\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c2\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c3\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c4\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_bytemask_c\[3:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_waddr_c\[9:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_wdata_c\[7:0\]} \
+{/test_top_multiple/lenet_1/lenet_0/sram_wdata_c\[7:0\]} \
+{/test_top_multiple/sram_128x32b_c0/waddr\[9:0\]} \
+{/test_top_multiple/sram_128x32b_c0/wdata\[7:0\]} \
+{/test_top_multiple/sram_128x32b_c0_1/waddr\[9:0\]} \
+{/test_top_multiple/sram_128x32b_c0_1/wdata\[7:0\]} \
+{/test_top_multiple/mem_sel} \
+{/test_top_multiple/conv_done} \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_gate.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple_gatesim/mem_sel} \
+{/test_top_multiple_gatesim/conv_done} \
+{/test_top_multiple_gatesim/sram_128x32b_c0_1/mem\[0:255\]} \
+{/test_top_multiple_gatesim/sram_waddr_c\[9:0\]} \
+{/test_top_multiple_gatesim/sram_write_enable_c0} \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_syn.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple/sram_waddr_d\[9:0\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvCollapseGroup -win $_nWave1 "G2"
+wvSelectSignal -win $_nWave1 {( "G1" 27 )} 
+wvSetPosition -win $_nWave1 {("G1" 27)}
+wvGetSignalClose -win $_nWave1
+wvSetActiveFile -win $_nWave1 -applyAnnotation off \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_gate.fsdb}
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim/sram_128x32b_c0_1"
+wvGetSignalSetScope -win $_nWave1 \
+           "/test_top_multiple_gatesim/sram_128x32b_c0_1/display"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim"
+wvSetPosition -win $_nWave1 {("G1" 28)}
+wvSetPosition -win $_nWave1 {("G1" 28)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_syn.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple/lenet_1/conv_sram_raddr_weight\[16:0\]} \
+{/test_top_multiple/lenet_1/conv_sram_rdata_weight\[99:0\]} \
+{/test_top_multiple/lenet_1/conv_start} \
+{/test_top_multiple/lenet_1/fc1_done} \
+{/test_top_multiple/lenet_1/fc2_done} \
+{/test_top_multiple/lenet_1/fc_done} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c0\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c1\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c2\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c3\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c4\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_bytemask_c\[3:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_waddr_c\[9:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_wdata_c\[7:0\]} \
+{/test_top_multiple/lenet_1/lenet_0/sram_wdata_c\[7:0\]} \
+{/test_top_multiple/sram_128x32b_c0/waddr\[9:0\]} \
+{/test_top_multiple/sram_128x32b_c0/wdata\[7:0\]} \
+{/test_top_multiple/sram_128x32b_c0_1/waddr\[9:0\]} \
+{/test_top_multiple/sram_128x32b_c0_1/wdata\[7:0\]} \
+{/test_top_multiple/mem_sel} \
+{/test_top_multiple/conv_done} \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_gate.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple_gatesim/mem_sel} \
+{/test_top_multiple_gatesim/conv_done} \
+{/test_top_multiple_gatesim/sram_128x32b_c0_1/mem\[0:255\]} \
+{/test_top_multiple_gatesim/sram_waddr_c\[9:0\]} \
+{/test_top_multiple_gatesim/sram_write_enable_c0} \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_syn.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple/sram_waddr_d\[9:0\]} \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_gate.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple_gatesim/sram_write_enable_d0} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvCollapseGroup -win $_nWave1 "G2"
+wvSelectSignal -win $_nWave1 {( "G1" 28 )} 
+wvSetPosition -win $_nWave1 {("G1" 28)}
+wvGetSignalClose -win $_nWave1
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim/sram_128x32b_c0_1"
+wvGetSignalSetScope -win $_nWave1 \
+           "/test_top_multiple_gatesim/sram_128x32b_c0_1/display"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim"
+wvSetPosition -win $_nWave1 {("G1" 29)}
+wvSetPosition -win $_nWave1 {("G1" 29)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_syn.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple/lenet_1/conv_sram_raddr_weight\[16:0\]} \
+{/test_top_multiple/lenet_1/conv_sram_rdata_weight\[99:0\]} \
+{/test_top_multiple/lenet_1/conv_start} \
+{/test_top_multiple/lenet_1/fc1_done} \
+{/test_top_multiple/lenet_1/fc2_done} \
+{/test_top_multiple/lenet_1/fc_done} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c0\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c1\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c2\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c3\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c4\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_bytemask_c\[3:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_waddr_c\[9:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_wdata_c\[7:0\]} \
+{/test_top_multiple/lenet_1/lenet_0/sram_wdata_c\[7:0\]} \
+{/test_top_multiple/sram_128x32b_c0/waddr\[9:0\]} \
+{/test_top_multiple/sram_128x32b_c0/wdata\[7:0\]} \
+{/test_top_multiple/sram_128x32b_c0_1/waddr\[9:0\]} \
+{/test_top_multiple/sram_128x32b_c0_1/wdata\[7:0\]} \
+{/test_top_multiple/mem_sel} \
+{/test_top_multiple/conv_done} \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_gate.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple_gatesim/mem_sel} \
+{/test_top_multiple_gatesim/conv_done} \
+{/test_top_multiple_gatesim/sram_128x32b_c0_1/mem\[0:255\]} \
+{/test_top_multiple_gatesim/sram_waddr_c\[9:0\]} \
+{/test_top_multiple_gatesim/sram_write_enable_c0} \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_syn.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple/sram_waddr_d\[9:0\]} \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_gate.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple_gatesim/sram_write_enable_d0} \
+{/test_top_multiple_gatesim/sram_rdata_d0_1\[31:0\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvCollapseGroup -win $_nWave1 "G2"
+wvSelectSignal -win $_nWave1 {( "G1" 29 )} 
+wvSetPosition -win $_nWave1 {("G1" 29)}
+wvGetSignalClose -win $_nWave1
+wvCut -win $_nWave1
+wvSetPosition -win $_nWave1 {("G2" 0)}
+wvSetPosition -win $_nWave1 {("G1" 28)}
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim/sram_128x32b_c0_1"
+wvGetSignalSetScope -win $_nWave1 \
+           "/test_top_multiple_gatesim/sram_128x32b_c0_1/display"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim"
+wvSetPosition -win $_nWave1 {("G1" 30)}
+wvSetPosition -win $_nWave1 {("G1" 30)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_syn.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple/lenet_1/conv_sram_raddr_weight\[16:0\]} \
+{/test_top_multiple/lenet_1/conv_sram_rdata_weight\[99:0\]} \
+{/test_top_multiple/lenet_1/conv_start} \
+{/test_top_multiple/lenet_1/fc1_done} \
+{/test_top_multiple/lenet_1/fc2_done} \
+{/test_top_multiple/lenet_1/fc_done} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c0\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c1\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c2\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c3\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c4\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_bytemask_c\[3:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_waddr_c\[9:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_wdata_c\[7:0\]} \
+{/test_top_multiple/lenet_1/lenet_0/sram_wdata_c\[7:0\]} \
+{/test_top_multiple/sram_128x32b_c0/waddr\[9:0\]} \
+{/test_top_multiple/sram_128x32b_c0/wdata\[7:0\]} \
+{/test_top_multiple/sram_128x32b_c0_1/waddr\[9:0\]} \
+{/test_top_multiple/sram_128x32b_c0_1/wdata\[7:0\]} \
+{/test_top_multiple/mem_sel} \
+{/test_top_multiple/conv_done} \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_gate.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple_gatesim/mem_sel} \
+{/test_top_multiple_gatesim/conv_done} \
+{/test_top_multiple_gatesim/sram_128x32b_c0_1/mem\[0:255\]} \
+{/test_top_multiple_gatesim/sram_waddr_c\[9:0\]} \
+{/test_top_multiple_gatesim/sram_write_enable_c0} \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_syn.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple/sram_waddr_d\[9:0\]} \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_gate.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple_gatesim/sram_write_enable_d0} \
+{/test_top_multiple_gatesim/sram_wdata_d\[7:0\]} \
+{/test_top_multiple_gatesim/sram_wdata_d_1\[7:0\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvCollapseGroup -win $_nWave1 "G2"
+wvSelectSignal -win $_nWave1 {( "G1" 29 30 )} 
+wvSetPosition -win $_nWave1 {("G1" 30)}
+wvGetSignalClose -win $_nWave1
+wvSetActiveFile -win $_nWave1 -applyAnnotation off \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_syn.fsdb}
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple"
+wvSetPosition -win $_nWave1 {("G1" 31)}
+wvSetPosition -win $_nWave1 {("G1" 31)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+{/test_top_multiple/lenet_1/conv_sram_raddr_weight\[16:0\]} \
+{/test_top_multiple/lenet_1/conv_sram_rdata_weight\[99:0\]} \
+{/test_top_multiple/lenet_1/conv_start} \
+{/test_top_multiple/lenet_1/fc1_done} \
+{/test_top_multiple/lenet_1/fc2_done} \
+{/test_top_multiple/lenet_1/fc_done} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c0\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c1\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c2\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c3\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c4\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_bytemask_c\[3:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_waddr_c\[9:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_wdata_c\[7:0\]} \
+{/test_top_multiple/lenet_1/lenet_0/sram_wdata_c\[7:0\]} \
+{/test_top_multiple/sram_128x32b_c0/waddr\[9:0\]} \
+{/test_top_multiple/sram_128x32b_c0/wdata\[7:0\]} \
+{/test_top_multiple/sram_128x32b_c0_1/waddr\[9:0\]} \
+{/test_top_multiple/sram_128x32b_c0_1/wdata\[7:0\]} \
+{/test_top_multiple/mem_sel} \
+{/test_top_multiple/conv_done} \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_gate.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple_gatesim/mem_sel} \
+{/test_top_multiple_gatesim/conv_done} \
+{/test_top_multiple_gatesim/sram_128x32b_c0_1/mem\[0:255\]} \
+{/test_top_multiple_gatesim/sram_waddr_c\[9:0\]} \
+{/test_top_multiple_gatesim/sram_write_enable_c0} \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_syn.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple/sram_waddr_d\[9:0\]} \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_gate.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple_gatesim/sram_write_enable_d0} \
+{/test_top_multiple_gatesim/sram_wdata_d\[7:0\]} \
+{/test_top_multiple_gatesim/sram_wdata_d_1\[7:0\]} \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_syn.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple/sram_wdata_d\[7:0\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvCollapseGroup -win $_nWave1 "G2"
+wvSelectSignal -win $_nWave1 {( "G1" 31 )} 
+wvSetPosition -win $_nWave1 {("G1" 31)}
+wvGetSignalClose -win $_nWave1
+wvSelectSignal -win $_nWave1 {( "G1" 29 )} 
+wvSetActiveFile -win $_nWave1 -applyAnnotation off \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_gate.fsdb}
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim/sram_128x32b_c0_1"
+wvGetSignalSetScope -win $_nWave1 \
+           "/test_top_multiple_gatesim/sram_128x32b_c0_1/display"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim/lenet_1"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim/lenet_1/lenet_0"
+wvGetSignalSetScope -win $_nWave1 \
+           "/test_top_multiple_gatesim/lenet_1/lenet_0/conv_top"
+wvSetPosition -win $_nWave1 {("G1" 32)}
+wvSetPosition -win $_nWave1 {("G1" 32)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_syn.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple/lenet_1/conv_sram_raddr_weight\[16:0\]} \
+{/test_top_multiple/lenet_1/conv_sram_rdata_weight\[99:0\]} \
+{/test_top_multiple/lenet_1/conv_start} \
+{/test_top_multiple/lenet_1/fc1_done} \
+{/test_top_multiple/lenet_1/fc2_done} \
+{/test_top_multiple/lenet_1/fc_done} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c0\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c1\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c2\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c3\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c4\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_bytemask_c\[3:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_waddr_c\[9:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_wdata_c\[7:0\]} \
+{/test_top_multiple/lenet_1/lenet_0/sram_wdata_c\[7:0\]} \
+{/test_top_multiple/sram_128x32b_c0/waddr\[9:0\]} \
+{/test_top_multiple/sram_128x32b_c0/wdata\[7:0\]} \
+{/test_top_multiple/sram_128x32b_c0_1/waddr\[9:0\]} \
+{/test_top_multiple/sram_128x32b_c0_1/wdata\[7:0\]} \
+{/test_top_multiple/mem_sel} \
+{/test_top_multiple/conv_done} \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_gate.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple_gatesim/mem_sel} \
+{/test_top_multiple_gatesim/conv_done} \
+{/test_top_multiple_gatesim/sram_128x32b_c0_1/mem\[0:255\]} \
+{/test_top_multiple_gatesim/sram_waddr_c\[9:0\]} \
+{/test_top_multiple_gatesim/sram_write_enable_c0} \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_syn.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple/sram_waddr_d\[9:0\]} \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_gate.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple_gatesim/sram_write_enable_d0} \
+{/test_top_multiple_gatesim/sram_wdata_d\[7:0\]} \
+{/test_top_multiple_gatesim/sram_wdata_d_1\[7:0\]} \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_syn.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple/sram_wdata_d\[7:0\]} \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_gate.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple_gatesim/lenet_1/lenet_0/conv_top/sram_wdata_d\[7:0\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvCollapseGroup -win $_nWave1 "G2"
+wvSelectSignal -win $_nWave1 {( "G1" 32 )} 
+wvSetPosition -win $_nWave1 {("G1" 32)}
+wvGetSignalClose -win $_nWave1
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim/lenet_1"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim/lenet_1/lenet_0"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim/sram_128x32b_c0_1"
+wvGetSignalSetScope -win $_nWave1 \
+           "/test_top_multiple_gatesim/sram_128x32b_c0_1/display"
+wvGetSignalSetScope -win $_nWave1 \
+           "/test_top_multiple_gatesim/lenet_1/lenet_0/conv_top"
+wvSetPosition -win $_nWave1 {("G1" 33)}
+wvSetPosition -win $_nWave1 {("G1" 33)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_syn.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple/lenet_1/conv_sram_raddr_weight\[16:0\]} \
+{/test_top_multiple/lenet_1/conv_sram_rdata_weight\[99:0\]} \
+{/test_top_multiple/lenet_1/conv_start} \
+{/test_top_multiple/lenet_1/fc1_done} \
+{/test_top_multiple/lenet_1/fc2_done} \
+{/test_top_multiple/lenet_1/fc_done} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c0\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c1\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c2\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c3\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c4\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_bytemask_c\[3:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_waddr_c\[9:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_wdata_c\[7:0\]} \
+{/test_top_multiple/lenet_1/lenet_0/sram_wdata_c\[7:0\]} \
+{/test_top_multiple/sram_128x32b_c0/waddr\[9:0\]} \
+{/test_top_multiple/sram_128x32b_c0/wdata\[7:0\]} \
+{/test_top_multiple/sram_128x32b_c0_1/waddr\[9:0\]} \
+{/test_top_multiple/sram_128x32b_c0_1/wdata\[7:0\]} \
+{/test_top_multiple/mem_sel} \
+{/test_top_multiple/conv_done} \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_gate.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple_gatesim/mem_sel} \
+{/test_top_multiple_gatesim/conv_done} \
+{/test_top_multiple_gatesim/sram_128x32b_c0_1/mem\[0:255\]} \
+{/test_top_multiple_gatesim/sram_waddr_c\[9:0\]} \
+{/test_top_multiple_gatesim/sram_write_enable_c0} \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_syn.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple/sram_waddr_d\[9:0\]} \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_gate.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple_gatesim/sram_write_enable_d0} \
+{/test_top_multiple_gatesim/sram_wdata_d\[7:0\]} \
+{/test_top_multiple_gatesim/sram_wdata_d_1\[7:0\]} \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_syn.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple/sram_wdata_d\[7:0\]} \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_gate.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple_gatesim/lenet_1/lenet_0/conv_top/sram_wdata_d\[7:0\]} \
+{/test_top_multiple_gatesim/lenet_1/lenet_0/conv_top/sram_bytemask_d\[3:0\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvCollapseGroup -win $_nWave1 "G2"
+wvSelectSignal -win $_nWave1 {( "G1" 33 )} 
+wvSetPosition -win $_nWave1 {("G1" 33)}
+wvGetSignalClose -win $_nWave1
+wvGetSignalOpen -win $_nWave1
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim/lenet_1"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim/lenet_1/lenet_0"
+wvGetSignalSetScope -win $_nWave1 \
+           "/test_top_multiple_gatesim/lenet_1/lenet_0/conv_top"
+wvGetSignalSetScope -win $_nWave1 "/test_top_multiple_gatesim/sram_128x32b_c0_1"
+wvGetSignalSetScope -win $_nWave1 \
+           "/test_top_multiple_gatesim/sram_128x32b_c0_1/display"
+wvGetSignalSetScope -win $_nWave1 \
+           "/test_top_multiple_gatesim/lenet_1/lenet_0/conv_top"
+wvGetSignalClose -win $_nWave1
+wvDisplayGridCount -win $_nWave1 -off
+wvGetSignalClose -win $_nWave1
+wvReloadFile -win $_nWave1
+wvZoomAll -win $_nWave1
+wvSelectSignal -win $_nWave1 {( "G1" 23 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 20 )} 
+wvSelectSignal -win $_nWave1 {( "G1" 22 )} 
+wvGetSignalOpen -win $_nWave1
+wvSetPosition -win $_nWave1 {("G1" 34)}
+wvSetPosition -win $_nWave1 {("G1" 34)}
+wvAddSignal -win $_nWave1 -clear
+wvAddSignal -win $_nWave1 -group {"G1" \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_syn.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple/lenet_1/conv_sram_raddr_weight\[16:0\]} \
+{/test_top_multiple/lenet_1/conv_sram_rdata_weight\[99:0\]} \
+{/test_top_multiple/lenet_1/conv_start} \
+{/test_top_multiple/lenet_1/fc1_done} \
+{/test_top_multiple/lenet_1/fc2_done} \
+{/test_top_multiple/lenet_1/fc_done} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c0\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c1\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c2\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c3\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_rdata_c4\[31:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_bytemask_c\[3:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_waddr_c\[9:0\]} \
+{/test_top_multiple/lenet_1/lenet_1/sram_wdata_c\[7:0\]} \
+{/test_top_multiple/lenet_1/lenet_0/sram_wdata_c\[7:0\]} \
+{/test_top_multiple/sram_128x32b_c0/waddr\[9:0\]} \
+{/test_top_multiple/sram_128x32b_c0/wdata\[7:0\]} \
+{/test_top_multiple/sram_128x32b_c0_1/waddr\[9:0\]} \
+{/test_top_multiple/sram_128x32b_c0_1/wdata\[7:0\]} \
+{/test_top_multiple/mem_sel} \
+{/test_top_multiple/conv_done} \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_gate.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple_gatesim/mem_sel} \
+{/test_top_multiple_gatesim/conv_done} \
+{/test_top_multiple_gatesim/sram_128x32b_c0_1/mem\[0:255\]} \
+{/test_top_multiple_gatesim/sram_waddr_c\[9:0\]} \
+{/test_top_multiple_gatesim/sram_write_enable_c0} \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_syn.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple/sram_waddr_d\[9:0\]} \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_gate.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple_gatesim/sram_write_enable_d0} \
+{/test_top_multiple_gatesim/sram_wdata_d\[7:0\]} \
+{/test_top_multiple_gatesim/sram_wdata_d_1\[7:0\]} \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_syn.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple/sram_wdata_d\[7:0\]} \
+}
+wvSetActiveFile -win $_nWave1 \
+           {/home/u103/u103061108/ICLAB/Lenet_Accelerator/sim/top_test_gate.fsdb}
+wvAddSignal -win $_nWave1 -group {"G1" {/test_top_multiple_gatesim/lenet_1/lenet_0/conv_top/sram_wdata_d\[7:0\]} \
+{/test_top_multiple_gatesim/lenet_1/lenet_0/conv_top/sram_bytemask_d\[3:0\]} \
+{/test_top_multiple_gatesim/lenet_1/lenet_0/conv_top/sram_wdata_c\[7:0\]} \
+}
+wvAddSignal -win $_nWave1 -group {"G2" \
+}
+wvCollapseGroup -win $_nWave1 "G2"
+wvSelectSignal -win $_nWave1 {( "G1" 34 )} 
+wvSetPosition -win $_nWave1 {("G1" 34)}
+wvGetSignalClose -win $_nWave1
+wvZoom -win $_nWave1 2991260.273973 24710410.958904
+wvZoomAll -win $_nWave1

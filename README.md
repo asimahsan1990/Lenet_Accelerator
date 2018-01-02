@@ -37,4 +37,4 @@
 > 1. Overlap convolution layer computation time with fully-connected layer computation time.
 > 2. Do conv1 with conv2 hardware by folding.
 > 3. Design FC hardware with smallest number of MACs, but can cooperate with conv hardware.
-> 4. Implement weight reusing(# of loading weight/# of bmp) (optional)
+> 4. Reduce weight memory access(# of loading weight/# of bmp) 

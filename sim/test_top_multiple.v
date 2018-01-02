@@ -957,7 +957,7 @@ sram_128x32b sram_128x32b_f_1(
 );
 
 
-lenet_2set #(.WEIGHT_WIDTH(4),.WEIGHT_NUM(25),.DATA_WIDTH(8),.DATA_NUM_PER_SRAM_ADDR(4))
+lenet_2set //#(.WEIGHT_WIDTH(4),.WEIGHT_NUM(25),.DATA_WIDTH(8),.DATA_NUM_PER_SRAM_ADDR(4))
 lenet_1 (
 	.clk(clk),
 	.srstn(srstn),

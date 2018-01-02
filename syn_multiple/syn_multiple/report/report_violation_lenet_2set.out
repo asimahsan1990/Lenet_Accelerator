@@ -1,0 +1,249 @@
+Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
+ 
+****************************************
+Report : constraint
+        -all_violators
+Design : lenet_2set
+Version: G-2012.06-SP5
+Date   : Tue Jan  2 12:52:24 2018
+****************************************
+
+
+   max_fanout
+
+                             Required        Actual
+   Net                        Fanout         Fanout          Slack
+   -----------------------------------------------------------------
+   lenet_0/conv_top/multiply_compare/n363
+                                1.64           8.95          -7.31  (VIOLATED)
+   lenet_1/conv_top/multiply_compare/n102
+                                1.64           7.64          -6.00  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/n1637
+                                1.64           6.03          -4.39  (VIOLATED)
+   lenet_1/conv_top/multiply_compare/conv_weight_box[57]
+                                1.64           4.28          -2.64  (VIOLATED)
+   lenet_1/conv_top/multiply_compare/DP_OP_424J3_126_1149_n2144
+                                1.64           4.18          -2.54  (VIOLATED)
+   lenet_1/conv_top/multiply_compare/n171
+                                1.64           4.14          -2.50  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/n1390
+                                1.64           4.08          -2.44  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_425J3_127_1149_n3064
+                                1.64           3.97          -2.33  (VIOLATED)
+   lenet_1/conv_top/multiply_compare/n291
+                                1.64           3.80          -2.16  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_422J3_124_1149_n2626
+                                1.64           3.56          -1.92  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_425J3_127_1149_n2098
+                                1.64           3.56          -1.92  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_422J3_124_1149_n2187
+                                1.64           3.52          -1.88  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/n331
+                                1.64           3.41          -1.77  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/conv_weight_box[69]
+                                1.64           3.38          -1.74  (VIOLATED)
+   lenet_1/conv_top/multiply_compare/n744
+                                1.64           3.29          -1.65  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/n1467
+                                1.64           3.29          -1.65  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/n125
+                                1.64           3.27          -1.63  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/n337
+                                1.64           3.27          -1.63  (VIOLATED)
+   lenet_1/conv_top/multiply_compare/n53
+                                1.64           3.27          -1.63  (VIOLATED)
+   lenet_1/conv_top/multiply_compare/n39
+                                1.64           3.25          -1.61  (VIOLATED)
+   lenet_1/conv_top/multiply_compare/n61
+                                1.64           3.25          -1.61  (VIOLATED)
+   lenet_1/conv_top/multiply_compare/n87
+                                1.64           3.25          -1.61  (VIOLATED)
+   lenet_1/conv_top/multiply_compare/n244
+                                1.64           3.25          -1.61  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/n687
+                                1.64           3.22          -1.58  (VIOLATED)
+   lenet_1/conv_top/multiply_compare/n68
+                                1.64           3.22          -1.58  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_422J3_124_1149_n2
+                                1.64           3.19          -1.55  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_425J3_127_1149_n2540
+                                1.64           3.13          -1.49  (VIOLATED)
+   lenet_1/conv_top/multiply_compare/DP_OP_422J3_124_1149_n2406
+                                1.64           3.11          -1.47  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/n424
+                                1.64           3.02          -1.38  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_422J3_124_1149_n2673
+                                1.64           2.87          -1.23  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_422J3_124_1149_n2274
+                                1.64           2.86          -1.22  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/conv_weight_box[64]
+                                1.64           2.78          -1.14  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_422J3_124_1149_n2362
+                                1.64           2.75          -1.11  (VIOLATED)
+   lenet_1/conv_top/multiply_compare/n214
+                                1.64           2.75          -1.11  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/n1530
+                                1.64           2.74          -1.10  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_422J3_124_1149_n2101
+                                1.64           2.74          -1.10  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_425J3_127_1149_n2980
+                                1.64           2.74          -1.10  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_424J3_126_1149_n2803
+                                1.64           2.71          -1.07  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_424J3_126_1149_n2363
+                                1.64           2.63          -0.99  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_423J3_125_1149_n2716
+                                1.64           2.60          -0.96  (VIOLATED)
+   lenet_1/conv_top/multiply_compare/DP_OP_425J3_127_1149_n2188
+                                1.64           2.60          -0.96  (VIOLATED)
+   lenet_1/conv_top/multiply_compare/DP_OP_424J3_126_1149_n2585
+                                1.64           2.54          -0.90  (VIOLATED)
+   lenet_1/conv_top/multiply_compare/n11
+                                1.64           2.49          -0.85  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/n1547
+                                1.64           2.49          -0.85  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/conv_weight_box[10]
+                                1.64           2.47          -0.83  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_423J3_125_1149_n2670
+                                1.64           2.45          -0.81  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/conv_weight_box[72]
+                                1.64           2.44          -0.80  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_425J3_127_1149_n2890
+                                1.64           2.43          -0.79  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/conv_weight_box[34]
+                                1.64           2.36          -0.72  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_423J3_125_1149_n2233
+                                1.64           2.32          -0.68  (VIOLATED)
+   lenet_1/conv_top/multiply_compare/n812
+                                1.64           2.30          -0.66  (VIOLATED)
+   lenet_1/conv_top/multiply_compare/conv_weight_box[70]
+                                1.64           2.30          -0.66  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/n800
+                                1.64           2.29          -0.65  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_423J3_125_1149_n2629
+                                1.64           2.28          -0.64  (VIOLATED)
+   lenet_1/conv_top/multiply_compare/DP_OP_425J3_127_1149_n2495
+                                1.64           2.27          -0.63  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_425J3_127_1149_n2230
+                                1.64           2.24          -0.60  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_425J3_127_1149_n2978
+                                1.64           2.19          -0.55  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_422J3_124_1149_n2011
+                                1.64           2.18          -0.54  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_424J3_126_1149_n3066
+                                1.64           2.15          -0.51  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/conv_weight_box[17]
+                                1.64           2.15          -0.51  (VIOLATED)
+   lenet_1/conv_top/multiply_compare/n58
+                                1.64           2.13          -0.49  (VIOLATED)
+   lenet_1/conv_top/multiply_compare/DP_OP_425J3_127_1149_n2452
+                                1.64           2.09          -0.45  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_425J3_127_1149_n2627
+                                1.64           2.09          -0.45  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/n1387
+                                1.64           2.09          -0.45  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/n1640
+                                1.64           2.08          -0.44  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_425J3_127_1149_n2715
+                                1.64           2.07          -0.43  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_423J3_125_1149_n2363
+                                1.64           2.05          -0.41  (VIOLATED)
+   lenet_1/conv_top/multiply_compare/DP_OP_423J3_125_1149_n2936
+                                1.64           2.05          -0.41  (VIOLATED)
+   lenet_1/conv_top/multiply_compare/n785
+                                1.64           2.03          -0.39  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_425J3_127_1149_n2538
+                                1.64           2.02          -0.38  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_422J3_124_1149_n2541
+                                1.64           2.02          -0.38  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_422J3_124_1149_n423
+                                1.64           2.00          -0.36  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_423J3_125_1149_n2891
+                                1.64           2.00          -0.36  (VIOLATED)
+   lenet_1/conv_top/multiply_compare/DP_OP_424J3_126_1149_n2233
+                                1.64           2.00          -0.36  (VIOLATED)
+   lenet_1/conv_top/multiply_compare/n6
+                                1.64           2.00          -0.36  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_423J3_125_1149_n2937
+                                1.64           1.99          -0.35  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/n461
+                                1.64           1.99          -0.35  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/conv_weight_box[20]
+                                1.64           1.96          -0.32  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_422J3_124_1149_n2275
+                                1.64           1.94          -0.30  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_424J3_126_1149_n2055
+                                1.64           1.94          -0.30  (VIOLATED)
+   lenet_1/conv_top/multiply_compare/DP_OP_423J3_125_1149_n2627
+                                1.64           1.94          -0.30  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/n265
+                                1.64           1.93          -0.29  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/n1436
+                                1.64           1.91          -0.27  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_425J3_127_1149_n3025
+                                1.64           1.89          -0.25  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_423J3_125_1149_n2230
+                                1.64           1.86          -0.22  (VIOLATED)
+   lenet_1/conv_top/multiply_compare/DP_OP_424J3_126_1149_n4
+                                1.64           1.84          -0.20  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_425J3_127_1149_n2671
+                                1.64           1.82          -0.18  (VIOLATED)
+   lenet_1/conv_top/multiply_compare/n255
+                                1.64           1.81          -0.17  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_422J3_124_1149_n2231
+                                1.64           1.80          -0.16  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_424J3_126_1149_n2715
+                                1.64           1.80          -0.16  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_422J3_124_1149_n2186
+                                1.64           1.78          -0.14  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/n1391
+                                1.64           1.77          -0.13  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_422J3_124_1149_n2010
+                                1.64           1.76          -0.12  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_422J3_124_1149_n2496
+                                1.64           1.71          -0.07  (VIOLATED)
+   lenet_1/conv_top/multiply_compare/n345
+                                1.64           1.66          -0.02  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/conv_weight_box[5]
+                                1.64           1.66          -0.02  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/n1535
+                                1.64           1.65          -0.01  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_423J3_125_1149_n2538
+                                1.64           1.65          -0.01  (VIOLATED)
+
+   -----------------------------------------------------------------
+   Total                      98               -101.93  
+
+   max_capacitance
+
+                             Required        Actual
+   Net                      Capacitance    Capacitance       Slack
+   -----------------------------------------------------------------
+   lenet_0/conv_top/multiply_compare/DP_OP_424J3_126_1149_n2094
+                                8.00           9.19          -1.19  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_425J3_127_1149_n2931
+                                8.00           9.19          -1.19  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_422J3_124_1149_n2049
+                                8.00           9.09          -1.09  (VIOLATED)
+   lenet_1/conv_top/multiply_compare/n744
+                               16.00          16.91          -0.91  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_423J3_125_1149_n2578
+                                8.00           8.80          -0.80  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_424J3_126_1149_n2929
+                                8.00           8.51          -0.51  (VIOLATED)
+   lenet_0/conv_top/multiply_compare/DP_OP_422J3_124_1149_n2271
+                                8.00           8.24          -0.24  (VIOLATED)
+
+   -----------------------------------------------------------------
+   Total                      7                  -5.94  
+
+   max_area
+
+                             Required        Actual
+   Design                      Area           Area           Slack
+   -----------------------------------------------------------------
+   lenet_2set                   0.00       151310.53      -151310.53
+                                                                    (VIOLATED)
+
+
+1

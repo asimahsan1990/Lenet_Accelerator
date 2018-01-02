@@ -1,0 +1,1396 @@
+
+Warning:  Site Information is not available ... Have you run install_site?
+
+
+                      Design Compiler Graphical
+                            DC Ultra (TM)
+                             DFTMAX (TM)
+                         Power Compiler (TM)
+                           DesignWare (R)
+                           DC Expert (TM)
+                         Design Vision (TM)
+                          HDL Compiler (TM)
+                         VHDL Compiler (TM)
+                            DFT Compiler
+                        Library Compiler (TM)
+                         Design Compiler(R)
+
+          Version G-2012.06-SP5 for RHEL64 -- Jan 18, 2013
+               Copyright (c) 1988-2012 Synopsys, Inc.
+
+This software and the associated documentation are confidential and 
+proprietary to Synopsys, Inc. Your use or disclosure of this software 
+is subject to the terms and conditions of a written license agreement 
+between you, or your company, and Synopsys, Inc.
+
+Initializing...
+# set your TOPLEVEL here
+set TOPLEVEL "lenet_2set"
+lenet_2set
+# change your timing constraint here
+set TEST_CYCLE 3.555
+3.555
+source -echo -verbose 0_readfile.tcl 
+set TOP_DIR $TOPLEVEL
+lenet_2set
+set RPT_DIR report
+report
+set NET_DIR netlist
+netlist
+sh rm -rf ./$TOP_DIR
+sh rm -rf ./$RPT_DIR
+sh rm -rf ./$NET_DIR
+sh mkdir ./$TOP_DIR
+sh mkdir ./$RPT_DIR
+sh mkdir ./$NET_DIR
+# define a lib path here
+define_design_lib $TOPLEVEL -path ./$TOPLEVEL
+1
+# Read Design File (add your files here)
+set HDL_DIR "../hdl"
+../hdl
+analyze -library $TOPLEVEL -format verilog "$HDL_DIR/lenet_2set.v 											$HDL_DIR/lenet.v 											$HDL_DIR/conv_hdl/conv_top.v 											$HDL_DIR/conv_hdl/conv_control.v 											$HDL_DIR/conv_hdl/data_reg.v 											$HDL_DIR/conv_hdl/fsm.v 											$HDL_DIR/conv_hdl/multiply_compare.v 											$HDL_DIR/conv_hdl/quantize.v 											$HDL_DIR/fc_hdl/fc_top.v 											$HDL_DIR/fc_hdl/fc_controller.v 											$HDL_DIR/fc_hdl/fc_data_reg.v 											$HDL_DIR/fc_hdl/fc_multiplier_accumulator.v 											$HDL_DIR/fc_hdl/fc_quantize.v
+											"
+Running PRESTO HDLC
+Compiling source file ../hdl/lenet_2set.v
+Compiling source file ../hdl/lenet.v
+Compiling source file ../hdl/conv_hdl/conv_top.v
+Compiling source file ../hdl/conv_hdl/conv_control.v
+Warning:  ../hdl/conv_hdl/conv_control.v:247: the undeclared symbol 'n_conv_done' assumed to have the default net type, which is 'wire'. (VER-936)
+Compiling source file ../hdl/conv_hdl/data_reg.v
+Compiling source file ../hdl/conv_hdl/fsm.v
+Compiling source file ../hdl/conv_hdl/multiply_compare.v
+Compiling source file ../hdl/conv_hdl/quantize.v
+Compiling source file ../hdl/fc_hdl/fc_top.v
+Compiling source file ../hdl/fc_hdl/fc_controller.v
+Compiling source file ../hdl/fc_hdl/fc_data_reg.v
+Compiling source file ../hdl/fc_hdl/fc_multiplier_accumulator.v
+Compiling source file ../hdl/fc_hdl/fc_quantize.v
+Presto compilation completed successfully.
+Loading db file '/usr/cadtool/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db'
+Loading db file '/usr/cadtool/SAED32_EDK/lib/io_std/db_nldm/saed32io_wb_ss0p95v125c_2p25v.db'
+Loading db file '/usr/cadtool/SAED32_EDK/synthesis/cur/libraries/syn/dw_foundation.sldb'
+1
+# elaborate your design
+elaborate $TOPLEVEL -architecture verilog -library $TOPLEVEL
+Loading db file '/usr/cadtool/SAED32_EDK/synthesis/cur/libraries/syn/gtech.db'
+Loading db file '/usr/cadtool/SAED32_EDK/synthesis/cur/libraries/syn/standard.sldb'
+  Loading link library 'saed32hvt_ss0p95v125c'
+  Loading link library 'saed32io_wb_ss0p95v125c_2p25v'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+Presto compilation completed successfully.
+Elaborated 1 design.
+Current design is now 'lenet_2set'.
+Information: Building the design 'lenet'. (HDL-193)
+Presto compilation completed successfully.
+Information: Building the design 'conv_top'. (HDL-193)
+Warning:  ../hdl/conv_hdl/conv_top.v:123: signed to unsigned assignment occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/conv_top.v:124: signed to unsigned assignment occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/conv_top.v:125: signed to unsigned assignment occurs. (VER-318)
+Presto compilation completed successfully.
+Information: Building the design 'fc_top'. (HDL-193)
+Warning:  ../hdl/fc_hdl/fc_top.v:97: signed to unsigned assignment occurs. (VER-318)
+Warning:  ../hdl/fc_hdl/fc_top.v:98: signed to unsigned assignment occurs. (VER-318)
+Presto compilation completed successfully.
+Information: Building the design 'fsm'. (HDL-193)
+Warning:  ../hdl/conv_hdl/fsm.v:33: signed to unsigned assignment occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/fsm.v:34: signed to unsigned assignment occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/fsm.v:35: signed to unsigned assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 31 in file
+	'../hdl/conv_hdl/fsm.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            32            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine fsm line 20 in file
+		'../hdl/conv_hdl/fsm.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      mode_reg       | Flip-flop |   2   |  Y  | N  | N  | N  | Y  | N  | N  |
+|     mem_sel_reg     | Flip-flop |   1   |  N  | N  | N  | N  | N  | Y  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine fsm line 41 in file
+		'../hdl/conv_hdl/fsm.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  done_control_reg   | Flip-flop |   1   |  N  | N  | N  | N  | Y  | Y  | N  |
+===============================================================================
+Information:  Complex logic will not be considered for set/reset inference. (ELAB-2008)
+Presto compilation completed successfully.
+Information: Building the design 'conv_control'. (HDL-193)
+Warning:  ../hdl/conv_hdl/conv_control.v:246: signed to unsigned assignment occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/conv_control.v:247: signed to unsigned assignment occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/conv_control.v:275: signed to unsigned assignment occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/conv_control.v:289: signed to unsigned assignment occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/conv_control.v:619: signed to unsigned conversion occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/conv_control.v:676: signed to unsigned conversion occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/conv_control.v:665: signed to unsigned conversion occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/conv_control.v:698: signed to unsigned conversion occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/conv_control.v:687: signed to unsigned conversion occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/conv_control.v:809: signed to unsigned conversion occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/conv_control.v:1020: signed to unsigned conversion occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/conv_control.v:1182: DEFAULT branch of CASE statement cannot be reached. (ELAB-311)
+Warning:  ../hdl/conv_hdl/conv_control.v:1863: DEFAULT branch of CASE statement cannot be reached. (ELAB-311)
+Warning:  ../hdl/conv_hdl/conv_control.v:1881: DEFAULT branch of CASE statement cannot be reached. (ELAB-311)
+Warning:  ../hdl/conv_hdl/conv_control.v:1891: DEFAULT branch of CASE statement cannot be reached. (ELAB-311)
+
+Statistics for case statements in always block at line 258 in file
+	'../hdl/conv_hdl/conv_control.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           259            |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 518 in file
+	'../hdl/conv_hdl/conv_control.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           519            |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 783 in file
+	'../hdl/conv_hdl/conv_control.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           784            |    auto/auto     |
+|           810            |    auto/auto     |
+|           871            |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 958 in file
+	'../hdl/conv_hdl/conv_control.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           959            |    auto/auto     |
+|           1021           |    auto/auto     |
+|           1080           |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 1146 in file
+	'../hdl/conv_hdl/conv_control.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           1147           |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 1350 in file
+	'../hdl/conv_hdl/conv_control.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           1352           |    auto/auto     |
+|           1357           |    auto/auto     |
+|           1406           |    auto/auto     |
+|           1456           |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 1663 in file
+	'../hdl/conv_hdl/conv_control.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           1665           |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 1861 in file
+	'../hdl/conv_hdl/conv_control.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           1863           |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 1876 in file
+	'../hdl/conv_hdl/conv_control.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           1881           |    auto/auto     |
+|           1891           |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine conv_control line 249 in file
+		'../hdl/conv_hdl/conv_control.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      state_reg      | Flip-flop |   4   |  Y  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine conv_control line 296 in file
+		'../hdl/conv_hdl/conv_control.v'.
+=======================================================================================
+|        Register Name        |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+=======================================================================================
+|      delay2_state_reg       | Flip-flop |   4   |  Y  | N  | N  | N  | Y  | N  | N  |
+|      delay3_state_reg       | Flip-flop |   4   |  Y  | N  | N  | N  | Y  | N  | N  |
+|           row_reg           | Flip-flop |   4   |  Y  | N  | N  | N  | Y  | N  | N  |
+|           col_reg           | Flip-flop |   4   |  Y  | N  | N  | N  | Y  | N  | N  |
+|    conv1_weight_done_reg    | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+|    conv2_weight_done_reg    | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+|      write_enable_reg       | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+|   delay_write_enable_reg    | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+|   delay2_write_enable_reg   | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+|   delay3_write_enable_reg   | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+| load_conv1_bias_enable_reg  | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+| load_conv2_bias0_enable_reg | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+| load_conv2_bias1_enable_reg | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+|    load_data_enable_reg     | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+|       weight_cnt_reg        | Flip-flop |   8   |  Y  | N  | N  | N  | Y  | N  | N  |
+|        delay_set_reg        | Flip-flop |   8   |  Y  | N  | N  | N  | Y  | N  | N  |
+|           set_reg           | Flip-flop |   8   |  Y  | N  | N  | N  | Y  | N  | N  |
+|    conv2_weight_cnt_reg     | Flip-flop |   8   |  Y  | N  | N  | N  | Y  | N  | N  |
+|    conv1_weight_cnt_reg     | Flip-flop |   8   |  Y  | N  | N  | N  | Y  | N  | N  |
+|    sram_raddr_weight_reg    | Flip-flop |  17   |  Y  | N  | N  | N  | Y  | N  | N  |
+|     conv1_bias_set_reg      | Flip-flop |  17   |  Y  | N  | N  | N  | Y  | N  | N  |
+|         box_sel_reg         | Flip-flop |   4   |  Y  | N  | N  | N  | Y  | N  | N  |
+|    addr_col_sel_cnt_reg     | Flip-flop |   2   |  Y  | N  | N  | N  | Y  | N  | N  |
+|    addr_row_sel_cnt_reg     | Flip-flop |   2   |  Y  | N  | N  | N  | Y  | N  | N  |
+|      data_sel_col_reg       | Flip-flop |   2   |  Y  | N  | N  | N  | Y  | N  | N  |
+|      data_sel_row_reg       | Flip-flop |   2   |  Y  | N  | N  | N  | Y  | N  | N  |
+|       conv1_done_reg        | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+|      sram_waddr_b_reg       | Flip-flop |  10   |  Y  | N  | N  | N  | Y  | N  | N  |
+|   delay1_sram_waddr_b_reg   | Flip-flop |  10   |  Y  | N  | N  | N  | Y  | N  | N  |
+|     sram_bytemask_b_reg     | Flip-flop |   4   |  Y  | N  | N  | N  | Y  | N  | N  |
+|       row_enable_reg        | Flip-flop |   4   |  Y  | N  | N  | N  | Y  | N  | N  |
+|       col_enable_reg        | Flip-flop |   4   |  Y  | N  | N  | N  | Y  | N  | N  |
+|        write_row_reg        | Flip-flop |   4   |  Y  | N  | N  | N  | Y  | N  | N  |
+|        write_col_reg        | Flip-flop |   4   |  Y  | N  | N  | N  | Y  | N  | N  |
+|        row_delay_reg        | Flip-flop |   4   |  Y  | N  | N  | N  | Y  | N  | N  |
+|        col_delay_reg        | Flip-flop |   4   |  Y  | N  | N  | N  | Y  | N  | N  |
+|     write_row_conv1_reg     | Flip-flop |   4   |  Y  | N  | N  | N  | Y  | N  | N  |
+|     write_col_conv1_reg     | Flip-flop |   4   |  Y  | N  | N  | N  | Y  | N  | N  |
+|        conv_done_reg        | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+|   delay1_sram_waddr_c_reg   | Flip-flop |  10   |  Y  | N  | N  | N  | Y  | N  | N  |
+|   delay1_sram_waddr_d_reg   | Flip-flop |  10   |  Y  | N  | N  | N  | Y  | N  | N  |
+|      sram_waddr_c_reg       | Flip-flop |  10   |  Y  | N  | N  | N  | Y  | N  | N  |
+|      sram_waddr_d_reg       | Flip-flop |  10   |  Y  | N  | N  | N  | Y  | N  | N  |
+|     sram_bytemask_c_reg     | Flip-flop |   4   |  Y  | N  | N  | N  | Y  | N  | N  |
+|     sram_bytemask_d_reg     | Flip-flop |   4   |  Y  | N  | N  | N  | Y  | N  | N  |
+|       channel_cnt_reg       | Flip-flop |   5   |  Y  | N  | N  | N  | Y  | N  | N  |
+|       addr_change_reg       | Flip-flop |   5   |  Y  | N  | N  | N  | Y  | N  | N  |
+|    delay_addr_change_reg    | Flip-flop |   5   |  Y  | N  | N  | N  | Y  | N  | N  |
+|   delay2_addr_change_reg    | Flip-flop |   5   |  Y  | N  | N  | N  | Y  | N  | N  |
+|   delay3_addr_change_reg    | Flip-flop |   5   |  Y  | N  | N  | N  | Y  | N  | N  |
+|      delay_channel_reg      | Flip-flop |   5   |  Y  | N  | N  | N  | Y  | N  | N  |
+|     delay2_channel_reg      | Flip-flop |   5   |  Y  | N  | N  | N  | Y  | N  | N  |
+|         channel_reg         | Flip-flop |   5   |  Y  | N  | N  | N  | Y  | N  | N  |
+|      delay1_state_reg       | Flip-flop |   4   |  Y  | N  | N  | N  | Y  | N  | N  |
+=======================================================================================
+
+Inferred memory devices in process
+	in routine conv_control line 759 in file
+		'../hdl/conv_hdl/conv_control.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  sram_raddr_a7_reg  | Flip-flop |  10   |  Y  | N  | N  | N  | Y  | N  | N  |
+|  sram_raddr_a8_reg  | Flip-flop |  10   |  Y  | N  | N  | N  | Y  | N  | N  |
+|  sram_raddr_a0_reg  | Flip-flop |  10   |  Y  | N  | N  | N  | Y  | N  | N  |
+|  sram_raddr_a1_reg  | Flip-flop |  10   |  Y  | N  | N  | N  | Y  | N  | N  |
+|  sram_raddr_a2_reg  | Flip-flop |  10   |  Y  | N  | N  | N  | Y  | N  | N  |
+|  sram_raddr_a3_reg  | Flip-flop |  10   |  Y  | N  | N  | N  | Y  | N  | N  |
+|  sram_raddr_a4_reg  | Flip-flop |  10   |  Y  | N  | N  | N  | Y  | N  | N  |
+|  sram_raddr_a5_reg  | Flip-flop |  10   |  Y  | N  | N  | N  | Y  | N  | N  |
+|  sram_raddr_a6_reg  | Flip-flop |  10   |  Y  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine conv_control line 934 in file
+		'../hdl/conv_hdl/conv_control.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  sram_raddr_b7_reg  | Flip-flop |  10   |  Y  | N  | N  | N  | Y  | N  | N  |
+|  sram_raddr_b8_reg  | Flip-flop |  10   |  Y  | N  | N  | N  | Y  | N  | N  |
+|  sram_raddr_b0_reg  | Flip-flop |  10   |  Y  | N  | N  | N  | Y  | N  | N  |
+|  sram_raddr_b1_reg  | Flip-flop |  10   |  Y  | N  | N  | N  | Y  | N  | N  |
+|  sram_raddr_b2_reg  | Flip-flop |  10   |  Y  | N  | N  | N  | Y  | N  | N  |
+|  sram_raddr_b3_reg  | Flip-flop |  10   |  Y  | N  | N  | N  | Y  | N  | N  |
+|  sram_raddr_b4_reg  | Flip-flop |  10   |  Y  | N  | N  | N  | Y  | N  | N  |
+|  sram_raddr_b5_reg  | Flip-flop |  10   |  Y  | N  | N  | N  | Y  | N  | N  |
+|  sram_raddr_b6_reg  | Flip-flop |  10   |  Y  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine conv_control line 1276 in file
+		'../hdl/conv_hdl/conv_control.v'.
+====================================================================================
+|      Register Name       |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+====================================================================================
+| sram_write_enable_b7_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | Y  | N  |
+| sram_write_enable_b8_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | Y  | N  |
+| sram_write_enable_b0_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | Y  | N  |
+| sram_write_enable_b1_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | Y  | N  |
+| sram_write_enable_b2_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | Y  | N  |
+| sram_write_enable_b3_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | Y  | N  |
+| sram_write_enable_b4_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | Y  | N  |
+| sram_write_enable_b5_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | Y  | N  |
+| sram_write_enable_b6_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | Y  | N  |
+====================================================================================
+
+Inferred memory devices in process
+	in routine conv_control line 1598 in file
+		'../hdl/conv_hdl/conv_control.v'.
+====================================================================================
+|      Register Name       |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+====================================================================================
+| sram_write_enable_d3_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | Y  | N  |
+| sram_write_enable_d4_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | Y  | N  |
+| sram_write_enable_c0_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | Y  | N  |
+| sram_write_enable_c1_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | Y  | N  |
+| sram_write_enable_c2_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | Y  | N  |
+| sram_write_enable_c3_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | Y  | N  |
+| sram_write_enable_c4_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | Y  | N  |
+| sram_write_enable_d0_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | Y  | N  |
+| sram_write_enable_d1_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | Y  | N  |
+| sram_write_enable_d2_reg | Flip-flop |   1   |  N  | N  | N  | N  | N  | Y  | N  |
+====================================================================================
+Information:  Complex logic will not be considered for set/reset inference. (ELAB-2008)
+Presto compilation completed successfully.
+Information: Building the design 'data_reg'. (HDL-193)
+
+Statistics for case statements in always block at line 104 in file
+	'../hdl/conv_hdl/data_reg.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           105            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine data_reg line 53 in file
+		'../hdl/conv_hdl/data_reg.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     src_aox_reg     | Flip-flop |  288  |  Y  | N  | N  | N  | Y  | N  | N  |
+|     weight_reg      | Flip-flop |  100  |  Y  | N  | N  | N  | Y  | N  | N  |
+|  conv1_weight_reg   | Flip-flop |  100  |  Y  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine data_reg line 66 in file
+		'../hdl/conv_hdl/data_reg.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  sram_rdata_8_reg   | Flip-flop |  32   |  Y  | N  | N  | N  | Y  | N  | N  |
+|  sram_rdata_0_reg   | Flip-flop |  32   |  Y  | N  | N  | N  | Y  | N  | N  |
+|  sram_rdata_1_reg   | Flip-flop |  32   |  Y  | N  | N  | N  | Y  | N  | N  |
+|  sram_rdata_2_reg   | Flip-flop |  32   |  Y  | N  | N  | N  | Y  | N  | N  |
+|  sram_rdata_3_reg   | Flip-flop |  32   |  Y  | N  | N  | N  | Y  | N  | N  |
+|  sram_rdata_4_reg   | Flip-flop |  32   |  Y  | N  | N  | N  | Y  | N  | N  |
+|  sram_rdata_5_reg   | Flip-flop |  32   |  Y  | N  | N  | N  | Y  | N  | N  |
+|  sram_rdata_6_reg   | Flip-flop |  32   |  Y  | N  | N  | N  | Y  | N  | N  |
+|  sram_rdata_7_reg   | Flip-flop |  32   |  Y  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'bias_sel'. (HDL-193)
+Warning: Cannot find the design 'bias_sel' in the library 'WORK'. (LBR-1)
+Information: Building the design 'multiply_compare'. (HDL-193)
+Warning:  ../hdl/conv_hdl/multiply_compare.v:91: unsigned to signed assignment occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/multiply_compare.v:94: unsigned to signed assignment occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/multiply_compare.v:100: signed to unsigned conversion occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/multiply_compare.v:102: signed to unsigned conversion occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/multiply_compare.v:104: signed to unsigned conversion occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/multiply_compare.v:106: signed to unsigned conversion occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/multiply_compare.v:60: unsigned to signed assignment occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/multiply_compare.v:61: unsigned to signed assignment occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/multiply_compare.v:62: unsigned to signed assignment occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/multiply_compare.v:63: unsigned to signed assignment occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/multiply_compare.v:66: unsigned to signed assignment occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/multiply_compare.v:67: unsigned to signed assignment occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/multiply_compare.v:68: unsigned to signed assignment occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/multiply_compare.v:69: unsigned to signed assignment occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/multiply_compare.v:72: unsigned to signed assignment occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/multiply_compare.v:73: unsigned to signed assignment occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/multiply_compare.v:74: unsigned to signed assignment occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/multiply_compare.v:75: unsigned to signed assignment occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/multiply_compare.v:78: unsigned to signed assignment occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/multiply_compare.v:79: unsigned to signed assignment occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/multiply_compare.v:80: unsigned to signed assignment occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/multiply_compare.v:81: unsigned to signed assignment occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/multiply_compare.v:84: unsigned to signed assignment occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/multiply_compare.v:85: unsigned to signed assignment occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/multiply_compare.v:86: unsigned to signed assignment occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/multiply_compare.v:87: unsigned to signed assignment occurs. (VER-318)
+
+Inferred memory devices in process
+	in routine multiply_compare line 110 in file
+		'../hdl/conv_hdl/multiply_compare.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|   conv2_sum_c_reg   | Flip-flop |  32   |  Y  | N  | N  | N  | Y  | N  | N  |
+|   conv2_sum_d_reg   | Flip-flop |  32   |  Y  | N  | N  | N  | Y  | N  | N  |
+|   conv2_sum_a_reg   | Flip-flop |  32   |  Y  | N  | N  | N  | Y  | N  | N  |
+|   conv2_sum_b_reg   | Flip-flop |  32   |  Y  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'quantize'. (HDL-193)
+Warning:  ../hdl/conv_hdl/quantize.v:30: unsigned to signed assignment occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/quantize.v:34: signed to unsigned assignment occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/quantize.v:35: signed to unsigned part selection occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/quantize.v:38: unsigned to signed assignment occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/quantize.v:42: signed to unsigned assignment occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/quantize.v:43: signed to unsigned part selection occurs. (VER-318)
+
+Inferred memory devices in process
+	in routine quantize line 47 in file
+		'../hdl/conv_hdl/quantize.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+| quantized_data_reg  | Flip-flop |   8   |  Y  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'fc_controller'. (HDL-193)
+Warning:  ../hdl/fc_hdl/fc_controller.v:384: signed to unsigned assignment occurs. (VER-318)
+Warning:  ../hdl/fc_hdl/fc_controller.v:395: signed to unsigned assignment occurs. (VER-318)
+Warning:  ../hdl/fc_hdl/fc_controller.v:396: signed to unsigned assignment occurs. (VER-318)
+Warning:  ../hdl/fc_hdl/fc_controller.v:397: signed to unsigned assignment occurs. (VER-318)
+Warning:  ../hdl/fc_hdl/fc_controller.v:398: signed to unsigned assignment occurs. (VER-318)
+Warning:  ../hdl/fc_hdl/fc_controller.v:106: signed to unsigned assignment occurs. (VER-318)
+Warning:  ../hdl/fc_hdl/fc_controller.v:380: signed to unsigned assignment occurs. (VER-318)
+Warning:  ../hdl/fc_hdl/fc_controller.v:142: DEFAULT branch of CASE statement cannot be reached. (ELAB-311)
+
+Statistics for case statements in always block at line 141 in file
+	'../hdl/fc_hdl/fc_controller.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           142            |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 151 in file
+	'../hdl/fc_hdl/fc_controller.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           152            |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 168 in file
+	'../hdl/fc_hdl/fc_controller.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           169            |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 180 in file
+	'../hdl/fc_hdl/fc_controller.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           181            |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 207 in file
+	'../hdl/fc_hdl/fc_controller.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           208            |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 285 in file
+	'../hdl/fc_hdl/fc_controller.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           286            |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 303 in file
+	'../hdl/fc_hdl/fc_controller.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           304            |    auto/auto     |
+===============================================
+
+Statistics for case statements in always block at line 393 in file
+	'../hdl/fc_hdl/fc_controller.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|           394            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine fc_controller line 112 in file
+		'../hdl/fc_hdl/fc_controller.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    sram_sel_reg     | Flip-flop |   2   |  Y  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine fc_controller line 131 in file
+		'../hdl/fc_hdl/fc_controller.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  bytemask_sel_reg   | Flip-flop |   2   |  Y  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine fc_controller line 161 in file
+		'../hdl/fc_hdl/fc_controller.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|   sram_waddr_reg    | Flip-flop |   6   |  Y  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine fc_controller line 190 in file
+		'../hdl/fc_hdl/fc_controller.v'.
+=====================================================================================
+|       Register Name       |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+=====================================================================================
+| n_write_enable_delay2_reg | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+|   write_e_sram_cnt_reg    | Flip-flop |   3   |  Y  | N  | N  | N  | Y  | N  | N  |
+|     write_enable_reg      | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+|    n_write_enable_reg     | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+| n_write_enable_delay1_reg | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+=====================================================================================
+
+Inferred memory devices in process
+	in routine fc_controller line 265 in file
+		'../hdl/fc_hdl/fc_controller.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|   fetch_done_reg    | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine fc_controller line 274 in file
+		'../hdl/fc_hdl/fc_controller.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|    fc1_done_reg     | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+|    fc2_done_reg     | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine fc_controller line 295 in file
+		'../hdl/fc_hdl/fc_controller.v'.
+==================================================================================
+|     Register Name      |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+==================================================================================
+| data_addr_complete_reg | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+==================================================================================
+
+Inferred memory devices in process
+	in routine fc_controller line 337 in file
+		'../hdl/fc_hdl/fc_controller.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|   weight_cnt_reg    | Flip-flop |  15   |  Y  | N  | N  | N  | Y  | N  | N  |
+|     row_cnt_reg     | Flip-flop |   6   |  Y  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine fc_controller line 372 in file
+		'../hdl/fc_hdl/fc_controller.v'.
+================================================================================
+|    Register Name     |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+================================================================================
+| conv_done_record_reg | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+================================================================================
+
+Inferred memory devices in process
+	in routine fc_controller line 386 in file
+		'../hdl/fc_hdl/fc_controller.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      busy_reg       | Flip-flop |   1   |  N  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine fc_controller line 404 in file
+		'../hdl/fc_hdl/fc_controller.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      state_reg      | Flip-flop |   3   |  Y  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+Information:  Complex logic will not be considered for set/reset inference. (ELAB-2008)
+Presto compilation completed successfully.
+Information: Building the design 'fc_data_reg'. (HDL-193)
+
+Statistics for case statements in always block at line 43 in file
+	'../hdl/fc_hdl/fc_data_reg.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            44            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine fc_data_reg line 71 in file
+		'../hdl/fc_hdl/fc_data_reg.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|     src_box_reg     | Flip-flop |  160  |  Y  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'fc_multiplier_accumulator'. (HDL-193)
+Warning:  Starting with the 2000.11-1 release, the Presto Verilog reader treats Verilog 'integer' types as signed; synthesized result may not match earlier versions of HDL Compiler. (VER-314)
+Warning:  ../hdl/fc_hdl/fc_multiplier_accumulator.v:36: unsigned to signed assignment occurs. (VER-318)
+Warning:  ../hdl/fc_hdl/fc_multiplier_accumulator.v:53: unsigned to signed assignment occurs. (VER-318)
+Warning:  ../hdl/fc_hdl/fc_multiplier_accumulator.v:62: signed to unsigned conversion occurs. (VER-318)
+Warning:  ../hdl/fc_hdl/fc_multiplier_accumulator.v:72: signed to unsigned conversion occurs. (VER-318)
+
+Inferred memory devices in process
+	in routine fc_multiplier_accumulator line 39 in file
+		'../hdl/fc_hdl/fc_multiplier_accumulator.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  fc_weight_box_reg  | Flip-flop |  80   |  Y  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine fc_multiplier_accumulator line 76 in file
+		'../hdl/fc_hdl/fc_multiplier_accumulator.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+| accumulator_sum_reg | Flip-flop |  23   |  Y  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Information: Building the design 'fc_quantize'. (HDL-193)
+Warning:  ../hdl/fc_hdl/fc_quantize.v:29: signed to unsigned part selection occurs. (VER-318)
+Warning:  ../hdl/fc_hdl/fc_quantize.v:37: unsigned to signed assignment occurs. (VER-318)
+Warning:  ../hdl/fc_hdl/fc_quantize.v:39: signed to unsigned part selection occurs. (VER-318)
+Warning:  ../hdl/fc_hdl/fc_quantize.v:49: signed to unsigned part selection occurs. (VER-318)
+
+Statistics for case statements in always block at line 19 in file
+	'../hdl/fc_hdl/fc_quantize.v'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            20            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine fc_quantize line 54 in file
+		'../hdl/fc_hdl/fc_quantize.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+| quantized_data_reg  | Flip-flop |   8   |  Y  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
+Warning: Design 'lenet_2set' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+# Solve Multiple Instance
+set uniquify_naming_style "%s_mydesign_%d"
+%s_mydesign_%d
+uniquify
+Warning: Design 'lenet_2set' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Information: Uniquified 2 instances of design 'lenet'. (OPT-1056)
+Information: Uniquified 2 instances of design 'conv_top'. (OPT-1056)
+Information: Uniquified 2 instances of design 'fc_top'. (OPT-1056)
+Information: Uniquified 2 instances of design 'fsm'. (OPT-1056)
+Information: Uniquified 2 instances of design 'conv_control'. (OPT-1056)
+Information: Uniquified 2 instances of design 'data_reg'. (OPT-1056)
+Information: Uniquified 2 instances of design 'multiply_compare'. (OPT-1056)
+Information: Uniquified 2 instances of design 'quantize'. (OPT-1056)
+Information: Uniquified 2 instances of design 'fc_controller'. (OPT-1056)
+Information: Uniquified 2 instances of design 'fc_data_reg'. (OPT-1056)
+Information: Uniquified 2 instances of design 'fc_multiplier_accumulator'. (OPT-1056)
+Information: Uniquified 2 instances of design 'fc_quantize'. (OPT-1056)
+Information: Building the design 'bias_sel'. (HDL-193)
+Warning: Cannot find the design 'bias_sel' in the library 'WORK'. (LBR-1)
+1
+# link the design
+current_design $TOPLEVEL
+Current design is 'lenet_2set'.
+{lenet_2set}
+link
+
+  Linking design 'lenet_2set'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  * (25 designs)              /home/u103/u103061108/ICLAB/Lenet_Accelerator/syn_muptiple/lenet_2set.db, etc
+  saed32hvt_ss0p95v125c (library) /usr/cadtool/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db
+  saed32io_wb_ss0p95v125c_2p25v (library) /usr/cadtool/SAED32_EDK/lib/io_std/db_nldm/saed32io_wb_ss0p95v125c_2p25v.db
+  dw_foundation.sldb (library) /usr/cadtool/SAED32_EDK/synthesis/cur/libraries/syn/dw_foundation.sldb
+
+Information: Building the design 'bias_sel'. (HDL-193)
+Warning: Cannot find the design 'bias_sel' in the library 'WORK'. (LBR-1)
+Warning: Unable to resolve reference 'bias_sel' in 'conv_top_mydesign_1'. (LINK-5)
+Warning: Unable to resolve reference 'bias_sel' in 'conv_top_mydesign_0'. (LINK-5)
+0
+0
+source -echo -verbose 1_setting.tcl 
+# Setting Design and I/O Environment
+set_operating_conditions -library saed32hvt_ss0p95v125c ss0p95v125c
+Information: Building the design 'bias_sel'. (HDL-193)
+Warning: Cannot find the design 'bias_sel' in the library 'WORK'. (LBR-1)
+Warning: Unable to resolve reference 'bias_sel' in 'conv_top_mydesign_1'. (LINK-5)
+Warning: Unable to resolve reference 'bias_sel' in 'conv_top_mydesign_0'. (LINK-5)
+Using operating conditions 'ss0p95v125c' found in library 'saed32hvt_ss0p95v125c'.
+1
+# Setting wireload model
+set auto_wire_load_selection area_reselect
+area_reselect
+set_wire_load_mode enclosed
+1
+set_wire_load_selection_group predcaps
+Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+# Setting Timing Constraints
+###  ceate your clock here
+create_clock -name clk -period $TEST_CYCLE  [get_ports clk]
+Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+###  set clock constrain
+set_ideal_network       [get_ports clk]
+Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+set_dont_touch_network  [all_clocks]
+Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+# I/O delay should depend on the real enironment. Here only shows an example of setting
+set_input_delay  [expr $TEST_CYCLE*0.5]  -clock clk [remove_from_collection [all_inputs] [get_ports clk]]
+Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+set_output_delay [expr $TEST_CYCLE*0.5]  -clock clk [all_outputs]
+Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+# Setting DRC Constraint
+# Defensive setting: smallest fanout_load 0.041 and WLM max fanout # 20 => 0.041*20 = 0.82
+# max_transition and max_capacitance are given in the cell library
+set_max_fanout 1.64 $TOPLEVEL
+1
+# Area Constraint
+set_max_area   0
+1
+set_fix_hold [get_clocks clk]
+Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+1
+source -echo -verbose 2_compile.tcl 
+# this cell's verilog will cause ncverilog to hang 
+set_dont_use [format "%s%s" saed32hvt_ss0p95v125c {/SDFFNASRX1*}]
+1
+# before synthesis settings
+set case_analysis_with_logic_constants true
+true
+set_fix_multiple_port_nets -feedthroughs -outputs -constants -buffer_constants
+1
+####check design####
+check_design > ./$RPT_DIR/check_design.log
+check_timing > ./$RPT_DIR/check_timing.log
+set_clock_gating_style -max_fanout 10
+
+Current clock gating style....
+Sequential cell: latch
+Minimum register bank size: 3
+Minimum bank size for enhanced clock gating: 6
+Maximum fanout: 10
+Setup time for clock gate: 0.000000
+Hold time for clock gate: 0.000000
+Clock gating circuitry (positive edge): and
+Clock gating circuitry (negative edge): or
+ Note: inverter between clock gating circuitry 
+       and (negative edge) register clock pin.
+Control point insertion: none
+Control signal for control point: scan_enable
+Observation point insertion: false
+Observation logic depth: 5
+1
+# Synthesis all design (using : compile_ultra)
+# you can add "-gate_clock" to do gated-clock
+# you can add "-incremental" for higher performance
+compile_ultra -gate_clock -exact_map -no_autoungroup -no_seq_output_inversion -no_boundary_optimization
+Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Warning: The '-exact_map' option may not be honored for registers that are involved in clock-gating optimization. (PWR-652)
+Alib files are up-to-date.
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | G-2012.06-DWBB_201206.4 |     *     |
+| Licensed DW Building Blocks        | G-2012.06-DWBB_201206.4 |     *     |
+============================================================================
+
+
+Information: There are 674 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+Loaded alib file './alib-52/saed32hvt_ss0p95v125c.db.alib'
+Loaded alib file './alib-52/saed32io_wb_ss0p95v125c_2p25v.db.alib' (placeholder)
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'conv_control_mydesign_0'
+Information: Added key list 'DesignWare' to design 'conv_control_mydesign_0'. (DDB-72)
+ Implement Synthetic for 'conv_control_mydesign_0'.
+  Processing 'conv_control_mydesign_1'
+Information: Added key list 'DesignWare' to design 'conv_control_mydesign_1'. (DDB-72)
+ Implement Synthetic for 'conv_control_mydesign_1'.
+  Processing 'multiply_compare_mydesign_0'
+ Implement Synthetic for 'multiply_compare_mydesign_0'.
+  Processing 'data_reg_mydesign_0'
+ Implement Synthetic for 'data_reg_mydesign_0'.
+  Processing 'data_reg_mydesign_1'
+ Implement Synthetic for 'data_reg_mydesign_1'.
+  Processing 'lenet_2set'
+  Processing 'conv_top_mydesign_0'
+  Processing 'fc_controller_mydesign_0'
+Information: Added key list 'DesignWare' to design 'fc_controller_mydesign_0'. (DDB-72)
+ Implement Synthetic for 'fc_controller_mydesign_0'.
+  Processing 'fc_top_mydesign_0'
+  Processing 'conv_top_mydesign_1'
+  Processing 'fc_controller_mydesign_1'
+Information: Added key list 'DesignWare' to design 'fc_controller_mydesign_1'. (DDB-72)
+ Implement Synthetic for 'fc_controller_mydesign_1'.
+  Processing 'fc_top_mydesign_1'
+  Processing 'fc_data_reg_mydesign_0'
+  Processing 'lenet_mydesign_0'
+  Processing 'quantize_mydesign_0'
+ Implement Synthetic for 'quantize_mydesign_0'.
+  Processing 'fsm_mydesign_0'
+  Processing 'SNPS_CLOCK_GATE_HIGH_fc_controller_mydesign_0_mydesign_0'
+  Processing 'SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_0'
+  Processing 'SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_0'
+  Processing 'fc_multiplier_accumulator_mydesign_0'
+ Implement Synthetic for 'fc_multiplier_accumulator_mydesign_0'.
+  Processing 'lenet_mydesign_1'
+  Processing 'fc_quantize_mydesign_0'
+ Implement Synthetic for 'fc_quantize_mydesign_0'.
+  Processing 'fsm_mydesign_1'
+  Processing 'SNPS_CLOCK_GATE_HIGH_fc_controller_mydesign_1_mydesign_0'
+Information: Building the design 'bias_sel'. (HDL-193)
+Warning: Cannot find the design 'bias_sel' in the library 'WORK'. (LBR-1)
+Warning: Unable to resolve reference 'bias_sel' in 'conv_top_mydesign_1'. (LINK-5)
+Warning: Unable to resolve reference 'bias_sel' in 'conv_top_mydesign_0'. (LINK-5)
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+Information: Skipping clock gating on design lenet_2set, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design lenet_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design lenet_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_top_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_top_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_top_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_top_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DP_OP_395J2_125_6602_J2_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DP_OP_394J2_124_8103_J2_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_inc_J2_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_inc_J2_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_inc_J2_2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_dec_J2_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_inc_J2_3, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_add_J2_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_add_J2_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_add_J2_2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_add_J2_3, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_add_J2_4, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_add_J2_5, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_add_J2_6, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_add_J2_7, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_add_J2_8, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_add_J2_9, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_add_J2_10, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_add_J2_11, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_add_J2_12, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_add_J2_13, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_add_J2_14, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_sub_J2_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_sub_J2_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_sub_J2_2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_sub_J2_3, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_sub_J2_4, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_sub_J2_5, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_sub_J2_6, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_sub_J2_7, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_sub_J2_8, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_add_J2_15, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_add_J2_16, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_add_J2_17, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_add_J2_18, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_add_J2_19, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_add_J2_20, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_add_J2_21, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_add_J2_22, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_add_J2_23, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_add_J2_24, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_add_J2_25, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_add_J2_26, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_add_J2_27, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_add_J2_28, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_add_J2_29, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_inc_J2_4, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_inc_J2_5, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_inc_J2_6, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_inc_J2_7, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_inc_J2_8, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_inc_J2_9, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_inc_J2_10, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_inc_J2_11, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_inc_J2_12, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_inc_J2_13, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_inc_J2_14, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_sub_J2_9, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_1_DW01_inc_J2_15, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design data_reg_mydesign_1_MUX_OP_16_4_288, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design multiply_compare_mydesign_0_DP_OP_425J3_127_1149_J3_0_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design multiply_compare_mydesign_0_DP_OP_424J3_126_1149_J3_0_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design multiply_compare_mydesign_0_DP_OP_423J3_125_1149_J3_0_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design multiply_compare_mydesign_0_DP_OP_422J3_124_1149_J3_0_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design multiply_compare_mydesign_0_DW_cmp_J3_0_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design multiply_compare_mydesign_0_DW_cmp_J3_1_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design multiply_compare_mydesign_0_DW_cmp_J3_2_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design quantize_mydesign_0_DP_OP_26J9_124_1058_J9_0_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design quantize_mydesign_0_DW_cmp_J9_0_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design quantize_mydesign_0_DW_cmp_J9_1_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design quantize_mydesign_0_DW_cmp_J9_2_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design quantize_mydesign_0_DW_cmp_J9_3_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_controller_mydesign_1_DW01_inc_J8_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_controller_mydesign_1_DW01_inc_J8_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_controller_mydesign_1_DW01_inc_J8_2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_multiplier_accumulator_mydesign_0_DP_OP_102J10_124_259_J10_0_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_quantize_mydesign_0_DW_cmp_J10_0_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_quantize_mydesign_0_DW_cmp_J10_1_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_quantize_mydesign_0_DW_cmp_J10_2_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_quantize_mydesign_0_DW_cmp_J10_3_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_quantize_mydesign_0_DW01_add_J10_0_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_quantize_mydesign_0_DW01_add_J10_1_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DP_OP_395J1_125_3847_J1_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DP_OP_394J1_124_5348_J1_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_inc_J1_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_inc_J1_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_inc_J1_2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_dec_J1_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_inc_J1_3, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_add_J1_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_add_J1_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_add_J1_2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_add_J1_3, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_add_J1_4, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_add_J1_5, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_add_J1_6, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_add_J1_7, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_add_J1_8, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_add_J1_9, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_add_J1_10, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_add_J1_11, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_add_J1_12, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_add_J1_13, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_add_J1_14, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_sub_J1_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_sub_J1_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_sub_J1_2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_sub_J1_3, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_sub_J1_4, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_sub_J1_5, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_sub_J1_6, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_sub_J1_7, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_sub_J1_8, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_add_J1_15, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_add_J1_16, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_add_J1_17, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_add_J1_18, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_add_J1_19, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_add_J1_20, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_add_J1_21, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_add_J1_22, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_add_J1_23, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_add_J1_24, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_add_J1_25, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_add_J1_26, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_add_J1_27, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_add_J1_28, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_add_J1_29, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_inc_J1_4, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_inc_J1_5, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_inc_J1_6, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_inc_J1_7, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_inc_J1_8, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_inc_J1_9, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_inc_J1_10, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_inc_J1_11, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_inc_J1_12, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_inc_J1_13, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_inc_J1_14, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_sub_J1_9, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design conv_control_mydesign_0_DW01_inc_J1_15, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design data_reg_mydesign_0_MUX_OP_16_4_288, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_controller_mydesign_0_DW01_inc_J7_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_controller_mydesign_0_DW01_inc_J7_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_controller_mydesign_0_DW01_inc_J7_2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design multiply_compare_mydesign_0_DP_OP_425J3_127_1149_J3_0_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design multiply_compare_mydesign_0_DP_OP_424J3_126_1149_J3_0_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design multiply_compare_mydesign_0_DP_OP_423J3_125_1149_J3_0_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design multiply_compare_mydesign_0_DP_OP_422J3_124_1149_J3_0_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design multiply_compare_mydesign_0_DW_cmp_J3_0_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design multiply_compare_mydesign_0_DW_cmp_J3_1_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design multiply_compare_mydesign_0_DW_cmp_J3_2_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design quantize_mydesign_0_DP_OP_26J9_124_1058_J9_0_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design quantize_mydesign_0_DW_cmp_J9_0_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design quantize_mydesign_0_DW_cmp_J9_1_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design quantize_mydesign_0_DW_cmp_J9_2_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design quantize_mydesign_0_DW_cmp_J9_3_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_multiplier_accumulator_mydesign_0_DP_OP_102J10_124_259_J10_0_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_quantize_mydesign_0_DW_cmp_J10_0_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_quantize_mydesign_0_DW_cmp_J10_1_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_quantize_mydesign_0_DW_cmp_J10_2_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_quantize_mydesign_0_DW_cmp_J10_3_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_quantize_mydesign_0_DW01_add_J10_0_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_quantize_mydesign_0_DW01_add_J10_1_mydesign_0, since there are no registers. (PWR-806)
+Information: Performing clock-gating on design data_reg_mydesign_1. (PWR-730)
+Information: Performing clock-gating on design data_reg_mydesign_0. (PWR-730)
+Information: Performing clock-gating on design multiply_compare_mydesign_1. (PWR-730)
+Information: Performing clock-gating on design fc_multiplier_accumulator_mydesign_1. (PWR-730)
+Information: Performing clock-gating on design multiply_compare_mydesign_0. (PWR-730)
+Information: Performing clock-gating on design fc_multiplier_accumulator_mydesign_0. (PWR-730)
+Information: Performing clock-gating on design conv_control_mydesign_1. (PWR-730)
+Information: Performing clock-gating on design fsm_mydesign_1. (PWR-730)
+Information: Performing clock-gating on design conv_control_mydesign_0. (PWR-730)
+Information: Performing clock-gating on design fsm_mydesign_0. (PWR-730)
+Information: Performing clock-gating on design fc_data_reg_mydesign_1. (PWR-730)
+Information: Performing clock-gating on design fc_controller_mydesign_1. (PWR-730)
+Information: Performing clock-gating on design quantize_mydesign_1. (PWR-730)
+Information: Performing clock-gating on design quantize_mydesign_0. (PWR-730)
+Information: Performing clock-gating on design fc_data_reg_mydesign_0. (PWR-730)
+Information: Performing clock-gating on design fc_controller_mydesign_0. (PWR-730)
+Information: Performing clock-gating on design fc_quantize_mydesign_1. (PWR-730)
+Information: Performing clock-gating on design fc_quantize_mydesign_0. (PWR-730)
+Information: Building the design 'bias_sel'. (HDL-193)
+Warning: Cannot find the design 'bias_sel' in the library 'WORK'. (LBR-1)
+Warning: Unable to resolve reference 'bias_sel' in 'conv_top_mydesign_1'. (LINK-5)
+Warning: Unable to resolve reference 'bias_sel' in 'conv_top_mydesign_0'. (LINK-5)
+
+  Beginning Mapping Optimizations  (Ultra High effort)
+  -------------------------------
+Information: Added key list 'DesignWare' to design 'quantize_mydesign_1'. (DDB-72)
+Information: Added key list 'DesignWare' to design 'fc_quantize_mydesign_1'. (DDB-72)
+Information: Added key list 'DesignWare' to design 'quantize_mydesign_0'. (DDB-72)
+Information: Added key list 'DesignWare' to design 'fc_quantize_mydesign_0'. (DDB-72)
+  Mapping Optimization (Phase 1)
+  Mapping Optimization (Phase 2)
+  Mapping Optimization (Phase 3)
+  Mapping Optimization (Phase 4)
+Information: Added key list 'DesignWare' to design 'multiply_compare_mydesign_1'. (DDB-72)
+Information: Added key list 'DesignWare' to design 'multiply_compare_mydesign_0'. (DDB-72)
+Information: Added key list 'DesignWare' to design 'fc_multiplier_accumulator_mydesign_1'. (DDB-72)
+Information: Added key list 'DesignWare' to design 'fc_multiplier_accumulator_mydesign_0'. (DDB-72)
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                             MIN DELAY
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            COST   
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:03:13  158429.8      0.35      49.0    1571.4                                0.00
+    0:03:13  158429.8      0.35      49.0    1571.4                                0.00
+    0:03:13  158429.8      0.35      49.0    1571.4                                0.00
+    0:03:13  158429.8      0.35      49.0    1571.4                                0.00
+  Re-synthesis Optimization (Phase 1)
+  Re-synthesis Optimization (Phase 2)
+    0:05:31  159534.9      0.17      24.8    1580.1                                0.00
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+  Global Optimization (Phase 11)
+  Global Optimization (Phase 12)
+  Global Optimization (Phase 13)
+  Global Optimization (Phase 14)
+  Global Optimization (Phase 15)
+  Global Optimization (Phase 16)
+  Global Optimization (Phase 17)
+  Global Optimization (Phase 18)
+  Global Optimization (Phase 19)
+  Global Optimization (Phase 20)
+  Global Optimization (Phase 21)
+  Global Optimization (Phase 22)
+  Global Optimization (Phase 23)
+  Global Optimization (Phase 24)
+  Global Optimization (Phase 25)
+  Global Optimization (Phase 26)
+  Global Optimization (Phase 27)
+  Global Optimization (Phase 28)
+  Global Optimization (Phase 29)
+  Global Optimization (Phase 30)
+  Global Optimization (Phase 31)
+    0:05:55  154449.3      0.11      13.9    2320.2                                0.00
+  Mapping 'quantize_mydesign_0_DP_OP_26J9_124_1058_3'
+
+
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                             MIN DELAY
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            COST   
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:05:59  154449.3      0.11      13.9    2320.2                                0.00
+    0:06:04  154619.8      0.06       6.9    2297.9                                0.00
+    0:06:15  154825.8      0.05       5.1    2297.7                                0.00
+    0:06:15  154825.8      0.05       5.1    2297.7                                0.00
+    0:06:15  154825.8      0.05       5.1    2297.7                                0.00
+    0:06:15  154825.8      0.05       5.1    2297.7                                0.00
+    0:06:16  154825.8      0.05       5.1    2297.7                                0.00
+    0:06:16  154825.8      0.05       5.1    2297.7                                0.00
+    0:06:38  155162.3      0.00       0.0    2300.5                                0.00
+    0:06:38  155162.3      0.00       0.0    2300.5                                0.00
+    0:06:38  155162.3      0.00       0.0    2300.5                                0.00
+    0:06:38  155162.3      0.00       0.0    2300.5                                0.00
+    0:06:38  155162.3      0.00       0.0    2300.5                                0.00
+
+  Beginning Delay Optimization
+  ----------------------------
+    0:06:38  155162.3      0.00       0.0    2300.5                                0.00
+    0:06:38  155162.3      0.00       0.0    2300.5                                0.00
+    0:06:38  155162.3      0.00       0.0    2300.5                                0.00
+    0:06:38  155162.3      0.00       0.0    2300.5                                0.00
+    0:06:38  155162.3      0.00       0.0    2300.5                                0.00
+    0:06:38  155162.3      0.00       0.0    2300.5                                0.00
+    0:06:38  155162.3      0.00       0.0    2300.5                                0.00
+    0:06:38  155162.3      0.00       0.0    2300.5                                0.00
+    0:06:38  155162.3      0.00       0.0    2300.5                                0.00
+    0:06:38  155162.3      0.00       0.0    2300.5                                0.00
+    0:06:38  155162.3      0.00       0.0    2300.5                                0.00
+    0:06:38  155162.3      0.00       0.0    2300.5                                0.00
+
+
+  Beginning Design Rule Fixing  (max_transition)  (max_fanout)  (max_capacitance)
+  ----------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                             MIN DELAY
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            COST   
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:06:40  155162.3      0.00       0.0    2300.5                                0.00
+    0:06:40  155162.3      0.00       0.0    2300.5                                0.00
+  Global Optimization (Phase 32)
+  Global Optimization (Phase 33)
+  Global Optimization (Phase 34)
+    0:06:55  155050.2      0.05       1.6    2243.6                                0.00
+    0:07:02  152329.3      0.05       1.6     153.8 lenet_0/conv_top/data_reg/net138943      0.00
+    0:07:07  151531.5      0.04       1.6      52.0 lenet_0/conv_top/data_reg/net139087      0.00
+    0:07:16  151425.8      0.00       0.0      30.3 lenet_1/conv_top/multiply_compare/conv2_sum_a_reg[24]/RSTB      0.00
+    0:07:25  151128.8      0.07       5.1       6.8                                0.00
+    0:07:36  150519.3      0.07       5.8       6.4                                0.00
+    0:07:36  150519.3      0.07       5.8       6.4                                0.00
+    0:07:44  150582.9      0.02       1.8       6.4 lenet_0/conv_top/multiply_compare/conv2_sum_c_reg[24]/RSTB      0.00
+    0:07:47  150698.4      0.01       0.7       6.4                                0.00
+    0:08:17  150960.9      0.00       0.0      21.5                                0.00
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                             MIN DELAY
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            COST   
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:08:18  150960.9      0.00       0.0      21.5                                0.00
+    0:08:18  150960.9      0.00       0.0      21.5                                0.00
+    0:08:28  150963.9      0.01       0.6      35.0                                0.00
+
+
+  Beginning Area-Recovery Phase  (max_area 0)
+  -----------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                             MIN DELAY
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            COST   
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:08:28  150963.9      0.01       0.6      35.0                                0.00
+    0:08:28  150963.9      0.01       0.6      35.0                                0.00
+  Global Optimization (Phase 35)
+  Global Optimization (Phase 36)
+  Global Optimization (Phase 37)
+  Global Optimization (Phase 38)
+  Global Optimization (Phase 39)
+  Global Optimization (Phase 40)
+  Global Optimization (Phase 41)
+    0:08:41  149543.7      0.25      20.0       0.0                                0.00
+    0:08:41  149543.7      0.25      20.0       0.0                                0.00
+  Global Optimization (Phase 42)
+  Global Optimization (Phase 43)
+  Global Optimization (Phase 44)
+  Global Optimization (Phase 45)
+  Global Optimization (Phase 46)
+  Global Optimization (Phase 47)
+  Global Optimization (Phase 48)
+  Global Optimization (Phase 49)
+  Global Optimization (Phase 50)
+  Global Optimization (Phase 51)
+  Global Optimization (Phase 52)
+  Global Optimization (Phase 53)
+  Global Optimization (Phase 54)
+  Global Optimization (Phase 55)
+  Global Optimization (Phase 56)
+  Global Optimization (Phase 57)
+  Global Optimization (Phase 58)
+  Global Optimization (Phase 59)
+  Global Optimization (Phase 60)
+  Global Optimization (Phase 61)
+  Global Optimization (Phase 62)
+  Global Optimization (Phase 63)
+  Global Optimization (Phase 64)
+  Global Optimization (Phase 65)
+  Global Optimization (Phase 66)
+  Global Optimization (Phase 67)
+  Global Optimization (Phase 68)
+    0:09:06  148277.1      0.25      26.3       0.0                                0.00
+    0:09:11  148656.9      0.20      22.1       0.0 lenet_0/conv_top/multiply_compare/conv2_sum_c_reg[26]/RSTB      0.00
+    0:09:14  148800.0      0.18      21.2       0.0                                0.00
+    0:10:23  149874.8      0.06       6.6      52.1                                0.00
+    0:10:27  149947.5      0.05       5.4      46.6                                0.00
+    0:10:43  150145.6      0.05       5.0      56.7                                0.00
+    0:10:43  150145.6      0.05       5.0      56.7                                0.00
+    0:10:44  150159.5      0.05       4.7      57.5                                0.00
+    0:10:44  150159.5      0.05       4.7      57.5                                0.00
+    0:10:58  150446.9      0.04       4.1      67.2                                0.00
+    0:10:58  150446.9      0.04       4.1      67.2                                0.00
+    0:11:23  150871.8      0.01       0.5      75.9                                0.00
+    0:11:23  150871.8      0.01       0.5      75.9                                0.00
+    0:11:48  151033.5      0.01       0.3      86.9                                0.00
+    0:11:48  151033.5      0.01       0.3      86.9                                0.00
+    0:11:51  151060.4      0.01       0.3      88.0                                0.00
+    0:11:51  151060.4      0.01       0.3      88.0                                0.00
+    0:12:07  151261.2      0.01       0.2     105.6                                0.00
+    0:12:07  151261.2      0.01       0.2     105.6                                0.00
+    0:12:30  151313.2      0.00       0.0     107.9                                0.00
+    0:12:30  151313.2      0.00       0.0     107.9                                0.00
+    0:12:30  151313.2      0.00       0.0     107.9                                0.00
+Loading db file '/usr/cadtool/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db'
+Loading db file '/usr/cadtool/SAED32_EDK/lib/io_std/db_nldm/saed32io_wb_ss0p95v125c_2p25v.db'
+
+  Optimization Complete
+  ---------------------
+Warning: Design 'lenet_2set' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+     Net 'lenet_1/fc_top/fc_controller/clk_gate_write_e_sram_cnt_reg/net42437': 2988 load(s), 1 driver(s), 2 inout(s)
+1
+#compile_ultra -incremental -exact_map -no_autoungroup -no_seq_output_inversion -no_boundary_optimization
+# remove dummy ports
+remove_unconnected_ports [get_cells -hierarchical *]
+Information: Building the design 'bias_sel'. (HDL-193)
+Warning: Cannot find the design 'bias_sel' in the library 'WORK'. (LBR-1)
+Warning: Unable to resolve reference 'bias_sel' in 'conv_top_mydesign_1'. (LINK-5)
+Warning: Unable to resolve reference 'bias_sel' in 'conv_top_mydesign_0'. (LINK-5)
+Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Removing port 'fc_done' from design 'lenet_mydesign_1'
+Removing port 'fc_done' from design 'lenet_mydesign_0'
+1
+remove_unconnected_ports [get_cells -hierarchical *] -blast_buses
+Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Removing port 'unquautized_data[3]' from design 'fc_quantize_mydesign_0'
+Removing port 'unquautized_data[2]' from design 'fc_quantize_mydesign_0'
+Removing port 'unquautized_data[1]' from design 'fc_quantize_mydesign_0'
+Removing port 'unquautized_data[0]' from design 'fc_quantize_mydesign_0'
+Removing port 'ori_data[4]' from design 'quantize_mydesign_0'
+Removing port 'ori_data[3]' from design 'quantize_mydesign_0'
+Removing port 'ori_data[2]' from design 'quantize_mydesign_0'
+Removing port 'ori_data[1]' from design 'quantize_mydesign_0'
+Removing port 'ori_data[0]' from design 'quantize_mydesign_0'
+Removing port 'unquautized_data[3]' from design 'fc_quantize_mydesign_1'
+Removing port 'unquautized_data[2]' from design 'fc_quantize_mydesign_1'
+Removing port 'unquautized_data[1]' from design 'fc_quantize_mydesign_1'
+Removing port 'unquautized_data[0]' from design 'fc_quantize_mydesign_1'
+Removing port 'ori_data[4]' from design 'quantize_mydesign_1'
+Removing port 'ori_data[3]' from design 'quantize_mydesign_1'
+Removing port 'ori_data[2]' from design 'quantize_mydesign_1'
+Removing port 'ori_data[1]' from design 'quantize_mydesign_1'
+Removing port 'ori_data[0]' from design 'quantize_mydesign_1'
+1
+1
+source -echo -verbose 3_report.tcl 
+###-----------------------------Naming Rules----------------------------
+set bus_inference_style {%s[%d]}
+%s[%d]
+set bus_naming_style {%s[%d]}
+%s[%d]
+set hdlout_internal_busses true
+true
+change_names -rules verilog -hierarchy
+Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+define_name_rules name_rule -allowed {a-z A-Z 0-9 _} -max_length 255 -type cell
+1
+define_name_rules name_rule -allowed {a-z A-Z 0-9 _[]} -max_length 255 -type net
+1
+define_name_rules name_rule -map {{"\\*cell\\*" "cell"}}
+1
+define_name_rules name_rule -case_insensitive
+1
+change_names -hierarchy -rules name_rule
+Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+###--------------------------Netlist-related------------------------------------
+write -format ddc     -hierarchy -output ./netlist/${TOPLEVEL}_syn.ddc
+Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Writing ddc file './netlist/lenet_2set_syn.ddc'.
+1
+write -format verilog -hierarchy -output ./netlist/${TOPLEVEL}_syn.v
+Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Writing verilog file '/home/u103/u103061108/ICLAB/Lenet_Accelerator/syn_muptiple/netlist/lenet_2set_syn.v'.
+1
+write_sdf -version 1.0  -context verilog ./netlist/${TOPLEVEL}_syn.sdf
+Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Information: Annotated 'cell' delays are assumed to include load delay. (UID-282)
+Information: Writing timing information to file '/home/u103/u103061108/ICLAB/Lenet_Accelerator/syn_muptiple/netlist/lenet_2set_syn.sdf'. (WT-3)
+Information: Updating design information... (UID-85)
+Warning: Design 'lenet_2set' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+Warning: Design contains black-box components.  These cells will have no timing information. (WT-7)
+1
+write_sdc ./netlist/${TOPLEVEL}_syn.sdc
+Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
+1
+write_saif -output ./netlist/${TOPLEVEL}_syn.saif 
+Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Loading db file '/usr/cadtool/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db'
+Information: Writing backward SAIF information to file './netlist/lenet_2set_syn.saif'. (PWR-458)
+1
+###---------------------------Syntheis result reports----------------------------
+# ===== Timing report =====
+report_timing -delay min -max_paths 4 > ./report/report_hold_${TOPLEVEL}.out
+report_timing -delay max -max_paths 4 > ./report/report_setup_${TOPLEVEL}.out
+report_timing -path full -delay max -max_paths 1 -nworst 1 -significant_digits 4 > ./report/report_time_${TOPLEVEL}.out
+# ===== Area report =====
+report_area -hier  > ./report/report_area_${TOPLEVEL}.out
+# ===== Power report =====
+report_power -hier > ./report/report_power_${TOPLEVEL}.out
+# ===== violations =====
+report_constraint -all_violators > ./report/report_violation_${TOPLEVEL}.out
+exit
+
+Thank you...

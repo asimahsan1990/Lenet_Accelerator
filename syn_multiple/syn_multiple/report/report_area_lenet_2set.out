@@ -1,0 +1,187 @@
+Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
+ 
+****************************************
+Report : area
+Design : lenet_2set
+Version: G-2012.06-SP5
+Date   : Tue Jan  2 12:52:16 2018
+****************************************
+
+Library(s) Used:
+
+    saed32hvt_ss0p95v125c (File: /usr/cadtool/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db)
+
+Number of ports:                         2471
+Number of nets:                          2474
+Number of cells:                            4
+Number of combinational cells:              2
+Number of sequential cells:                 0
+Number of macros:                           0
+Number of buf/inv:                          0
+Number of references:                       3
+
+Combinational area:       92849.730547
+Buf/Inv area:             7416.938498
+Noncombinational area:    25338.664540
+Net Interconnect area:    33122.137089 
+
+Total cell area:          118188.395087
+Total area:               151310.532177
+
+Information: This design contains black box (unknown) components. (RPT-8)
+
+Hierarchical area distribution
+------------------------------
+
+                                  Global cell area             Local cell area
+                                  --------------------  ------------------------------ 
+Hierarchical cell                 Absolute     Percent  Combi-      Noncombi-   Black
+                                  Total        Total    national    national    boxes   Design
+--------------------------------  -----------  -------  ----------  ----------  ------  --------------------------------------------------------
+lenet_2set                        118188.3951    100.0      4.0663      0.0000  0.0000  lenet_2set
+lenet_0                            59978.7457     50.7      0.0000      0.0000  0.0000  lenet_mydesign_1
+lenet_0/conv_top                   51164.0153     43.3     67.3482      0.0000  0.0000  conv_top_mydesign_1
+lenet_0/conv_top/conv_control       8028.9172      6.8   4375.3431   3427.1318  0.0000  conv_control_mydesign_1
+lenet_0/conv_top/conv_control/clk_gate_addr_change_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_19
+lenet_0/conv_top/conv_control/clk_gate_channel_cnt_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_20
+lenet_0/conv_top/conv_control/clk_gate_col_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_0
+lenet_0/conv_top/conv_control/clk_gate_delay1_sram_waddr_b_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_23
+lenet_0/conv_top/conv_control/clk_gate_delay1_sram_waddr_c_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_22
+lenet_0/conv_top/conv_control/clk_gate_delay1_sram_waddr_d_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_21
+lenet_0/conv_top/conv_control/clk_gate_sram_raddr_a0_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_12
+lenet_0/conv_top/conv_control/clk_gate_sram_raddr_a1_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_17
+lenet_0/conv_top/conv_control/clk_gate_sram_raddr_a2_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_14
+lenet_0/conv_top/conv_control/clk_gate_sram_raddr_a3_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_11
+lenet_0/conv_top/conv_control/clk_gate_sram_raddr_a4_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_16
+lenet_0/conv_top/conv_control/clk_gate_sram_raddr_a5_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_13
+lenet_0/conv_top/conv_control/clk_gate_sram_raddr_a6_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_10
+lenet_0/conv_top/conv_control/clk_gate_sram_raddr_a7_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_18
+lenet_0/conv_top/conv_control/clk_gate_sram_raddr_a8_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_15
+lenet_0/conv_top/conv_control/clk_gate_sram_raddr_b0_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_7
+lenet_0/conv_top/conv_control/clk_gate_sram_raddr_b1_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_6
+lenet_0/conv_top/conv_control/clk_gate_sram_raddr_b2_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_5
+lenet_0/conv_top/conv_control/clk_gate_sram_raddr_b3_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_4
+lenet_0/conv_top/conv_control/clk_gate_sram_raddr_b4_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_3
+lenet_0/conv_top/conv_control/clk_gate_sram_raddr_b5_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_2
+lenet_0/conv_top/conv_control/clk_gate_sram_raddr_b6_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_1
+lenet_0/conv_top/conv_control/clk_gate_sram_raddr_b7_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_9
+lenet_0/conv_top/conv_control/clk_gate_sram_raddr_b8_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_8
+lenet_0/conv_top/conv_control/clk_gate_sram_raddr_weight_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_25
+lenet_0/conv_top/conv_control/clk_gate_sram_raddr_weight_reg_0
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_24
+lenet_0/conv_top/conv_control/clk_gate_weight_cnt_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_26
+lenet_0/conv_top/data_reg          10332.4783      8.7   4613.2219   5719.2565  0.0000  data_reg_mydesign_1
+lenet_0/conv_top/fsm                  66.3316      0.1     36.8509     29.4807  0.0000  fsm_mydesign_1
+lenet_0/conv_top/multiply_compare  31413.4687     26.6  30470.0862    943.3825  0.0000  multiply_compare_mydesign_1
+lenet_0/conv_top/quantize           1255.4714      1.1   1196.5100     58.9614  0.0000  quantize_mydesign_1
+lenet_0/fc_top                      8814.7304      7.5     28.4641      0.0000  0.0000  fc_top_mydesign_1
+lenet_0/fc_top/fc_controller         829.5260      0.7    466.3542    346.3983  0.0000  fc_controller_mydesign_1
+lenet_0/fc_top/fc_controller/clk_gate_sram_waddr_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_fc_controller_mydesign_1_mydesign_0
+lenet_0/fc_top/fc_controller/clk_gate_write_e_sram_cnt_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_fc_controller_mydesign_1_mydesign_1
+lenet_0/fc_top/fc_data_reg          1768.3339      1.5    589.1058   1179.2281  0.0000  fc_data_reg_mydesign_1
+lenet_0/fc_top/fc_multiplier_accumulator
+                                    5957.6436      5.0   5198.5154    759.1281  0.0000  fc_multiplier_accumulator_mydesign_1
+lenet_0/fc_top/fc_quantize           230.7628      0.2    171.8013     58.9614  0.0000  fc_quantize_mydesign_1
+lenet_1                            58205.5831     49.2      0.0000      0.0000  0.0000  lenet_mydesign_0
+lenet_1/conv_top                   49390.5985     41.8     68.8730      0.0000  0.0000  conv_top_mydesign_0
+lenet_1/conv_top/conv_control       8024.5967      6.8   4371.0227   3427.1318  0.0000  conv_control_mydesign_0
+lenet_1/conv_top/conv_control/clk_gate_addr_change_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_19
+lenet_1/conv_top/conv_control/clk_gate_channel_cnt_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_20
+lenet_1/conv_top/conv_control/clk_gate_col_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_0
+lenet_1/conv_top/conv_control/clk_gate_delay1_sram_waddr_b_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_23
+lenet_1/conv_top/conv_control/clk_gate_delay1_sram_waddr_c_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_22
+lenet_1/conv_top/conv_control/clk_gate_delay1_sram_waddr_d_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_21
+lenet_1/conv_top/conv_control/clk_gate_sram_raddr_a0_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_12
+lenet_1/conv_top/conv_control/clk_gate_sram_raddr_a1_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_17
+lenet_1/conv_top/conv_control/clk_gate_sram_raddr_a2_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_14
+lenet_1/conv_top/conv_control/clk_gate_sram_raddr_a3_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_11
+lenet_1/conv_top/conv_control/clk_gate_sram_raddr_a4_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_16
+lenet_1/conv_top/conv_control/clk_gate_sram_raddr_a5_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_13
+lenet_1/conv_top/conv_control/clk_gate_sram_raddr_a6_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_10
+lenet_1/conv_top/conv_control/clk_gate_sram_raddr_a7_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_18
+lenet_1/conv_top/conv_control/clk_gate_sram_raddr_a8_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_15
+lenet_1/conv_top/conv_control/clk_gate_sram_raddr_b0_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_7
+lenet_1/conv_top/conv_control/clk_gate_sram_raddr_b1_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_6
+lenet_1/conv_top/conv_control/clk_gate_sram_raddr_b2_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_5
+lenet_1/conv_top/conv_control/clk_gate_sram_raddr_b3_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_4
+lenet_1/conv_top/conv_control/clk_gate_sram_raddr_b4_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_3
+lenet_1/conv_top/conv_control/clk_gate_sram_raddr_b5_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_2
+lenet_1/conv_top/conv_control/clk_gate_sram_raddr_b6_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_1
+lenet_1/conv_top/conv_control/clk_gate_sram_raddr_b7_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_9
+lenet_1/conv_top/conv_control/clk_gate_sram_raddr_b8_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_8
+lenet_1/conv_top/conv_control/clk_gate_sram_raddr_weight_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_25
+lenet_1/conv_top/conv_control/clk_gate_sram_raddr_weight_reg_0
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_24
+lenet_1/conv_top/conv_control/clk_gate_weight_cnt_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_26
+lenet_1/conv_top/data_reg          10332.2242      8.7   4612.9678   5719.2565  0.0000  data_reg_mydesign_0
+lenet_1/conv_top/fsm                  57.6907      0.0     28.2100     29.4807  0.0000  fsm_mydesign_0
+lenet_1/conv_top/multiply_compare  29705.8752     25.1  28762.4927    943.3825  0.0000  multiply_compare_mydesign_0
+lenet_1/conv_top/quantize           1201.3387      1.0   1142.3773     58.9614  0.0000  quantize_mydesign_0
+lenet_1/fc_top                      8814.9845      7.5     28.4641      0.0000  0.0000  fc_top_mydesign_0
+lenet_1/fc_top/fc_controller         829.7802      0.7    466.6084    346.3983  0.0000  fc_controller_mydesign_0
+lenet_1/fc_top/fc_controller/clk_gate_sram_waddr_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_fc_controller_mydesign_0_mydesign_0
+lenet_1/fc_top/fc_controller/clk_gate_write_e_sram_cnt_reg
+                                       8.3868      0.0      3.3039      5.0829  0.0000  SNPS_CLOCK_GATE_HIGH_fc_controller_mydesign_0_mydesign_1
+lenet_1/fc_top/fc_data_reg          1768.3339      1.5    589.1058   1179.2281  0.0000  fc_data_reg_mydesign_0
+lenet_1/fc_top/fc_multiplier_accumulator
+                                    5957.6436      5.0   5198.5154    759.1281  0.0000  fc_multiplier_accumulator_mydesign_0
+lenet_1/fc_top/fc_quantize           230.7628      0.2    171.8013     58.9614  0.0000  fc_quantize_mydesign_0
+--------------------------------  -----------  -------  ----------  ----------  ------  --------------------------------------------------------
+Total                                                   92849.7305  25338.6645  0.0000
+
+1
