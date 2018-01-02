@@ -2,17 +2,17 @@
  * Editor : Steven
  * File : quantize.v
  */
-module quantize(
+module fc_quantize(
 input clk,
 input srstn,
 input fc_state,					//fc_state = 0: fc1, fc_state = 1: fc2
-input signed [31:0] unquautized_data,
+input signed [22:0] unquautized_data,
 output reg signed[7:0] quantized_data
 );
 
 localparam FC1_STATE = 0, FC2_STATE = 1;
 
-reg signed [31:0] unquautized_round_data;
+reg signed [22:0] unquautized_round_data;
 reg signed [31:0] unquautized_shifted_data;
 reg signed [7:0] n_quantized_data;		//connect to the signed result in reg signed form
 

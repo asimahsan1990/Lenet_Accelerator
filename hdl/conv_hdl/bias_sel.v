@@ -39,6 +39,9 @@ always@* begin
         if(load_conv1_bias_enable) begin
             for(j = 0;j < 50; j = j + 1) begin
                 if (j<25) n_conv_weight_box[j] = delay_weight[(24-j)*4 +: 4];
+                /*****/
+                //if (j<25) n_conv_weight_box[j] = sram_rdata_weight[(24-j)*4 +: 4];
+                /*****/
                 else n_conv_weight_box[j] = conv_weight_box[j];
             end
             n_bias_data = 0;
@@ -53,6 +56,9 @@ always@* begin
         if(load_conv2_bias0_enable) begin
             for(j = 0;j < 50; j = j + 1) begin
                 if (j<25) n_conv_weight_box[j] = delay_weight[(24-j)*4 +: 4];
+                /*****/
+                //if (j<25) n_conv_weight_box[j] = sram_rdata_weight[(24-j)*4 +: 4];
+                /*****/
                 else n_conv_weight_box[j] = conv_weight_box[j];
             end
             n_bias_data = 0;
@@ -61,6 +67,9 @@ always@* begin
             for(j = 0;j < 50; j = j + 1) begin 
                 if (j<25) n_conv_weight_box[j] = conv_weight_box[j];
                 else n_conv_weight_box[j] = delay_weight[(49-j)*4 +: 4];
+                /*****/
+                //else n_conv_weight_box[j] = sram_rdata_weight[(49-j)*4 +: 4];
+                /*****/
             end
             n_bias_data = 0;
         end

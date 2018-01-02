@@ -24,11 +24,11 @@ input [DATA_NUM_PER_SRAM_ADDR*DATA_WIDTH-1:0] sram_rdata_c1,
 input [DATA_NUM_PER_SRAM_ADDR*DATA_WIDTH-1:0] sram_rdata_c2,
 input [DATA_NUM_PER_SRAM_ADDR*DATA_WIDTH-1:0] sram_rdata_c3,
 input [DATA_NUM_PER_SRAM_ADDR*DATA_WIDTH-1:0] sram_rdata_c4,
-output [9:0] sram_raddr_c0,
-output [9:0] sram_raddr_c1,
-output [9:0] sram_raddr_c2,
-output [9:0] sram_raddr_c3,
-output [9:0] sram_raddr_c4,
+output [5:0] sram_raddr_c0,
+output [5:0] sram_raddr_c1,
+output [5:0] sram_raddr_c2,
+output [5:0] sram_raddr_c3,
+output [5:0] sram_raddr_c4,
 
 //Read SRAM d0~d4
 input [DATA_NUM_PER_SRAM_ADDR*DATA_WIDTH-1:0] sram_rdata_d0,
@@ -36,11 +36,11 @@ input [DATA_NUM_PER_SRAM_ADDR*DATA_WIDTH-1:0] sram_rdata_d1,
 input [DATA_NUM_PER_SRAM_ADDR*DATA_WIDTH-1:0] sram_rdata_d2,
 input [DATA_NUM_PER_SRAM_ADDR*DATA_WIDTH-1:0] sram_rdata_d3,
 input [DATA_NUM_PER_SRAM_ADDR*DATA_WIDTH-1:0] sram_rdata_d4,
-output [9:0] sram_raddr_d0,
-output [9:0] sram_raddr_d1,
-output [9:0] sram_raddr_d2,
-output [9:0] sram_raddr_d3,
-output [9:0] sram_raddr_d4,
+output [5:0] sram_raddr_d0,
+output [5:0] sram_raddr_d1,
+output [5:0] sram_raddr_d2,
+output [5:0] sram_raddr_d3,
+output [5:0] sram_raddr_d4,
 
 //Read SRAM e0~e4
 input [DATA_NUM_PER_SRAM_ADDR*DATA_WIDTH-1:0] sram_rdata_e0,
@@ -48,11 +48,11 @@ input [DATA_NUM_PER_SRAM_ADDR*DATA_WIDTH-1:0] sram_rdata_e1,
 input [DATA_NUM_PER_SRAM_ADDR*DATA_WIDTH-1:0] sram_rdata_e2,
 input [DATA_NUM_PER_SRAM_ADDR*DATA_WIDTH-1:0] sram_rdata_e3,
 input [DATA_NUM_PER_SRAM_ADDR*DATA_WIDTH-1:0] sram_rdata_e4,
-output [9:0] sram_raddr_e0,
-output [9:0] sram_raddr_e1,
-output [9:0] sram_raddr_e2,
-output [9:0] sram_raddr_e3,
-output [9:0] sram_raddr_e4,
+output [4:0] sram_raddr_e0,
+output [4:0] sram_raddr_e1,
+output [4:0] sram_raddr_e2,
+output [4:0] sram_raddr_e3,
+output [4:0] sram_raddr_e4,
 
 //Write SRAM e0~e4
 output sram_write_enable_e0,
@@ -61,13 +61,13 @@ output sram_write_enable_e2,
 output sram_write_enable_e3,
 output sram_write_enable_e4,
 output [3:0] sram_bytemask_e,
-output [9:0] sram_waddr_e,
+output [4:0] sram_waddr_e,
 output [7:0] sram_wdata_e,
 
 //Write SRAM f
 output sram_write_enable_f,
 output [3:0] sram_bytemask_f,
-output [9:0] sram_waddr_f,
+output [1:0] sram_waddr_f,
 output [7:0] sram_wdata_f,
 
 //FC weight
@@ -85,11 +85,11 @@ wire accumulate_reset;
 wire fc_state;
 wire [1:0] sram_sel;
 
-wire signed [31:0] data_out;		//bit number > 8+4+10=22 is enough
+wire signed [22:0] data_out;		//bit number > 8+4+10=22 is enough
 wire signed [7:0] quantized_data;
 
 wire [3:0] sram_bytemask;
-wire [9:0] sram_waddr;
+wire [5:0] sram_waddr;
 
 
 //the sram_wdata of sram e and sram f are quantized data
@@ -102,8 +102,8 @@ assign sram_bytemask_e = sram_bytemask;
 assign sram_bytemask_f = sram_bytemask;
 
 //sram_waddr
-assign sram_waddr_e = sram_waddr;
-assign sram_waddr_f = sram_waddr;
+assign sram_waddr_e = sram_waddr[4:0];
+assign sram_waddr_f = sram_waddr[1:0];
 
 //module
 fc_controller fc_controller(
@@ -149,7 +149,7 @@ fc_controller fc_controller(
 );
 
 
-data_reg data_reg(
+fc_data_reg fc_data_reg(
 .clk(clk),
 .srstn(srstn),
 .sram_rdata_c0(sram_rdata_c0),
@@ -171,7 +171,7 @@ data_reg data_reg(
 .src_window(src_window)
 );
 
-multiplier_accumulator multiplier_accumulator(
+fc_multiplier_accumulator fc_multiplier_accumulator(
 .clk(clk),
 .srstn(srstn),
 .src_window(src_window),
@@ -180,7 +180,7 @@ multiplier_accumulator multiplier_accumulator(
 .data_out(data_out)							//bit number > 8+4+10=22 is enough
 );
 
-quantize quantize(
+fc_quantize fc_quantize(
 .clk(clk),
 .srstn(srstn),
 .fc_state(fc_state),						//From controller, fc_state = 0: fc1, fc_state = 1: fc2

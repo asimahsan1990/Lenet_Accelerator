@@ -70,9 +70,11 @@ output reg [9:0] sram_waddr_d
 );
 
 localparam IDLE = 0, CONV1 = 1, CONV2 = 2, DONE = 3;
-localparam CONV_IDLE = 0, LOAD_CONV1_BIAS = 1, LOAD_CONV1_WEIGHT = 2, LOAD_CONV1_WRITE_DATA = 3, CONV1_DONE = 4,
-		   LOAD_CONV2_BIAS0 = 5, LOAD_CONV2_BIAS1 = 6, CONV2_NEXT_POOLING = 7, LOAD_CONV2_WRITE_DATA = 8, CONV_DONE = 9;
-
+localparam CONV_IDLE = 0, LOAD_CONV1_BIAS = 1, LOAD_CONV1_WEIGHT = 2, LOAD_CONV1_WRITE_DATA = 3, CONV1_FINISH = 4,
+		   LOAD_CONV2_BIAS0 = 5, LOAD_CONV2_BIAS1 = 6, CONV2_NEXT_POOLING = 7, LOAD_CONV2_WRITE_DATA = 8, CONV_FINISH = 9;
+/*****/
+localparam PREPARING = 10, PREPARING_CONV2_BIAS0 = 11, PREPARING_CONV2_BIAS1 = 12;
+/*****/
 localparam RESET_SEL_DATA = 4'b0000;
 localparam SEL_DATA_TYPE1 = 4'b0001, SEL_DATA_TYPE2 = 4'b0010 , SEL_DATA_TYPE3 = 4'b0011;
 localparam SEL_DATA_TYPE4 = 4'b0101, SEL_DATA_TYPE5 = 4'b0110 , SEL_DATA_TYPE6 = 4'b0111;
@@ -116,11 +118,14 @@ wire [3:0] data_sel;
 wire n_conv1_done;
 
 reg [3:0] state, n_state;
+/*****/
+reg [3:0] delay1_state, delay2_state, delay3_state;
+/*****/
 reg n_load_conv1_bias_enable;
 reg delay_load_conv1_bias_enable;
 reg n_load_conv2_bias0_enable, n_load_conv2_bias1_enable;
 reg delay_load_conv2_bias0_enable, delay_load_conv2_bias1_enable;
-reg write_enable, n_write_enable, delay_write_enable, delay2_write_enable;
+reg write_enable, n_write_enable, delay_write_enable, delay2_write_enable, delay3_write_enable;
 reg load_data_enable, n_load_data_enable;
 reg [16:0] n_sram_raddr_weight;
 reg [3:0] n_box_sel;
@@ -137,9 +142,14 @@ reg [3:0] write_row;
 reg [3:0] write_col;
 reg [3:0] row_enable;
 reg [3:0] col_enable;
+/*****/
+reg [3:0] write_row_conv1;
+reg [3:0] write_col_conv1;
+/*****/
 
 reg [7:0] weight_cnt, n_weight_cnt;
 reg [7:0] delay_set;
+reg [7:0] conv1_weight_cnt, conv2_weight_cnt;
 reg conv1_weight_done, n_conv1_weight_done;
 reg conv2_weight_done, n_conv2_weight_done;
 
@@ -163,12 +173,12 @@ reg [9:0] n_sram_raddr_b6;
 reg [9:0] n_sram_raddr_b7;
 reg [9:0] n_sram_raddr_b8;
 
-reg [9:0] n_sram_waddr_b, delay1_sram_waddr_b, delay2_sram_waddr_b, delay3_sram_waddr_b;
-reg [3:0] n_sram_bytemask_b, delay_sram_bytemask_b, delay2_sram_bytemask_b;
-reg [9:0] n_sram_waddr_c, delay1_sram_waddr_c, delay2_sram_waddr_c, delay3_sram_waddr_c, delay4_sram_waddr_c;
-reg [3:0] n_sram_bytemask_c, delay_sram_bytemask_c;
-reg [9:0] n_sram_waddr_d, delay1_sram_waddr_d, delay2_sram_waddr_d, delay3_sram_waddr_d, delay4_sram_waddr_d;
-reg [3:0] n_sram_bytemask_d, delay_sram_bytemask_d;
+reg [9:0] n_sram_waddr_b, delay1_sram_waddr_b/*, delay2_sram_waddr_b, delay3_sram_waddr_b*/;
+reg [3:0] n_sram_bytemask_b/*, delay_sram_bytemask_b, delay2_sram_bytemask_b*/;
+reg [9:0] n_sram_waddr_c, delay1_sram_waddr_c/*, delay2_sram_waddr_c, delay3_sram_waddr_c, delay4_sram_waddr_c*/;
+reg [3:0] n_sram_bytemask_c/*, delay_sram_bytemask_c*/;
+reg [9:0] n_sram_waddr_d, delay1_sram_waddr_d/*, delay2_sram_waddr_d, delay3_sram_waddr_d, delay4_sram_waddr_d*/;
+reg [3:0] n_sram_bytemask_d/*, delay_sram_bytemask_d*/;
 
 reg n_sram_write_enable_b0;
 reg n_sram_write_enable_b1;
@@ -179,7 +189,7 @@ reg n_sram_write_enable_b5;
 reg n_sram_write_enable_b6;
 reg n_sram_write_enable_b7;
 reg n_sram_write_enable_b8;
-
+/*
 reg delay_sram_write_enable_b0;
 reg delay_sram_write_enable_b1;
 reg delay_sram_write_enable_b2;
@@ -199,7 +209,7 @@ reg delay2_sram_write_enable_b5;
 reg delay2_sram_write_enable_b6;
 reg delay2_sram_write_enable_b7;
 reg delay2_sram_write_enable_b8;
-
+*/
 reg n_sram_write_enable_c0;
 reg n_sram_write_enable_c1;
 reg n_sram_write_enable_c2;
@@ -211,7 +221,7 @@ reg n_sram_write_enable_d1;
 reg n_sram_write_enable_d2;
 reg n_sram_write_enable_d3;
 reg n_sram_write_enable_d4;
-
+/*
 reg delay_sram_write_enable_c0;
 reg delay_sram_write_enable_c1;
 reg delay_sram_write_enable_c2;
@@ -223,16 +233,18 @@ reg delay_sram_write_enable_d1;
 reg delay_sram_write_enable_d2;
 reg delay_sram_write_enable_d3;
 reg delay_sram_write_enable_d4;
-
-reg [4:0] addr_change, n_addr_change, delay_addr_change, delay2_addr_change;
+*/
+reg [4:0] addr_change, n_addr_change, delay_addr_change, delay2_addr_change, delay3_addr_change;
 
 reg [4:0] channel_cnt, n_channel_cnt, delay_channel, delay2_channel;
 
-reg delay1_conv1_done, delay2_conv1_done, delay3_conv1_done, delay4_conv1_done;
-reg delay_conv_done, delay2_conv_done, delay3_conv_done;
+//reg delay1_conv1_done, delay2_conv1_done, delay3_conv1_done, delay4_conv1_done;
+//reg delay_conv_done, delay2_conv_done, delay3_conv_done;
 
-assign n_conv1_done = (conv1_done)? 0: (weight_cnt == CONV1_WEIGHT_NUM)? 1 : 0;
-assign n_conv_done = (conv_done)? 0 : (weight_cnt == CONV2_SET_NUM)? 1 : 0;
+//assign n_conv1_done = (conv1_done)? 0: (weight_cnt == CONV1_WEIGHT_NUM)? 1 : 0;
+//assign n_conv_done = (conv_done)? 0 : (weight_cnt == CONV2_SET_NUM)? 1 : 0;
+assign n_conv1_done = (conv1_done)? 0: (conv1_weight_cnt == CONV1_WEIGHT_NUM && mode == CONV1)? 1 : 0;
+assign n_conv_done = (conv_done)? 0 : (conv2_weight_cnt == CONV2_SET_NUM && mode == CONV2)? 1 : 0;
 
 always@(posedge clk) begin
     if(~srstn) begin
@@ -245,25 +257,38 @@ end
 
 always@* begin
 	case(state)
-		CONV_IDLE : begin
+		/*CONV_IDLE : begin
 			if(mode == CONV1) n_state = LOAD_CONV1_BIAS;
 			else n_state = CONV_IDLE;
+		end*/
+		/*****/
+		CONV_IDLE : begin
+			if(mode == CONV1) n_state = PREPARING;
+			else n_state = CONV_IDLE;
 		end
+		PREPARING : n_state = LOAD_CONV1_BIAS;
+		/*****/
 		LOAD_CONV1_BIAS : n_state = LOAD_CONV1_WRITE_DATA;
 		LOAD_CONV1_WEIGHT : n_state = LOAD_CONV1_WRITE_DATA;
 		LOAD_CONV1_WRITE_DATA : begin
-			if(conv1_done) n_state = CONV1_DONE; 
+			if(conv1_done) n_state = CONV1_FINISH; 
 			else n_state = (conv1_weight_done)? LOAD_CONV1_WEIGHT : LOAD_CONV1_WRITE_DATA;
 		end
-		CONV1_DONE : n_state = LOAD_CONV2_BIAS0;
-		LOAD_CONV2_BIAS0 : n_state = LOAD_CONV2_BIAS1;
+		/*CONV1_FINISH : n_state = LOAD_CONV2_BIAS0;
+		LOAD_CONV2_BIAS0 : n_state = LOAD_CONV2_BIAS1;*/
+		/*****/
+		CONV1_FINISH : n_state = PREPARING_CONV2_BIAS0;
+		PREPARING_CONV2_BIAS0 : n_state = LOAD_CONV2_BIAS0;
+		LOAD_CONV2_BIAS0 : n_state = PREPARING_CONV2_BIAS1;
+		PREPARING_CONV2_BIAS1 : n_state = LOAD_CONV2_BIAS1;
+		/*****/		
 		LOAD_CONV2_BIAS1 : n_state = LOAD_CONV2_WRITE_DATA;
 		CONV2_NEXT_POOLING : n_state = LOAD_CONV2_WRITE_DATA;
 		LOAD_CONV2_WRITE_DATA : begin
-			if(conv_done) n_state = CONV_DONE; 
+			if(conv_done) n_state = CONV_FINISH; 
 			else n_state = (channel_cnt == 19)? CONV2_NEXT_POOLING : LOAD_CONV2_WRITE_DATA;
 		end
-		CONV_DONE : n_state = IDLE;
+		CONV_FINISH : n_state = CONV_IDLE;
 		default : n_state = CONV_IDLE;
 	endcase
 end
@@ -277,16 +302,23 @@ always@(posedge clk) begin
 		write_enable <= 0;
 		delay_write_enable <= 0;
 		delay2_write_enable <= 0;
+		/*****/
+		delay3_write_enable <= 0;
+		/*****/
 		load_conv1_bias_enable <= 0;
-		delay_load_conv1_bias_enable <= 0;
+		//delay_load_conv1_bias_enable <= 0;
 		load_conv2_bias0_enable <= 0;
 		load_conv2_bias1_enable <= 0;
-		delay_load_conv2_bias0_enable <= 0;
-		delay_load_conv2_bias1_enable <= 0;
+		/*delay_load_conv2_bias0_enable <= 0;
+		delay_load_conv2_bias1_enable <= 0;*/
 		load_data_enable <= 0;
 		weight_cnt <= 0;
 		delay_set <= 0;
 		set <= 0;
+		/*******/
+		conv2_weight_cnt <= 0;
+		conv1_weight_cnt <= 0;
+		/*******/
 		sram_raddr_weight <= 0;
 		conv1_bias_set <= 0;
 		box_sel <= 0;
@@ -297,46 +329,58 @@ always@(posedge clk) begin
 		conv1_done <= 0;
 		sram_waddr_b <= 0;
 		delay1_sram_waddr_b <= 0;
-		delay2_sram_waddr_b <= 0;
-		delay3_sram_waddr_b <= 0;
+		/*delay2_sram_waddr_b <= 0;
+		delay3_sram_waddr_b <= 0;*/
 		sram_bytemask_b <= 0;
-		delay_sram_bytemask_b <= 0;
-		delay2_sram_bytemask_b <= 0;
+		/*delay_sram_bytemask_b <= 0;
+		delay2_sram_bytemask_b <= 0;*/
 		row_enable <= 0;
 		col_enable <= 0;
 		write_row <= 0;
 		write_col <= 0;
 		row_delay <= 0;
 		col_delay <= 0;
-		delay1_conv1_done <= 0;
+		/*****/
+		write_row_conv1 <= 0;
+		write_col_conv1 <= 0;
+		/*****/
+		/*delay1_conv1_done <= 0;
 		delay2_conv1_done <= 0;
 		delay3_conv1_done <= 0;
-		delay4_conv1_done <= 0;
+		delay4_conv1_done <= 0;*/
 		conv_done <= 0;
 		delay1_sram_waddr_c <= 0;
 		delay1_sram_waddr_d <= 0;
-		delay2_sram_waddr_c <= 0;
+		/*delay2_sram_waddr_c <= 0;
 		delay2_sram_waddr_d <= 0;
 		delay3_sram_waddr_c <= 0;
 		delay3_sram_waddr_d <= 0;
 		delay4_sram_waddr_c <= 0;
-		delay4_sram_waddr_d <= 0;
+		delay4_sram_waddr_d <= 0;*/
 		sram_waddr_c <= 0;
 		sram_waddr_d <= 0;
 		sram_bytemask_c <= 0;
-		delay_sram_bytemask_c <= 0;
+		//delay_sram_bytemask_c <= 0;
 		sram_bytemask_d <= 0;
-		delay_sram_bytemask_d <= 0;
-		delay_conv_done <= 0;
+		//delay_sram_bytemask_d <= 0;
+		/*delay_conv_done <= 0;
 		delay2_conv_done <= 0;
-		delay3_conv_done <= 0;
+		delay3_conv_done <= 0;*/
 		channel_cnt <= 0;
 		addr_change <= 0;
 		delay_addr_change <= 0;
 		delay2_addr_change <= 0;
+		/*****/
+		delay3_addr_change <= 0;
+		/*****/
 		delay_channel <= 0;
 		delay2_channel <= 0;
 		channel <= 0;
+		/*****/
+		delay1_state <= 0;
+		delay2_state <= 0;
+		delay3_state <= 0;
+		/*****/
     end
     else begin
         row <= n_row;
@@ -346,16 +390,30 @@ always@(posedge clk) begin
 		write_enable <= n_write_enable;
 		delay_write_enable <= write_enable;
 		delay2_write_enable <= delay_write_enable;
-		load_conv1_bias_enable <= delay_load_conv1_bias_enable;
-		delay_load_conv1_bias_enable <= n_load_conv1_bias_enable;
-		load_conv2_bias0_enable <= delay_load_conv2_bias0_enable;
+		/*****/
+		delay3_write_enable <= delay2_write_enable;
+		/*****/
+		/*load_conv1_bias_enable <= delay_load_conv1_bias_enable;
+		delay_load_conv1_bias_enable <= n_load_conv1_bias_enable;*/
+		/*****/
+		load_conv1_bias_enable <= n_load_conv1_bias_enable;
+		/*****/
+		/*load_conv2_bias0_enable <= delay_load_conv2_bias0_enable;
 		load_conv2_bias1_enable <= delay_load_conv2_bias1_enable;
 		delay_load_conv2_bias0_enable <= n_load_conv2_bias0_enable;
-		delay_load_conv2_bias1_enable <= n_load_conv2_bias1_enable;
+		delay_load_conv2_bias1_enable <= n_load_conv2_bias1_enable;*/
+		/*****/
+		load_conv2_bias0_enable <= n_load_conv2_bias0_enable;
+		load_conv2_bias1_enable <= n_load_conv2_bias1_enable;
+		/*****/
 		load_data_enable <= n_load_data_enable;
 		weight_cnt <= n_weight_cnt;
 		delay_set <= weight_cnt;
 		set <= delay_set;
+		/*****/
+		conv2_weight_cnt <= set;
+		conv1_weight_cnt <= conv2_weight_cnt;
+		/*****/
 		sram_raddr_weight <= n_sram_raddr_weight;
 		conv1_bias_set <= sram_raddr_weight;
 		box_sel <= n_box_sel;
@@ -363,49 +421,78 @@ always@(posedge clk) begin
 		addr_row_sel_cnt <= n_addr_row_sel_cnt;
 		data_sel_col <= addr_col_sel_cnt;
 		data_sel_row <= addr_row_sel_cnt;
-		conv1_done <= delay4_conv1_done;
-		sram_waddr_b <= delay3_sram_waddr_b;
+		conv1_done <= n_conv1_done;
+		//conv1_done <= delay4_conv1_done;
+		/*sram_waddr_b <= delay3_sram_waddr_b;
 		delay1_sram_waddr_b <= n_sram_waddr_b;
 		delay2_sram_waddr_b <= delay1_sram_waddr_b;
-		delay3_sram_waddr_b <= delay2_sram_waddr_b;
-		sram_bytemask_b <= delay2_sram_bytemask_b;
+		delay3_sram_waddr_b <= delay2_sram_waddr_b;*/
+		/*****/
+		sram_waddr_b <= delay1_sram_waddr_b;
+		delay1_sram_waddr_b <= n_sram_waddr_b;
+		/*****/
+		/*sram_bytemask_b <= delay2_sram_bytemask_b;
 		delay2_sram_bytemask_b <= delay_sram_bytemask_b;
-		delay_sram_bytemask_b <= n_sram_bytemask_b;
+		delay_sram_bytemask_b <= n_sram_bytemask_b;*/
+		/*****/
+		sram_bytemask_b <= n_sram_bytemask_b;
+		/*****/
 		row_delay <= row;
 		col_delay <= col;
 		write_row <= row_delay;
 		write_col <= col_delay;
 		row_enable <= write_row;
 		col_enable <= write_col;
-		delay1_conv1_done <= n_conv1_done;
+		/*****/
+		write_row_conv1 <= row_enable;
+		write_col_conv1 <= col_enable;
+		/*****/
+		/*delay1_conv1_done <= n_conv1_done;
 		delay2_conv1_done <= delay1_conv1_done;
 		delay3_conv1_done <= delay2_conv1_done;
-		delay4_conv1_done <= delay3_conv1_done;
-		conv_done <= delay3_conv_done;
+		delay4_conv1_done <= delay3_conv1_done;*/
+		conv_done <= n_conv_done;
+		//conv_done <= delay3_conv_done;
 		delay1_sram_waddr_c <= n_sram_waddr_c;
 		delay1_sram_waddr_d <= n_sram_waddr_d;
-		delay2_sram_waddr_c <= delay1_sram_waddr_c;
+		/*delay2_sram_waddr_c <= delay1_sram_waddr_c;
 		delay2_sram_waddr_d <= delay1_sram_waddr_d;
 		delay3_sram_waddr_c <= delay2_sram_waddr_c;
 		delay3_sram_waddr_d <= delay2_sram_waddr_d;
 		delay4_sram_waddr_c <= delay3_sram_waddr_c;
 		delay4_sram_waddr_d <= delay3_sram_waddr_d;
 		sram_waddr_c <= delay4_sram_waddr_c;
-		sram_waddr_d <= delay4_sram_waddr_d;
-		sram_bytemask_c <= delay_sram_bytemask_c;
+		sram_waddr_d <= delay4_sram_waddr_d;*/
+		/*****/
+		sram_waddr_c <= delay1_sram_waddr_c;
+		sram_waddr_d <= delay1_sram_waddr_d;
+		/*****/
+		/*sram_bytemask_c <= delay_sram_bytemask_c;
 		delay_sram_bytemask_c <= n_sram_bytemask_c;
 		sram_bytemask_d <= delay_sram_bytemask_d;
-		delay_sram_bytemask_d <= n_sram_bytemask_d;
-		delay_conv_done <= n_conv_done;
+		delay_sram_bytemask_d <= n_sram_bytemask_d;*/
+		/*****/
+		sram_bytemask_c <= n_sram_bytemask_c;
+		sram_bytemask_d <= n_sram_bytemask_d;
+		/*****/
+		/*delay_conv_done <= n_conv_done;
 		delay2_conv_done <= delay_conv_done;
-		delay3_conv_done <= delay2_conv_done;
+		delay3_conv_done <= delay2_conv_done;*/
 		addr_change <= n_addr_change;
 		delay_addr_change <= addr_change;
 		delay2_addr_change <= delay_addr_change;
+		/*****/
+		delay3_addr_change <= delay2_addr_change;
+		/*****/
 		channel_cnt <= n_channel_cnt;		
 		delay_channel <= channel_cnt;
 		delay2_channel <= delay_channel;
 		channel <= delay2_channel;
+		/*****/
+		delay1_state <= state;
+		delay2_state <= delay1_state;
+		delay3_state <= delay2_state;
+		/*****/
     end
 end
 /*
@@ -438,6 +525,16 @@ always@* begin
 			n_write_enable = 0;
 			n_sram_raddr_weight = 20;
 		end
+		/*****/
+		PREPARING : begin
+			n_load_conv1_bias_enable = 0;
+			n_load_conv2_bias0_enable = 0;
+			n_load_conv2_bias1_enable = 0;
+			n_load_data_enable = 0;
+			n_write_enable = 0;
+			n_sram_raddr_weight = 20;
+		end
+		/*****/
 		LOAD_CONV1_BIAS : begin
 			n_load_conv1_bias_enable = 1;
 			n_load_conv2_bias0_enable = 0;
@@ -469,7 +566,7 @@ always@* begin
 				else n_load_data_enable = 0;
 			end
 		end
-		CONV1_DONE : begin			
+		CONV1_FINISH : begin			
 			n_load_conv1_bias_enable = 0;
 			n_load_conv2_bias0_enable = 0;
 			n_load_conv2_bias1_enable = 0;
@@ -477,6 +574,16 @@ always@* begin
 			n_write_enable = 0;
 			n_sram_raddr_weight = 1021;
 		end
+		/*****/
+		PREPARING_CONV2_BIAS0 : begin
+			n_load_conv1_bias_enable = 0;
+			n_load_conv2_bias0_enable = 0;
+			n_load_conv2_bias1_enable = 0;
+			n_load_data_enable = 0;
+			n_write_enable = 0;
+			n_sram_raddr_weight = 1021;
+		end
+		/*****/
 		LOAD_CONV2_BIAS0 : begin
 			n_load_conv1_bias_enable = 0;
 			n_load_conv2_bias0_enable = 1;
@@ -485,6 +592,16 @@ always@* begin
 			n_write_enable = 0;
 			n_sram_raddr_weight = 1022;
 		end
+		/*****/
+		PREPARING_CONV2_BIAS1 : begin
+			n_load_conv1_bias_enable = 0;
+			n_load_conv2_bias0_enable = 0;
+			n_load_conv2_bias1_enable = 0;
+			n_load_data_enable = 0;
+			n_write_enable = 0;
+			n_sram_raddr_weight = 1022;
+		end
+		/*****/
 		LOAD_CONV2_BIAS1 : begin
 			n_load_conv1_bias_enable = 0;
 			n_load_conv2_bias0_enable = 0;
@@ -521,13 +638,16 @@ always@* begin
 				else n_load_data_enable = 0;
 			end
 		end
-		CONV_DONE : begin			
+		CONV_FINISH : begin			
 			n_load_conv1_bias_enable = 0;
 			n_load_conv2_bias0_enable = 0;
 			n_load_conv2_bias1_enable = 0;
 			n_load_data_enable = 0;
 			n_write_enable = 0;
 			n_sram_raddr_weight = sram_raddr_weight;
+			/*****/
+			//n_sram_raddr_weight = 20;
+			/*****/
 		end
 		default : begin			
 			n_load_conv1_bias_enable = 0;
@@ -1114,7 +1234,7 @@ always@* begin
 		default: n_box_sel = RESET_SEL_DATA;
 	endcase
 end
-
+/*
 always@* begin
 	if((write_enable)&(mode == CONV1)) begin
 	    if(write_col == 5) n_sram_waddr_b = delay1_sram_waddr_b + 1;
@@ -1132,8 +1252,27 @@ always@* begin
 	else begin
 	    n_sram_waddr_b = delay1_sram_waddr_b;
 	end
+end*/
+/*****/
+always@* begin
+	if((delay2_write_enable)&(mode == CONV1)) begin
+	    if(write_col_conv1 == 5) n_sram_waddr_b = delay1_sram_waddr_b + 1;
+	    else if(write_col_conv1 == 11) begin
+	        if(write_row_conv1 == 5 || write_row_conv1 == 11) n_sram_waddr_b = delay1_sram_waddr_b + 1;                    
+	        else n_sram_waddr_b = delay1_sram_waddr_b - 1;
+	    end
+	    else begin
+	        n_sram_waddr_b = delay1_sram_waddr_b;
+	    end
+	end
+	else if(mode == IDLE) begin
+		n_sram_waddr_b = 0;
+	end
+	else begin
+	    n_sram_waddr_b = delay1_sram_waddr_b;
+	end
 end
-
+/*****/
 always@(posedge clk) begin
 	if(~srstn) begin
 		sram_write_enable_b0 <= 1;
@@ -1146,7 +1285,7 @@ always@(posedge clk) begin
 		sram_write_enable_b7 <= 1;
 		sram_write_enable_b8 <= 1;
 
-		delay_sram_write_enable_b0 <= 1;
+		/*delay_sram_write_enable_b0 <= 1;
 		delay_sram_write_enable_b1 <= 1;
 		delay_sram_write_enable_b2 <= 1;
 		delay_sram_write_enable_b3 <= 1;
@@ -1164,10 +1303,10 @@ always@(posedge clk) begin
 		delay2_sram_write_enable_b5 <= 1;
 		delay2_sram_write_enable_b6 <= 1;
 		delay2_sram_write_enable_b7 <= 1;
-		delay2_sram_write_enable_b8 <= 1;
+		delay2_sram_write_enable_b8 <= 1;*/
 	end
 	else begin
-		/*sram_write_enable_b0 <= n_sram_write_enable_b0;
+		sram_write_enable_b0 <= n_sram_write_enable_b0;
 		sram_write_enable_b1 <= n_sram_write_enable_b1;
 		sram_write_enable_b2 <= n_sram_write_enable_b2;
 		sram_write_enable_b3 <= n_sram_write_enable_b3;
@@ -1175,8 +1314,8 @@ always@(posedge clk) begin
 		sram_write_enable_b5 <= n_sram_write_enable_b5;
 		sram_write_enable_b6 <= n_sram_write_enable_b6;
 		sram_write_enable_b7 <= n_sram_write_enable_b7;
-		sram_write_enable_b8 <= n_sram_write_enable_b8;*/
-		sram_write_enable_b0 <= delay2_sram_write_enable_b0;
+		sram_write_enable_b8 <= n_sram_write_enable_b8;
+		/*sram_write_enable_b0 <= delay2_sram_write_enable_b0;
 		sram_write_enable_b1 <= delay2_sram_write_enable_b1;
 		sram_write_enable_b2 <= delay2_sram_write_enable_b2;
 		sram_write_enable_b3 <= delay2_sram_write_enable_b3;
@@ -1204,15 +1343,18 @@ always@(posedge clk) begin
 		delay_sram_write_enable_b5 <= n_sram_write_enable_b5;
 		delay_sram_write_enable_b6 <= n_sram_write_enable_b6;
 		delay_sram_write_enable_b7 <= n_sram_write_enable_b7;
-		delay_sram_write_enable_b8 <= n_sram_write_enable_b8;
+		delay_sram_write_enable_b8 <= n_sram_write_enable_b8;*/
 	end
 end
 
 always@* begin
-    if((write_enable)&(mode == CONV1)) begin
-		case (write_row)
+	if((delay2_write_enable)&(mode == CONV1)) begin
+		case (write_row_conv1)
+    /*if((write_enable)&(mode == CONV1)) begin
+		case (write_row)*/
         	4'd0 ,4'd1,4'd6,4'd7: begin
-        	    case (write_col)
+        	    //case (write_col)
+        	    case (write_col_conv1)
         	        4'd0 ,4'd1 ,4'd6 ,4'd7  : begin
         	            n_sram_write_enable_b0 = 0;
         	            n_sram_write_enable_b1 = 1;
@@ -1260,7 +1402,8 @@ always@* begin
         	    endcase
         	end
         	4'd2,4'd3,4'd8,4'd9 : begin
-        	    case (write_col)
+        	    //case (write_col)
+        	    case (write_col_conv1)
         	        4'd0 ,4'd1 ,4'd6 ,4'd7  : begin
         	            n_sram_write_enable_b0 = 1;
         	            n_sram_write_enable_b1 = 1;
@@ -1309,7 +1452,8 @@ always@* begin
 	
         	end
         	4'd4,4'd5,4'd10,4'd11 : begin
-        	    case (write_col)
+        	    //case (write_col)
+        	    case (write_col_conv1)
         	        4'd0 ,4'd1 ,4'd6 ,4'd7  : begin
         	            n_sram_write_enable_b0 = 1;
         	            n_sram_write_enable_b1 = 1;
@@ -1394,7 +1538,7 @@ always@* begin
 		n_addr_change = addr_change;
 	end
 end
-
+/*
 always@* begin
 	if(state == CONV2_NEXT_POOLING) begin
 		if(addr_change == 19) begin
@@ -1421,6 +1565,35 @@ always@* begin
 	    n_sram_waddr_d = delay1_sram_waddr_d;
 	end
 end
+*/
+/*****/
+always@* begin
+	if(delay3_state == CONV2_NEXT_POOLING) begin
+		if(delay3_addr_change == 19) begin
+			if (mem_sel == 0) begin
+				n_sram_waddr_c = delay1_sram_waddr_c + 1;
+				n_sram_waddr_d = 0;
+			end
+			else begin
+				n_sram_waddr_c = 0;
+				n_sram_waddr_d = delay1_sram_waddr_d + 1;
+			end
+		end
+		else begin
+	        n_sram_waddr_c = delay1_sram_waddr_c;
+	        n_sram_waddr_d = delay1_sram_waddr_d;
+	    end
+	end
+	else if(delay3_state == CONV1_FINISH) begin
+		n_sram_waddr_c = 0;
+	    n_sram_waddr_d = 0;
+	end
+	else begin
+	    n_sram_waddr_c = delay1_sram_waddr_c;
+	    n_sram_waddr_d = delay1_sram_waddr_d;
+	end
+end
+/*****/
 
 always@(posedge clk) begin
 	if(~srstn) begin
@@ -1436,7 +1609,7 @@ always@(posedge clk) begin
 		sram_write_enable_d3 <= 1;
 		sram_write_enable_d4 <= 1;
 
-		delay_sram_write_enable_c0 <= 1;
+		/*delay_sram_write_enable_c0 <= 1;
 		delay_sram_write_enable_c1 <= 1;
 		delay_sram_write_enable_c2 <= 1;
 		delay_sram_write_enable_c3 <= 1;
@@ -1446,10 +1619,22 @@ always@(posedge clk) begin
 		delay_sram_write_enable_d1 <= 1;
 		delay_sram_write_enable_d2 <= 1;
 		delay_sram_write_enable_d3 <= 1;
-		delay_sram_write_enable_d4 <= 1;
+		delay_sram_write_enable_d4 <= 1;*/
 	end
 	else begin
-		sram_write_enable_c0 <= delay_sram_write_enable_c0;
+		sram_write_enable_c0 <= n_sram_write_enable_c0;
+		sram_write_enable_c1 <= n_sram_write_enable_c1;
+		sram_write_enable_c2 <= n_sram_write_enable_c2;
+		sram_write_enable_c3 <= n_sram_write_enable_c3;
+		sram_write_enable_c4 <= n_sram_write_enable_c4;
+		
+		sram_write_enable_d0 <= n_sram_write_enable_d0;
+		sram_write_enable_d1 <= n_sram_write_enable_d1;
+		sram_write_enable_d2 <= n_sram_write_enable_d2;
+		sram_write_enable_d3 <= n_sram_write_enable_d3;
+		sram_write_enable_d4 <= n_sram_write_enable_d4;
+
+		/*sram_write_enable_c0 <= delay_sram_write_enable_c0;
 		sram_write_enable_c1 <= delay_sram_write_enable_c1;
 		sram_write_enable_c2 <= delay_sram_write_enable_c2;
 		sram_write_enable_c3 <= delay_sram_write_enable_c3;
@@ -1471,15 +1656,17 @@ always@(posedge clk) begin
 		delay_sram_write_enable_d1 <= n_sram_write_enable_d1;
 		delay_sram_write_enable_d2 <= n_sram_write_enable_d2;
 		delay_sram_write_enable_d3 <= n_sram_write_enable_d3;
-		delay_sram_write_enable_d4 <= n_sram_write_enable_d4;
+		delay_sram_write_enable_d4 <= n_sram_write_enable_d4;*/
 	end
 end
 
 always@* begin
+	if((delay3_write_enable)&(mode == CONV2))begin
+		case(delay3_addr_change)
 	/*if((write_enable)&(mode == CONV2))begin
 		case(addr_change)*/
-	if((delay2_write_enable)&(mode == CONV2))begin
-		case(delay2_addr_change)
+	/*if((delay2_write_enable)&(mode == CONV2))begin
+		case(delay2_addr_change)*/
 			5'd0, 5'd1, 5'd2, 5'd3: begin
 				if(mem_sel == 0) begin
 					n_sram_write_enable_c0 = 0;
@@ -1651,8 +1838,10 @@ always@* begin
 end
 
 // Based on write_row and write_col are odd or even?
-assign bytemask_sel = (mode == CONV1)? {write_row[0],write_col[0]} : (mode == CONV2)? write_col[1:0] : 0;
-
+//assign bytemask_sel = (mode == CONV1)? {write_row[0],write_col[0]} : (mode == CONV2)? write_col[1:0] : 0;
+//assign bytemask_sel = (mode == CONV1)? {write_row_conv1[0],write_col_conv1[0]} : (mode == CONV2)? write_col[1:0] : 0;
+assign bytemask_sel = (mode == CONV1)? {write_row_conv1[0],write_col_conv1[0]} : (mode == CONV2)? col_enable[1:0] : 0;
+/*
 always@* begin
 	if((write_enable)&(mode == CONV1)) begin
 		case (bytemask_sel)
@@ -1667,7 +1856,23 @@ always@* begin
 		n_sram_bytemask_b = 4'b0000;
 	end
 end
-
+*/
+/*****/
+always@* begin
+	if((delay2_write_enable)&(mode == CONV1)) begin
+		case (bytemask_sel)
+			2'b00 : n_sram_bytemask_b = 4'b1000;
+    		2'b01 : n_sram_bytemask_b = 4'b0100;
+    		2'b10 : n_sram_bytemask_b = 4'b0010;
+    		2'b11 : n_sram_bytemask_b = 4'b0001;
+		  	default: n_sram_bytemask_b = 4'b0000;
+		endcase
+    end
+    else begin
+		n_sram_bytemask_b = 4'b0000;
+	end
+end
+/*****/
 always@* begin
 	//if((write_enable)&(mode == CONV2)) begin
 	if(mode == CONV2) begin
