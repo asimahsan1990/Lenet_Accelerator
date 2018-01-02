@@ -1,0 +1,227 @@
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+Warning: Design has unannotated black box outputs. (PWR-428)
+ 
+****************************************
+Report : power
+        -hier
+        -analysis_effort low
+Design : lenet_2set
+Version: G-2012.06-SP5
+Date   : Tue Jan  2 21:11:11 2018
+****************************************
+
+
+Library(s) Used:
+
+    saed32hvt_ss0p95v125c (File: /usr/cadtool/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db)
+
+
+Operating Conditions: ss0p95v125c   Library: saed32hvt_ss0p95v125c
+Wire Load Model Mode: enclosed
+
+Design        Wire Load Model            Library
+------------------------------------------------
+lenet_2set             140000            saed32hvt_ss0p95v125c
+lenet_mydesign_1       70000             saed32hvt_ss0p95v125c
+lenet_mydesign_0       70000             saed32hvt_ss0p95v125c
+conv_top_mydesign_1    70000             saed32hvt_ss0p95v125c
+fc_top_mydesign_1      16000             saed32hvt_ss0p95v125c
+conv_top_mydesign_0    70000             saed32hvt_ss0p95v125c
+fc_top_mydesign_0      16000             saed32hvt_ss0p95v125c
+fsm_mydesign_1         ForQA             saed32hvt_ss0p95v125c
+conv_control_mydesign_1
+                       16000             saed32hvt_ss0p95v125c
+data_reg_mydesign_1    16000             saed32hvt_ss0p95v125c
+multiply_compare_mydesign_1
+                       35000             saed32hvt_ss0p95v125c
+quantize_mydesign_1    8000              saed32hvt_ss0p95v125c
+fc_controller_mydesign_1
+                       8000              saed32hvt_ss0p95v125c
+fc_data_reg_mydesign_1 8000              saed32hvt_ss0p95v125c
+fc_multiplier_accumulator_mydesign_1
+                       8000              saed32hvt_ss0p95v125c
+fc_quantize_mydesign_1 8000              saed32hvt_ss0p95v125c
+fsm_mydesign_0         ForQA             saed32hvt_ss0p95v125c
+conv_control_mydesign_0
+                       16000             saed32hvt_ss0p95v125c
+data_reg_mydesign_0    16000             saed32hvt_ss0p95v125c
+multiply_compare_mydesign_0
+                       35000             saed32hvt_ss0p95v125c
+quantize_mydesign_0    8000              saed32hvt_ss0p95v125c
+fc_controller_mydesign_0
+                       8000              saed32hvt_ss0p95v125c
+fc_data_reg_mydesign_0 8000              saed32hvt_ss0p95v125c
+fc_multiplier_accumulator_mydesign_0
+                       8000              saed32hvt_ss0p95v125c
+fc_quantize_mydesign_0 8000              saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_0
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_26
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_25
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_24
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_23
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_22
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_21
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_20
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_19
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_18
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_17
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_16
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_15
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_14
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_13
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_12
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_11
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_10
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_9
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_8
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_7
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_6
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_5
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_4
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_3
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_2
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_1
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_fc_controller_mydesign_1_mydesign_0
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_fc_controller_mydesign_1_mydesign_1
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_0
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_26
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_25
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_24
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_23
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_22
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_21
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_20
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_19
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_18
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_17
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_16
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_15
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_14
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_13
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_12
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_11
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_10
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_9
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_8
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_7
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_6
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_5
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_4
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_3
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_2
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_1
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_fc_controller_mydesign_0_mydesign_0
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_fc_controller_mydesign_0_mydesign_1
+                       ForQA             saed32hvt_ss0p95v125c
+
+
+Global Operating Voltage = 0.95 
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000ff
+    Time Units = 1ns
+    Dynamic Power Units = 1uW    (derived from V,C,T units)
+    Leakage Power Units = 1pW
+
+
+--------------------------------------------------------------------------------
+                                       Switch   Int      Leak     Total
+Hierarchy                              Power    Power    Power    Power    %
+--------------------------------------------------------------------------------
+lenet_2set                              665.042 6.84e+03 1.85e+09 9.35e+03 100.0
+  lenet_1 (lenet_mydesign_0)            332.443 3.41e+03 9.28e+08 4.67e+03  50.0
+    fc_top (fc_top_mydesign_0)           69.959  709.967 1.47e+08  927.093   9.9
+      fc_quantize (fc_quantize_mydesign_0)
+                                          0.656   13.959 3.07e+06   17.688   0.2
+      fc_multiplier_accumulator (fc_multiplier_accumulator_mydesign_0)
+                                         63.635  362.028 9.62e+07  521.822   5.6
+      fc_data_reg (fc_data_reg_mydesign_0)
+                                          3.768  259.119 3.37e+07  296.547   3.2
+      fc_controller (fc_controller_mydesign_0)
+                                          1.615   74.596 1.38e+07   90.024   1.0
+    conv_top (conv_top_mydesign_0)      262.380 2.70e+03 7.81e+08 3.75e+03  40.1
+      quantize (quantize_mydesign_0)      6.071   27.778 1.75e+07   51.333   0.5
+      multiply_compare (multiply_compare_mydesign_0)
+                                        157.503  637.760 4.66e+08 1.26e+03  13.5
+      data_reg (data_reg_mydesign_0)     41.551 1.32e+03 1.71e+08 1.53e+03  16.4
+      conv_control (conv_control_mydesign_0)
+                                         52.394  705.031 1.24e+08  881.564   9.4
+      fsm (fsm_mydesign_0)                0.442    7.435 1.06e+06    8.932   0.1
+  lenet_0 (lenet_mydesign_1)            338.109 3.43e+03 9.19e+08 4.68e+03  50.1
+    fc_top (fc_top_mydesign_1)           69.505  708.919 1.46e+08  924.202   9.9
+      fc_quantize (fc_quantize_mydesign_1)
+                                          0.650   13.931 3.07e+06   17.654   0.2
+      fc_multiplier_accumulator (fc_multiplier_accumulator_mydesign_1)
+                                         63.174  360.850 9.57e+07  519.688   5.6
+      fc_data_reg (fc_data_reg_mydesign_1)
+                                          3.767  259.118 3.37e+07  296.545   3.2
+      fc_controller (fc_controller_mydesign_1)
+                                          1.628   74.770 1.29e+07   89.318   1.0
+    conv_top (conv_top_mydesign_1)      268.506 2.72e+03 7.74e+08 3.76e+03  40.2
+      quantize (quantize_mydesign_1)      6.113   28.151 1.57e+07   50.002   0.5
+      multiply_compare (multiply_compare_mydesign_1)
+                                        163.311  653.045 4.60e+08 1.28e+03  13.6
+      data_reg (data_reg_mydesign_1)     41.707 1.32e+03 1.71e+08 1.54e+03  16.4
+      conv_control (conv_control_mydesign_1)
+                                         52.556  704.614 1.24e+08  881.419   9.4
+      fsm (fsm_mydesign_1)                0.391    7.347 1.03e+06    8.771   0.1
+1

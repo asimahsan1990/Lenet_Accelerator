@@ -963,7 +963,6 @@ lenet_1 (
 	.srstn(srstn),
 /* CONTROL SIGNALS */
 	.conv_start(conv_start),
-	.fc_done(fc2_done),
 	.conv_done(conv_done),
 	.mem_sel(mem_sel),
 	.fc1_done(fc1_done),

@@ -14,7 +14,6 @@ input clk,
 input srstn,
 /***** conv_top *****/
 input conv_start,
-input fc_done,
 // Derive data from SRAM_a
 input [DATA_NUM_PER_SRAM_ADDR*DATA_WIDTH-1:0] sram_rdata_a0,
 input [DATA_NUM_PER_SRAM_ADDR*DATA_WIDTH-1:0] sram_rdata_a1,

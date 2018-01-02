@@ -14,7 +14,6 @@ input clk,
 input srstn,
 /***** conv_top *****/
 input conv_start,
-input fc_done,
 // Derive data from SRAM_a
 input [DATA_NUM_PER_SRAM_ADDR*DATA_WIDTH-1:0] sram_rdata_a0,
 input [DATA_NUM_PER_SRAM_ADDR*DATA_WIDTH-1:0] sram_rdata_a1,
@@ -187,7 +186,6 @@ lenet lenet_0 (
 	.srstn(srstn),
 /* CONTROL SIGNALS */
 	.conv_start(conv_start),
-	.fc_done(fc_done),
 	.conv_done(conv_done),
 	.mem_sel(mem_sel),
 	.fc1_done(fc1_done),
@@ -330,9 +328,8 @@ lenet lenet_1 (
 	.srstn(srstn),
 /* CONTROL SIGNALS */
 	.conv_start(conv_start),
-	.fc_done(fc_done),
-	.conv_done(conv_done),
-	.mem_sel(mem_sel),
+	.conv_done(),
+	.mem_sel(),
 	.fc1_done(),
 	.fc2_done(),
 /* SRAM A */
