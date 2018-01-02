@@ -691,10 +691,10 @@ initial begin
     // test CONV1 answer!!!
     for(i = 0; i < 720; i = i + 1)begin
         if(pool1_1d[i] == conv1_golden_sram[i])
-            $write("sram a[%01d] address: %d PASS!!\n", i/80, i%9);
+            $write("sram a[%g] address: %d PASS!!\n", i/80, i%9);
         else begin
-            $write("You have wrong answer in the sram a[%01d] address !!!\n\n", i/80);
-            $write("Your answer at  a[%01d] i:%d is \n%d %d %d %d  \n" ,i/80, i, $signed(pool1_1d[i][31:24])
+            $write("You have wrong answer in the sram a[%g] address !!!\n\n", i/80);
+            $write("Your answer at  a[%g] i:%d is \n%d %d %d %d  \n" ,i/80, i, $signed(pool1_1d[i][31:24])
                                                                        ,$signed(pool1_1d[i][23:16])
                                                                        ,$signed(pool1_1d[i][15:8]) 
                                                                        ,$signed(pool1_1d[i][7:0]));
@@ -804,7 +804,7 @@ initial begin
     $display("Total cycle count in CONV2 = %d.\n", cycle_cnt_conv2);
     $display("Total cycle count = %g\n", cycle_cnt_conv1+cycle_cnt_conv2);
     //test 2nd picture
-    
+/*
     cycle_cnt_conv1 = 0;
     cycle_cnt_conv2 = 0;
     $readmemh("golden/01/pool1_01.dat",conv1_golden_sram);
@@ -1202,7 +1202,7 @@ initial begin
     $display("PAUL you are so cool!!!!!");
     $display("Total cycle count in CONV2 = %d.\n", cycle_cnt_conv2);
     $display("Total cycle count = %g\n", cycle_cnt_conv1+cycle_cnt_conv2);
-
+*/
     $finish;
 end
 
