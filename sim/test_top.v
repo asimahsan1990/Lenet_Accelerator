@@ -614,7 +614,7 @@ lenet (
 	.srstn(srstn),
 /* CONTROL SIGNALS */
 	.conv_start(conv_start),
-	.fc_done(fc2_done),
+	//.fc_done(fc2_done),
 	.conv_done(conv_done),
 	.mem_sel(mem_sel),
 	.fc1_done(fc1_done),
@@ -754,9 +754,16 @@ lenet (
 
 //dump wave file
 initial begin
-  $fsdbDumpfile("top_test.fsdb");  		       // "top_test.fsdb" can be replaced into any name you want
-  $fsdbDumpvars("+mda");              		   // but make sure in .fsdb format
+`ifdef GATESIM
+    $fsdbDumpfile("top_test.fsdb");
+    $fsdbDumpvars("+mda");  
+    $sdf_annotate("../syn/netlist/lenet_syn.sdf",lenet);
+`else
+    $fsdbDumpfile("top_test.fsdb");
+    $fsdbDumpvars("+mda");  
+`endif
 end
+
 
 //====== clock generation =====
 initial begin
