@@ -7,7 +7,7 @@ Report : timing
         -max_paths 4
 Design : lenet_2set
 Version: G-2012.06-SP5
-Date   : Tue Jan  2 21:11:04 2018
+Date   : Fri Jan  5 17:40:10 2018
 ****************************************
 
  # A fanout number of 1000 was used for high fanout net computations.
@@ -37,8 +37,8 @@ Wire Load Model Mode: enclosed
   lenet_0/fc_top/srstn (fc_top_mydesign_1)                0.00       1.78 f
   lenet_0/fc_top/fc_controller/srstn (fc_controller_mydesign_1)
                                                           0.00       1.78 f
-  lenet_0/fc_top/fc_controller/U159/Y (DELLN1X2_HVT)      0.31       2.09 f
-  lenet_0/fc_top/fc_controller/U261/Y (NAND2X0_HVT)       0.05       2.13 r
+  lenet_0/fc_top/fc_controller/U155/Y (DELLN1X2_HVT)      0.31       2.09 f
+  lenet_0/fc_top/fc_controller/U259/Y (NAND2X0_HVT)       0.05       2.13 r
   lenet_0/fc_top/fc_controller/clk_gate_sram_waddr_reg/EN (SNPS_CLOCK_GATE_HIGH_fc_controller_mydesign_1_mydesign_0)
                                                           0.00       2.13 r
   lenet_0/fc_top/fc_controller/clk_gate_sram_waddr_reg/latch/D (LATCHX1_HVT)
@@ -89,8 +89,8 @@ Wire Load Model Mode: enclosed
   lenet_0/fc_top/srstn (fc_top_mydesign_1)                0.00       1.78 r
   lenet_0/fc_top/fc_controller/srstn (fc_controller_mydesign_1)
                                                           0.00       1.78 r
-  lenet_0/fc_top/fc_controller/U159/Y (DELLN1X2_HVT)      0.28       2.06 r
-  lenet_0/fc_top/fc_controller/U49/Y (NAND3X0_HVT)        0.07       2.13 f
+  lenet_0/fc_top/fc_controller/U155/Y (DELLN1X2_HVT)      0.28       2.06 r
+  lenet_0/fc_top/fc_controller/U45/Y (NAND3X0_HVT)        0.07       2.13 f
   lenet_0/fc_top/fc_controller/clk_gate_write_e_sram_cnt_reg/EN (SNPS_CLOCK_GATE_HIGH_fc_controller_mydesign_1_mydesign_1)
                                                           0.00       2.13 f
   lenet_0/fc_top/fc_controller/clk_gate_write_e_sram_cnt_reg/latch/D (LATCHX1_HVT)
@@ -142,7 +142,7 @@ Wire Load Model Mode: enclosed
   lenet_1/srstn (lenet_mydesign_0)                        0.00       1.78 r
   lenet_1/conv_top/srstn (conv_top_mydesign_0)            0.00       1.78 r
   lenet_1/conv_top/U4/Y (INVX8_HVT)                       0.01       1.79 f
-  lenet_1/conv_top/U2/Y (INVX8_HVT)                       0.02       1.81 r
+  lenet_1/conv_top/U3/Y (INVX8_HVT)                       0.02       1.81 r
   lenet_1/conv_top/conv_control/srstn (conv_control_mydesign_0)
                                                           0.00       1.81 r
   lenet_1/conv_top/conv_control/U54/Y (INVX8_HVT)         0.02       1.83 f
@@ -200,13 +200,13 @@ Wire Load Model Mode: enclosed
   srstn (in)                                              0.00       1.78 r
   lenet_0/srstn (lenet_mydesign_1)                        0.00       1.78 r
   lenet_0/conv_top/srstn (conv_top_mydesign_1)            0.00       1.78 r
-  lenet_0/conv_top/U5/Y (INVX8_HVT)                       0.01       1.79 f
-  lenet_0/conv_top/U3/Y (INVX8_HVT)                       0.02       1.81 r
+  lenet_0/conv_top/U3/Y (INVX8_HVT)                       0.01       1.79 f
+  lenet_0/conv_top/U1/Y (INVX8_HVT)                       0.02       1.81 r
   lenet_0/conv_top/conv_control/srstn (conv_control_mydesign_1)
                                                           0.00       1.81 r
-  lenet_0/conv_top/conv_control/U222/Y (INVX8_HVT)        0.02       1.83 f
-  lenet_0/conv_top/conv_control/U244/Y (INVX8_HVT)        0.03       1.85 r
-  lenet_0/conv_top/conv_control/U395/Y (INVX8_HVT)        0.03       1.88 f
+  lenet_0/conv_top/conv_control/U223/Y (INVX8_HVT)        0.02       1.83 f
+  lenet_0/conv_top/conv_control/U245/Y (INVX8_HVT)        0.03       1.85 r
+  lenet_0/conv_top/conv_control/U396/Y (INVX8_HVT)        0.03       1.88 f
   lenet_0/conv_top/conv_control/U680/Y (AO21X1_HVT)       0.10       1.99 f
   lenet_0/conv_top/conv_control/U1627/Y (AO21X1_HVT)      0.08       2.07 f
   lenet_0/conv_top/conv_control/clk_gate_delay1_sram_waddr_b_reg/EN (SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_23)

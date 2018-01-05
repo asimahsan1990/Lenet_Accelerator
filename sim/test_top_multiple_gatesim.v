@@ -1267,8 +1267,8 @@ lenet_1 (
 //dump wave file
 initial begin
   $fsdbDumpfile("top_test_gate.fsdb");  		       // "top_test.fsdb" can be replaced into any name you want
-  $fsdbDumpvars("+mda");              		   		   // but make sure in .fsdb format
-  $sdf_annotate("../syn_multiple/netlist/lenet_2set_syn.sdf", lenet_1);
+  $fsdbDumpvars("+mda");
+  $sdf_annotate("../syn_multiple/netlist/lenet_2set_syn.sdf", lenet_1);              		   		   // but make sure in .fsdb format
 end
 
 //====== clock generation =====

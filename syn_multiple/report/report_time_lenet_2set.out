@@ -7,7 +7,7 @@ Report : timing
         -max_paths 1
 Design : lenet_2set
 Version: G-2012.06-SP5
-Date   : Tue Jan  2 21:11:04 2018
+Date   : Fri Jan  5 17:40:10 2018
 ****************************************
 
  # A fanout number of 1000 was used for high fanout net computations.
@@ -37,8 +37,8 @@ Wire Load Model Mode: enclosed
   lenet_0/fc_top/srstn (fc_top_mydesign_1)              0.0000     1.7775 f
   lenet_0/fc_top/fc_controller/srstn (fc_controller_mydesign_1)
                                                         0.0000     1.7775 f
-  lenet_0/fc_top/fc_controller/U159/Y (DELLN1X2_HVT)    0.3077     2.0852 f
-  lenet_0/fc_top/fc_controller/U261/Y (NAND2X0_HVT)     0.0469     2.1321 r
+  lenet_0/fc_top/fc_controller/U155/Y (DELLN1X2_HVT)    0.3077     2.0852 f
+  lenet_0/fc_top/fc_controller/U259/Y (NAND2X0_HVT)     0.0469     2.1321 r
   lenet_0/fc_top/fc_controller/clk_gate_sram_waddr_reg/EN (SNPS_CLOCK_GATE_HIGH_fc_controller_mydesign_1_mydesign_0)
                                                         0.0000     2.1321 r
   lenet_0/fc_top/fc_controller/clk_gate_sram_waddr_reg/latch/D (LATCHX1_HVT)
