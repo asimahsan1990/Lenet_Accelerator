@@ -15,5 +15,5 @@ set_zero_interconnect_delay_mode false
 create_fp_placement -congestion_driven
 create_fp_placement -congestion_driven -incremental all
 
-save_mw_cel LENET
+save_mw_cel CHIP
 save_mw_cel -as 1_floorplan

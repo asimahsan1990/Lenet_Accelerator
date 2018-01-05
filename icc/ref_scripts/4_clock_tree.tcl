@@ -11,5 +11,5 @@ report_timing
 
 report_timing -delay_type min
 
-save_mw_cel LENET
+save_mw_cel CHIP
 save_mw_cel -as 4_cts

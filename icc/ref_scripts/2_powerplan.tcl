@@ -13,5 +13,5 @@ set_pnet_options -complete "M4 M5"
 create_fp_placement -incremental all
 preroute_standard_cells -extend_for_multiple_connections  -extension_gap 20 -connect horizontal  -remove_floating_pieces  -do_not_route_over_macros  -fill_empty_rows  -port_filter_mode off -cell_master_filter_mode off -cell_instance_filter_mode off -voltage_area_filter_mode off -route_type {P/G Std. Cell Pin Conn}
 
-save_mw_cel LENET
+save_mw_cel CHIP
 save_mw_cel -as 2_powerplan

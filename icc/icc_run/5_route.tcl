@@ -8,5 +8,5 @@ route_zrt_auto
 route_opt -stage detail -xtalk_reduction
 derive_pg_connection -power_net {VDD} -ground_net {VSS} -power_pin {VDD} -ground_pin {VSS} -create_ports top
 
-save_mw_cel LENET
+save_mw_cel CHIP
 save_mw_cel -as 5_route
