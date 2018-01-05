@@ -5,7 +5,7 @@
 
 `define cycle_period 10
 
-module test_top_multiple;
+module test_top_multiple_gatesim;
 
 localparam SRAM_DATA_WIDTH = 32,  WEIGHT_WIDTH = 4;
 localparam CONV_WEIGHT_NUM = 25, CONV_WEIGHT_ADDR_WIDTH = 17;
@@ -610,6 +610,123 @@ sram_20250x80b sram_weight_fc(
 );
 
 
+/*=================================*/
+/*		 		SRAM A 		 	   */
+/*=================================*/
+
+wire [SRAM_DATA_WIDTH-1:0] sram_rdata_a0_1;
+wire [SRAM_DATA_WIDTH-1:0] sram_rdata_a1_1;
+wire [SRAM_DATA_WIDTH-1:0] sram_rdata_a2_1;
+wire [SRAM_DATA_WIDTH-1:0] sram_rdata_a3_1;
+wire [SRAM_DATA_WIDTH-1:0] sram_rdata_a4_1;
+wire [SRAM_DATA_WIDTH-1:0] sram_rdata_a5_1;
+wire [SRAM_DATA_WIDTH-1:0] sram_rdata_a6_1;
+wire [SRAM_DATA_WIDTH-1:0] sram_rdata_a7_1;
+wire [SRAM_DATA_WIDTH-1:0] sram_rdata_a8_1;
+
+
+/*=================================*/
+/*	  	 SRAM A Connection		   */
+/*=================================*/
+sram_128x32b sram_128x32b_a0_1(
+.clk(clk),
+.bytemask(sram_bytemask_a),
+.csb(1'b0),
+.wsb(sram_write_enable_a0),
+.wdata(sram_wdata_a), 
+.waddr(sram_waddr_a), 
+.raddr(sram_raddr_a0), 
+.rdata(sram_rdata_a0_1)
+);
+
+sram_128x32b sram_128x32b_a1_1(
+.clk(clk),
+.bytemask(sram_bytemask_a),
+.csb(1'b0),
+.wsb(sram_write_enable_a1),
+.wdata(sram_wdata_a), 
+.waddr(sram_waddr_a), 
+.raddr(sram_raddr_a1), 
+.rdata(sram_rdata_a1_1)
+);
+
+sram_128x32b sram_128x32b_a2_1(
+.clk(clk),
+.bytemask(sram_bytemask_a),
+.csb(1'b0),
+.wsb(sram_write_enable_a2),
+.wdata(sram_wdata_a), 
+.waddr(sram_waddr_a), 
+.raddr(sram_raddr_a2), 
+.rdata(sram_rdata_a2_1)
+);
+
+sram_128x32b sram_128x32b_a3_1(
+.clk(clk),
+.bytemask(sram_bytemask_a),
+.csb(1'b0),
+.wsb(sram_write_enable_a3),
+.wdata(sram_wdata_a), 
+.waddr(sram_waddr_a), 
+.raddr(sram_raddr_a3), 
+.rdata(sram_rdata_a3_1)
+);
+
+sram_128x32b sram_128x32b_a4_1(
+.clk(clk),
+.bytemask(sram_bytemask_a),
+.csb(1'b0),
+.wsb(sram_write_enable_a4),
+.wdata(sram_wdata_a), 
+.waddr(sram_waddr_a), 
+.raddr(sram_raddr_a4), 
+.rdata(sram_rdata_a4_1)
+);
+
+sram_128x32b sram_128x32b_a5_1(
+.clk(clk),
+.bytemask(sram_bytemask_a),
+.csb(1'b0),
+.wsb(sram_write_enable_a5),
+.wdata(sram_wdata_a), 
+.waddr(sram_waddr_a), 
+.raddr(sram_raddr_a5), 
+.rdata(sram_rdata_a5_1)
+);
+
+sram_128x32b sram_128x32b_a6_1(
+.clk(clk),
+.bytemask(sram_bytemask_a),
+.csb(1'b0),
+.wsb(sram_write_enable_a6),
+.wdata(sram_wdata_a), 
+.waddr(sram_waddr_a), 
+.raddr(sram_raddr_a6), 
+.rdata(sram_rdata_a6_1)
+);
+
+sram_128x32b sram_128x32b_a7_1(
+.clk(clk),
+.bytemask(sram_bytemask_a),
+.csb(1'b0),
+.wsb(sram_write_enable_a7),
+.wdata(sram_wdata_a), 
+.waddr(sram_waddr_a), 
+.raddr(sram_raddr_a7), 
+.rdata(sram_rdata_a7_1)
+);
+
+sram_128x32b sram_128x32b_a8_1(
+.clk(clk),
+.bytemask(sram_bytemask_a),
+.csb(1'b0),
+.wsb(sram_write_enable_a8),
+.wdata(sram_wdata_a), 
+.waddr(sram_waddr_a), 
+.raddr(sram_raddr_a8), 
+.rdata(sram_rdata_a8_1)
+);
+
 /*=============================*/
 /*			SRAM B 			   */
 /*=============================*/
@@ -978,6 +1095,16 @@ lenet_1 (
 	.sram_rdata_a7(sram_rdata_a7),
 	.sram_rdata_a8(sram_rdata_a8),
 
+	.sram_rdata_a0_1(sram_rdata_a0_1),
+	.sram_rdata_a1_1(sram_rdata_a1_1),
+	.sram_rdata_a2_1(sram_rdata_a2_1),
+	.sram_rdata_a3_1(sram_rdata_a3_1),
+	.sram_rdata_a4_1(sram_rdata_a4_1),
+	.sram_rdata_a5_1(sram_rdata_a5_1),
+	.sram_rdata_a6_1(sram_rdata_a6_1),
+	.sram_rdata_a7_1(sram_rdata_a7_1),
+	.sram_rdata_a8_1(sram_rdata_a8_1),
+
 	.sram_raddr_a0(sram_raddr_a0),
 	.sram_raddr_a1(sram_raddr_a1),
 	.sram_raddr_a2(sram_raddr_a2),
@@ -1139,8 +1266,8 @@ lenet_1 (
 
 //dump wave file
 initial begin
-  $fsdbDumpfile("top_test.fsdb");  		       // "top_test.fsdb" can be replaced into any name you want
-  $fsdbDumpvars("+mda");              		   // but make sure in .fsdb format
+  $fsdbDumpfile("top_test_gate.fsdb");  		       // "top_test.fsdb" can be replaced into any name you want
+  $fsdbDumpvars("+mda");              		   		   // but make sure in .fsdb format
 end
 
 //====== clock generation =====
@@ -1231,6 +1358,7 @@ initial begin
 	cycle_cnt_fc1 = 0;
 	cycle_cnt_fc2 = 0;
 	bmp2sram(0);
+	bmp2sram_1(0);
 	$write("|\n");
     $write("The input pattern is No.%d:\n", 0);
     $write("|\n");
@@ -1478,6 +1606,7 @@ initial begin
 
     #(`cycle_period);
     bmp2sram(2);
+    bmp2sram_1(2);
 	$write("|\n");
     $write("The input pattern is No.%d:\n", 2);
     $write("|\n");
@@ -1721,6 +1850,7 @@ initial begin
 	    @(negedge clk);
 	end
 	bmp2sram(1);
+	bmp2sram_1(1);
 	$write("|\n");
     $write("The input pattern is No.%d:\n", 1);
     $write("|\n");
@@ -2099,6 +2229,148 @@ input [31:0] pat_no
     end
 endtask
 
+
+task bmp2sram_1(
+input [31:0] pat_no
+);
+
+    reg [17*8-1:0] bmp_filename;
+    integer this_i, this_j,i,j;
+    integer index_a,index_b,index_c;
+    integer index_d,index_e,index_f;
+    integer index_g,index_h,index_i;
+    integer file_in;
+    reg [7:0] char_in;
+    reg [31:0] tmp;
+    begin
+        bmp_filename = "bmp/test_0001.bmp";
+        bmp_filename[8*8-1:7*8] = (pat_no/1000)+48;
+        bmp_filename[7*8-1:6*8] = (pat_no%1000)/100+48;
+        bmp_filename[6*8-1:5*8] = (pat_no%100)/10+48;
+        bmp_filename[5*8-1:4*8] = pat_no%10+48;
+        $display("filename : %s\n", bmp_filename);
+        file_in = $fopen(bmp_filename,"rb");
+
+        for(this_i=0;this_i<1078;this_i=this_i+1)
+           char_in = $fgetc(file_in);
+
+        for(this_i=27;this_i>=0;this_i=this_i-1) begin
+            for(this_j=0;this_j<28;this_j=this_j+1) begin //four-byte alignment
+               char_in = $fgetc(file_in);
+               if(char_in <= 127)  mem1[this_i*32 + this_j] = char_in;
+               else mem1[this_i*32 + this_j] = 127;
+            end
+        end
+
+        $fclose(file_in);
+        index_a = 0;
+        index_b = 0;
+        index_c = 0;
+        index_d = 0;
+        index_e = 0;
+        index_f = 0;
+        index_g = 0;
+        index_h = 0;
+        index_i = 0;
+
+        for(i = 0; i < 28; i = i + 2) begin
+            for(j = 0; j < 28; j = j + 2) begin
+                case (i % 6)
+                    0 : begin
+                        case (j % 6)
+                            0 : begin
+                                tmp[31:24] = mem1[i*32+j];
+                                tmp[23:16] = mem1[i*32+j+1];
+                                tmp[15:8] = mem1[(i+1)*32+j];
+                                tmp[7:0] = mem1[(i+1)*32+j+1];
+                                sram_128x32b_a0_1.char2sram(index_a,tmp);
+                                index_a = index_a + 1;
+                            end
+                            2 : begin
+                                tmp[31:24] = mem1[i*32+j];
+                                tmp[23:16] = mem1[i*32+j+1];
+                                tmp[15:8] = mem1[(i+1)*32+j];
+                                tmp[7:0] = mem1[(i+1)*32+j+1];
+                                sram_128x32b_a1_1.char2sram(index_b,tmp);
+                                index_b = index_b + 1;
+                            end
+                            4 : begin
+                                tmp[31:24] = mem1[i*32+j];
+                                tmp[23:16] = mem1[i*32+j+1];
+                                tmp[15:8] = mem1[(i+1)*32+j];
+                                tmp[7:0] = mem1[(i+1)*32+j+1];
+                                sram_128x32b_a2_1.char2sram(index_c,tmp);
+                                index_c = index_c + 1;
+                            end 
+                            default: tmp = 0;
+                        endcase
+                    end
+
+                    2 : begin
+                        case (j % 6)
+                            0 : begin
+                                tmp[31:24] = mem1[i*32+j];
+                                tmp[23:16] = mem1[i*32+j+1];
+                                tmp[15:8] = mem1[(i+1)*32+j];
+                                tmp[7:0] = mem1[(i+1)*32+j+1];
+                                sram_128x32b_a3_1.char2sram(index_d,tmp);
+                                index_d = index_d + 1;              
+                            end
+                            2 : begin
+                                tmp[31:24] = mem1[i*32+j];
+                                tmp[23:16] = mem1[i*32+j+1];
+                                tmp[15:8] = mem1[(i+1)*32+j];
+                                tmp[7:0] = mem1[(i+1)*32+j+1];
+                                sram_128x32b_a4_1.char2sram(index_e,tmp);
+                                index_e = index_e + 1;
+                            end
+                            4 : begin
+                                tmp[31:24] = mem1[i*32+j];
+                                tmp[23:16] = mem1[i*32+j+1];
+                                tmp[15:8] = mem1[(i+1)*32+j];
+                                tmp[7:0] = mem1[(i+1)*32+j+1];
+                                sram_128x32b_a5_1.char2sram(index_f,tmp);
+                                index_f = index_f + 1;
+                            end 
+                            default: tmp = 0;
+                        endcase
+                    end
+
+                    4 : begin
+                        case (j % 6)
+                            0 : begin
+                                tmp[31:24] = mem1[i*32+j];
+                                tmp[23:16] = mem1[i*32+j+1];
+                                tmp[15:8] = mem1[(i+1)*32+j];
+                                tmp[7:0] = mem1[(i+1)*32+j+1];
+                                sram_128x32b_a6_1.char2sram(index_g,tmp);
+                                index_g = index_g + 1;
+                            end
+                            2 : begin
+                                tmp[31:24] = mem1[i*32+j];
+                                tmp[23:16] = mem1[i*32+j+1];
+                                tmp[15:8] = mem1[(i+1)*32+j];
+                                tmp[7:0] = mem1[(i+1)*32+j+1];
+                                sram_128x32b_a7_1.char2sram(index_h,tmp);
+                                index_h = index_h + 1;
+                            end
+                            4 : begin
+                                tmp[31:24] = mem1[i*32+j];
+                                tmp[23:16] = mem1[i*32+j+1];
+                                tmp[15:8] = mem1[(i+1)*32+j];
+                                tmp[7:0] = mem1[(i+1)*32+j+1];
+                                sram_128x32b_a8_1.char2sram(index_i,tmp);
+                                index_i = index_i + 1;
+                            end 
+                            default: tmp = 0;
+                        endcase
+                    end 
+                    default:  tmp = 0;
+                endcase
+            end
+        end
+    end
+endtask
 
 //display the mnist image in 28x28 SRAM
 task display_sram;
