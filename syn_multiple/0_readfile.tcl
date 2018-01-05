@@ -22,6 +22,7 @@ analyze -library $TOPLEVEL -format verilog "$HDL_DIR/lenet_2set.v \
 											$HDL_DIR/conv_hdl/fsm.v \
 											$HDL_DIR/conv_hdl/multiply_compare.v \
 											$HDL_DIR/conv_hdl/quantize.v \
+											$HDL_DIR/conv_hdl/bias_sel.v \
 											$HDL_DIR/fc_hdl/fc_top.v \
 											$HDL_DIR/fc_hdl/fc_controller.v \
 											$HDL_DIR/fc_hdl/fc_data_reg.v \

@@ -1,7 +1,6 @@
 Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
 Warning: Design has unannotated primary inputs. (PWR-414)
 Warning: Design has unannotated sequential cell outputs. (PWR-415)
-Warning: Design has unannotated black box outputs. (PWR-428)
  
 ****************************************
 Report : power
@@ -9,7 +8,7 @@ Report : power
         -analysis_effort low
 Design : lenet_2set
 Version: G-2012.06-SP5
-Date   : Fri Jan  5 17:40:16 2018
+Date   : Fri Jan  5 23:42:59 2018
 ****************************************
 
 
@@ -34,6 +33,7 @@ fsm_mydesign_1         ForQA             saed32hvt_ss0p95v125c
 conv_control_mydesign_1
                        16000             saed32hvt_ss0p95v125c
 data_reg_mydesign_1    16000             saed32hvt_ss0p95v125c
+bias_sel_mydesign_1    8000              saed32hvt_ss0p95v125c
 multiply_compare_mydesign_1
                        35000             saed32hvt_ss0p95v125c
 quantize_mydesign_1    8000              saed32hvt_ss0p95v125c
@@ -47,6 +47,7 @@ fsm_mydesign_0         ForQA             saed32hvt_ss0p95v125c
 conv_control_mydesign_0
                        16000             saed32hvt_ss0p95v125c
 data_reg_mydesign_0    16000             saed32hvt_ss0p95v125c
+bias_sel_mydesign_0    8000              saed32hvt_ss0p95v125c
 multiply_compare_mydesign_0
                        35000             saed32hvt_ss0p95v125c
 quantize_mydesign_0    8000              saed32hvt_ss0p95v125c
@@ -110,6 +111,48 @@ SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_2
                        ForQA             saed32hvt_ss0p95v125c
 SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_1
                        ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_1_mydesign_0
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_1_mydesign_20
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_1_mydesign_19
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_1_mydesign_18
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_1_mydesign_17
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_1_mydesign_16
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_1_mydesign_15
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_1_mydesign_14
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_1_mydesign_13
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_1_mydesign_12
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_1_mydesign_11
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_1_mydesign_10
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_1_mydesign_9
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_1_mydesign_8
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_1_mydesign_7
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_1_mydesign_6
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_1_mydesign_5
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_1_mydesign_4
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_1_mydesign_3
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_1_mydesign_2
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_1_mydesign_1
+                       ForQA             saed32hvt_ss0p95v125c
 SNPS_CLOCK_GATE_HIGH_fc_controller_mydesign_1_mydesign_0
                        ForQA             saed32hvt_ss0p95v125c
 SNPS_CLOCK_GATE_HIGH_fc_controller_mydesign_1_mydesign_1
@@ -168,6 +211,48 @@ SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_2
                        ForQA             saed32hvt_ss0p95v125c
 SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_1
                        ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_0_mydesign_0
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_0_mydesign_20
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_0_mydesign_19
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_0_mydesign_18
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_0_mydesign_17
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_0_mydesign_16
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_0_mydesign_15
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_0_mydesign_14
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_0_mydesign_13
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_0_mydesign_12
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_0_mydesign_11
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_0_mydesign_10
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_0_mydesign_9
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_0_mydesign_8
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_0_mydesign_7
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_0_mydesign_6
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_0_mydesign_5
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_0_mydesign_4
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_0_mydesign_3
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_0_mydesign_2
+                       ForQA             saed32hvt_ss0p95v125c
+SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_0_mydesign_1
+                       ForQA             saed32hvt_ss0p95v125c
 SNPS_CLOCK_GATE_HIGH_fc_controller_mydesign_0_mydesign_0
                        ForQA             saed32hvt_ss0p95v125c
 SNPS_CLOCK_GATE_HIGH_fc_controller_mydesign_0_mydesign_1
@@ -187,41 +272,43 @@ Power-specific unit information :
                                        Switch   Int      Leak     Total
 Hierarchy                              Power    Power    Power    Power    %
 --------------------------------------------------------------------------------
-lenet_2set                              690.045 6.91e+03 1.86e+09 9.46e+03 100.0
-  lenet_1 (lenet_mydesign_0)            346.552 3.45e+03 9.03e+08 4.70e+03  49.7
-    fc_top (fc_top_mydesign_0)           70.962  713.378 1.47e+08  931.206   9.8
+lenet_2set                              876.488 8.26e+03 1.96e+09 1.11e+04 100.0
+  lenet_1 (lenet_mydesign_0)            438.494 4.13e+03 9.80e+08 5.55e+03  50.0
+    fc_top (fc_top_mydesign_0)           71.885  735.655 1.47e+08  954.667   8.6
       fc_quantize (fc_quantize_mydesign_0)
-                                          0.663   13.975 3.07e+06   17.710   0.2
+                                          0.766   14.466 3.07e+06   18.306   0.2
       fc_multiplier_accumulator (fc_multiplier_accumulator_mydesign_0)
-                                         64.625  365.527 9.58e+07  525.970   5.6
+                                         65.351  373.946 9.61e+07  535.432   4.8
       fc_data_reg (fc_data_reg_mydesign_0)
-                                          3.783  259.010 3.37e+07  296.461   3.1
+                                          3.999  269.383 3.37e+07  307.052   2.8
       fc_controller (fc_controller_mydesign_0)
-                                          1.606   74.601 1.38e+07   90.053   1.0
-    conv_top (conv_top_mydesign_0)      275.485 2.74e+03 7.56e+08 3.77e+03  39.8
-      quantize (quantize_mydesign_0)      6.072   28.845 1.67e+07   51.644   0.5
+                                          1.768   77.591 1.38e+07   93.147   0.8
+    conv_top (conv_top_mydesign_0)      366.621 3.40e+03 8.33e+08 4.60e+03  41.4
+      quantize (quantize_mydesign_0)      2.863   20.149 1.37e+07   36.754   0.3
       multiply_compare (multiply_compare_mydesign_0)
-                                        169.317  670.888 4.42e+08 1.28e+03  13.6
-      data_reg (data_reg_mydesign_0)     42.522 1.32e+03 1.71e+08 1.54e+03  16.2
+                                        239.464  898.848 4.50e+08 1.59e+03  14.3
+      bias_sel (bias_sel_mydesign_0)     22.561  360.919 7.05e+07  454.007   4.1
+      data_reg (data_reg_mydesign_0)     52.933 1.38e+03 1.72e+08 1.61e+03  14.5
       conv_control (conv_control_mydesign_0)
-                                         52.735  703.021 1.24e+08  879.906   9.3
-      fsm (fsm_mydesign_0)                0.423    7.413 1.06e+06    8.892   0.1
-  lenet_0 (lenet_mydesign_1)            349.006 3.46e+03 9.57e+08 4.77e+03  50.4
-    fc_top (fc_top_mydesign_1)           71.021  713.633 1.46e+08  930.585   9.8
+                                         48.569  726.808 1.24e+08  899.799   8.1
+      fsm (fsm_mydesign_0)             9.74e-02    6.337 1.10e+06    7.533   0.1
+  lenet_0 (lenet_mydesign_1)            438.018 4.13e+03 9.82e+08 5.55e+03  50.0
+    fc_top (fc_top_mydesign_1)           72.011  736.131 1.46e+08  954.390   8.6
       fc_quantize (fc_quantize_mydesign_1)
-                                          0.667   13.984 3.07e+06   17.723   0.2
+                                          0.775   14.490 3.07e+06   18.336   0.2
       fc_multiplier_accumulator (fc_multiplier_accumulator_mydesign_1)
-                                         64.647  365.592 9.58e+07  526.051   5.6
+                                         65.457  374.245 9.61e+07  535.800   4.8
       fc_data_reg (fc_data_reg_mydesign_1)
-                                          3.786  259.024 3.37e+07  296.490   3.1
+                                          4.002  269.376 3.37e+07  307.048   2.8
       fc_controller (fc_controller_mydesign_1)
-                                          1.637   74.767 1.29e+07   89.308   0.9
-    conv_top (conv_top_mydesign_1)      277.886 2.75e+03 8.11e+08 3.84e+03  40.6
-      quantize (quantize_mydesign_1)      6.054   28.055 1.55e+07   49.610   0.5
+                                          1.777   77.758 1.29e+07   92.482   0.8
+    conv_top (conv_top_mydesign_1)      366.018 3.39e+03 8.35e+08 4.60e+03  41.4
+      quantize (quantize_mydesign_1)      2.986   20.286 1.44e+07   37.629   0.3
       multiply_compare (multiply_compare_mydesign_1)
-                                        171.686  684.478 4.98e+08 1.35e+03  14.3
-      data_reg (data_reg_mydesign_1)     42.365 1.32e+03 1.71e+08 1.54e+03  16.3
+                                        239.830  899.736 4.49e+08 1.59e+03  14.3
+      bias_sel (bias_sel_mydesign_1)     22.561  360.975 7.05e+07  454.017   4.1
+      data_reg (data_reg_mydesign_1)     52.567 1.38e+03 1.72e+08 1.60e+03  14.5
       conv_control (conv_control_mydesign_1)
-                                         52.618  703.200 1.24e+08  879.970   9.3
-      fsm (fsm_mydesign_1)                0.476    7.328 9.89e+05    8.793   0.1
+                                         47.794  726.088 1.27e+08  901.166   8.1
+      fsm (fsm_mydesign_1)                0.126    6.363 1.15e+06    7.644   0.1
 1

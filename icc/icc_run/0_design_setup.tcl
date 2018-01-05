@@ -4,7 +4,7 @@ create_mw_lib  -technology /usr/cadtool/cad/synopsys/SAED32_EDK/tech/milkyway/sa
 
 import_designs -format verilog -top CHIP -cel CHIP {../pre_layout/design_data/CHIP_syn.v}
 
-read_sdc  -version Latest "../pre_layout/design_data/CHIP_syn.sdc"
+read_sdc  -version Latest "../pre_layout/design_data/lenet_2set_syn.sdc"
 
 set_tlu_plus_files -max_tluplus /usr/cadtool/cad/synopsys/SAED32_EDK/tech/star_rcxt/saed32nm_1p9m_Cmax.tluplus -min_tluplus /usr/cadtool/cad/synopsys/SAED32_EDK/tech/star_rcxt/saed32nm_1p9m_Cmin.tluplus -tech2itf_map  /usr/cadtool/cad/synopsys/SAED32_EDK/tech/star_rcxt/saed32nm_tf_itf_tluplus.map
 

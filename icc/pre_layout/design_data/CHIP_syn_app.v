@@ -259,6 +259,7 @@ module CHIP ( clk, srstn, conv_start, conv_done, mem_sel, fc1_done, fc2_done,
   output [3:0] sram_bytemask_b;
   output [9:0] sram_waddr_b;
   output [7:0] sram_wdata_b;
+  output [7:0] sram_wdata_b_1;
 /* SRAM C */
   input [31:0] sram_rdata_c0;
   input [31:0] sram_rdata_c1;
@@ -287,6 +288,7 @@ module CHIP ( clk, srstn, conv_start, conv_done, mem_sel, fc1_done, fc2_done,
   output [3:0] sram_bytemask_c;
   output [9:0] sram_waddr_c;
   output [7:0] sram_wdata_c;
+  output [7:0] sram_wdata_c_1;
 
 /* SRAM D */
   input [31:0] sram_rdata_d0;
@@ -316,6 +318,7 @@ module CHIP ( clk, srstn, conv_start, conv_done, mem_sel, fc1_done, fc2_done,
   output [3:0] sram_bytemask_d;
   output [9:0] sram_waddr_d;
   output [7:0] sram_wdata_d;
+  output [7:0] sram_wdata_d_1;
 /* SRAM E */
   input [31:0] sram_rdata_e0;
   input [31:0] sram_rdata_e1;
@@ -344,6 +347,7 @@ module CHIP ( clk, srstn, conv_start, conv_done, mem_sel, fc1_done, fc2_done,
   output [3:0] sram_bytemask_e;
   output [9:0] sram_waddr_e;
   output [7:0] sram_wdata_e;
+  output [7:0] sram_wdata_e_1;
 /* SRAM F */ 
   output [7:0] sram_wdata_f;
   output [7:0] sram_wdata_f_1;

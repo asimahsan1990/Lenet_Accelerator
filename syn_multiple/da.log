@@ -28,8 +28,8 @@ Initializing...
 set TOPLEVEL "lenet_2set"
 lenet_2set
 # change your timing constraint here
-set TEST_CYCLE 3.555
-3.555
+set TEST_CYCLE 3.42
+3.42
 source -echo -verbose 0_readfile.tcl 
 set TOP_DIR $TOPLEVEL
 lenet_2set
@@ -49,7 +49,7 @@ define_design_lib $TOPLEVEL -path ./$TOPLEVEL
 # Read Design File (add your files here)
 set HDL_DIR "../hdl"
 ../hdl
-analyze -library $TOPLEVEL -format verilog "$HDL_DIR/lenet_2set.v 											$HDL_DIR/lenet.v 											$HDL_DIR/conv_hdl/conv_top.v 											$HDL_DIR/conv_hdl/conv_control.v 											$HDL_DIR/conv_hdl/data_reg.v 											$HDL_DIR/conv_hdl/fsm.v 											$HDL_DIR/conv_hdl/multiply_compare.v 											$HDL_DIR/conv_hdl/quantize.v 											$HDL_DIR/fc_hdl/fc_top.v 											$HDL_DIR/fc_hdl/fc_controller.v 											$HDL_DIR/fc_hdl/fc_data_reg.v 											$HDL_DIR/fc_hdl/fc_multiplier_accumulator.v 											$HDL_DIR/fc_hdl/fc_quantize.v
+analyze -library $TOPLEVEL -format verilog "$HDL_DIR/lenet_2set.v 											$HDL_DIR/lenet.v 											$HDL_DIR/conv_hdl/conv_top.v 											$HDL_DIR/conv_hdl/conv_control.v 											$HDL_DIR/conv_hdl/data_reg.v 											$HDL_DIR/conv_hdl/fsm.v 											$HDL_DIR/conv_hdl/multiply_compare.v 											$HDL_DIR/conv_hdl/quantize.v 											$HDL_DIR/conv_hdl/bias_sel.v 											$HDL_DIR/fc_hdl/fc_top.v 											$HDL_DIR/fc_hdl/fc_controller.v 											$HDL_DIR/fc_hdl/fc_data_reg.v 											$HDL_DIR/fc_hdl/fc_multiplier_accumulator.v 											$HDL_DIR/fc_hdl/fc_quantize.v
 											"
 Running PRESTO HDLC
 Compiling source file ../hdl/lenet_2set.v
@@ -61,6 +61,7 @@ Compiling source file ../hdl/conv_hdl/data_reg.v
 Compiling source file ../hdl/conv_hdl/fsm.v
 Compiling source file ../hdl/conv_hdl/multiply_compare.v
 Compiling source file ../hdl/conv_hdl/quantize.v
+Compiling source file ../hdl/conv_hdl/bias_sel.v
 Compiling source file ../hdl/fc_hdl/fc_top.v
 Compiling source file ../hdl/fc_hdl/fc_controller.v
 Compiling source file ../hdl/fc_hdl/fc_data_reg.v
@@ -403,7 +404,22 @@ Inferred memory devices in process
 ===============================================================================
 Presto compilation completed successfully.
 Information: Building the design 'bias_sel'. (HDL-193)
-Warning: Cannot find the design 'bias_sel' in the library 'WORK'. (LBR-1)
+Warning:  Starting with the 2000.11-1 release, the Presto Verilog reader treats Verilog 'integer' types as signed; synthesized result may not match earlier versions of HDL Compiler. (VER-314)
+Warning:  ../hdl/conv_hdl/bias_sel.v:58: unsigned to signed assignment occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/bias_sel.v:69: unsigned to signed assignment occurs. (VER-318)
+Warning:  ../hdl/conv_hdl/bias_sel.v:41: unsigned to signed assignment occurs. (VER-318)
+
+Inferred memory devices in process
+	in routine bias_sel line 23 in file
+		'../hdl/conv_hdl/bias_sel.v'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|  delay_weight_reg   | Flip-flop |  100  |  Y  | N  | N  | N  | Y  | N  | N  |
+| conv_weight_box_reg | Flip-flop |  200  |  Y  | N  | N  | N  | Y  | N  | N  |
+|    bias_data_reg    | Flip-flop |   4   |  Y  | N  | N  | N  | Y  | N  | N  |
+===============================================================================
+Presto compilation completed successfully.
 Information: Building the design 'multiply_compare'. (HDL-193)
 Warning:  ../hdl/conv_hdl/multiply_compare.v:91: unsigned to signed assignment occurs. (VER-318)
 Warning:  ../hdl/conv_hdl/multiply_compare.v:94: unsigned to signed assignment occurs. (VER-318)
@@ -708,27 +724,24 @@ Inferred memory devices in process
 | quantized_data_reg  | Flip-flop |   8   |  Y  | N  | N  | N  | Y  | N  | N  |
 ===============================================================================
 Presto compilation completed successfully.
-Warning: Design 'lenet_2set' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
 1
 # Solve Multiple Instance
 set uniquify_naming_style "%s_mydesign_%d"
 %s_mydesign_%d
 uniquify
-Warning: Design 'lenet_2set' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
 Information: Uniquified 2 instances of design 'lenet'. (OPT-1056)
 Information: Uniquified 2 instances of design 'conv_top'. (OPT-1056)
 Information: Uniquified 2 instances of design 'fc_top'. (OPT-1056)
 Information: Uniquified 2 instances of design 'fsm'. (OPT-1056)
 Information: Uniquified 2 instances of design 'conv_control'. (OPT-1056)
 Information: Uniquified 2 instances of design 'data_reg'. (OPT-1056)
+Information: Uniquified 2 instances of design 'bias_sel'. (OPT-1056)
 Information: Uniquified 2 instances of design 'multiply_compare'. (OPT-1056)
 Information: Uniquified 2 instances of design 'quantize'. (OPT-1056)
 Information: Uniquified 2 instances of design 'fc_controller'. (OPT-1056)
 Information: Uniquified 2 instances of design 'fc_data_reg'. (OPT-1056)
 Information: Uniquified 2 instances of design 'fc_multiplier_accumulator'. (OPT-1056)
 Information: Uniquified 2 instances of design 'fc_quantize'. (OPT-1056)
-Information: Building the design 'bias_sel'. (HDL-193)
-Warning: Cannot find the design 'bias_sel' in the library 'WORK'. (LBR-1)
 1
 # link the design
 current_design $TOPLEVEL
@@ -739,24 +752,16 @@ link
   Linking design 'lenet_2set'
   Using the following designs and libraries:
   --------------------------------------------------------------------------
-  * (25 designs)              /home/u103/u103061108/ICLAB/Lenet_Accelerator/syn_multiple/lenet_2set.db, etc
+  * (27 designs)              /home/u103/u103061108/ICLAB/Lenet_Accelerator/syn_multiple/lenet_2set.db, etc
   saed32hvt_ss0p95v125c (library) /usr/cadtool/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db
   saed32io_wb_ss0p95v125c_2p25v (library) /usr/cadtool/SAED32_EDK/lib/io_std/db_nldm/saed32io_wb_ss0p95v125c_2p25v.db
   dw_foundation.sldb (library) /usr/cadtool/SAED32_EDK/synthesis/cur/libraries/syn/dw_foundation.sldb
 
-Information: Building the design 'bias_sel'. (HDL-193)
-Warning: Cannot find the design 'bias_sel' in the library 'WORK'. (LBR-1)
-Warning: Unable to resolve reference 'bias_sel' in 'conv_top_mydesign_1'. (LINK-5)
-Warning: Unable to resolve reference 'bias_sel' in 'conv_top_mydesign_0'. (LINK-5)
-0
-0
+1
+1
 source -echo -verbose 1_setting.tcl 
 # Setting Design and I/O Environment
 set_operating_conditions -library saed32hvt_ss0p95v125c ss0p95v125c
-Information: Building the design 'bias_sel'. (HDL-193)
-Warning: Cannot find the design 'bias_sel' in the library 'WORK'. (LBR-1)
-Warning: Unable to resolve reference 'bias_sel' in 'conv_top_mydesign_1'. (LINK-5)
-Warning: Unable to resolve reference 'bias_sel' in 'conv_top_mydesign_0'. (LINK-5)
 Using operating conditions 'ss0p95v125c' found in library 'saed32hvt_ss0p95v125c'.
 1
 # Setting wireload model
@@ -765,27 +770,20 @@ area_reselect
 set_wire_load_mode enclosed
 1
 set_wire_load_selection_group predcaps
-Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
 1
 # Setting Timing Constraints
 ###  ceate your clock here
 create_clock -name clk -period $TEST_CYCLE  [get_ports clk]
-Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
 1
 ###  set clock constrain
 set_ideal_network       [get_ports clk]
-Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
 1
 set_dont_touch_network  [all_clocks]
-Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
-Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
 1
 # I/O delay should depend on the real enironment. Here only shows an example of setting
 set_input_delay  [expr $TEST_CYCLE*0.5]  -clock clk [remove_from_collection [all_inputs] [get_ports clk]]
-Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
 1
 set_output_delay [expr $TEST_CYCLE*0.5]  -clock clk [all_outputs]
-Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
 1
 # Setting DRC Constraint
 # Defensive setting: smallest fanout_load 0.041 and WLM max fanout # 20 => 0.041*20 = 0.82
@@ -796,8 +794,6 @@ set_max_fanout 1.64 $TOPLEVEL
 set_max_area   0
 1
 set_fix_hold [get_clocks clk]
-Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
-Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
 1
 1
 source -echo -verbose 2_compile.tcl 
@@ -834,7 +830,6 @@ Observation logic depth: 5
 # you can add "-gate_clock" to do gated-clock
 # you can add "-incremental" for higher performance
 compile_ultra -gate_clock -exact_map -no_autoungroup -no_seq_output_inversion -no_boundary_optimization
-Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
 Warning: The '-exact_map' option may not be honored for registers that are involved in clock-gating optimization. (PWR-652)
 Alib files are up-to-date.
 Information: Evaluating DesignWare library utilization. (UISN-27)
@@ -847,7 +842,7 @@ Information: Evaluating DesignWare library utilization. (UISN-27)
 ============================================================================
 
 
-Information: There are 662 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+Information: There are 424 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
 
 
 Loaded alib file './alib-52/saed32hvt_ss0p95v125c.db.alib'
@@ -868,6 +863,8 @@ Information: Added key list 'DesignWare' to design 'conv_control_mydesign_1'. (D
   Processing 'data_reg_mydesign_1'
  Implement Synthetic for 'data_reg_mydesign_1'.
   Processing 'lenet_2set'
+  Processing 'bias_sel_mydesign_0'
+  Processing 'bias_sel_mydesign_1'
   Processing 'conv_top_mydesign_0'
   Processing 'fc_controller_mydesign_0'
 Information: Added key list 'DesignWare' to design 'fc_controller_mydesign_0'. (DDB-72)
@@ -884,7 +881,8 @@ Information: Added key list 'DesignWare' to design 'fc_controller_mydesign_1'. (
  Implement Synthetic for 'quantize_mydesign_0'.
   Processing 'fsm_mydesign_0'
   Processing 'SNPS_CLOCK_GATE_HIGH_fc_controller_mydesign_0_mydesign_0'
-  Processing 'SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_0'
+  Processing 'SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_0_mydesign_0'
+  Processing 'SNPS_CLOCK_GATE_HIGH_fc_controller_mydesign_1_mydesign_0'
   Processing 'SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_0'
   Processing 'fc_multiplier_accumulator_mydesign_0'
  Implement Synthetic for 'fc_multiplier_accumulator_mydesign_0'.
@@ -892,11 +890,8 @@ Information: Added key list 'DesignWare' to design 'fc_controller_mydesign_1'. (
   Processing 'fc_quantize_mydesign_0'
  Implement Synthetic for 'fc_quantize_mydesign_0'.
   Processing 'fsm_mydesign_1'
-  Processing 'SNPS_CLOCK_GATE_HIGH_fc_controller_mydesign_1_mydesign_0'
-Information: Building the design 'bias_sel'. (HDL-193)
-Warning: Cannot find the design 'bias_sel' in the library 'WORK'. (LBR-1)
-Warning: Unable to resolve reference 'bias_sel' in 'conv_top_mydesign_1'. (LINK-5)
-Warning: Unable to resolve reference 'bias_sel' in 'conv_top_mydesign_0'. (LINK-5)
+  Processing 'SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_0_mydesign_0'
+  Processing 'SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_1_mydesign_0'
 
   Updating timing information
 Information: Updating design information... (UID-85)
@@ -974,21 +969,21 @@ Information: Skipping clock gating on design multiply_compare_mydesign_0_DP_OP_4
 Information: Skipping clock gating on design multiply_compare_mydesign_0_DW_cmp_J3_0_mydesign_1, since there are no registers. (PWR-806)
 Information: Skipping clock gating on design multiply_compare_mydesign_0_DW_cmp_J3_1_mydesign_1, since there are no registers. (PWR-806)
 Information: Skipping clock gating on design multiply_compare_mydesign_0_DW_cmp_J3_2_mydesign_1, since there are no registers. (PWR-806)
-Information: Skipping clock gating on design quantize_mydesign_0_DP_OP_26J9_124_1058_J9_0_mydesign_1, since there are no registers. (PWR-806)
-Information: Skipping clock gating on design quantize_mydesign_0_DW_cmp_J9_0_mydesign_1, since there are no registers. (PWR-806)
-Information: Skipping clock gating on design quantize_mydesign_0_DW_cmp_J9_1_mydesign_1, since there are no registers. (PWR-806)
-Information: Skipping clock gating on design quantize_mydesign_0_DW_cmp_J9_2_mydesign_1, since there are no registers. (PWR-806)
-Information: Skipping clock gating on design quantize_mydesign_0_DW_cmp_J9_3_mydesign_1, since there are no registers. (PWR-806)
-Information: Skipping clock gating on design fc_controller_mydesign_1_DW01_inc_J8_0, since there are no registers. (PWR-806)
-Information: Skipping clock gating on design fc_controller_mydesign_1_DW01_inc_J8_1, since there are no registers. (PWR-806)
-Information: Skipping clock gating on design fc_controller_mydesign_1_DW01_inc_J8_2, since there are no registers. (PWR-806)
-Information: Skipping clock gating on design fc_multiplier_accumulator_mydesign_0_DP_OP_102J10_124_259_J10_0_mydesign_1, since there are no registers. (PWR-806)
-Information: Skipping clock gating on design fc_quantize_mydesign_0_DW_cmp_J10_0_mydesign_1, since there are no registers. (PWR-806)
-Information: Skipping clock gating on design fc_quantize_mydesign_0_DW_cmp_J10_1_mydesign_1, since there are no registers. (PWR-806)
-Information: Skipping clock gating on design fc_quantize_mydesign_0_DW_cmp_J10_2_mydesign_1, since there are no registers. (PWR-806)
-Information: Skipping clock gating on design fc_quantize_mydesign_0_DW_cmp_J10_3_mydesign_1, since there are no registers. (PWR-806)
-Information: Skipping clock gating on design fc_quantize_mydesign_0_DW01_add_J10_0_mydesign_1, since there are no registers. (PWR-806)
-Information: Skipping clock gating on design fc_quantize_mydesign_0_DW01_add_J10_1_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design quantize_mydesign_0_DP_OP_26J11_124_1058_J11_0_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design quantize_mydesign_0_DW_cmp_J11_0_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design quantize_mydesign_0_DW_cmp_J11_1_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design quantize_mydesign_0_DW_cmp_J11_2_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design quantize_mydesign_0_DW_cmp_J11_3_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_controller_mydesign_1_DW01_inc_J10_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_controller_mydesign_1_DW01_inc_J10_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_controller_mydesign_1_DW01_inc_J10_2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_multiplier_accumulator_mydesign_0_DP_OP_102J12_124_259_J12_0_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_quantize_mydesign_0_DW_cmp_J12_0_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_quantize_mydesign_0_DW_cmp_J12_1_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_quantize_mydesign_0_DW_cmp_J12_2_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_quantize_mydesign_0_DW_cmp_J12_3_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_quantize_mydesign_0_DW01_add_J12_0_mydesign_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_quantize_mydesign_0_DW01_add_J12_1_mydesign_1, since there are no registers. (PWR-806)
 Information: Skipping clock gating on design conv_control_mydesign_0_DP_OP_395J1_125_3847_J1_0, since there are no registers. (PWR-806)
 Information: Skipping clock gating on design conv_control_mydesign_0_DP_OP_394J1_124_5348_J1_0, since there are no registers. (PWR-806)
 Information: Skipping clock gating on design conv_control_mydesign_0_DW01_inc_J1_0, since there are no registers. (PWR-806)
@@ -1049,9 +1044,9 @@ Information: Skipping clock gating on design conv_control_mydesign_0_DW01_inc_J1
 Information: Skipping clock gating on design conv_control_mydesign_0_DW01_sub_J1_9, since there are no registers. (PWR-806)
 Information: Skipping clock gating on design conv_control_mydesign_0_DW01_inc_J1_15, since there are no registers. (PWR-806)
 Information: Skipping clock gating on design data_reg_mydesign_0_MUX_OP_16_4_288, since there are no registers. (PWR-806)
-Information: Skipping clock gating on design fc_controller_mydesign_0_DW01_inc_J7_0, since there are no registers. (PWR-806)
-Information: Skipping clock gating on design fc_controller_mydesign_0_DW01_inc_J7_1, since there are no registers. (PWR-806)
-Information: Skipping clock gating on design fc_controller_mydesign_0_DW01_inc_J7_2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_controller_mydesign_0_DW01_inc_J9_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_controller_mydesign_0_DW01_inc_J9_1, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_controller_mydesign_0_DW01_inc_J9_2, since there are no registers. (PWR-806)
 Information: Skipping clock gating on design multiply_compare_mydesign_0_DP_OP_425J3_127_1149_J3_0_mydesign_0, since there are no registers. (PWR-806)
 Information: Skipping clock gating on design multiply_compare_mydesign_0_DP_OP_424J3_126_1149_J3_0_mydesign_0, since there are no registers. (PWR-806)
 Information: Skipping clock gating on design multiply_compare_mydesign_0_DP_OP_423J3_125_1149_J3_0_mydesign_0, since there are no registers. (PWR-806)
@@ -1059,40 +1054,38 @@ Information: Skipping clock gating on design multiply_compare_mydesign_0_DP_OP_4
 Information: Skipping clock gating on design multiply_compare_mydesign_0_DW_cmp_J3_0_mydesign_0, since there are no registers. (PWR-806)
 Information: Skipping clock gating on design multiply_compare_mydesign_0_DW_cmp_J3_1_mydesign_0, since there are no registers. (PWR-806)
 Information: Skipping clock gating on design multiply_compare_mydesign_0_DW_cmp_J3_2_mydesign_0, since there are no registers. (PWR-806)
-Information: Skipping clock gating on design quantize_mydesign_0_DP_OP_26J9_124_1058_J9_0_mydesign_0, since there are no registers. (PWR-806)
-Information: Skipping clock gating on design quantize_mydesign_0_DW_cmp_J9_0_mydesign_0, since there are no registers. (PWR-806)
-Information: Skipping clock gating on design quantize_mydesign_0_DW_cmp_J9_1_mydesign_0, since there are no registers. (PWR-806)
-Information: Skipping clock gating on design quantize_mydesign_0_DW_cmp_J9_2_mydesign_0, since there are no registers. (PWR-806)
-Information: Skipping clock gating on design quantize_mydesign_0_DW_cmp_J9_3_mydesign_0, since there are no registers. (PWR-806)
-Information: Skipping clock gating on design fc_multiplier_accumulator_mydesign_0_DP_OP_102J10_124_259_J10_0_mydesign_0, since there are no registers. (PWR-806)
-Information: Skipping clock gating on design fc_quantize_mydesign_0_DW_cmp_J10_0_mydesign_0, since there are no registers. (PWR-806)
-Information: Skipping clock gating on design fc_quantize_mydesign_0_DW_cmp_J10_1_mydesign_0, since there are no registers. (PWR-806)
-Information: Skipping clock gating on design fc_quantize_mydesign_0_DW_cmp_J10_2_mydesign_0, since there are no registers. (PWR-806)
-Information: Skipping clock gating on design fc_quantize_mydesign_0_DW_cmp_J10_3_mydesign_0, since there are no registers. (PWR-806)
-Information: Skipping clock gating on design fc_quantize_mydesign_0_DW01_add_J10_0_mydesign_0, since there are no registers. (PWR-806)
-Information: Skipping clock gating on design fc_quantize_mydesign_0_DW01_add_J10_1_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design quantize_mydesign_0_DP_OP_26J11_124_1058_J11_0_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design quantize_mydesign_0_DW_cmp_J11_0_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design quantize_mydesign_0_DW_cmp_J11_1_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design quantize_mydesign_0_DW_cmp_J11_2_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design quantize_mydesign_0_DW_cmp_J11_3_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_multiplier_accumulator_mydesign_0_DP_OP_102J12_124_259_J12_0_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_quantize_mydesign_0_DW_cmp_J12_0_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_quantize_mydesign_0_DW_cmp_J12_1_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_quantize_mydesign_0_DW_cmp_J12_2_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_quantize_mydesign_0_DW_cmp_J12_3_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_quantize_mydesign_0_DW01_add_J12_0_mydesign_0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design fc_quantize_mydesign_0_DW01_add_J12_1_mydesign_0, since there are no registers. (PWR-806)
 Information: Performing clock-gating on design data_reg_mydesign_1. (PWR-730)
 Information: Performing clock-gating on design data_reg_mydesign_0. (PWR-730)
+Information: Performing clock-gating on design fc_data_reg_mydesign_1. (PWR-730)
+Information: Performing clock-gating on design bias_sel_mydesign_1. (PWR-730)
+Information: Performing clock-gating on design fc_data_reg_mydesign_0. (PWR-730)
+Information: Performing clock-gating on design bias_sel_mydesign_0. (PWR-730)
 Information: Performing clock-gating on design multiply_compare_mydesign_1. (PWR-730)
 Information: Performing clock-gating on design fc_multiplier_accumulator_mydesign_1. (PWR-730)
-Information: Performing clock-gating on design multiply_compare_mydesign_0. (PWR-730)
-Information: Performing clock-gating on design fc_multiplier_accumulator_mydesign_0. (PWR-730)
-Information: Performing clock-gating on design conv_control_mydesign_1. (PWR-730)
-Information: Performing clock-gating on design fsm_mydesign_1. (PWR-730)
-Information: Performing clock-gating on design conv_control_mydesign_0. (PWR-730)
-Information: Performing clock-gating on design fsm_mydesign_0. (PWR-730)
-Information: Performing clock-gating on design fc_data_reg_mydesign_1. (PWR-730)
-Information: Performing clock-gating on design fc_controller_mydesign_1. (PWR-730)
 Information: Performing clock-gating on design quantize_mydesign_1. (PWR-730)
 Information: Performing clock-gating on design quantize_mydesign_0. (PWR-730)
-Information: Performing clock-gating on design fc_data_reg_mydesign_0. (PWR-730)
-Information: Performing clock-gating on design fc_controller_mydesign_0. (PWR-730)
+Information: Performing clock-gating on design fsm_mydesign_1. (PWR-730)
+Information: Performing clock-gating on design multiply_compare_mydesign_0. (PWR-730)
+Information: Performing clock-gating on design fc_multiplier_accumulator_mydesign_0. (PWR-730)
 Information: Performing clock-gating on design fc_quantize_mydesign_1. (PWR-730)
 Information: Performing clock-gating on design fc_quantize_mydesign_0. (PWR-730)
-Information: Building the design 'bias_sel'. (HDL-193)
-Warning: Cannot find the design 'bias_sel' in the library 'WORK'. (LBR-1)
-Warning: Unable to resolve reference 'bias_sel' in 'conv_top_mydesign_1'. (LINK-5)
-Warning: Unable to resolve reference 'bias_sel' in 'conv_top_mydesign_0'. (LINK-5)
+Information: Performing clock-gating on design fsm_mydesign_0. (PWR-730)
+Information: Performing clock-gating on design conv_control_mydesign_1. (PWR-730)
+Information: Performing clock-gating on design fc_controller_mydesign_1. (PWR-730)
+Information: Performing clock-gating on design conv_control_mydesign_0. (PWR-730)
+Information: Performing clock-gating on design fc_controller_mydesign_0. (PWR-730)
 
   Beginning Mapping Optimizations  (Ultra High effort)
   -------------------------------
@@ -1113,13 +1106,13 @@ Information: Added key list 'DesignWare' to design 'fc_multiplier_accumulator_my
    ELAPSED            WORST NEG   SETUP    DESIGN                             MIN DELAY
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            COST   
   --------- --------- --------- --------- --------- ------------------------- ---------
-    0:02:35  158402.4      0.35      49.0    1570.4                                0.00
-    0:02:35  158402.4      0.35      49.0    1570.4                                0.00
-    0:02:35  158402.4      0.35      49.0    1570.4                                0.00
-    0:02:35  158402.4      0.35      49.0    1570.4                                0.00
+    0:02:46  169194.9      0.49      78.5    2073.2                                0.00
+    0:02:46  169194.9      0.49      78.5    2073.2                                0.00
+    0:02:46  169194.9      0.49      78.5    2073.2                                0.00
+    0:02:46  169194.9      0.49      78.5    2073.2                                0.00
   Re-synthesis Optimization (Phase 1)
   Re-synthesis Optimization (Phase 2)
-    0:04:34  159507.4      0.17      24.8    1579.1                                0.00
+    0:07:25  170176.7      0.25      38.3    2010.8                                0.00
   Global Optimization (Phase 1)
   Global Optimization (Phase 2)
   Global Optimization (Phase 3)
@@ -1151,8 +1144,8 @@ Information: Added key list 'DesignWare' to design 'fc_multiplier_accumulator_my
   Global Optimization (Phase 29)
   Global Optimization (Phase 30)
   Global Optimization (Phase 31)
-    0:04:54  154421.8      0.11      13.9    2320.2                                0.00
-  Mapping 'quantize_mydesign_0_DP_OP_26J9_124_1058_3'
+    0:07:46  164887.9      0.20      30.3    2617.7                                0.00
+  Mapping 'quantize_mydesign_1_DP_OP_26J11_124_1058_3'
 
 
 
@@ -1163,34 +1156,43 @@ Information: Added key list 'DesignWare' to design 'fc_multiplier_accumulator_my
    ELAPSED            WORST NEG   SETUP    DESIGN                             MIN DELAY
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            COST   
   --------- --------- --------- --------- --------- ------------------------- ---------
-    0:04:58  154421.8      0.11      13.9    2320.2                                0.00
-    0:05:02  154592.3      0.06       6.9    2297.9                                0.00
-    0:05:11  154798.3      0.05       5.1    2297.7                                0.00
-    0:05:11  154798.3      0.05       5.1    2297.7                                0.00
-    0:05:11  154798.3      0.05       5.1    2297.7                                0.00
-    0:05:11  154798.3      0.05       5.1    2297.7                                0.00
-    0:05:12  154798.3      0.05       5.1    2297.7                                0.00
-    0:05:12  154798.3      0.05       5.1    2297.7                                0.00
-    0:05:32  155134.9      0.00       0.0    2300.5                                0.00
-    0:05:32  155134.9      0.00       0.0    2300.5                                0.00
-    0:05:32  155134.9      0.00       0.0    2300.5                                0.00
-    0:05:32  155134.9      0.00       0.0    2300.5                                0.00
-    0:05:32  155134.9      0.00       0.0    2300.5                                0.00
+    0:07:49  164887.9      0.20      30.3    2617.7                                0.00
+    0:07:53  165056.7      0.17      25.0    2632.2                                0.00
+    0:07:57  165201.1      0.15      22.8    2643.3                                0.00
+    0:08:00  165420.3      0.14      21.5    2663.3                                0.00
+    0:08:03  165577.5      0.14      20.7    2674.8                                0.00
+    0:08:05  165671.5      0.14      19.3    2679.8                                0.00
+    0:08:08  165762.5      0.14      18.3    2689.0                                0.00
+    0:08:09  165814.4      0.14      17.5    2690.3                                0.00
+    0:08:10  165852.8      0.14      17.1    2692.9                                0.00
+    0:08:11  165974.4      0.14      16.8    2704.7                                0.00
+    0:08:11  166018.2      0.14      16.7    2704.7                                0.00
+    0:08:28  166241.7      0.12      16.1    2712.9                                0.00
+    0:08:28  166241.7      0.12      16.1    2712.9                                0.00
+    0:08:28  166241.7      0.12      16.1    2712.9                                0.00
+    0:08:28  166241.7      0.12      16.1    2712.9                                0.00
+    0:08:31  166241.7      0.12      16.1    2712.9                                0.00
+    0:08:31  166241.7      0.12      16.1    2712.9                                0.00
+    0:09:31  166758.1      0.08      11.7    2725.8                                0.00
+    0:09:31  166758.1      0.08      11.7    2725.8                                0.00
+    0:09:35  166757.6      0.08      11.7    2725.8                                0.00
+    0:09:35  166757.6      0.08      11.7    2725.8                                0.00
+    0:09:35  166753.4      0.08      11.9    2725.8                                0.00
 
   Beginning Delay Optimization
   ----------------------------
-    0:05:32  155134.9      0.00       0.0    2300.5                                0.00
-    0:05:32  155134.9      0.00       0.0    2300.5                                0.00
-    0:05:32  155134.9      0.00       0.0    2300.5                                0.00
-    0:05:32  155134.9      0.00       0.0    2300.5                                0.00
-    0:05:32  155134.9      0.00       0.0    2300.5                                0.00
-    0:05:32  155134.9      0.00       0.0    2300.5                                0.00
-    0:05:32  155134.9      0.00       0.0    2300.5                                0.00
-    0:05:32  155134.9      0.00       0.0    2300.5                                0.00
-    0:05:32  155134.9      0.00       0.0    2300.5                                0.00
-    0:05:32  155134.9      0.00       0.0    2300.5                                0.00
-    0:05:32  155134.9      0.00       0.0    2300.5                                0.00
-    0:05:32  155134.9      0.00       0.0    2300.5                                0.00
+    0:09:35  166753.4      0.08      11.9    2725.8                                0.00
+    0:09:36  166753.4      0.08      11.9    2725.8                                0.00
+    0:09:36  166753.4      0.08      11.9    2725.8                                0.00
+    0:09:39  166753.4      0.08      11.9    2725.8                                0.00
+    0:09:39  166753.4      0.08      11.9    2725.8                                0.00
+    0:09:39  166753.4      0.08      11.9    2725.8                                0.00
+    0:09:39  166753.4      0.08      11.9    2725.8                                0.00
+    0:09:39  166753.4      0.08      11.9    2725.8                                0.00
+    0:09:39  166753.4      0.08      11.9    2725.8                                0.00
+    0:09:42  166753.4      0.08      11.9    2725.8                                0.00
+    0:09:42  166753.4      0.08      11.9    2725.8                                0.00
+    0:09:42  166753.4      0.08      11.9    2725.8                                0.00
 
 
   Beginning Design Rule Fixing  (max_transition)  (max_fanout)  (max_capacitance)
@@ -1200,29 +1202,68 @@ Information: Added key list 'DesignWare' to design 'fc_multiplier_accumulator_my
    ELAPSED            WORST NEG   SETUP    DESIGN                             MIN DELAY
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            COST   
   --------- --------- --------- --------- --------- ------------------------- ---------
-    0:05:34  155134.9      0.00       0.0    2300.5                                0.00
-    0:05:34  155134.9      0.00       0.0    2300.5                                0.00
+    0:09:44  166753.4      0.08      11.9    2725.8                                0.00
+    0:09:44  166753.4      0.08      11.9    2725.8                                0.00
   Global Optimization (Phase 32)
   Global Optimization (Phase 33)
   Global Optimization (Phase 34)
-    0:05:46  155022.7      0.05       1.6    2243.6                                0.00
-    0:05:52  152268.4      0.05       1.6     154.1 lenet_0/conv_top/data_reg/net138948      0.00
-    0:05:56  151486.5      0.04       1.6      53.4 lenet_0/fc_top/fc_data_reg/net138580      0.00
-    0:06:03  151376.2      0.00       0.0      30.3 lenet_0/conv_top/multiply_compare/conv2_sum_b_reg[24]/RSTB      0.00
-    0:06:10  151081.1      0.07       5.1       6.8                                0.00
-    0:06:19  150445.9      0.07       5.8       6.4                                0.00
-    0:06:19  150445.9      0.07       5.8       6.4                                0.00
-    0:06:26  150543.7      0.02       1.8       6.4 lenet_0/conv_top/multiply_compare/conv2_sum_c_reg[24]/RSTB      0.00
-    0:06:29  150653.4      0.01       0.7       6.4                                0.00
-    0:06:54  150963.1      0.00       0.0      28.6                                0.00
+    0:09:59  166432.0      0.12      14.5    2656.0                                0.00
+    0:10:04  164192.3      0.12      14.4     347.0 lenet_0/fc_top/fc_data_reg/net151881      0.00
+    0:10:07  163143.6      0.12      14.4     180.6 lenet_1/conv_top/data_reg/net152248      0.00
+    0:10:09  162742.8      0.12      13.9     126.2 lenet_1/fc_top/fc_controller/net145066      0.00
+    0:10:13  162553.2      0.11      12.9      95.2 lenet_1/conv_top/multiply_compare/net151250      0.00
+    0:10:16  162556.2      0.11      12.8      93.0 lenet_0/conv_top/multiply_compare/net150255      0.00
+    0:10:21  162761.2      0.07       9.8      90.0 lenet_0/conv_top/multiply_compare/conv2_sum_c_reg[16]/RSTB      0.00
+    0:10:24  162853.0      0.07       9.3      89.6 lenet_0/conv_top/multiply_compare/conv2_sum_c_reg[16]/RSTB      0.00
+    0:10:27  162935.8      0.06       8.9      87.3 lenet_0/conv_top/multiply_compare/conv2_sum_c_reg[30]/RSTB      0.00
+    0:10:31  163077.6      0.06       8.4      85.5 lenet_0/conv_top/multiply_compare/conv2_sum_c_reg[22]/RSTB      0.00
+    0:10:34  163228.1      0.06       7.9      83.3 lenet_0/conv_top/multiply_compare/conv2_sum_c_reg[28]/RSTB      0.00
+    0:10:36  163391.4      0.05       7.5      83.1 lenet_1/conv_top/multiply_compare/conv2_sum_c_reg[29]/RSTB      0.00
+    0:10:39  163462.5      0.05       7.0      81.5 lenet_0/conv_top/multiply_compare/conv2_sum_c_reg[18]/RSTB      0.00
+    0:10:42  163541.4      0.05       6.7      81.5 lenet_1/conv_top/multiply_compare/conv2_sum_d_reg[27]/RSTB      0.00
+    0:10:45  163644.4      0.04       5.9      81.0 lenet_0/conv_top/quantize/quantized_data_reg[0]/RSTB      0.00
+    0:10:47  163717.4      0.04       5.3      80.3 lenet_0/conv_top/multiply_compare/conv2_sum_d_reg[27]/RSTB      0.00
+    0:10:50  163766.5      0.04       4.8      80.3 lenet_1/conv_top/multiply_compare/conv2_sum_a_reg[19]/RSTB      0.00
+    0:10:52  163838.1      0.04       4.6      80.3 lenet_0/conv_top/multiply_compare/conv2_sum_c_reg[15]/RSTB      0.00
+    0:10:55  163902.2      0.04       4.4      79.4 lenet_0/conv_top/multiply_compare/conv2_sum_a_reg[30]/RSTB      0.00
+    0:10:58  164014.5      0.03       4.1      79.4 lenet_0/conv_top/multiply_compare/conv2_sum_d_reg[27]/RSTB      0.00
+    0:11:00  164103.6      0.03       3.9      79.4 lenet_0/conv_top/multiply_compare/conv2_sum_c_reg[29]/RSTB      0.00
+    0:11:03  164197.8      0.03       3.4      79.1 lenet_1/conv_top/multiply_compare/conv2_sum_d_reg[21]/RSTB      0.00
+    0:11:05  164251.4      0.03       3.3      77.9 lenet_0/conv_top/multiply_compare/conv2_sum_d_reg[27]/RSTB      0.00
+    0:11:07  164328.7      0.03       2.8      77.9 lenet_0/conv_top/multiply_compare/conv2_sum_a_reg[15]/RSTB      0.00
+    0:11:10  164369.6      0.02       2.6      75.6 lenet_1/conv_top/multiply_compare/conv2_sum_a_reg[31]/RSTB      0.00
+    0:11:12  164422.8      0.02       2.4      75.6 lenet_1/conv_top/multiply_compare/conv2_sum_a_reg[31]/RSTB      0.00
+    0:11:15  164458.9      0.02       2.2      72.3 lenet_0/conv_top/quantize/quantized_data_reg[0]/RSTB      0.00
+    0:11:17  164510.5      0.02       2.0      69.1 lenet_0/conv_top/multiply_compare/conv2_sum_d_reg[30]/RSTB      0.00
+    0:11:19  164571.7      0.02       1.8      66.9 lenet_0/conv_top/multiply_compare/conv2_sum_b_reg[30]/RSTB      0.00
+    0:11:22  164644.7      0.02       1.6      66.9 lenet_0/conv_top/multiply_compare/conv2_sum_b_reg[30]/RSTB      0.00
+    0:11:24  164735.2      0.02       1.4      64.7 lenet_1/conv_top/multiply_compare/conv2_sum_a_reg[18]/RSTB      0.00
+    0:11:26  164796.8      0.01       1.1      62.7 lenet_1/conv_top/quantize/quantized_data_reg[0]/RSTB      0.00
+    0:11:29  164873.1      0.01       1.0      62.0 lenet_0/conv_top/multiply_compare/conv2_sum_d_reg[30]/RSTB      0.00
+    0:11:31  164933.6      0.01       0.9      61.9 lenet_0/conv_top/multiply_compare/conv2_sum_d_reg[22]/RSTB      0.00
+    0:11:33  164986.3      0.01       0.8      61.6 lenet_1/conv_top/multiply_compare/conv2_sum_b_reg[30]/RSTB      0.00
+    0:11:35  164973.4      0.01       0.6      58.7 lenet_0/conv_top/multiply_compare/conv2_sum_b_reg[30]/RSTB      0.00
+    0:11:38  164975.0      0.01       0.5      56.1 lenet_0/conv_top/conv_control/srstn      0.00
+    0:11:42  164725.8      0.05       6.3       0.0 lenet_1/conv_top/conv_control/delay1_sram_waddr_b_reg[5]/SETB      0.00
+    0:11:44  164818.9      0.03       3.0       0.0 lenet_1/conv_top/multiply_compare/conv2_sum_a_reg[24]/RSTB      0.00
+    0:11:47  164890.5      0.03       2.7       0.0 lenet_1/conv_top/multiply_compare/conv2_sum_d_reg[19]/RSTB      0.00
+    0:11:50  164946.0      0.02       2.1       0.0 lenet_0/conv_top/multiply_compare/conv2_sum_d_reg[30]/RSTB      0.00
+    0:11:53  165023.1      0.02       1.4       0.0 lenet_1/conv_top/multiply_compare/conv2_sum_d_reg[25]/RSTB      0.00
+    0:11:55  165062.6      0.01       1.2       0.0 lenet_1/conv_top/multiply_compare/conv2_sum_d_reg[25]/RSTB      0.00
+    0:12:00  164980.7      0.06       2.1       0.0                                0.00
+    0:12:09  163191.1      0.06       4.3       0.0                                0.00
+    0:12:10  163191.1      0.06       4.3       0.0                                0.00
+    0:12:13  163120.5      0.03       3.1       0.0 lenet_0/conv_top/multiply_compare/conv2_sum_d_reg[16]/RSTB      0.00
+    0:12:17  163168.2      0.02       1.9       0.0                                0.00
+    0:12:56  163569.2      0.01       1.1      20.4                                0.00
 
                                   TOTAL                                                
    ELAPSED            WORST NEG   SETUP    DESIGN                             MIN DELAY
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            COST   
   --------- --------- --------- --------- --------- ------------------------- ---------
-    0:06:55  150963.1      0.00       0.0      28.6                                0.00
-    0:06:55  150963.1      0.00       0.0      28.6                                0.00
-    0:07:05  150962.0      0.01       0.4      39.5                                0.00
+    0:12:56  163569.2      0.01       1.1      20.4                                0.00
+    0:12:56  163569.2      0.01       1.1      20.4                                0.00
+    0:13:02  163527.2      0.02       1.2      18.2                                0.00
 
 
   Beginning Area-Recovery Phase  (max_area 0)
@@ -1232,8 +1273,8 @@ Information: Added key list 'DesignWare' to design 'fc_multiplier_accumulator_my
    ELAPSED            WORST NEG   SETUP    DESIGN                             MIN DELAY
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            COST   
   --------- --------- --------- --------- --------- ------------------------- ---------
-    0:07:05  150962.0      0.01       0.4      39.5                                0.00
-    0:07:05  150962.0      0.01       0.4      39.5                                0.00
+    0:13:02  163527.2      0.02       1.2      18.2                                0.00
+    0:13:02  163527.2      0.02       1.2      18.2                                0.00
   Global Optimization (Phase 35)
   Global Optimization (Phase 36)
   Global Optimization (Phase 37)
@@ -1241,8 +1282,6 @@ Information: Added key list 'DesignWare' to design 'fc_multiplier_accumulator_my
   Global Optimization (Phase 39)
   Global Optimization (Phase 40)
   Global Optimization (Phase 41)
-    0:07:17  149510.5      0.18      14.0       0.0                                0.00
-    0:07:17  149510.5      0.18      14.0       0.0                                0.00
   Global Optimization (Phase 42)
   Global Optimization (Phase 43)
   Global Optimization (Phase 44)
@@ -1252,6 +1291,8 @@ Information: Added key list 'DesignWare' to design 'fc_multiplier_accumulator_my
   Global Optimization (Phase 48)
   Global Optimization (Phase 49)
   Global Optimization (Phase 50)
+    0:13:37  162321.4      0.00       0.0       0.0                                0.00
+    0:13:37  162321.4      0.00       0.0       0.0                                0.00
   Global Optimization (Phase 51)
   Global Optimization (Phase 52)
   Global Optimization (Phase 53)
@@ -1269,51 +1310,101 @@ Information: Added key list 'DesignWare' to design 'fc_multiplier_accumulator_my
   Global Optimization (Phase 65)
   Global Optimization (Phase 66)
   Global Optimization (Phase 67)
-    0:07:39  148222.1      0.17      16.9       0.0                                0.00
-    0:07:42  148565.2      0.12      13.7       0.0 lenet_1/conv_top/multiply_compare/conv2_sum_a_reg[15]/RSTB      0.00
-    0:07:44  148580.6      0.11      13.0       0.0                                0.00
-    0:08:21  149522.8      0.05       5.5      82.0                                0.00
-    0:08:24  149579.8      0.04       3.9      81.2                                0.00
-    0:08:42  150239.7      0.03       3.3     127.5                                0.00
-    0:08:42  150239.7      0.03       3.3     127.5                                0.00
-    0:08:43  150250.4      0.03       3.0     128.3                                0.00
-    0:08:43  150250.4      0.03       3.0     128.3                                0.00
-    0:08:56  150710.8      0.03       2.1     153.5                                0.00
-    0:08:56  150710.8      0.03       2.1     153.5                                0.00
-    0:09:20  150850.2      0.00       0.0     160.2                                0.00
-    0:09:20  150850.2      0.00       0.0     160.2                                0.00
-    0:09:20  150850.2      0.00       0.0     160.2                                0.00
-    0:09:20  150850.2      0.00       0.0     160.2                                0.00
-    0:09:20  150850.2      0.00       0.0     160.2                                0.00
-    0:09:20  150850.2      0.00       0.0     160.2                                0.00
-    0:09:20  150850.2      0.00       0.0     160.2                                0.00
-    0:09:20  150850.2      0.00       0.0     160.2                                0.00
-    0:09:20  150850.2      0.00       0.0     160.2                                0.00
-    0:09:20  150850.2      0.00       0.0     160.2                                0.00
-    0:09:20  150850.2      0.00       0.0     160.2                                0.00
+  Global Optimization (Phase 68)
+  Global Optimization (Phase 69)
+  Global Optimization (Phase 70)
+  Global Optimization (Phase 71)
+  Global Optimization (Phase 72)
+  Global Optimization (Phase 73)
+  Global Optimization (Phase 74)
+  Global Optimization (Phase 75)
+  Global Optimization (Phase 76)
+  Global Optimization (Phase 77)
+    0:14:05  160786.5      0.00       0.0       0.0                                0.00
+    0:14:05  160786.5      0.00       0.0       0.0                                0.00
+    0:14:05  160786.5      0.00       0.0       0.0                                0.00
+    0:14:05  160786.5      0.00       0.0       0.0                                0.00
+    0:14:05  160786.5      0.00       0.0       0.0                                0.00
+    0:14:05  160786.5      0.00       0.0       0.0                                0.00
+    0:14:05  160786.5      0.00       0.0       0.0                                0.00
+    0:14:05  160786.5      0.00       0.0       0.0                                0.00
+    0:14:05  160786.5      0.00       0.0       0.0                                0.00
+    0:14:05  160786.5      0.00       0.0       0.0                                0.00
+    0:14:05  160786.5      0.00       0.0       0.0                                0.00
+    0:14:05  160786.5      0.00       0.0       0.0                                0.00
+    0:14:05  160786.5      0.00       0.0       0.0                                0.00
+    0:14:05  160786.5      0.00       0.0       0.0                                0.00
+    0:14:05  160786.5      0.00       0.0       0.0                                0.00
+    0:14:05  160786.5      0.00       0.0       0.0                                0.00
+    0:14:05  160786.5      0.00       0.0       0.0                                0.00
+    0:14:05  160786.5      0.00       0.0       0.0                                0.00
+    0:14:05  160786.5      0.00       0.0       0.0                                0.00
+    0:14:05  160786.5      0.00       0.0       0.0                                0.00
+    0:14:05  160786.5      0.00       0.0       0.0                                0.00
 Loading db file '/usr/cadtool/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db'
 Loading db file '/usr/cadtool/SAED32_EDK/lib/io_std/db_nldm/saed32io_wb_ss0p95v125c_2p25v.db'
 
   Optimization Complete
   ---------------------
 Warning: Design 'lenet_2set' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
-     Net 'lenet_1/fc_top/fc_controller/clk_gate_write_e_sram_cnt_reg/net42436': 2988 load(s), 1 driver(s), 2 inout(s)
+     Net 'lenet_1/fc_top/fc_controller/clk_gate_write_e_sram_cnt_reg/net43906': 3272 load(s), 1 driver(s)
 1
 #compile_ultra -incremental -exact_map -no_autoungroup -no_seq_output_inversion -no_boundary_optimization
 # remove dummy ports
 remove_unconnected_ports [get_cells -hierarchical *]
-Information: Building the design 'bias_sel'. (HDL-193)
-Warning: Cannot find the design 'bias_sel' in the library 'WORK'. (LBR-1)
-Warning: Unable to resolve reference 'bias_sel' in 'conv_top_mydesign_1'. (LINK-5)
-Warning: Unable to resolve reference 'bias_sel' in 'conv_top_mydesign_0'. (LINK-5)
-Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Removing port 'sram_raddr_weight[16]' from design 'bias_sel_mydesign_0'
+Removing port 'sram_raddr_weight[15]' from design 'bias_sel_mydesign_0'
+Removing port 'sram_raddr_weight[14]' from design 'bias_sel_mydesign_0'
+Removing port 'sram_raddr_weight[13]' from design 'bias_sel_mydesign_0'
+Removing port 'sram_raddr_weight[12]' from design 'bias_sel_mydesign_0'
+Removing port 'sram_raddr_weight[11]' from design 'bias_sel_mydesign_0'
+Removing port 'sram_raddr_weight[10]' from design 'bias_sel_mydesign_0'
+Removing port 'sram_raddr_weight[9]' from design 'bias_sel_mydesign_0'
+Removing port 'sram_raddr_weight[8]' from design 'bias_sel_mydesign_0'
+Removing port 'sram_raddr_weight[7]' from design 'bias_sel_mydesign_0'
+Removing port 'sram_raddr_weight[6]' from design 'bias_sel_mydesign_0'
+Removing port 'sram_raddr_weight[5]' from design 'bias_sel_mydesign_0'
+Removing port 'sram_raddr_weight[4]' from design 'bias_sel_mydesign_0'
+Removing port 'sram_raddr_weight[3]' from design 'bias_sel_mydesign_0'
+Removing port 'sram_raddr_weight[2]' from design 'bias_sel_mydesign_0'
+Removing port 'sram_raddr_weight[1]' from design 'bias_sel_mydesign_0'
+Removing port 'sram_raddr_weight[0]' from design 'bias_sel_mydesign_0'
+Removing port 'sram_raddr_weight[16]' from design 'bias_sel_mydesign_1'
+Removing port 'sram_raddr_weight[15]' from design 'bias_sel_mydesign_1'
+Removing port 'sram_raddr_weight[14]' from design 'bias_sel_mydesign_1'
+Removing port 'sram_raddr_weight[13]' from design 'bias_sel_mydesign_1'
+Removing port 'sram_raddr_weight[12]' from design 'bias_sel_mydesign_1'
+Removing port 'sram_raddr_weight[11]' from design 'bias_sel_mydesign_1'
+Removing port 'sram_raddr_weight[10]' from design 'bias_sel_mydesign_1'
+Removing port 'sram_raddr_weight[9]' from design 'bias_sel_mydesign_1'
+Removing port 'sram_raddr_weight[8]' from design 'bias_sel_mydesign_1'
+Removing port 'sram_raddr_weight[7]' from design 'bias_sel_mydesign_1'
+Removing port 'sram_raddr_weight[6]' from design 'bias_sel_mydesign_1'
+Removing port 'sram_raddr_weight[5]' from design 'bias_sel_mydesign_1'
+Removing port 'sram_raddr_weight[4]' from design 'bias_sel_mydesign_1'
+Removing port 'sram_raddr_weight[3]' from design 'bias_sel_mydesign_1'
+Removing port 'sram_raddr_weight[2]' from design 'bias_sel_mydesign_1'
+Removing port 'sram_raddr_weight[1]' from design 'bias_sel_mydesign_1'
+Removing port 'sram_raddr_weight[0]' from design 'bias_sel_mydesign_1'
 1
 remove_unconnected_ports [get_cells -hierarchical *] -blast_buses
-Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
 Removing port 'unquautized_data[3]' from design 'fc_quantize_mydesign_0'
 Removing port 'unquautized_data[2]' from design 'fc_quantize_mydesign_0'
 Removing port 'unquautized_data[1]' from design 'fc_quantize_mydesign_0'
 Removing port 'unquautized_data[0]' from design 'fc_quantize_mydesign_0'
+Removing port 'conv1_bias_set[16]' from design 'bias_sel_mydesign_0'
+Removing port 'conv1_bias_set[15]' from design 'bias_sel_mydesign_0'
+Removing port 'conv1_bias_set[14]' from design 'bias_sel_mydesign_0'
+Removing port 'conv1_bias_set[13]' from design 'bias_sel_mydesign_0'
+Removing port 'conv1_bias_set[12]' from design 'bias_sel_mydesign_0'
+Removing port 'conv1_bias_set[11]' from design 'bias_sel_mydesign_0'
+Removing port 'conv1_bias_set[10]' from design 'bias_sel_mydesign_0'
+Removing port 'conv1_bias_set[9]' from design 'bias_sel_mydesign_0'
+Removing port 'conv1_bias_set[8]' from design 'bias_sel_mydesign_0'
+Removing port 'conv1_bias_set[7]' from design 'bias_sel_mydesign_0'
+Removing port 'conv1_bias_set[6]' from design 'bias_sel_mydesign_0'
+Removing port 'set[7]' from design 'bias_sel_mydesign_0'
+Removing port 'set[6]' from design 'bias_sel_mydesign_0'
 Removing port 'ori_data[4]' from design 'quantize_mydesign_0'
 Removing port 'ori_data[3]' from design 'quantize_mydesign_0'
 Removing port 'ori_data[2]' from design 'quantize_mydesign_0'
@@ -1323,6 +1414,19 @@ Removing port 'unquautized_data[3]' from design 'fc_quantize_mydesign_1'
 Removing port 'unquautized_data[2]' from design 'fc_quantize_mydesign_1'
 Removing port 'unquautized_data[1]' from design 'fc_quantize_mydesign_1'
 Removing port 'unquautized_data[0]' from design 'fc_quantize_mydesign_1'
+Removing port 'conv1_bias_set[16]' from design 'bias_sel_mydesign_1'
+Removing port 'conv1_bias_set[15]' from design 'bias_sel_mydesign_1'
+Removing port 'conv1_bias_set[14]' from design 'bias_sel_mydesign_1'
+Removing port 'conv1_bias_set[13]' from design 'bias_sel_mydesign_1'
+Removing port 'conv1_bias_set[12]' from design 'bias_sel_mydesign_1'
+Removing port 'conv1_bias_set[11]' from design 'bias_sel_mydesign_1'
+Removing port 'conv1_bias_set[10]' from design 'bias_sel_mydesign_1'
+Removing port 'conv1_bias_set[9]' from design 'bias_sel_mydesign_1'
+Removing port 'conv1_bias_set[8]' from design 'bias_sel_mydesign_1'
+Removing port 'conv1_bias_set[7]' from design 'bias_sel_mydesign_1'
+Removing port 'conv1_bias_set[6]' from design 'bias_sel_mydesign_1'
+Removing port 'set[7]' from design 'bias_sel_mydesign_1'
+Removing port 'set[6]' from design 'bias_sel_mydesign_1'
 Removing port 'ori_data[4]' from design 'quantize_mydesign_1'
 Removing port 'ori_data[3]' from design 'quantize_mydesign_1'
 Removing port 'ori_data[2]' from design 'quantize_mydesign_1'
@@ -1339,7 +1443,6 @@ set bus_naming_style {%s[%d]}
 set hdlout_internal_busses true
 true
 change_names -rules verilog -hierarchy
-Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
 1
 define_name_rules name_rule -allowed {a-z A-Z 0-9 _} -max_length 255 -type cell
 1
@@ -1350,30 +1453,23 @@ define_name_rules name_rule -map {{"\\*cell\\*" "cell"}}
 define_name_rules name_rule -case_insensitive
 1
 change_names -hierarchy -rules name_rule
-Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
 1
 ###--------------------------Netlist-related------------------------------------
 write -format ddc     -hierarchy -output ./netlist/${TOPLEVEL}_syn.ddc
-Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
 Writing ddc file './netlist/lenet_2set_syn.ddc'.
 1
 write -format verilog -hierarchy -output ./netlist/${TOPLEVEL}_syn.v
-Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
 Writing verilog file '/home/u103/u103061108/ICLAB/Lenet_Accelerator/syn_multiple/netlist/lenet_2set_syn.v'.
 1
 write_sdf -version 1.0  -context verilog ./netlist/${TOPLEVEL}_syn.sdf
-Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
 Information: Annotated 'cell' delays are assumed to include load delay. (UID-282)
 Information: Writing timing information to file '/home/u103/u103061108/ICLAB/Lenet_Accelerator/syn_multiple/netlist/lenet_2set_syn.sdf'. (WT-3)
 Information: Updating design information... (UID-85)
 Warning: Design 'lenet_2set' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
-Warning: Design contains black-box components.  These cells will have no timing information. (WT-7)
 1
 write_sdc ./netlist/${TOPLEVEL}_syn.sdc
-Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
 1
 write_saif -output ./netlist/${TOPLEVEL}_syn.saif 
-Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
 Loading db file '/usr/cadtool/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db'
 Information: Writing backward SAIF information to file './netlist/lenet_2set_syn.saif'. (PWR-458)
 1

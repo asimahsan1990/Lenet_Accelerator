@@ -1,4 +1,3 @@
-Warning: Design 'lenet_2set' has '2' unresolved references. For more detailed information, use the "link" command. (UID-341)
  
 ****************************************
 Report : timing
@@ -7,7 +6,7 @@ Report : timing
         -max_paths 4
 Design : lenet_2set
 Version: G-2012.06-SP5
-Date   : Fri Jan  5 17:40:10 2018
+Date   : Fri Jan  5 23:42:52 2018
 ****************************************
 
  # A fanout number of 1000 was used for high fanout net computations.
@@ -15,150 +14,150 @@ Date   : Fri Jan  5 17:40:10 2018
 Operating Conditions: ss0p95v125c   Library: saed32hvt_ss0p95v125c
 Wire Load Model Mode: enclosed
 
-  Startpoint: lenet_0/conv_top/conv_control/clk_gate_addr_change_reg/latch
+  Startpoint: lenet_0/conv_top/bias_sel/clk_gate_bias_data_reg/latch
               (positive level-sensitive latch clocked by clk')
-  Endpoint: lenet_0/conv_top/conv_control/clk_gate_addr_change_reg/main_gate
+  Endpoint: lenet_0/conv_top/bias_sel/clk_gate_bias_data_reg/main_gate
             (gating element for clock clk)
   Path Group: clk
   Path Type: min
 
   Des/Clust/Port     Wire Load Model       Library
   ------------------------------------------------
-  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_19
+  SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_1_mydesign_1
                      ForQA                 saed32hvt_ss0p95v125c
 
   Point                                                   Incr       Path
   --------------------------------------------------------------------------
-  clock clk' (rise edge)                                  1.78       1.78
-  clock network delay (ideal)                             0.00       1.78
-  lenet_0/conv_top/conv_control/clk_gate_addr_change_reg/latch/CLK (LATCHX1_HVT)
-                                                          0.00       1.78 r
-  lenet_0/conv_top/conv_control/clk_gate_addr_change_reg/latch/Q (LATCHX1_HVT)
-                                                          0.11       1.89 f
-  lenet_0/conv_top/conv_control/clk_gate_addr_change_reg/main_gate/A1 (AND2X1_HVT)
-                                                          0.00       1.89 f
-  data arrival time                                                  1.89
+  clock clk' (rise edge)                                  1.71       1.71
+  clock network delay (ideal)                             0.00       1.71
+  lenet_0/conv_top/bias_sel/clk_gate_bias_data_reg/latch/CLK (LATCHX1_HVT)
+                                                          0.00       1.71 r
+  lenet_0/conv_top/bias_sel/clk_gate_bias_data_reg/latch/Q (LATCHX1_HVT)
+                                                          0.11       1.82 f
+  lenet_0/conv_top/bias_sel/clk_gate_bias_data_reg/main_gate/A1 (AND2X1_HVT)
+                                                          0.00       1.82 f
+  data arrival time                                                  1.82
 
-  clock clk (fall edge)                                   1.78       1.78
-  clock network delay (ideal)                             0.00       1.78
-  lenet_0/conv_top/conv_control/clk_gate_addr_change_reg/main_gate/A2 (AND2X1_HVT)
-                                                          0.00       1.78 f
-  clock gating hold time                                  0.00       1.78
-  data required time                                                 1.78
+  clock clk (fall edge)                                   1.71       1.71
+  clock network delay (ideal)                             0.00       1.71
+  lenet_0/conv_top/bias_sel/clk_gate_bias_data_reg/main_gate/A2 (AND2X1_HVT)
+                                                          0.00       1.71 f
+  clock gating hold time                                  0.00       1.71
+  data required time                                                 1.71
   --------------------------------------------------------------------------
-  data required time                                                 1.78
-  data arrival time                                                 -1.89
+  data required time                                                 1.71
+  data arrival time                                                 -1.82
   --------------------------------------------------------------------------
   slack (MET)                                                        0.11
 
 
-  Startpoint: lenet_0/conv_top/conv_control/clk_gate_channel_cnt_reg/latch
+  Startpoint: lenet_0/conv_top/bias_sel/clk_gate_conv_weight_box_reg_0_/latch
               (positive level-sensitive latch clocked by clk')
-  Endpoint: lenet_0/conv_top/conv_control/clk_gate_channel_cnt_reg/main_gate
+  Endpoint: lenet_0/conv_top/bias_sel/clk_gate_conv_weight_box_reg_0_/main_gate
             (gating element for clock clk)
   Path Group: clk
   Path Type: min
 
   Des/Clust/Port     Wire Load Model       Library
   ------------------------------------------------
-  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_20
+  SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_1_mydesign_0
                      ForQA                 saed32hvt_ss0p95v125c
 
   Point                                                   Incr       Path
   --------------------------------------------------------------------------
-  clock clk' (rise edge)                                  1.78       1.78
-  clock network delay (ideal)                             0.00       1.78
-  lenet_0/conv_top/conv_control/clk_gate_channel_cnt_reg/latch/CLK (LATCHX1_HVT)
-                                                          0.00       1.78 r
-  lenet_0/conv_top/conv_control/clk_gate_channel_cnt_reg/latch/Q (LATCHX1_HVT)
-                                                          0.11       1.89 f
-  lenet_0/conv_top/conv_control/clk_gate_channel_cnt_reg/main_gate/A1 (AND2X1_HVT)
-                                                          0.00       1.89 f
-  data arrival time                                                  1.89
+  clock clk' (rise edge)                                  1.71       1.71
+  clock network delay (ideal)                             0.00       1.71
+  lenet_0/conv_top/bias_sel/clk_gate_conv_weight_box_reg_0_/latch/CLK (LATCHX1_HVT)
+                                                          0.00       1.71 r
+  lenet_0/conv_top/bias_sel/clk_gate_conv_weight_box_reg_0_/latch/Q (LATCHX1_HVT)
+                                                          0.11       1.82 f
+  lenet_0/conv_top/bias_sel/clk_gate_conv_weight_box_reg_0_/main_gate/A1 (AND2X1_HVT)
+                                                          0.00       1.82 f
+  data arrival time                                                  1.82
 
-  clock clk (fall edge)                                   1.78       1.78
-  clock network delay (ideal)                             0.00       1.78
-  lenet_0/conv_top/conv_control/clk_gate_channel_cnt_reg/main_gate/A2 (AND2X1_HVT)
-                                                          0.00       1.78 f
-  clock gating hold time                                  0.00       1.78
-  data required time                                                 1.78
+  clock clk (fall edge)                                   1.71       1.71
+  clock network delay (ideal)                             0.00       1.71
+  lenet_0/conv_top/bias_sel/clk_gate_conv_weight_box_reg_0_/main_gate/A2 (AND2X1_HVT)
+                                                          0.00       1.71 f
+  clock gating hold time                                  0.00       1.71
+  data required time                                                 1.71
   --------------------------------------------------------------------------
-  data required time                                                 1.78
-  data arrival time                                                 -1.89
+  data required time                                                 1.71
+  data arrival time                                                 -1.82
   --------------------------------------------------------------------------
   slack (MET)                                                        0.11
 
 
-  Startpoint: lenet_0/conv_top/conv_control/clk_gate_col_reg/latch
+  Startpoint: lenet_0/conv_top/bias_sel/clk_gate_conv_weight_box_reg_2_/latch
               (positive level-sensitive latch clocked by clk')
-  Endpoint: lenet_0/conv_top/conv_control/clk_gate_col_reg/main_gate
+  Endpoint: lenet_0/conv_top/bias_sel/clk_gate_conv_weight_box_reg_2_/main_gate
             (gating element for clock clk)
   Path Group: clk
   Path Type: min
 
   Des/Clust/Port     Wire Load Model       Library
   ------------------------------------------------
-  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_0
+  SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_1_mydesign_20
                      ForQA                 saed32hvt_ss0p95v125c
 
   Point                                                   Incr       Path
   --------------------------------------------------------------------------
-  clock clk' (rise edge)                                  1.78       1.78
-  clock network delay (ideal)                             0.00       1.78
-  lenet_0/conv_top/conv_control/clk_gate_col_reg/latch/CLK (LATCHX1_HVT)
-                                                          0.00       1.78 r
-  lenet_0/conv_top/conv_control/clk_gate_col_reg/latch/Q (LATCHX1_HVT)
-                                                          0.11       1.89 f
-  lenet_0/conv_top/conv_control/clk_gate_col_reg/main_gate/A1 (AND2X1_HVT)
-                                                          0.00       1.89 f
-  data arrival time                                                  1.89
+  clock clk' (rise edge)                                  1.71       1.71
+  clock network delay (ideal)                             0.00       1.71
+  lenet_0/conv_top/bias_sel/clk_gate_conv_weight_box_reg_2_/latch/CLK (LATCHX1_HVT)
+                                                          0.00       1.71 r
+  lenet_0/conv_top/bias_sel/clk_gate_conv_weight_box_reg_2_/latch/Q (LATCHX1_HVT)
+                                                          0.11       1.82 f
+  lenet_0/conv_top/bias_sel/clk_gate_conv_weight_box_reg_2_/main_gate/A1 (AND2X1_HVT)
+                                                          0.00       1.82 f
+  data arrival time                                                  1.82
 
-  clock clk (fall edge)                                   1.78       1.78
-  clock network delay (ideal)                             0.00       1.78
-  lenet_0/conv_top/conv_control/clk_gate_col_reg/main_gate/A2 (AND2X1_HVT)
-                                                          0.00       1.78 f
-  clock gating hold time                                  0.00       1.78
-  data required time                                                 1.78
+  clock clk (fall edge)                                   1.71       1.71
+  clock network delay (ideal)                             0.00       1.71
+  lenet_0/conv_top/bias_sel/clk_gate_conv_weight_box_reg_2_/main_gate/A2 (AND2X1_HVT)
+                                                          0.00       1.71 f
+  clock gating hold time                                  0.00       1.71
+  data required time                                                 1.71
   --------------------------------------------------------------------------
-  data required time                                                 1.78
-  data arrival time                                                 -1.89
+  data required time                                                 1.71
+  data arrival time                                                 -1.82
   --------------------------------------------------------------------------
   slack (MET)                                                        0.11
 
 
-  Startpoint: lenet_0/conv_top/conv_control/clk_gate_delay1_sram_waddr_b_reg/latch
+  Startpoint: lenet_0/conv_top/bias_sel/clk_gate_conv_weight_box_reg_5_/latch
               (positive level-sensitive latch clocked by clk')
-  Endpoint: lenet_0/conv_top/conv_control/clk_gate_delay1_sram_waddr_b_reg/main_gate
+  Endpoint: lenet_0/conv_top/bias_sel/clk_gate_conv_weight_box_reg_5_/main_gate
             (gating element for clock clk)
   Path Group: clk
   Path Type: min
 
   Des/Clust/Port     Wire Load Model       Library
   ------------------------------------------------
-  SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_1_mydesign_23
+  SNPS_CLOCK_GATE_HIGH_bias_sel_mydesign_1_mydesign_19
                      ForQA                 saed32hvt_ss0p95v125c
 
   Point                                                   Incr       Path
   --------------------------------------------------------------------------
-  clock clk' (rise edge)                                  1.78       1.78
-  clock network delay (ideal)                             0.00       1.78
-  lenet_0/conv_top/conv_control/clk_gate_delay1_sram_waddr_b_reg/latch/CLK (LATCHX1_HVT)
-                                                          0.00       1.78 r
-  lenet_0/conv_top/conv_control/clk_gate_delay1_sram_waddr_b_reg/latch/Q (LATCHX1_HVT)
-                                                          0.11       1.89 f
-  lenet_0/conv_top/conv_control/clk_gate_delay1_sram_waddr_b_reg/main_gate/A1 (AND2X1_HVT)
-                                                          0.00       1.89 f
-  data arrival time                                                  1.89
+  clock clk' (rise edge)                                  1.71       1.71
+  clock network delay (ideal)                             0.00       1.71
+  lenet_0/conv_top/bias_sel/clk_gate_conv_weight_box_reg_5_/latch/CLK (LATCHX1_HVT)
+                                                          0.00       1.71 r
+  lenet_0/conv_top/bias_sel/clk_gate_conv_weight_box_reg_5_/latch/Q (LATCHX1_HVT)
+                                                          0.11       1.82 f
+  lenet_0/conv_top/bias_sel/clk_gate_conv_weight_box_reg_5_/main_gate/A1 (AND2X1_HVT)
+                                                          0.00       1.82 f
+  data arrival time                                                  1.82
 
-  clock clk (fall edge)                                   1.78       1.78
-  clock network delay (ideal)                             0.00       1.78
-  lenet_0/conv_top/conv_control/clk_gate_delay1_sram_waddr_b_reg/main_gate/A2 (AND2X1_HVT)
-                                                          0.00       1.78 f
-  clock gating hold time                                  0.00       1.78
-  data required time                                                 1.78
+  clock clk (fall edge)                                   1.71       1.71
+  clock network delay (ideal)                             0.00       1.71
+  lenet_0/conv_top/bias_sel/clk_gate_conv_weight_box_reg_5_/main_gate/A2 (AND2X1_HVT)
+                                                          0.00       1.71 f
+  clock gating hold time                                  0.00       1.71
+  data required time                                                 1.71
   --------------------------------------------------------------------------
-  data required time                                                 1.78
-  data arrival time                                                 -1.89
+  data required time                                                 1.71
+  data arrival time                                                 -1.82
   --------------------------------------------------------------------------
   slack (MET)                                                        0.11
 
