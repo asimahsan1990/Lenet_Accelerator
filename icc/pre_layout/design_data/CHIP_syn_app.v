@@ -345,7 +345,7 @@ module CHIP ( clk, srstn, conv_start, conv_done, mem_sel, fc1_done, fc2_done,
   output sram_write_enable_e4;
 
   output [3:0] sram_bytemask_e;
-  output [9:0] sram_waddr_e;
+  output [4:0] sram_waddr_e;
   output [7:0] sram_wdata_e;
   output [7:0] sram_wdata_e_1;
 /* SRAM F */ 
