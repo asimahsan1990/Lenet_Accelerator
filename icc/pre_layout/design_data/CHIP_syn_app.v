@@ -297,11 +297,11 @@ module CHIP ( clk, srstn, conv_start, conv_done, mem_sel, fc1_done, fc2_done,
   input [31:0] sram_rdata_d3;
   input [31:0] sram_rdata_d4;
 
-  input [5:0] sram_raddr_d0;
-  input [5:0] sram_raddr_d1;
-  input [5:0] sram_raddr_d2;
-  input [5:0] sram_raddr_d3;
-  input [5:0] sram_raddr_d4;
+  output [5:0] sram_raddr_d0;
+  output [5:0] sram_raddr_d1;
+  output [5:0] sram_raddr_d2;
+  output [5:0] sram_raddr_d3;
+  output [5:0] sram_raddr_d4;
 
   input [31:0] sram_rdata_d0_1;
   input [31:0] sram_rdata_d1_1;
