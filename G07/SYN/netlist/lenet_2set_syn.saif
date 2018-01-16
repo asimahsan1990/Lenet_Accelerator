@@ -1,0 +1,12 @@
+(SAIFILE
+(SAIFVERSION "2.0")
+(DIRECTION "backward")
+(DESIGN "lenet_2set")
+(DATE "Fri Jan  5 17:40:10 2018")
+(VENDOR "Synopsys, Inc")
+(PROGRAM_NAME "Power Compiler write_saif")
+(PROGRAM_VERSION "G-2012.06-SP5")
+(DIVIDER / )
+(TIMESCALE 1 ns)
+(DURATION 1000.00)
+)

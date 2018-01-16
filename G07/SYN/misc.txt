@@ -1,0 +1,9 @@
+[Design Compiler]
+Reasons for setting constrain:
+    The smallest cycle time we could pass, smaller constrain can be modified to pass post_sim later
+Strategy: 
+    We keep on chasing smaller cycle time
+
+[ICC]
+Reasons for setting constrain:
+Strategy:
