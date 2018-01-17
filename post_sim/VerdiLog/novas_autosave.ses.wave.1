@@ -1,0 +1,80 @@
+Magic 271485
+Revision Verdi3_K-2015.09-SP2
+
+; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
+viewPort 0 28 1536 672 100 747
+
+; File list:
+; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
+openDirFile -d / "" "/home/u103/u103061136/ICLAB/lenetoneset/sim/top_test.fsdb"
+
+; file time scale:
+; fileTimeScale ### s|ms|us|ns|ps
+
+; signal spacing:
+signalSpacing 5
+
+; windowTimeUnit is used for zoom, cursor & marker
+; waveform viewport range
+zoom 30632911.375026 30635505.539651
+cursor 30635210.000000
+marker 0.000000
+
+; user define markers
+; userMarker time_pos marker_name color linestyle
+; visible top row signal index
+top 0
+; marker line index
+markerPos 4
+
+; event list
+; addEvent event_name event_expression
+; curEvent event_name
+
+
+
+COMPLEX_EVENT_BEGIN
+
+
+COMPLEX_EVENT_END
+
+
+
+; toolbar current search type
+; curSTATUS search_type
+curSTATUS ByChange
+
+
+addGroup "G1"
+activeDirFile "" "/home/u103/u103061136/ICLAB/lenetoneset/sim/top_test.fsdb"
+addSignal -h 15 -2COMP -UDEC /test_top/lenet/conv_top/sram_wdata_d[7:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope sram_bytemask_d[3:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope src_window[287:0]
+addSignal -h 15 -holdScope clk
+addSignal -h 15 -holdScope sram_write_enable_d0
+addSignal -h 15 -holdScope sram_write_enable_d1
+addSignal -h 15 -holdScope sram_write_enable_d2
+addSignal -h 15 -holdScope sram_write_enable_d3
+addSignal -h 15 -holdScope sram_write_enable_d4
+addGroup "G2"
+
+; getSignalForm Scope Hierarchy Status
+; active file of getSignalForm
+activeDirFile "" "/home/u103/u103061136/ICLAB/lenetoneset/sim/top_test.fsdb"
+
+GETSIGNALFORM_SCOPE_HIERARCHY_BEGIN
+getSignalForm close
+
+"/test_top"
+"/test_top/lenet"
+"/test_top/lenet/conv_top"
+
+SCOPE_LIST_BEGIN
+"/test_top"
+"/test_top/lenet"
+"/test_top/lenet/conv_top"
+SCOPE_LIST_END
+
+GETSIGNALFORM_SCOPE_HIERARCHY_END
+
+

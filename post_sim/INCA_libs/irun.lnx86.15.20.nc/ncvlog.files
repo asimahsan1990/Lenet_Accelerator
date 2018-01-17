@@ -1,0 +1,9 @@
+//
+// File created by:  ncverilog
+// Do not modify this file
+//
+/home/u103/u103061136/ICLAB/lenetoneset/post_sim/test_post_sim.v
+/home/u103/u103061136/ICLAB/lenetoneset/icc/post_layout/lenet_layout.v
+/home/u103/u103061136/ICLAB/lenetoneset/post_sim/sram_model/sram_256x32b.v
+/home/u103/u103061136/ICLAB/lenetoneset/post_sim/sram_model/sram_20250x80b.v
+/home/u103/u103061136/ICLAB/lenetoneset/post_sim/sram_model/sram_20000x100b.v

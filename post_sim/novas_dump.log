@@ -1,0 +1,145 @@
+ncsim 15.20-s027
+Linux 2.6.18-274.el5 #1 SMP Fri Jul 22 04:43:29 EDT 2011 x86_64
+CPU cores: 8
+Limit information:
+======================================
+cputime			unlimited
+filesize		unlimited
+datasize		unlimited
+stacksize		10240 kbytes
+coredumpsize	0 kbytes
+memoryuse		unlimited
+vmemoryuse		unlimited
+descriptors		1024
+memorylocked	32 kbytes
+maxproc			278528
+======================================
+Runtime environment variables:
+USER=u103061136
+LOGNAME=u103061136
+HOME=/home/u103/u103061136
+PATH=/usr/bin/X11:/usr/cadtool/SAED32_EDK/synthesis/cur/amd64/syn/bin:/usr/cad/synopsys/hercules/cur/bin/AMD.64:/usr/cadtool/SAED32_EDK/customdesigner/cur/bin:/usr/cadtool/SAED32_EDK/saed_mc/bin:/usr/lib64/qt-3.3/bin:/usr/kerberos/bin:/usr/cad/synopsys/spice_explorer/cur/bin:/usr/bin/:/usr/usr/cadtool/Brains/BRAINS-CentOS-5.5-x86_64/bin:/usr/cad/synopsys/vcs-mx/cur/bin:/usr/cad/synopsys/vcs-mx/cur/linux/bin:/usr/cad/synopsys/vcs-mx/cur/linux/util:/usr/cad/synopsys/vcs-mx/cur/linux/flexlm:/usr/cadtool/silvaco/bin:/usr/cadtool/jeroo/Jeroo.jar/:/usr/cadtool/cad/synopsys/laker/cur/bin:/usr/cad/spring_soft/verdi/cur/bin:/usr/cad/spring_soft/verdi/cur/nLint/bin:/usr/cad/synopsys/tmax/cur/bin:/usr/cadtool/mentor/tessent/cur/bin:/usr/bin/X11:/usr/cad/synopsys/synthesis/cur/amd64/syn/bin:/usr/cadtool/tcad/2016/bin:/usr/cadtool/tcad/K_2015.06/bin:/usr/cadtool/cad/synopsys/raphael_2015.06/bin:/usr/cad/synopsys/hspice/2016.06-sp2/hspice/bin:/usr/cad/synopsys/hspice/2016.06-sp2/hspice/GNU/linux64/gcc-4.8.3/bin:/usr/cad/synopsys/hspice/2016.06-sp2/hspice/linux64:/usr/bin:/usr/ucb/bin:/usr/cad/synopsys/sold/cur:/usr/bin/X11:/usr/cad/synopsys/primetime/cur/amd64/syn/bin:/usr/cad/synopsys/processor_designer/cur/PD/linux/bin:/usr/cad/synopsys/milkyway/cur/bin/AMD.64:/usr/cadtool/matlab/bin:/usr/cad/cadence/INCISIV/cur/tools/bin:/usr/cad/cadence/INCISIV/cur/tools/vtools/vfault/bin:/usr/cad/cadence/INCISIV/cur/tools/dfII/bin:/usr/cadence/IC/cur/tools/dfII/bin:/usr/cadence/IC/cur/tools/dracula/bin:/usr/cadence/IC/cur/tools/bin:/usr/cad/synopsys/icc/cur/amd64/syn/bin:/usr/cad/synopsys/icc2/cur/bin:/usr/cad/synopsys/hspice/2016.06-sp2/hspice/bin:/usr/cad/synopsys/hspice/2016.06-sp2/hspice/GNU/linux64/gcc-4.8.3/bin:/usr/cad/synopsys/hspice/2016.06-sp2/hspice/linux64:/usr/bin:/usr/ucb/bin:/usr/cad/synopsys/hsimplus/cur/hsimplus/bin:/usr/cad/synopsys/hercules/cur/bin/AMD.64:/usr/cadtool/git/bin:/usr/cad/synopsys/finesim/cur/bin:/usr/cad/cadence/ETS/cur/tools/bin:/usr/cad/cadence/EDI/cur/tools/celtic/bin:/usr/cad/cadence/EDI/cur/tools/plato/bin:/usr/cad/cadence/EDI/cur/tools/dfII/bin:/usr/cad/cadence/EDI/cur/tools/fe/bin:/usr/cad/cadence/EDI/cur/tools/cdsdoc/bin:/usr/cad/cadence/EDI/cur/tools/bin:/usr/cad/cadence/EDI/cur//tools/tlfUtil/bin:/usr/cadtool/eclipse_2012/eclipse/:/usr/cad/cadence/CTOS/cur/tools/bin:/usr/bin/X11:/usr/cadtool/cad/synopsys/coreconsultant/cur/bin:/usr/cadtool/cadence/CONFRML/cur/./bin:/usr/cadtool/cadence/CONFRML/cur/tools/bin:/usr/mentor/calibre/cur/bin:/usr/cad/synopsys/astro/cur/bin/IA.32:/usr/cadtool/ads/ADS/bin:/usr/cadtool/ads/ADS/tools/bin:/usr/bin/X11:/usr/cad/synopsys/primetime/cur/linux/syn/bin:/usr/cad/synopsys/nanosim/cur/bin:/usr/cad/synopsys/nanosim/cur/linux/ns/bin:/usr/local/bin:/bin:/usr/bin:/usr/cadtool/cad/synopsys/dw_home/cur/bin:/usr/cadtool/Acrobat5/bin:/usr/X11R6/bin
+MAIL=/var/spool/mail/u103061136
+SHELL=/usr/bin/tcsh
+SSH_CLIENT=140.114.24.31 60486 22
+SSH_CONNECTION=140.114.24.31 60486 140.114.24.117 22
+SSH_TTY=/dev/pts/34
+TERM=xterm
+DISPLAY=localhost:14.0
+HOSTTYPE=x86_64-linux
+VENDOR=unknown
+OSTYPE=linux
+MACHTYPE=x86_64
+SHLVL=1
+PWD=/home/u103/u103061136/ICLAB/lenetoneset/post_sim
+GROUP=u103
+HOST=ws42
+REMOTEHOST=daisy
+LM_LICENSE_FILE=26585@lsnctu:1717@lsncu:27020@ws38:26585@lscic.cic.org.tw:5280@lscic:5280@lsntu:5280@lsncku:5219@lsncu:5280@lsncu:
+MANPATH=/usr/cad/synopsys/nanosim/cur/doc/ns/man:/usr/cadtool/cad/synopsys/coreconsultant/cur/doc/dware/man:/usr/spw/CDS/tools/man:/usr/spw/caesys/lmgr/man:/usr/cad/synopsys/synthesis/cur/doc/syn/man:/usr/cadtool/SAED32_EDK/synthesis/cur/doc/syn/man
+SNPS_SIMIF=/usr/cad/synopsys/nanosim/cur
+PRIMETIME=/usr/cad/synopsys/primetime/cur
+HPEESOF_DIR=/usr/cadtool/ads/ADS
+AGILEESOFD_LICENSE_FILE=@ws38
+XKEYSYMDB=/usr/cad/synopsys/astro/cur/etc/XKeysymDB
+XLOCALEDIR=/usr/cad/synopsys/icc2/cur/etc/locale
+MGC_HOME=/usr/mentor/calibre/cur
+MGC_TMPDIR=/tmp
+MGC_LOCATION_MAP=NO_MAP
+LD_LIBRARY_PATH=/usr/cad/spring_soft/verdi/2012.01/share/PLI/IUS/LINUX/
+VERPLEX_HOME=/usr/cadtool/cadence/CONFRML/cur
+SOFT_MAN_DIR=/usr/cadtool/cad/synopsys/coreconsultant/cur/doc/dware/man
+DESIGNWARE_HOME=/usr/cadtool/cad/synopsys/dw_home/cur
+ENCOUNTER=/usr/cad/cadence/EDI/cur/tools/fe
+OAHOME=/usr/cad/cadence/ETS/cur/oa
+OA_HOME=/usr/cad/cadence/ETS/cur/oa
+FINESIM_HOME=/usr/cad/synopsys/finesim/cur
+FINESIM_64=1
+FINEWAVE_64=1
+POWERVIEW_64=1
+installdir=/usr/cad/synopsys/hspice/2016.06-sp2/hspice
+ARCH=linux64
+CMIARCH=RH_64
+mraarch=linux_64
+TMIARCH=RH_64
+HSP_HOME=/usr/cad/synopsys/hspice/2016.06-sp2/hspice
+SNPS_PLATFORM=linux64
+HSP_GCC=/usr/cad/synopsys/hspice/2016.06-sp2/hspice/GNU/linux64/gcc-4.8.3/bin/gcc -m64 
+SNPS_64=1
+HSP_GCC_VERSION=4.8.3
+CDS_LOAD_ENV=CSF
+SYNOPSYS=/usr/cadtool/SAED32_EDK/synthesis/cur
+CDS_Netlisting_Mode=Analog
+LISAHOME=/usr/cad/synopsys/processor_designer/cur/PD/linux
+SPW_HOME=/usr/spw
+SPW_SYS_DB=/usr/spw
+STROOT=/usr/cadtool/tcad/2016
+STHOME=/usr/cadtool/tcad/2016
+SYNTHESIS=/usr/cadtool/SAED32_EDK/synthesis/cur
+SYN_MAN_DIR=/usr/cadtool/SAED32_EDK/synthesis/cur/doc/syn/man
+SYNOPSYS_TMAX=/usr/cad/synopsys/tmax/cur
+SHLIB_PATH=/usr/cad/spring_soft/verdi/cur/share/PLI/IUS/LINUX
+Laker_TCL_L3=1
+Laker_TCL_ToolBox=1
+SFLM_SERVER=140.114.24.112
+VCS_HOME=/usr/cad/synopsys/vcs-mx/cur
+VCS_CC=gcc
+HOY_LIC_FILE=4141@ws38
+HOSTNAME=ws42
+INPUTRC=/etc/inputrc
+LS_COLORS=no=00:fi=00:di=00;34:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:ex=00;32:*.cmd=00;32:*.exe=00;32:*.com=00;32:*.btm=00;32:*.bat=00;32:*.sh=00;32:*.csh=00;32:*.tar=00;31:*.tgz=00;31:*.arj=00;31:*.taz=00;31:*.lzh=00;31:*.zip=00;31:*.z=00;31:*.Z=00;31:*.gz=00;31:*.bz2=00;31:*.bz=00;31:*.tz=00;31:*.rpm=00;31:*.cpio=00;31:*.jpg=00;35:*.gif=00;35:*.bmp=00;35:*.xbm=00;35:*.xpm=00;35:*.png=00;35:*.tif=00;35:
+G_BROKEN_FILENAMES=1
+SSH_ASKPASS=/usr/libexec/openssh/gnome-ssh-askpass
+KDE_IS_PRELINKED=1
+KDEDIR=/usr
+LANG=en_US.UTF-8
+LESSOPEN=|/usr/bin/lesspipe.sh %s
+QTDIR=/usr/lib64/qt-3.3
+QTINC=/usr/lib64/qt-3.3/include
+QTLIB=/usr/lib64/qt-3.3/lib
+MC_HOME=/usr/cadtool/SAED32_EDK/saed_mc
+SAED_MC_32_28_PDK=/usr/cadtool/SAED32_EDK/saed_mc/etc/techs/SAED_PDK_32/
+PERL5LIB=/usr/cadtool/SAED32_EDK/saed_mc/lib
+_IRUNROOT_=/usr/cad/cadence/INCISIV/cur/tools
+CDS_ARCH=lnx86
+NCRUNMODE=ncverilog:./INCA_libs/irun.lnx86.15.20.nc
+IRUNBATCH=FALSE
+IMPERAS_PORT_FILE=.vsp_ovp_gdb_port
+TCL_LIBRARY=/usr/cad/cadence/INCISIV/cur/tools/inca/files/tcl/library
+Runtime command line arguments:
+argv[0]=ncverilog
+argv[1]=-f
+argv[2]=post_sim.f
+argv[3]=test_post_sim.v
+argv[4]=../icc/post_layout/lenet_layout.v
+argv[5]=-v
+argv[6]=/usr/cadtool/SAED32_EDK/lib/stdcell_hvt/verilog/saed32nm_hvt.v
+argv[7]=sram_model/sram_256x32b.v
+argv[8]=sram_model/sram_20250x80b.v
+argv[9]=sram_model/sram_20000x100b.v
+argv[10]=+access+r
+121 profile - 100
+          CPU/Mem usage: 0.040 sys,  0.040 user,  75.79M sys,  0.00M vm
+122 VC callback profile - scalar:0 vector:0
+123 Wed Jan 17 16:46:27 2018
+124 pliAppInit
+125 pliAppMiscSet: New Sim Round
+126 LIBSSCORE=found /usr/cad/spring_soft/verdi/2012.01/share/PLI/IUS/LINUX/libsscore_ius111.so through $LD_LIBRARY_PATH setting.
+127 Catch signal 11. Stack trace follows:
+#0  0xffffe410 in __kernel_vsyscall ()
+#1  0x00638ff3 in __read_nocancel () from /lib/libc.so.6
+#2  0x005d8f68 in _IO_file_read_internal () from /lib/libc.so.6
+#3  0x005da2c0 in _IO_new_file_underflow () from /lib/libc.so.6
+#4  0x005da9bb in _IO_default_uflow_internal () from /lib/libc.so.6
+#5  0x005dbd2d in __uflow () from /lib/libc.so.6
+#6  0x005cf6b6 in _IO_getline_info_internal () from /lib/libc.so.6
+#7  0x005cf601 in _IO_getline_internal () from /lib/libc.so.6
+#8  0x005ce57a in fgets () from /lib/libc.so.6
+#9  0xf6203951 in ndpGetCallStack () from /usr/cad/spring_soft/verdi/2012.01/share/PLI/IUS/LINUX/libsscore_ius111.so
+#10 0xf6229784 in pliAppDbg_SigHandler () from /usr/cad/spring_soft/verdi/2012.01/share/PLI/IUS/LINUX/libsscore_ius111.so
+#11 0xf62034d4 in catchSignalCB () from /usr/cad/spring_soft/verdi/2012.01/share/PLI/IUS/LINUX/libsscore_ius111.so
+#12 <signal handler called>
+#13 0x0b32da65 in ?? ()
+#14 0x0b32da58 in ?? ()
+#15 0x00000000 in ?? ()
+128 Sim process exit
