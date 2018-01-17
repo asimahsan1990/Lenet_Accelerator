@@ -1,0 +1,12 @@
+[Logic of each Testbench]
+1. Test_CONV.v: 
+    a. first load in weights to 2 SRAMs
+    b. we then load in the test photo and set one cycle conv_start
+    c. compare SRAM value that store calculated value with correct fmap value to testify the correctness
+2. Test_FC.v:
+    a. first load in all the needed data
+    b. compare the SRAM value that store final probability and fc1 fmap with groundtruth
+3. Test_top.v:
+    combine both of previous mentioned test logic
+4. Test_top_multiple.v:
+    test two set correctness

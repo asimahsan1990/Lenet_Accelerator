@@ -6,4 +6,5 @@ Strategy:
 
 [ICC]
 Reasons for setting constrain:
-Strategy:
+Strategy: We release the clock period a little bit to avoid read data error
+
