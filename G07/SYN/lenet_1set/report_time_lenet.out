@@ -1,0 +1,69 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : lenet
+Version: G-2012.06-SP5
+Date   : Wed Jan 17 18:33:01 2018
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: ss0p95v125c   Library: saed32hvt_ss0p95v125c
+Wire Load Model Mode: enclosed
+
+  Startpoint: srstn (input port clocked by clk)
+  Endpoint: conv_top/conv_control/clk_gate_delay1_sram_waddr_b_reg/latch
+            (positive level-sensitive latch clocked by clk')
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  lenet              70000                 saed32hvt_ss0p95v125c
+  conv_control       8000                  saed32hvt_ss0p95v125c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                 0.0000     0.0000
+  clock network delay (ideal)                           0.0000     0.0000
+  input external delay                                  2.0000     2.0000 f
+  srstn (in)                                            0.0000     2.0000 f
+  conv_top/srstn (conv_top)                             0.0000     2.0000 f
+  conv_top/conv_control/srstn (conv_control)            0.0000     2.0000 f
+  conv_top/conv_control/U231/Y (INVX2_HVT)              0.0128     2.0128 r
+  conv_top/conv_control/U230/Y (INVX1_HVT)              0.0361     2.0488 f
+  conv_top/conv_control/U249/Y (INVX1_HVT)              0.0286     2.0775 r
+  conv_top/conv_control/U671/Y (AO21X1_HVT)             0.0949     2.1723 r
+  conv_top/conv_control/U1609/Y (AO21X1_HVT)            0.0879     2.2602 r
+  conv_top/conv_control/clk_gate_delay1_sram_waddr_b_reg/EN (SNPS_CLOCK_GATE_HIGH_conv_control_mydesign_23)
+                                                        0.0000     2.2602 r
+  conv_top/conv_control/clk_gate_delay1_sram_waddr_b_reg/latch/D (LATCHX1_HVT)
+                                                        0.0000     2.2602 r
+  data arrival time                                                2.2602
+
+  clock clk' (rise edge)                                2.0000     2.0000
+  clock network delay (ideal)                           0.0000     2.0000
+  conv_top/conv_control/clk_gate_delay1_sram_waddr_b_reg/latch/CLK (LATCHX1_HVT)
+                                                        0.0000     2.0000 r
+  time borrowed from endpoint                           0.2602     2.2602
+  data required time                                               2.2602
+  --------------------------------------------------------------------------
+  data required time                                               2.2602
+  data arrival time                                               -2.2602
+  --------------------------------------------------------------------------
+  slack (MET)                                                      0.0000
+
+  Time Borrowing Information
+  --------------------------------------------------------------
+  clk' pulse width                                      2.0000   
+  library setup time                                   -0.1067   
+  --------------------------------------------------------------
+  max time borrow                                       1.8933   
+  actual time borrow                                    0.2602   
+  --------------------------------------------------------------
+
+
+1

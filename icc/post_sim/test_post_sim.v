@@ -18,14 +18,14 @@ reg srstn;
 
 reg conv_start;
 
-wire conv_done;	 // conv_finish for testing if conv2(remember to set mem_sel)
-				 
-wire mem_sel;	 // mem_sel(1:c0~c4| 0:d0~d4)
+wire conv_done;  // conv_finish for testing if conv2(remember to set mem_sel)
+         
+wire mem_sel;  // mem_sel(1:c0~c4| 0:d0~d4)
 
-wire fc2_done;	 //FC done signal
+wire fc2_done;   //FC done signal
 
 /*=================================*/
-/*		 		SRAM A 		 	   */
+/*        SRAM A         */
 /*=================================*/
 wire sram_write_enable_a0;
 wire sram_write_enable_a1;
@@ -63,7 +63,7 @@ wire [SRAM_DATA_WIDTH-1:0] sram_rdata_a8;
 
 
 /*=================================*/
-/*	  	 SRAM A Connection		   */
+/*       SRAM A Connection       */
 /*=================================*/
 sram_128x32b sram_128x32b_a0(
 .clk(clk),
@@ -165,7 +165,7 @@ sram_128x32b sram_128x32b_a8(
 );
 
 /*=============================*/
-/*			SRAM B 			   */
+/*      SRAM B         */
 /*=============================*/
 wire sram_write_enable_b0;
 wire sram_write_enable_b1;
@@ -202,7 +202,7 @@ wire [SRAM_DATA_WIDTH-1:0] sram_rdata_b7;
 wire [SRAM_DATA_WIDTH-1:0] sram_rdata_b8;
 
 /*=================================*/
-/*	  	 SRAM B Connection		   */
+/*       SRAM B Connection       */
 /*=================================*/
 sram_128x32b sram_128x32b_b0(
 .clk(clk),
@@ -304,7 +304,7 @@ sram_128x32b sram_128x32b_b8(
 );
 
 /*=============================*/
-/*		 	SRAM C		 	   */
+/*      SRAM C         */
 /*=============================*/
 wire sram_write_enable_c0;
 wire sram_write_enable_c1;
@@ -329,7 +329,7 @@ wire [SRAM_DATA_WIDTH-1:0] sram_rdata_c3;
 wire [SRAM_DATA_WIDTH-1:0] sram_rdata_c4;
 
 /*=================================*/
-/*	  	 SRAM C Connection		   */
+/*       SRAM C Connection       */
 /*=================================*/
 sram_128x32b sram_128x32b_c0(
 .clk(clk),
@@ -387,7 +387,7 @@ sram_128x32b sram_128x32b_c4(
 );
 
 /*=============================*/
-/*		 	SRAM D		 	   */
+/*      SRAM D         */
 /*=============================*/
 wire sram_write_enable_d0;
 wire sram_write_enable_d1;
@@ -412,7 +412,7 @@ wire [SRAM_DATA_WIDTH-1:0] sram_rdata_d3;
 wire [SRAM_DATA_WIDTH-1:0] sram_rdata_d4;
 
 /*=================================*/
-/*	  	 SRAM D Connection		   */
+/*       SRAM D Connection       */
 /*=================================*/
 
 sram_128x32b sram_128x32b_d0(
@@ -471,7 +471,7 @@ sram_128x32b sram_128x32b_d4(
 );
 
 /*=============================*/
-/*		 	SRAM E		 	   */
+/*      SRAM E         */
 /*=============================*/
 wire sram_write_enable_e0;
 wire sram_write_enable_e1;
@@ -496,7 +496,7 @@ wire [SRAM_DATA_WIDTH-1:0] sram_rdata_e3;
 wire [SRAM_DATA_WIDTH-1:0] sram_rdata_e4;
 
 /*=================================*/
-/*	  	 SRAM E Connection		   */
+/*       SRAM E Connection       */
 /*=================================*/
 
 sram_128x32b sram_128x32b_e0(
@@ -555,7 +555,7 @@ sram_128x32b sram_128x32b_e4(
 );
 
 /*=============================*/
-/*		 	SRAM F		 	   */
+/*      SRAM F         */
 /*=============================*/
 wire sram_write_enable_f;
 wire [3:0] sram_bytemask_f;
@@ -563,7 +563,7 @@ wire [1:0] sram_waddr_f;
 wire [7:0] sram_wdata_f;
 
 /*=================================*/
-/*	  	 SRAM F Connection		   */
+/*       SRAM F Connection       */
 /*=================================*/
 sram_128x32b sram_128x32b_f(
 .clk(clk),
@@ -577,9 +577,9 @@ sram_128x32b sram_128x32b_f(
 );
 
 /*=============================*/
-/*		 CONV WEIGHT SRAM 	   */
+/*     CONV WEIGHT SRAM      */
 /*=============================*/
-wire [CONV_WEIGHT_NUM*WEIGHT_WIDTH-1:0] conv_sram_rdata_weight;	//load conv weight
+wire [CONV_WEIGHT_NUM*WEIGHT_WIDTH-1:0] conv_sram_rdata_weight; //load conv weight
 wire [CONV_WEIGHT_ADDR_WIDTH-1:0] conv_sram_raddr_weight;       //read address from SRAM weight
 
 sram_20000x100b sram_weight_conv(
@@ -593,10 +593,10 @@ sram_20000x100b sram_weight_conv(
 );
 
 /*=============================*/
-/*		 FC WEIGHT SRAM 	   */
+/*     FC WEIGHT SRAM      */
 /*=============================*/
-wire [FC_WEIGHT_NUM*WEIGHT_WIDTH-1:0] fc_sram_rdata_weight;		//load fc weight
-wire [FC_WEIGHT_ADDR_WIDTH-1:0] fc_sram_raddr_weight;       	//read address from SRAM weight
+wire [FC_WEIGHT_NUM*WEIGHT_WIDTH-1:0] fc_sram_rdata_weight;   //load fc weight
+wire [FC_WEIGHT_ADDR_WIDTH-1:0] fc_sram_raddr_weight;         //read address from SRAM weight
 
 sram_20250x80b sram_weight_fc(
 .clk(clk),
@@ -610,146 +610,146 @@ sram_20250x80b sram_weight_fc(
 
 lenet //#(.WEIGHT_WIDTH(4),.WEIGHT_NUM(25),.DATA_WIDTH(8),.DATA_NUM_PER_SRAM_ADDR(4))
 lenet0 (
-	.clk(clk),
-	.srstn(srstn),
+  .clk(clk),
+  .srstn(srstn),
 /* CONTROL SIGNALS */
-	.conv_start(conv_start),
-	//.fc_done(fc2_done),
-	.conv_done(conv_done),
-	.mem_sel(mem_sel),
-	.fc1_done(fc1_done),
-	.fc2_done(fc2_done),
+  .conv_start(conv_start),
+  //.fc_done(fc2_done),
+  .conv_done(conv_done),
+  .mem_sel(mem_sel),
+  .fc1_done(fc1_done),
+  .fc2_done(fc2_done),
 /* SRAM A */
-	.sram_rdata_a0(sram_rdata_a0),
-	.sram_rdata_a1(sram_rdata_a1),
-	.sram_rdata_a2(sram_rdata_a2),
-	.sram_rdata_a3(sram_rdata_a3),
-	.sram_rdata_a4(sram_rdata_a4),
-	.sram_rdata_a5(sram_rdata_a5),
-	.sram_rdata_a6(sram_rdata_a6),
-	.sram_rdata_a7(sram_rdata_a7),
-	.sram_rdata_a8(sram_rdata_a8),
+  .sram_rdata_a0(sram_rdata_a0),
+  .sram_rdata_a1(sram_rdata_a1),
+  .sram_rdata_a2(sram_rdata_a2),
+  .sram_rdata_a3(sram_rdata_a3),
+  .sram_rdata_a4(sram_rdata_a4),
+  .sram_rdata_a5(sram_rdata_a5),
+  .sram_rdata_a6(sram_rdata_a6),
+  .sram_rdata_a7(sram_rdata_a7),
+  .sram_rdata_a8(sram_rdata_a8),
 
-	.sram_raddr_a0(sram_raddr_a0),
-	.sram_raddr_a1(sram_raddr_a1),
-	.sram_raddr_a2(sram_raddr_a2),
-	.sram_raddr_a3(sram_raddr_a3),
-	.sram_raddr_a4(sram_raddr_a4),
-	.sram_raddr_a5(sram_raddr_a5),
-	.sram_raddr_a6(sram_raddr_a6),
-	.sram_raddr_a7(sram_raddr_a7),
-	.sram_raddr_a8(sram_raddr_a8),
+  .sram_raddr_a0(sram_raddr_a0),
+  .sram_raddr_a1(sram_raddr_a1),
+  .sram_raddr_a2(sram_raddr_a2),
+  .sram_raddr_a3(sram_raddr_a3),
+  .sram_raddr_a4(sram_raddr_a4),
+  .sram_raddr_a5(sram_raddr_a5),
+  .sram_raddr_a6(sram_raddr_a6),
+  .sram_raddr_a7(sram_raddr_a7),
+  .sram_raddr_a8(sram_raddr_a8),
 /* SRAM B */
-	.sram_rdata_b0(sram_rdata_b0),
-	.sram_rdata_b1(sram_rdata_b1),
-	.sram_rdata_b2(sram_rdata_b2),
-	.sram_rdata_b3(sram_rdata_b3),
-	.sram_rdata_b4(sram_rdata_b4),
-	.sram_rdata_b5(sram_rdata_b5),
-	.sram_rdata_b6(sram_rdata_b6),
-	.sram_rdata_b7(sram_rdata_b7),
-	.sram_rdata_b8(sram_rdata_b8),
+  .sram_rdata_b0(sram_rdata_b0),
+  .sram_rdata_b1(sram_rdata_b1),
+  .sram_rdata_b2(sram_rdata_b2),
+  .sram_rdata_b3(sram_rdata_b3),
+  .sram_rdata_b4(sram_rdata_b4),
+  .sram_rdata_b5(sram_rdata_b5),
+  .sram_rdata_b6(sram_rdata_b6),
+  .sram_rdata_b7(sram_rdata_b7),
+  .sram_rdata_b8(sram_rdata_b8),
 
-	.sram_raddr_b0(sram_raddr_b0),
-	.sram_raddr_b1(sram_raddr_b1),
-	.sram_raddr_b2(sram_raddr_b2),
-	.sram_raddr_b3(sram_raddr_b3),
-	.sram_raddr_b4(sram_raddr_b4),
-	.sram_raddr_b5(sram_raddr_b5),
-	.sram_raddr_b6(sram_raddr_b6),
-	.sram_raddr_b7(sram_raddr_b7),
-	.sram_raddr_b8(sram_raddr_b8),
+  .sram_raddr_b0(sram_raddr_b0),
+  .sram_raddr_b1(sram_raddr_b1),
+  .sram_raddr_b2(sram_raddr_b2),
+  .sram_raddr_b3(sram_raddr_b3),
+  .sram_raddr_b4(sram_raddr_b4),
+  .sram_raddr_b5(sram_raddr_b5),
+  .sram_raddr_b6(sram_raddr_b6),
+  .sram_raddr_b7(sram_raddr_b7),
+  .sram_raddr_b8(sram_raddr_b8),
 
-	.sram_write_enable_b0(sram_write_enable_b0),
-	.sram_write_enable_b1(sram_write_enable_b1),
-	.sram_write_enable_b2(sram_write_enable_b2),
-	.sram_write_enable_b3(sram_write_enable_b3),
-	.sram_write_enable_b4(sram_write_enable_b4),
-	.sram_write_enable_b5(sram_write_enable_b5),
-	.sram_write_enable_b6(sram_write_enable_b6),
-	.sram_write_enable_b7(sram_write_enable_b7),
-	.sram_write_enable_b8(sram_write_enable_b8),
+  .sram_write_enable_b0(sram_write_enable_b0),
+  .sram_write_enable_b1(sram_write_enable_b1),
+  .sram_write_enable_b2(sram_write_enable_b2),
+  .sram_write_enable_b3(sram_write_enable_b3),
+  .sram_write_enable_b4(sram_write_enable_b4),
+  .sram_write_enable_b5(sram_write_enable_b5),
+  .sram_write_enable_b6(sram_write_enable_b6),
+  .sram_write_enable_b7(sram_write_enable_b7),
+  .sram_write_enable_b8(sram_write_enable_b8),
 
-	.sram_bytemask_b(sram_bytemask_b),
-	.sram_waddr_b(sram_waddr_b),
-	.sram_wdata_b(sram_wdata_b),
+  .sram_bytemask_b(sram_bytemask_b),
+  .sram_waddr_b(sram_waddr_b),
+  .sram_wdata_b(sram_wdata_b),
 /* SRAM C */
-	.sram_rdata_c0(sram_rdata_c0),
-	.sram_rdata_c1(sram_rdata_c1),
-	.sram_rdata_c2(sram_rdata_c2),
-	.sram_rdata_c3(sram_rdata_c3),
-	.sram_rdata_c4(sram_rdata_c4),
+  .sram_rdata_c0(sram_rdata_c0),
+  .sram_rdata_c1(sram_rdata_c1),
+  .sram_rdata_c2(sram_rdata_c2),
+  .sram_rdata_c3(sram_rdata_c3),
+  .sram_rdata_c4(sram_rdata_c4),
 
-	.sram_raddr_c0(sram_raddr_c0),
-	.sram_raddr_c1(sram_raddr_c1),
-	.sram_raddr_c2(sram_raddr_c2),
-	.sram_raddr_c3(sram_raddr_c3),
-	.sram_raddr_c4(sram_raddr_c4),
+  .sram_raddr_c0(sram_raddr_c0),
+  .sram_raddr_c1(sram_raddr_c1),
+  .sram_raddr_c2(sram_raddr_c2),
+  .sram_raddr_c3(sram_raddr_c3),
+  .sram_raddr_c4(sram_raddr_c4),
 
-	.sram_write_enable_c0(sram_write_enable_c0),
-	.sram_write_enable_c1(sram_write_enable_c1),
-	.sram_write_enable_c2(sram_write_enable_c2),
-	.sram_write_enable_c3(sram_write_enable_c3),
-	.sram_write_enable_c4(sram_write_enable_c4),
+  .sram_write_enable_c0(sram_write_enable_c0),
+  .sram_write_enable_c1(sram_write_enable_c1),
+  .sram_write_enable_c2(sram_write_enable_c2),
+  .sram_write_enable_c3(sram_write_enable_c3),
+  .sram_write_enable_c4(sram_write_enable_c4),
 
-	.sram_bytemask_c(sram_bytemask_c),
-	.sram_waddr_c(sram_waddr_c),
-	.sram_wdata_c(sram_wdata_c),
+  .sram_bytemask_c(sram_bytemask_c),
+  .sram_waddr_c(sram_waddr_c),
+  .sram_wdata_c(sram_wdata_c),
 /* SRAM D */
-	.sram_rdata_d0(sram_rdata_d0),
-	.sram_rdata_d1(sram_rdata_d1),
-	.sram_rdata_d2(sram_rdata_d2),
-	.sram_rdata_d3(sram_rdata_d3),
-	.sram_rdata_d4(sram_rdata_d4),
+  .sram_rdata_d0(sram_rdata_d0),
+  .sram_rdata_d1(sram_rdata_d1),
+  .sram_rdata_d2(sram_rdata_d2),
+  .sram_rdata_d3(sram_rdata_d3),
+  .sram_rdata_d4(sram_rdata_d4),
 
-	.sram_raddr_d0(sram_raddr_d0),
-	.sram_raddr_d1(sram_raddr_d1),
-	.sram_raddr_d2(sram_raddr_d2),
-	.sram_raddr_d3(sram_raddr_d3),
-	.sram_raddr_d4(sram_raddr_d4),
+  .sram_raddr_d0(sram_raddr_d0),
+  .sram_raddr_d1(sram_raddr_d1),
+  .sram_raddr_d2(sram_raddr_d2),
+  .sram_raddr_d3(sram_raddr_d3),
+  .sram_raddr_d4(sram_raddr_d4),
 
-	.sram_write_enable_d0(sram_write_enable_d0),
-	.sram_write_enable_d1(sram_write_enable_d1),
-	.sram_write_enable_d2(sram_write_enable_d2),
-	.sram_write_enable_d3(sram_write_enable_d3),
-	.sram_write_enable_d4(sram_write_enable_d4),
+  .sram_write_enable_d0(sram_write_enable_d0),
+  .sram_write_enable_d1(sram_write_enable_d1),
+  .sram_write_enable_d2(sram_write_enable_d2),
+  .sram_write_enable_d3(sram_write_enable_d3),
+  .sram_write_enable_d4(sram_write_enable_d4),
 
-	.sram_bytemask_d(sram_bytemask_d),
-	.sram_waddr_d(sram_waddr_d),
-	.sram_wdata_d(sram_wdata_d),
+  .sram_bytemask_d(sram_bytemask_d),
+  .sram_waddr_d(sram_waddr_d),
+  .sram_wdata_d(sram_wdata_d),
 /* SRAM E */
-	.sram_rdata_e0(sram_rdata_e0),
-	.sram_rdata_e1(sram_rdata_e1),
-	.sram_rdata_e2(sram_rdata_e2),
-	.sram_rdata_e3(sram_rdata_e3),
-	.sram_rdata_e4(sram_rdata_e4),
+  .sram_rdata_e0(sram_rdata_e0),
+  .sram_rdata_e1(sram_rdata_e1),
+  .sram_rdata_e2(sram_rdata_e2),
+  .sram_rdata_e3(sram_rdata_e3),
+  .sram_rdata_e4(sram_rdata_e4),
 
-	.sram_raddr_e0(sram_raddr_e0),
-	.sram_raddr_e1(sram_raddr_e1),
-	.sram_raddr_e2(sram_raddr_e2),
-	.sram_raddr_e3(sram_raddr_e3),
-	.sram_raddr_e4(sram_raddr_e4),
+  .sram_raddr_e0(sram_raddr_e0),
+  .sram_raddr_e1(sram_raddr_e1),
+  .sram_raddr_e2(sram_raddr_e2),
+  .sram_raddr_e3(sram_raddr_e3),
+  .sram_raddr_e4(sram_raddr_e4),
 
-	.sram_write_enable_e0(sram_write_enable_e0),
-	.sram_write_enable_e1(sram_write_enable_e1),
-	.sram_write_enable_e2(sram_write_enable_e2),
-	.sram_write_enable_e3(sram_write_enable_e3),
-	.sram_write_enable_e4(sram_write_enable_e4),
+  .sram_write_enable_e0(sram_write_enable_e0),
+  .sram_write_enable_e1(sram_write_enable_e1),
+  .sram_write_enable_e2(sram_write_enable_e2),
+  .sram_write_enable_e3(sram_write_enable_e3),
+  .sram_write_enable_e4(sram_write_enable_e4),
 
-	.sram_bytemask_e(sram_bytemask_e),
-	.sram_waddr_e(sram_waddr_e),
-	.sram_wdata_e(sram_wdata_e),
+  .sram_bytemask_e(sram_bytemask_e),
+  .sram_waddr_e(sram_waddr_e),
+  .sram_wdata_e(sram_wdata_e),
 /* SRAM F */
-	.sram_bytemask_f(sram_bytemask_f),
-	.sram_waddr_f(sram_waddr_f),
-	.sram_wdata_f(sram_wdata_f),
-	.sram_write_enable_f(sram_write_enable_f),
+  .sram_bytemask_f(sram_bytemask_f),
+  .sram_waddr_f(sram_waddr_f),
+  .sram_wdata_f(sram_wdata_f),
+  .sram_write_enable_f(sram_write_enable_f),
 /* CONV WEIGHT SRAM */
-	.conv_sram_raddr_weight(conv_sram_raddr_weight),
-	.conv_sram_rdata_weight(conv_sram_rdata_weight),
+  .conv_sram_raddr_weight(conv_sram_raddr_weight),
+  .conv_sram_rdata_weight(conv_sram_rdata_weight),
 /* FC WEIGHT SRAM */
-	.fc_sram_raddr_weight(fc_sram_raddr_weight),
-	.fc_sram_rdata_weight(fc_sram_rdata_weight)
+  .fc_sram_raddr_weight(fc_sram_raddr_weight),
+  .fc_sram_rdata_weight(fc_sram_rdata_weight)
 );
 
 //dump wave file
@@ -767,12 +767,12 @@ initial begin
     clk = 1'b0;
     #(`cycle_period/2);
     while(1) begin
-    	#(`cycle_period/2) clk = ~clk;
+      #(`cycle_period/2) clk = ~clk;
     end
 end
 
 /*================================*/
-/*		main Simulation block 	  */
+/*    main Simulation block     */
 /*================================*/
 /* general variable */
 integer pat_no, pat_length;
@@ -801,26 +801,26 @@ reg signed [31:0] fc1_output [0:125-1];
 reg signed [31:0] fc2_output [0:2];
 
 initial begin
-	/* Read Weight from dat file */
-	$readmemb("weight_data/conv1_w.dat",conv1_w);
-	$readmemb("weight_data/conv1_b.dat",conv1_b);
-	$readmemb("weight_data/conv2_w.dat",conv2_w);
-	$readmemb("weight_data/conv2_b.dat",conv2_b);
-	$readmemb("weight_data/fc1_w.dat",fc1_w);
+  /* Read Weight from dat file */
+  $readmemb("weight_data/conv1_w.dat",conv1_w);
+  $readmemb("weight_data/conv1_b.dat",conv1_b);
+  $readmemb("weight_data/conv2_w.dat",conv2_w);
+  $readmemb("weight_data/conv2_b.dat",conv2_b);
+  $readmemb("weight_data/fc1_w.dat",fc1_w);
     $readmemb("weight_data/score_w.dat",fc2_w);
     /* Load Weight into SRAM */
     //====== conv =====
-	for(i = 0; i < 20; i = i + 1)begin
-		sram_weight_conv.load_w(i,conv1_w[i]);
-	end
-	sram_weight_conv.load_w(20,conv1_b[0]);
-	for(i = 21; i < 1021; i = i + 1)begin
-		sram_weight_conv.load_w(i,conv2_w[i-21]);
-	end
-	for(i = 1021; i < 1023; i = i + 1) begin
-		sram_weight_conv.load_w(i,conv2_b[i-1021]);
-	end
-	//====== fc =====
+  for(i = 0; i < 20; i = i + 1)begin
+    sram_weight_conv.load_w(i,conv1_w[i]);
+  end
+  sram_weight_conv.load_w(20,conv1_b[0]);
+  for(i = 21; i < 1021; i = i + 1)begin
+    sram_weight_conv.load_w(i,conv2_w[i-21]);
+  end
+  for(i = 1021; i < 1023; i = i + 1) begin
+    sram_weight_conv.load_w(i,conv2_b[i-1021]);
+  end
+  //====== fc =====
     for(i = 0; i < 500; i= i + 1)begin
         for(j = 0; j < 40; j = j + 1)begin
             sram_weight_fc.load_w(i*40+j,fc1_w[i][(40-j-1)*80 +: 80]);
@@ -841,36 +841,36 @@ initial begin
     @(negedge clk);
     srstn = 1'b1;
     /* Initialization */
-   	cycle_cnt_conv1 = 0;
-	cycle_cnt_conv2 = 0;
-	cycle_cnt_fc1 = 0;
-	cycle_cnt_fc2 = 0;
-	bmp2sram(0);
-	$write("|\n");
+    cycle_cnt_conv1 = 0;
+  cycle_cnt_conv2 = 0;
+  cycle_cnt_fc1 = 0;
+  cycle_cnt_fc2 = 0;
+  bmp2sram(0);
+  $write("|\n");
     $write("The input pattern is No.%d:\n", 0);
     $write("|\n");
     $readmemh("golden/conv1_golden.dat",conv1_golden_sram);
-	$readmemb("golden/00/pool2_00.dat",pool2_golden_sram);
+  $readmemb("golden/00/pool2_00.dat",pool2_golden_sram);
     display_sram;
     conv_start = 1'b0;
-	@(negedge clk);
-	conv_start = 1'b1;
-	@(negedge clk);
-	conv_start = 1'b0;
+  @(negedge clk);
+  conv_start = 1'b1;
+  @(negedge clk);
+  conv_start = 1'b0;
 
     /*================================*/
-	/*			TEST CONV 2  		  */
-	/*================================*/
+  /*      TEST CONV 2       */
+  /*================================*/
     
     while(~conv_done)begin    //it means sram a0 can be tested
-	    @(negedge clk);     
-	    begin
-	        cycle_cnt_conv2 = cycle_cnt_conv2 + 1;
-	    end
-	end
-	if(mem_sel == 0) begin
+      @(negedge clk);     
+      begin
+          cycle_cnt_conv2 = cycle_cnt_conv2 + 1;
+      end
+  end
+  if(mem_sel == 0) begin
         $display("Test sram c0~c4\n");
-		for(i = 0; i < 40;i = i + 1) begin
+    for(i = 0; i < 40;i = i + 1) begin
             pool2_1d[i*20] = sram_128x32b_c0.mem[i][31:24];
             pool2_1d[i*20 + 1] = sram_128x32b_c0.mem[i][23:16];
             pool2_1d[i*20 + 2] = sram_128x32b_c0.mem[i][15:8];  
@@ -896,10 +896,10 @@ initial begin
             pool2_1d[i*20 + 18] = sram_128x32b_c4.mem[i][15:8];  
             pool2_1d[i*20 + 19] = sram_128x32b_c4.mem[i][7:0];  
         end
-	end
-	else begin
+  end
+  else begin
         $display("Test sram d0~d4\n");
-		for(i = 0; i < 40;i = i + 1) begin
+    for(i = 0; i < 40;i = i + 1) begin
             pool2_1d[i*20] = sram_128x32b_d0.mem[i][31:24];
             pool2_1d[i*20 + 1] = sram_128x32b_d0.mem[i][23:16];
             pool2_1d[i*20 + 2] = sram_128x32b_d0.mem[i][15:8];  
@@ -925,8 +925,8 @@ initial begin
             pool2_1d[i*20 + 18] = sram_128x32b_d4.mem[i][15:8];  
             pool2_1d[i*20 + 19] = sram_128x32b_d4.mem[i][7:0]; 
         end
-	end
-	for(i = 0; i < 200; i = i + 1) begin
+  end
+  for(i = 0; i < 200; i = i + 1) begin
         for(j = 0; j < 4; j = j + 1)begin
             if(pool2_golden_sram[i][(4-j)*8-1 -: 8] == pool2_1d[i*4 + j]) $write("sram #d[%d] address: %d PASS!!\n", i%5, i/5); 
             else begin
@@ -951,16 +951,16 @@ initial begin
     $readmemh("golden/00/fc2_00.dat",fc2_golden);
 
     /*================================*/
-	/*			TEST FC 2  			  */
-	/*================================*/
-	
-	while(~fc2_done)begin    //when break from this while, it means sram f can be tested
+  /*      TEST FC 2         */
+  /*================================*/
+  
+  while(~fc2_done)begin    //when break from this while, it means sram f can be tested
         @(negedge clk);
         cycle_cnt_fc2 = cycle_cnt_fc2 + 1;
     end
 
     for(i = 0; i < 3; i = i + 1)
-    	fc2_output[i] = sram_128x32b_f.mem[i];
+      fc2_output[i] = sram_128x32b_f.mem[i];
 
     for(i = 0; i < 2; i= i + 1)begin
         if(fc2_output[i] == fc2_golden[i]) $write("sram #f address: %g PASS!!\n", i);
@@ -996,24 +996,24 @@ initial begin
     $display("Total cycle count  = %d.", cycle_cnt_fc2 + cycle_cnt_fc1 + cycle_cnt_conv1 + cycle_cnt_conv2);
     #(`cycle_period);
     bmp2sram(2);
-	$write("|\n");
+  $write("|\n");
     $write("The input pattern is No.%d:\n", 2);
     $write("|\n");
     $readmemh("golden/02/pool1_02.dat",conv1_golden_sram);
-	$readmemb("golden/02/pool2_02.dat",pool2_golden_sram);
+  $readmemb("golden/02/pool2_02.dat",pool2_golden_sram);
     display_sram;
     @(negedge clk);
     conv_start = 1'b0;
-	@(negedge clk);
-	conv_start = 1'b1;
-	@(negedge clk);
-	conv_start = 1'b0;
-	while(~conv_done)begin    //it means sram a0 can be tested
-	    @(negedge clk);
-	end
-	if(mem_sel == 0) begin
+  @(negedge clk);
+  conv_start = 1'b1;
+  @(negedge clk);
+  conv_start = 1'b0;
+  while(~conv_done)begin    //it means sram a0 can be tested
+      @(negedge clk);
+  end
+  if(mem_sel == 0) begin
         $display("Test sram c0~c4\n");
-		for(i = 0; i < 40;i = i + 1) begin
+    for(i = 0; i < 40;i = i + 1) begin
             pool2_1d[i*20] = sram_128x32b_c0.mem[i][31:24];
             pool2_1d[i*20 + 1] = sram_128x32b_c0.mem[i][23:16];
             pool2_1d[i*20 + 2] = sram_128x32b_c0.mem[i][15:8];  
@@ -1039,10 +1039,10 @@ initial begin
             pool2_1d[i*20 + 18] = sram_128x32b_c4.mem[i][15:8];  
             pool2_1d[i*20 + 19] = sram_128x32b_c4.mem[i][7:0];  
         end
-	end
-	else begin
+  end
+  else begin
         $display("Test sram d0~d4\n");
-		for(i = 0; i < 40;i = i + 1) begin
+    for(i = 0; i < 40;i = i + 1) begin
             pool2_1d[i*20] = sram_128x32b_d0.mem[i][31:24];
             pool2_1d[i*20 + 1] = sram_128x32b_d0.mem[i][23:16];
             pool2_1d[i*20 + 2] = sram_128x32b_d0.mem[i][15:8];  
@@ -1068,12 +1068,12 @@ initial begin
             pool2_1d[i*20 + 18] = sram_128x32b_d4.mem[i][15:8];  
             pool2_1d[i*20 + 19] = sram_128x32b_d4.mem[i][7:0]; 
         end
-	end
-	for(i = 0; i < 200; i = i + 1) begin
+  end
+  for(i = 0; i < 200; i = i + 1) begin
         for(j = 0; j < 4; j = j + 1)begin
-            if(pool2_golden_sram[i][(4-j)*8-1 -: 8] == pool2_1d[i*4 + j]) $write("sram #c[%d] address: %d PASS!!\n", i%5, i/5); 
+            if(pool2_golden_sram[i][(4-j)*8-1 -: 8] == pool2_1d[i*4 + j]) $write("sram #d[%d] address: %d PASS!!\n", i%5, i/5); 
             else begin
-                $write("You have wrong answer in the sram #c[%d] !!!\n\n", i%5);
+                $write("You have wrong answer in the sram #d[%d] !!!\n\n", i%5);
                 $write("Your answer at address %d is \n%d %d %d %d  \n" ,i/5, $signed(pool2_1d[i])
                                                                             , $signed(pool2_1d[i+1])
                                                                             , $signed(pool2_1d[i+2])
@@ -1093,14 +1093,14 @@ initial begin
     end
     @(negedge clk);
     $readmemh("golden/02/fc2_02.dat",fc2_golden);
-	@(negedge clk);
-	while(~fc2_done)begin    //when break from this while, it means sram f can be tested
+  @(negedge clk);
+  while(~fc2_done)begin    //when break from this while, it means sram f can be tested
         @(negedge clk);
         cycle_cnt_fc2 = cycle_cnt_fc2 + 1;
     end
 
     for(i = 0; i < 3; i = i + 1)
-    	fc2_output[i] = sram_128x32b_f.mem[i];
+      fc2_output[i] = sram_128x32b_f.mem[i];
 
     for(i = 0; i < 2; i= i + 1)begin
         if(fc2_output[i] == fc2_golden[i]) $write("sram #f address: %g PASS!!\n", i);
@@ -1134,37 +1134,37 @@ initial begin
 end
 
 /*================================*/
-/*			FEED 2nd PHOTO  	  */
+/*      FEED 2nd PHOTO      */
 /*================================*/
 initial begin
-	#(`cycle_period);
-	#(`cycle_period);
-	#(`cycle_period);
-	#(`cycle_period);
-	#(`cycle_period);
-	#(`cycle_period);
-	while(~conv_done)begin    //it means sram a0 can be tested
-	    @(negedge clk);
-	end
-	bmp2sram(1);
-	$write("|\n");
+  #(`cycle_period);
+  #(`cycle_period);
+  #(`cycle_period);
+  #(`cycle_period);
+  #(`cycle_period);
+  #(`cycle_period);
+  while(~conv_done)begin    //it means sram a0 can be tested
+      @(negedge clk);
+  end
+  bmp2sram(1);
+  $write("|\n");
     $write("The input pattern is No.%d:\n", 1);
     $write("|\n");
     $readmemh("golden/01/pool1_01.dat",conv1_golden_sram);
-	$readmemb("golden/01/pool2_01.dat",pool2_golden_sram);
+  $readmemb("golden/01/pool2_01.dat",pool2_golden_sram);
     display_sram;
     @(negedge clk);
     conv_start = 1'b0;
-	@(negedge clk);
-	conv_start = 1'b1;
-	@(negedge clk);
-	conv_start = 1'b0;
-	while(~conv_done)begin    //it means sram a0 can be tested
-	    @(negedge clk);
-	end
-	if(mem_sel == 0) begin
+  @(negedge clk);
+  conv_start = 1'b1;
+  @(negedge clk);
+  conv_start = 1'b0;
+  while(~conv_done)begin    //it means sram a0 can be tested
+      @(negedge clk);
+  end
+  if(mem_sel == 0) begin
         $display("Test sram c0~c4\n");
-		for(i = 0; i < 40;i = i + 1) begin
+    for(i = 0; i < 40;i = i + 1) begin
             pool2_1d[i*20] = sram_128x32b_c0.mem[i][31:24];
             pool2_1d[i*20 + 1] = sram_128x32b_c0.mem[i][23:16];
             pool2_1d[i*20 + 2] = sram_128x32b_c0.mem[i][15:8];  
@@ -1190,10 +1190,10 @@ initial begin
             pool2_1d[i*20 + 18] = sram_128x32b_c4.mem[i][15:8];  
             pool2_1d[i*20 + 19] = sram_128x32b_c4.mem[i][7:0];
         end
-	end
-	else begin
+  end
+  else begin
         $display("Test sram d0~d4\n");
-		for(i = 0; i < 40;i = i + 1) begin
+    for(i = 0; i < 40;i = i + 1) begin
             pool2_1d[i*20] = sram_128x32b_d0.mem[i][31:24];
             pool2_1d[i*20 + 1] = sram_128x32b_d0.mem[i][23:16];
             pool2_1d[i*20 + 2] = sram_128x32b_d0.mem[i][15:8];  
@@ -1219,12 +1219,12 @@ initial begin
             pool2_1d[i*20 + 18] = sram_128x32b_d4.mem[i][15:8];  
             pool2_1d[i*20 + 19] = sram_128x32b_d4.mem[i][7:0]; 
         end
-	end
-	for(i = 0; i < 200; i = i + 1) begin
+  end
+  for(i = 0; i < 200; i = i + 1) begin
         for(j = 0; j < 4; j = j + 1)begin
-            if(pool2_golden_sram[i][(4-j)*8-1 -: 8] == pool2_1d[i*4 + j]) $write("sram #d[%d] address: %d PASS!!\n", i%5, i/5); 
+            if(pool2_golden_sram[i][(4-j)*8-1 -: 8] == pool2_1d[i*4 + j]) $write("sram #c[%d] address: %d PASS!!\n", i%5, i/5); 
             else begin
-                $write("You have wrong answer in the sram #d[%d] !!!\n\n", i%5);
+                $write("You have wrong answer in the sram #c[%d] !!!\n\n", i%5);
                 $write("Your answer at address %d is \n%d %d %d %d  \n" ,i/5, $signed(pool2_1d[i])
                                                                             , $signed(pool2_1d[i+1])
                                                                             , $signed(pool2_1d[i+2])
@@ -1239,22 +1239,22 @@ initial begin
     end
     $display("Congratulations! YOU PASS bmp01 CONV2!!!!!");
     /*================================*/
-	/*			TEST FC 2 (bmp01) 	  */
-	/*================================*/
-	
-	while(~fc2_done)begin    //when break from this while, it means sram f can be tested
+  /*      TEST FC 2 (bmp01)     */
+  /*================================*/
+  
+  while(~fc2_done)begin    //when break from this while, it means sram f can be tested
         @(negedge clk);
         cycle_cnt_fc2 = cycle_cnt_fc2 + 1;
     end
-	$readmemh("golden/01/fc2_01.dat",fc2_golden);
-	@(negedge clk);
-	while(~fc2_done)begin    //when break from this while, it means sram f can be tested
+  $readmemh("golden/01/fc2_01.dat",fc2_golden);
+  @(negedge clk);
+  while(~fc2_done)begin    //when break from this while, it means sram f can be tested
         @(negedge clk);
         cycle_cnt_fc2 = cycle_cnt_fc2 + 1;
     end
 
     for(i = 0; i < 3; i = i + 1)
-    	fc2_output[i] = sram_128x32b_f.mem[i];
+      fc2_output[i] = sram_128x32b_f.mem[i];
 
     for(i = 0; i < 2; i= i + 1)begin
         if(fc2_output[i] == fc2_golden[i]) $write("sram #f address: %g PASS!!\n", i);
