@@ -1,10 +1,10 @@
 [Design Compiler]
+
+We synthesis both one set and two sets lenet acceleremeter and store the result in two different file lenet_1set and lenet_2set.
+
 Reasons for setting constrain:
     The smallest cycle time we could pass, smaller constrain can be modified to pass post_sim later
 Strategy: 
-    We keep on chasing smaller cycle time
+    We keep on chasing smaller cycle time at the beginning, however, since there's problem for post simulation, we choose larger cycle time to re-synthesis our design.
 
-[ICC]
-Reasons for setting constrain:
-Strategy: We release the clock period a little bit to avoid read data error
 

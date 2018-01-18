@@ -1,2 +1,7 @@
-[Stratedy for setting P&R]
-1. Debug, debug, debug....
+[ICC]
+Reasons for setting constrain:
+	Setting the constrain for post layout simulation.
+Strategy:
+	We release the clock period a little bit to avoid read data error and pass post layout simulation.
+	In the end, the period we chose would cause set up time violation during P&R, so we set the period in the testbench a larger number to pass the post layout simulation.
+
