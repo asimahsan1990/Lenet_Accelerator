@@ -608,7 +608,7 @@ sram_20250x80b sram_weight_fc(
 .rdata(fc_sram_rdata_weight)
 );
 
-lenet #(.WEIGHT_WIDTH(4),.WEIGHT_NUM(25),.DATA_WIDTH(8),.DATA_NUM_PER_SRAM_ADDR(4))
+lenet //#(.WEIGHT_WIDTH(4),.WEIGHT_NUM(25),.DATA_WIDTH(8),.DATA_NUM_PER_SRAM_ADDR(4))
 lenet (
 	.clk(clk),
 	.srstn(srstn),
@@ -768,7 +768,7 @@ end
 //====== clock generation =====
 initial begin
     srstn = 1'b1;
-    clk = 1'b1;
+    clk = 1'b0;
     #(`cycle_period/2);
     while(1) begin
     	#(`cycle_period/2) clk = ~clk;
@@ -932,9 +932,9 @@ initial begin
 	end
 	for(i = 0; i < 200; i = i + 1) begin
         for(j = 0; j < 4; j = j + 1)begin
-            if(pool2_golden_sram[i][(4-j)*8-1 -: 8] == pool2_1d[i*4 + j]) $write("sram #a[%d] address: %d PASS!!\n", i%5, i/5); 
+            if(pool2_golden_sram[i][(4-j)*8-1 -: 8] == pool2_1d[i*4 + j]) $write("sram #d[%d] address: %d PASS!!\n", i%5, i/5); 
             else begin
-                $write("You have wrong answer in the sram #a[%d] !!!\n\n", i%5);
+                $write("You have wrong answer in the sram #d[%d] !!!\n\n", i%5);
                 $write("Your answer at address %d is \n%d %d %d %d  \n" ,i/5, $signed(pool2_1d[i])
                                                                             , $signed(pool2_1d[i+1])
                                                                             , $signed(pool2_1d[i+2])
@@ -949,8 +949,8 @@ initial begin
     end
     $display("Congratulations! YOU PASS bmp00 CONV2!!!!!");
     $display("PAUL you are so cool!!!!!");
-    $display("Total cycle count in CONV2 = %d.\n", cycle_cnt_conv2);
-    $display("Total cycle count = %g\n", cycle_cnt_conv1+cycle_cnt_conv2);
+    $display("Total cycle count in CONV = %d.\n", cycle_cnt_conv2);
+    //$display("Total cycle count = %g\n", cycle_cnt_conv1+cycle_cnt_conv2);
 
     $readmemh("golden/00/fc2_00.dat",fc2_golden);
 
@@ -995,8 +995,8 @@ initial begin
     $write("|\n");
     $display("Congratulations! YOU PASS bmp00 FC2!!!!!");
     $display("Steven you are so cool!!!!!");
-    $display("Total cycle count in FC1 = %d.", cycle_cnt_fc1);
-    $display("Total cycle count in FC2 = %d.", cycle_cnt_fc2);
+    //$display("Total cycle count in FC1 = %d.", cycle_cnt_fc1);
+    $display("Total cycle count in FC = %d.", cycle_cnt_fc2);
     $display("Total cycle count  = %d.", cycle_cnt_fc2 + cycle_cnt_fc1 + cycle_cnt_conv1 + cycle_cnt_conv2);
     #(`cycle_period);
     bmp2sram(2);
@@ -1075,9 +1075,9 @@ initial begin
 	end
 	for(i = 0; i < 200; i = i + 1) begin
         for(j = 0; j < 4; j = j + 1)begin
-            if(pool2_golden_sram[i][(4-j)*8-1 -: 8] == pool2_1d[i*4 + j]) $write("sram #a[%d] address: %d PASS!!\n", i%5, i/5); 
+            if(pool2_golden_sram[i][(4-j)*8-1 -: 8] == pool2_1d[i*4 + j]) $write("sram #d[%d] address: %d PASS!!\n", i%5, i/5); 
             else begin
-                $write("You have wrong answer in the sram #a[%d] !!!\n\n", i%5);
+                $write("You have wrong answer in the sram #d[%d] !!!\n\n", i%5);
                 $write("Your answer at address %d is \n%d %d %d %d  \n" ,i/5, $signed(pool2_1d[i])
                                                                             , $signed(pool2_1d[i+1])
                                                                             , $signed(pool2_1d[i+2])
@@ -1141,6 +1141,10 @@ end
 /*			FEED 2nd PHOTO  	  */
 /*================================*/
 initial begin
+	#(`cycle_period);
+	#(`cycle_period);
+	#(`cycle_period);
+	#(`cycle_period);
 	#(`cycle_period);
 	#(`cycle_period);
 	while(~conv_done)begin    //it means sram a0 can be tested
@@ -1222,9 +1226,9 @@ initial begin
 	end
 	for(i = 0; i < 200; i = i + 1) begin
         for(j = 0; j < 4; j = j + 1)begin
-            if(pool2_golden_sram[i][(4-j)*8-1 -: 8] == pool2_1d[i*4 + j]) $write("sram #a[%d] address: %d PASS!!\n", i%5, i/5); 
+            if(pool2_golden_sram[i][(4-j)*8-1 -: 8] == pool2_1d[i*4 + j]) $write("sram #c[%d] address: %d PASS!!\n", i%5, i/5); 
             else begin
-                $write("You have wrong answer in the sram #a[%d] !!!\n\n", i%5);
+                $write("You have wrong answer in the sram #c[%d] !!!\n\n", i%5);
                 $write("Your answer at address %d is \n%d %d %d %d  \n" ,i/5, $signed(pool2_1d[i])
                                                                             , $signed(pool2_1d[i+1])
                                                                             , $signed(pool2_1d[i+2])

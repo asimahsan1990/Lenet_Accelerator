@@ -1,8 +1,0 @@
-source setup.tcl
-source 0_design_setup.tcl
-source 1_floorplan.tcl
-source 2_powerplan.tcl
-source 3_placement.tcl
-source 4_clock_tree.tcl
-source 5_route.tcl
-
