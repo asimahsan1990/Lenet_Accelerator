@@ -1071,9 +1071,9 @@ initial begin
 	end
 	for(i = 0; i < 200; i = i + 1) begin
         for(j = 0; j < 4; j = j + 1)begin
-            if(pool2_golden_sram[i][(4-j)*8-1 -: 8] == pool2_1d[i*4 + j]) $write("sram #c[%d] address: %d PASS!!\n", i%5, i/5); 
+            if(pool2_golden_sram[i][(4-j)*8-1 -: 8] == pool2_1d[i*4 + j]) $write("sram #d[%d] address: %d PASS!!\n", i%5, i/5); 
             else begin
-                $write("You have wrong answer in the sram #c[%d] !!!\n\n", i%5);
+                $write("You have wrong answer in the sram #d[%d] !!!\n\n", i%5);
                 $write("Your answer at address %d is \n%d %d %d %d  \n" ,i/5, $signed(pool2_1d[i])
                                                                             , $signed(pool2_1d[i+1])
                                                                             , $signed(pool2_1d[i+2])
@@ -1222,9 +1222,9 @@ initial begin
 	end
 	for(i = 0; i < 200; i = i + 1) begin
         for(j = 0; j < 4; j = j + 1)begin
-            if(pool2_golden_sram[i][(4-j)*8-1 -: 8] == pool2_1d[i*4 + j]) $write("sram #d[%d] address: %d PASS!!\n", i%5, i/5); 
+            if(pool2_golden_sram[i][(4-j)*8-1 -: 8] == pool2_1d[i*4 + j]) $write("sram #c[%d] address: %d PASS!!\n", i%5, i/5); 
             else begin
-                $write("You have wrong answer in the sram #d[%d] !!!\n\n", i%5);
+                $write("You have wrong answer in the sram #c[%d] !!!\n\n", i%5);
                 $write("Your answer at address %d is \n%d %d %d %d  \n" ,i/5, $signed(pool2_1d[i])
                                                                             , $signed(pool2_1d[i+1])
                                                                             , $signed(pool2_1d[i+2])
