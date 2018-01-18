@@ -1,0 +1,28 @@
+****************************************
+Report : area
+Design : lenet
+Version: H-2013.03-ICC-SP1
+Date   : Thu Jan 18 09:39:13 2018
+****************************************
+
+Library(s) Used:
+
+    saed32hvt_ss0p95v125c (File: /usr/cadtool/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db)
+
+Number of ports:                         1665
+Number of nets:                          1757
+Number of cells:                          169
+Number of combinational cells:            167
+Number of sequential cells:                 0
+Number of macros:                           0
+Number of buf/inv:                        167
+Number of references:                      15
+
+Combinational area:       54865.877128
+Buf/Inv area:             9086.410543
+Noncombinational area:    14955.357518
+Net Interconnect area:    18934.638038 
+
+Total cell area:          69821.234646
+Total area:               88755.872684
+1

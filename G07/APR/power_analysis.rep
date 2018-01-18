@@ -1,0 +1,52 @@
+****************************************
+Report : power
+        -analysis_effort low
+Design : lenet
+Version: H-2013.03-ICC-SP1
+Date   : Thu Jan 18 09:38:09 2018
+****************************************
+
+
+Library(s) Used:
+
+    saed32hvt_ss0p95v125c (File: /usr/cadtool/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db)
+
+
+Operating Conditions: ss0p95v125c   Library: saed32hvt_ss0p95v125c
+Wire Load Model Mode: enclosed
+
+Design        Wire Load Model            Library
+------------------------------------------------
+lenet                  ForQA             saed32hvt_ss0p95v125c
+
+
+Global Operating Voltage = 0.95
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000ff
+    Time Units = 1ns
+    Dynamic Power Units = 1uW    (derived from V,C,T units)
+    Leakage Power Units = 1pW
+
+
+  Cell Internal Power  =   3.4918 mW   (70%)
+  Net Switching Power  =   1.5274 mW   (30%)
+                         ---------
+Total Dynamic Power    =   5.0192 mW  (100%)
+
+Cell Leakage Power     =   1.3933 mW
+
+
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
+clock_network    158.0743          584.5581        3.4028e+07          776.6609  (  12.11%)
+register       2.2758e+03           74.7116        3.1400e+08        2.6645e+03  (  41.55%)
+sequential         0.0000            0.0000            0.0000            0.0000  (   0.00%)
+combinational  1.0580e+03          868.1263        1.0452e+09        2.9713e+03  (  46.34%)
+--------------------------------------------------------------------------------------------------
+Total          3.4918e+03 uW     1.5274e+03 uW     1.3933e+09 pW     6.4125e+03 uW
+1

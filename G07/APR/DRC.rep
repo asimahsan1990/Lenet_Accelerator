@@ -1,0 +1,12 @@
+Warning: This command is no longer supported. Please use command signoff_drc instead.   (RT-114)
+
+ WARNING: Please make sure consistency between disk database and routed
+          database. Because verify_drc process directly on disk database.
+
+Start to run Hercules ...
+.
+Hercules is done!
+No DRC error is reported!
+
+Advanced DRC is finished.
+1

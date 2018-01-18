@@ -1,0 +1,42 @@
+
+-- LVS START : --
+Total area error in layer 0 is 0.  Elapsed =    0:00:01, CPU =    0:00:00
+Total area error in layer 1 is 0.  Elapsed =    0:00:02, CPU =    0:00:01
+ERROR : area  [(198.892,396.112), (198.948,396.168)]	0.0031 um sqr.
+Total area error in layer 2 is 1.  Elapsed =    0:00:03, CPU =    0:00:02
+ERROR : area  [(20.417,182.170), (20.527,182.230)]	0.0066 um sqr.
+ERROR : area  [(335.817,364.266), (336.079,364.326)]	0.0156 um sqr.
+Total area error in layer 3 is 2.  Elapsed =    0:00:03, CPU =    0:00:02
+Total area error in layer 4 is 0.  Elapsed =    0:00:03, CPU =    0:00:03
+Total area error in layer 5 is 0.  Elapsed =    0:00:03, CPU =    0:00:03
+Total area error in layer 6 is 0.  Elapsed =    0:00:03, CPU =    0:00:03
+Total area error in layer 7 is 0.  Elapsed =    0:00:03, CPU =    0:00:03
+Total area error in layer 8 is 0.  Elapsed =    0:00:03, CPU =    0:00:03
+Total area error in layer 9 is 0.  Elapsed =    0:00:03, CPU =    0:00:03
+Total area error in layer 10 is 0.  Elapsed =    0:00:03, CPU =    0:00:03
+Total area error in layer 11 is 0.  Elapsed =    0:00:03, CPU =    0:00:03
+Total area error in layer 12 is 0.  Elapsed =    0:00:03, CPU =    0:00:03
+Total area error in layer 13 is 0.  Elapsed =    0:00:03, CPU =    0:00:03
+Total area error in layer 14 is 0.  Elapsed =    0:00:03, CPU =    0:00:03
+Total area error in layer 15 is 0.  Elapsed =    0:00:03, CPU =    0:00:03
+** Total Floating Nets are 0.
+ERROR : There are 2 nets short together.
+	VSS (744994).
+	sram_rdata_e1[25] (128804).
+
+** Total SHORT Nets are 1.
+ERROR : Logical Net VSS is open.
+	Node 27869 is in the region ((5,5),(391,396)).
+	Node 14101 is in the region ((365,197),(382,197)).
+	Node 445 is in the region ((229,197),(345,197)).
+	Node 446 is in the region ((15,197),(34,197)).
+	Total seperated nodes are 4.
+	Potential connection region ((33, 196), (366, 198)).
+** Total OPEN Nets are 1.
+** Total Electrical Equivalent Error are 0.
+** Total Must Joint Error are 0.
+
+-- LVS END : --
+Elapsed =    0:00:03, CPU =    0:00:03
+Update error cell ...
+1

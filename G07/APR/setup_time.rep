@@ -1,0 +1,96 @@
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : lenet
+Version: H-2013.03-ICC-SP1
+Date   : Thu Jan 18 09:41:09 2018
+****************************************
+
+ * Some/all delay information is back-annotated.
+
+Operating Conditions: ss0p95v125c   Library: saed32hvt_ss0p95v125c
+
+Information: Percent of Arnoldi-based delays = 17.70%
+
+  Startpoint: conv_top/multiply_compare/conv2_sum_c_reg_3_
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: conv_top/quantize/quantized_data_reg_0_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (propagated)                        0.28       0.28
+  conv_top/multiply_compare/conv2_sum_c_reg_3_/CLK (DFFSSRX1_HVT)
+                                                          0.00       0.28 r
+  conv_top/multiply_compare/conv2_sum_c_reg_3_/Q (DFFSSRX1_HVT)
+                                                          0.27       0.55 f
+  conv_top/multiply_compare/U1708/Y (OR2X1_HVT)           0.07 &     0.62 f
+  conv_top/multiply_compare/U1806/Y (NAND2X0_HVT)         0.05 &     0.67 r
+  conv_top/multiply_compare/U1807/Y (OA22X1_HVT)          0.10 &     0.77 r
+  conv_top/multiply_compare/U1812/Y (AO221X1_HVT)         0.15 &     0.93 r
+  conv_top/multiply_compare/U180/Y (AO222X1_HVT)          0.15 &     1.08 r
+  conv_top/multiply_compare/U1519/Y (NAND3X0_HVT)         0.10 &     1.18 f
+  conv_top/multiply_compare/U1710/Y (NAND3X0_HVT)         0.07 &     1.24 r
+  conv_top/multiply_compare/U2071/Y (NAND2X0_HVT)         0.06 &     1.31 f
+  conv_top/multiply_compare/U2072/Y (AND2X1_HVT)          0.10 &     1.41 f
+  conv_top/multiply_compare/U2741/Y (NBUFFX8_HVT)         0.09 @     1.50 f
+  conv_top/multiply_compare/U2144/Y (MUX21X1_HVT)         0.13 @     1.63 f
+  conv_top/multiply_compare/U1863/Y (NAND2X0_HVT)         0.07 &     1.70 r
+  conv_top/multiply_compare/U1864/Y (NAND2X0_HVT)         0.06 &     1.76 f
+  conv_top/multiply_compare/U1865/Y (OAI22X1_HVT)         0.12 &     1.88 r
+  conv_top/multiply_compare/U2762/Y (NAND2X0_HVT)         0.05 &     1.93 f
+  conv_top/multiply_compare/U2764/Y (NAND3X0_HVT)         0.05 &     1.98 r
+  conv_top/multiply_compare/U163/Y (AO222X1_HVT)          0.13 &     2.10 r
+  conv_top/multiply_compare/U3116/Y (NAND2X4_HVT)         0.14 &     2.24 f
+  conv_top/multiply_compare/U2524/Y (NAND2X0_HVT)         0.05 &     2.29 r
+  conv_top/multiply_compare/U1704/Y (NAND2X0_HVT)         0.05 &     2.34 f
+  conv_top/multiply_compare/U1662/Y (AND2X1_HVT)          0.08 &     2.42 f
+  conv_top/multiply_compare/U1576/Y (OR2X2_HVT)           0.08 &     2.50 f
+  conv_top/multiply_compare/U2009/Y (NBUFFX16_HVT)        0.08 @     2.58 f
+  conv_top/multiply_compare/U3345/Y (MUX21X2_HVT)         0.16 @     2.74 r
+  conv_top/multiply_compare/data_out[11] (multiply_compare)
+                                                          0.00       2.74 r
+  conv_top/quantize/ori_data_11_ (quantize)               0.00       2.74 r
+  conv_top/quantize/U421/Y (AND2X1_HVT)                   0.10 &     2.84 r
+  conv_top/quantize/U422/Y (INVX2_HVT)                    0.03 &     2.88 f
+  conv_top/quantize/U359/Y (OA21X1_HVT)                   0.09 &     2.97 f
+  conv_top/quantize/U360/Y (INVX2_HVT)                    0.03 &     3.00 r
+  conv_top/quantize/DP_OP_26J6_124_4249_U243/Y (AOI21X1_HVT)
+                                                          0.13 &     3.14 f
+  conv_top/quantize/U376/Y (OA21X1_HVT)                   0.09 &     3.23 f
+  conv_top/quantize/U368/Y (INVX4_HVT)                    0.04 &     3.27 r
+  conv_top/quantize/U83/Y (INVX2_HVT)                     0.05 &     3.32 f
+  conv_top/quantize/U176/Y (OA21X1_HVT)                   0.11 &     3.43 f
+  conv_top/quantize/U178/Y (XOR2X2_HVT)                   0.18 &     3.61 r
+  conv_top/quantize/U317/Y (AND4X1_HVT)                   0.15 &     3.76 r
+  conv_top/quantize/U318/Y (NAND4X0_HVT)                  0.12 &     3.89 f
+  conv_top/quantize/U319/Y (OR3X1_HVT)                    0.12 &     4.01 f
+  conv_top/quantize/U226/Y (NAND2X0_HVT)                  0.07 &     4.07 r
+  conv_top/quantize/U321/Y (AND2X2_HVT)                   0.12 &     4.19 r
+  conv_top/quantize/U322/Y (NAND2X0_HVT)                  0.08 &     4.27 f
+  conv_top/quantize/U293/Y (AND3X1_HVT)                   0.11 &     4.39 f
+  conv_top/quantize/U379/Y (NBUFFX8_HVT)                  0.07 &     4.46 f
+  conv_top/quantize/U392/Y (INVX16_HVT)                   0.03 @     4.48 r
+  conv_top/quantize/quantized_data_reg_0_/RSTB (DFFSSRX1_HVT)
+                                                          0.00 @     4.49 r
+  data arrival time                                                  4.49
+
+  clock clk (rise edge)                                   4.20       4.20
+  clock network delay (propagated)                        0.25       4.45
+  conv_top/quantize/quantized_data_reg_0_/CLK (DFFSSRX1_HVT)
+                                                          0.00       4.45 r
+  library setup time                                     -0.13       4.32
+  data required time                                                 4.32
+  --------------------------------------------------------------------------
+  data required time                                                 4.32
+  data arrival time                                                 -4.49
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -0.17
+
+
+1
